@@ -1,81 +1,80 @@
-# 📘 SNMP Configuration in Faceplate
+# SNMP Configuration in Faceplate
 
-## General Description
-**SNMP** (Simple Network Management Protocol) is an open communication protocol defined by the Internet Engineering Task Force (IETF). The protocol is widely used for data exchange with network equipment (controllers/PLCs, gateways, UPS).
+## Overview
+**SNMP** (Simple Network Management Protocol) is an open communication protocol defined by the IETF. It is widely used to exchange data with network devices (controllers, gateways, UPS, etc.).
 
-**Faceplate** supports **SNMPv2** and **SNMPv3** protocol versions.
+In **Faceplate**, **SNMPv2** and **SNMPv3** are supported.
 
-The integration process consists of two stages:
-1.  **Creating a Connection (`plc_snmp_connection`):** Configuring network transport and redundancy logic.
-2.  **Creating Bindings (`plc_snmp_binding`):** Addressing specific variables (OIDs) within the device.
+Integration consists of two stages:
+1. **Connection (`plc_snmp_connection`):** Network transport setup and redundancy logic.
+2. **Binding (`plc_snmp_binding`):** Addressing specific variables (OIDs) within the device.
 
 ---
 
-## STEP 1. Connection Configuration
+## STEP 1. Connection setup (Connection)
 
-This step involves establishing a transport channel to the equipment.
+At this stage you create a transport channel to the target equipment.
 
-![Connection Configuration Window](images/snmp_connections.png)
+![Connection setup window](images/snmp_connections.png)
 
-### 1.1 Runtime Panel
-*The upper part of the window. Displays the current process status.*
+### 1.1 Diagnostic panel (Runtime)
+*Top part of the window. Shows the current process state.*
 
 | Field | Description |
 | :--- | :--- |
-| **State** | **STOP** (Red) — Driver is stopped.<br>**RUN** (Green) — Driver is running. |
-| **Error** | Text of the last error. `no errors` indicates normal operation. |
-| **Node / PID** | Identifies the cluster node and OS Process ID handling this connection. |
-| **Actual connection** | **Active Channel Indicator.**<br>Shows which specific connection is currently used for polling.<br>• If redundancy is not configured, this matches the current connection.<br>• If redundancy is configured, it indicates whether the `Master` or the backup channel is currently active. |
+| **State** | **STOP** (Red) — driver stopped.<br>**RUN** (Green) — driver running. |
+| **Error** | Last error text. `no errors` — normal operation. |
+| **Actual connection** | **Active channel indicator.**<br>Shows which connection is currently used for polling.<br>• If redundancy is not configured — equals the current one.<br>• With redundancy — shows whether `Master` or backup channel is active. |
 
-### 1.2 Settings Parameters
+### 1.2 Configuration settings (Settings)
 
-**General Settings:**
-* **Name:** Unique system name (Latin characters, no spaces).
-* **Period (ms):** Polling interval (Standard: `1000` ms).
-* **Shutdown timeout (ms):** Time allowed for a graceful socket closure (Standard: `60000`).
+**Base settings:**
+- **Name:** Unique system name (Latin characters, no spaces).
+- **Period (ms):** Polling interval (default `1000` ms).
+- **Shutdown timeout (ms):** Time to gracefully close the socket (default `60000`).
 
-**Redundancy Configuration:**
-* **Master connection:** Reference to the "Main" connection.
-    * *Used when creating a backup channel.* If the current connection is a backup, specify the name of the main connection here. The system will automatically switch between them based on availability.
+**Redundancy settings:**
+- **Master connection:** Reference to the main connection.  
+  *Used to configure a backup channel.* If the current connection is a backup, specify the main connection name here. The system will switch channels automatically based on availability.
 
-**Network Settings:**
-* **IP/Hostname:** IP address of the target device.
-* **Port:** `161` (Standard UDP agent port).
-* **Community:** Access string (password). Usually `public` (Read-only) or `private` (Write).
-* **Support for group requests:** `Yes` — enable `GetBulk` (packet/batch reading). Recommended to accelerate polling if the device supports this feature.
+**Network settings:**
+- **IP/Hostname:** Target device IP address/hostname.
+- **Port:** `161` (standard UDP port for SNMP agent).
+- **Community:** Access password. Commonly `public` (read-only) or `private` (write).
+- **Support for group requests:** `Yes` — enable `GetBulk` (batch read). Recommended for faster polling if the device supports it.
 
-> **Action:** Click **Save**. After saving, double-click the object to enter it and configure tags.
+> **Action:** Click **Save**. After saving, open the object (double click) to configure tag bindings.
 
 ---
 
-## STEP 2. Variable Configuration (Binding)
+## STEP 2. Variable setup (Binding)
 
-`plc_snmp_binding` objects are created inside the connection folder. Each object corresponds to a single variable (OID) on the device.
+Inside the connection, create `plc_snmp_binding` objects. Each object corresponds to one variable (OID) on the device.
 
-![Binding Configuration Window](images/snmp_bindings.png)
+![SNMP binding setup window](images/snmp_bindings.png)
 
-### 2.1 Binding Parameters
+### 2.1 Binding parameters
 
 | Field | Description |
 | :--- | :--- |
-| **Name** | Name of the binding in the project tree. |
-| **Tag** | Selection of the internal Faceplate system tag where the value will be written. |
-| **Transformation** | *Optional.* On-the-fly data processing (e.g., scaling, bit masks). |
-| **Access** | Access rights to the variable:<br>• **R** — Read only.<br>• **W** — Write only.<br>• **RW** — Read and Write. |
-| **Address** | **OID (Object Identifier).** The variable address in the SNMP hierarchy.<br>*Examples:* `1.3.6.1.2.1.1.1.0` (absolute) or `1.6.3.1` (relative, if supported). |
+| **Name** | Binding name in the project tree. |
+| **Tag** | Faceplate system tag where the value will be written. |
+| **Transformation** | *Optional.* On-the-fly data transformation (scaling, bit masks). |
+| **Access** | Variable access rights:<br>• **R** — Read-only.<br>• **W** — Write-only.<br>• **RW** — Read/Write. |
+| **Address** | **OID (Object Identifier).** Address of the variable in SNMP hierarchy.<br>*Examples:* `1.3.6.1.2.1.1.1.0` (absolute) or `1.6.3.1` (relative, if supported). |
 
-### 2.2 Runtime Control
-* **State:** Current status of the specific binding (active/error).
-* **Off:** Switch to temporarily disable polling for this specific tag without deleting the configuration.
+### 2.2 Runtime control
+- **State:** Current binding state (active/error).
+- **Off:** Switch to temporarily disable polling for a specific tag without deleting the configuration.
 
 ---
 
-## 💡 Configuration Checklist
+<!-- ## Additional notes
 
-1.  **Redundancy:** If configuring a backup channel, ensure the `Master connection` field points to the correct main connection name. The `Actual connection` field in Runtime will indicate which channel is currently "leading" the polling.
-2.  **OID:** In case of `No Such Name` errors, check the **Address** field. It is recommended to use a third-party MIB Browser to validate the OID before configuration.
-3.  **Startup Order:**
-    1. Configure the Connection.
-    2. Start the driver (`State: RUN`).
-    3. Verify there are no communication errors.
-    4. Create Bindings.
+1. **Redundancy:** When configuring a backup channel, ensure `Master connection` contains the correct name of the main channel. `Actual connection` in Runtime shows which channel currently drives polling.
+2. **OID validation:** If you see `No Such Name`, verify the **Address**. Use a third‑party MIB Browser to validate OIDs before configuration.
+3. **Startup sequence:**
+   1. Configure Connection.
+   2. Start the driver (`State: RUN`).
+   3. Ensure there are no communication errors.
+   4. Create Bindings. -->
