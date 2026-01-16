@@ -1,67 +1,67 @@
-# 📘 Siemens S7 (ISO-on-TCP) Configuration Guide
+#  S7 PLC Protocol (ISO‑on‑TCP) Configuration Guide
 
-## General Description
-The **S7** driver is designed for native data exchange with Siemens programmable logic controllers (PLCs) of the **Simatic S7** family.
+## Overview
+The **S7** driver is intended for native data exchange with Siemens **Simatic S7** PLCs.
 
-Supported Series:
-* **S7-300 / S7-400** (Classic architecture).
-* **S7-1200 / S7-1500** (Modern series, require specific access settings, see the Troubleshooting section).
-* **Siemens Logo!** (starting from versions 0BA7/0BA8).
+Supported series:
+- **S7‑300 / S7‑400** (classic architecture)
+- **S7‑1200 / S7‑1500** (modern series; require access configuration — see Troubleshooting)
+- **Siemens Logo!** (starting from 0BA7/0BA8)
 
-Data exchange occurs via the **ISO-on-TCP** protocol (RFC 1006) over standard port **102**.
+Communication is based on **ISO‑on‑TCP** (RFC 1006) using the standard port **102**.
 
-The configuration process consists of two stages:
-1.  **Connection (`plc_s7_connection`):** Configuring network access to the CPU.
-2.  **Binding (`plc_s7_binding`):** Addressing a specific memory cell.
+Configuration consists of two stages:
+1. **Connection (`plc_s7_connection`):** Network access to the CPU.
+2. **Binding (`plc_s7_binding`):** Specific memory cell addressing.
 
 ---
 
-## STEP 1. Connection Configuration
+## STEP 1. Connection setup (Connection)
 
-At this stage, we configure the connection parameters to the communication processor or the Ethernet port on the CPU.
+Here you configure connection parameters to the communication processor or the Ethernet port on the CPU.
 
-### 1.1 Diagnostics Panel (Runtime)
-*The upper part of the window. Used for status monitoring.*
+### 1.1 Diagnostic panel (Runtime)
+*Top part of the window. Used for state monitoring.*
 
 | Field | Description |
 | :--- | :--- |
-| **State** | **STOP** (Red) — Driver is stopped.<br>**RUN** (Green) — Connection established (Handshake successful). |
-| **Error** | Error text. <br>*Common errors:* `Connection refused` (no link/wrong port), `Iso packet error` (wrong Rack/Slot). |
-| **Actual connection** | The currently active channel (when using redundancy). |
+| **State** | **STOP** (Red) — driver stopped.<br>**RUN** (Green) — connection established (Handshake successful). |
+| **Error** | Error text. <br>*Common:* `Connection refused` (no network / wrong port), `Iso packet error` (wrong Rack/Slot). |
+| **Actual connection** | Current active channel (when redundancy is used). |
 
-### 1.2 Configuration Parameters (Settings)
+### 1.2 Configuration settings (Settings)
 
-![Siemens S7 Connection Settings](images/s7_conn.png)
+![S7 connection setup](images/s7_conn.png)
 
-#### General & Timing Settings
+#### Main and timing settings
+
 | Parameter | Description |
 | :--- | :--- |
 | **Name** | Unique connection name. |
-| **Period (ms)** | Polling period. Standard is `1000`. S7comm is quite fast; for critical tasks, `100-200` ms is acceptable. |
+| **Period (ms)** | Polling interval. Default `1000`. S7comm is quite fast; for critical signals you can set `100–200` ms. |
 | **Master connection** | Reference to the main connection (for redundancy). |
-| **Support for group requests** | **Yes** — The driver will automatically "glue" requests for adjacent bytes into a single PDU packet (Optimization). |
-| **Max. package length** | PDU (Protocol Data Unit) size. Typically `240` or `480` bytes for older series, `960` for newer ones. |
+| **Support for group requests** | **Yes** — the driver will combine requests to adjacent bytes into one PDU (optimization). |
+| **Max. package length** | PDU size. Typically `240` or `480` bytes for older series, `960` for newer series. |
 
-#### Controller Settings (S7 / TCP)
-Key parameters for hardware addressing.
+#### Controller settings (S7 / TCP)
 
-| Field | Description and Analysis |
+| Field | Description / Notes |
 | :--- | :--- |
-| **Data type** | Controller family (Type). <br>Affects packet formation algorithms. Select `300` (for S7-300/400/VIPA) or `1200`/`1500` if available. |
-| **IP/Hostname** | Controller IP address. |
-| **Port** | **102** (Standard Siemens ISO-on-TCP port). |
-| **Rack** | **Rack (Chassis) number.** <br>• For S7-300/400/1500: Usually `0`. |
-| **Slot** | **CPU Slot number.** (Field might be below Rack).<br>⚠️ **This is a critical parameter:**<br>• **S7-300:** Always `2`.<br>• **S7-400:** Depends on Hardware config (often `2` or `3`).<br>• **S7-1200 / S7-1500:** Usually `1` (or `0` for older 1200 firmwares). |
+| **Data type** | Controller family. Affects packet build logic. Choose `300` (S7‑300/400/VIPA) or `1200`/`1500` if available. |
+| **IP/Hostname** | PLC IP address/hostname. |
+| **Port** | **102** (standard Siemens ISO‑on‑TCP port). |
+| **Rack** | **Rack number.**<br>• For S7‑300/400/1500: usually `0`. |
+| **Slot** | **CPU slot number.** This is critical:<br>• **S7‑300:** always `2`.<br>• **S7‑400:** depends on Hardware config (often `2` or `3`).<br>• **S7‑1200 / S7‑1500:** usually `1` (or `0` for older 1200 firmware). |
 
 ---
 
-## STEP 2. Variable Configuration (Binding)
+## STEP 2. Variable setup (Binding)
 
-In S7, memory has a rigid structure. To access a variable, you need to know its area, type, and offset (address).
+S7 memory has a strict structure. To access a variable you must know its area, type, and offset.
 
-![Siemens S7 Binding Settings](images/s7_bind.png)
+![S7 binding setup](images/s7_bind.png)
 
-### 2.1 Binding Parameters
+### 2.1 Binding parameters
 
 | Field | Description |
 | :--- | :--- |
@@ -69,30 +69,31 @@ In S7, memory has a rigid structure. To access a variable, you need to know its 
 | **Tag** | Faceplate system tag. |
 | **Access** | **R** (Read), **W** (Write). |
 
-### 2.2 Memory Addressing (S7 Address)
+### 2.2 Memory addressing (S7 Address)
 
-For an address like `DB1.DBX10.2` (Bit 2 in Byte 10 of Data Block 1), the settings would look like this:
+For an address like `DB1.DBX10.2` (bit 2 at byte 10 in DB1), the settings look like:
 
-| Field | Instruction |
+| Field | How to fill |
 | :--- | :--- |
-| **Memory area** | Memory Area:<br>• **DB** — Data Block (Main data area).<br>• **I** (Inputs).<br>• **Q** (Outputs).<br>• **M** (Flags/Merkers) — Internal memory. |
-| **Type** | Variable Data Type:<br>• `bit` (BOOL)<br>• `byte`, `word`, `dword`<br>• `int`, `real` (float) |
-| **DB** | **Data Block Number.** Filled only if `Memory area` = **DB**. (e.g., `1`). |
-| **Byte** | **Byte Offset.** The starting byte of the variable. |
-| **Bit** | **Bit Offset.** From `0` to `7`. <br>Filled **only** if `Type` = `bit`. For other types, it must be `0`. |
-| **Format** | Data interpretation (e.g., `integer` for signed numbers or `float` for floating point). |
+| **Memory area** | Memory area:<br>• **DB** — Data Block (main area).<br>• **I** — Inputs.<br>• **Q** — Outputs.<br>• **M** — Flags/Merkers. |
+| **Type** | Variable data type:<br>• `bit` (BOOL)<br>• `byte`, `word`, `dword`<br>• `int`, `real` (float) |
+| **DB** | **Data Block number.** Only set if `Memory area` = **DB** (e.g., `1`). |
+| **Byte** | **Byte offset.** Starting byte of the variable. |
+| **Bit** | **Bit offset** from `0` to `7`. Only used when `Type` = `bit`. For other types it must be `0`. |
+| **Format** | Data interpretation (e.g., `integer` for signed values or `float` for real values). |
 
 ---
+<!-- 
+## Additional notes (S7‑1200 / S7‑1500 access issues)
 
-## 💡 System Analyst's Checklist (Troubleshooting)
+If you see `Permission denied` or no data:
 
-When working with S7-1200 and S7-1500, access issues frequently arise. If `Error` states "Permission denied" or data is not updating:
-
-1.  **Optimized Block Access:**
-    * Drivers of this type (S7comm) typically **cannot** work with "Optimized Blocks" (symbolic addressing).
-    * *Solution:* In TIA Portal, open the DB properties and **uncheck** "Optimized block access". Then compile the project and download it to the PLC.
-2.  **PUT/GET Access:**
-    * In the CPU settings (in TIA Portal), under *Protection & Security -> Connection mechanisms*, the checkbox: *"Permit access with PUT/GET communication from remote partner"* must be **checked**.
-3.  **Rack/Slot:**
-    * If unable to connect to S7-300: Check that Rack=`0`, Slot=`2`.
-    * If unable to connect to S7-1200: Check that Rack=`0`, Slot=`1`.
+1. **Optimized Block Access:**
+   - Drivers of this type (S7comm) typically cannot work with “optimized blocks” (symbolic addressing).
+   - *Fix:* In TIA Portal open DB properties and **disable** “Optimized block access”. Recompile and download to PLC.
+2. **PUT/GET Access:**
+   - In CPU settings (TIA Portal) under *Protection & Security -> Connection mechanisms*, enable:  
+     **"Permit access with PUT/GET communication from remote partner"**.
+3. **Rack/Slot:**
+   - S7‑300: Rack=`0`, Slot=`2`.
+   - S7‑1200: Rack=`0`, Slot=`1`. -->
