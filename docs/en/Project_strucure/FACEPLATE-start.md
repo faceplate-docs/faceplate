@@ -22,9 +22,9 @@ The FACEPLATE software suite includes the FACEPLATE Studio development environme
 
 ![common](images/common.png)
 
-* FACEPLATE Studio is a development environment, a full suite of software tools for designing human-machine interfaces, developing control algorithms, configuring archives, reports, alert systems, and other functions.  
-* FACEPLATE Runtime is a runtime environment and a real-time automated control system.  
-* ECOMET \- a database for real-time applications
+* FACEPLATE Studio \- is a development environment, a full suite of software tools for designing human-machine interfaces, developing control algorithms, configuring archives, reports, alert systems, and other functions.  
+* FACEPLATE Runtime \- is a runtime environment and a real-time automated control system.  
+* ECOMET \- is a database for real-time applications
 
 ## Functional
 
@@ -160,14 +160,14 @@ For each IoT connection, it is possible to create an action and source, which in
 For each PLC connection, it is possible to create bindings. Bindings describe the data exchanged between the system and the connected device. Each binding maps one unit of data from the device's memory area to one field of the FACEPLATE tag.
 
 * Primitive \- allows you to create simplified elements based on a library of primitives. This is a tool for creating simplified elements. In other words, they are primitive templates for creating specific object instances. Each instance of a primitive inherits its properties and methods and can also have its own unique field values. A primitive standardizes the creation and management of objects, ensuring reuse and simplifying system development and maintenance.  
-* A prototype allows you to create more advanced elements based on a prototype library. The concept of prototypes is similar to the concept of classes in object-oriented programming. In other words, they represent templates/forms for creating specific instances of objects or devices, defining their structure, properties, content, and behavior. This means that a prototype includes the definition of fields, their data types, content, methods, and functions for working with these fields and content, as well as logic for handling events and object states. A prototype is the basis for creating specific instances of objects. Each prototype instance inherits its properties and methods and can also have its own unique values for fields, content, and behavior. A prototype standardizes the creation and management of objects, ensuring code reuse and simplifying system development and maintenance. It also defines an interface for interacting with objects and devices, simplifying integration and extending system functionality.  
-* A system object is a set of basic platform components designed for storing, processing, calculating, modeling, and exchanging data, as well as expanding the system's functionality. They organize the project structure, implement user and system logic, integrate with external sources, perform calculations, manage messages and events, and support the distributed and scalable FACEPLATE architecture.
+* Prototype \- allows you to create more advanced elements based on a prototype library. The concept of prototypes is similar to the concept of classes in object-oriented programming. In other words, they represent templates/forms for creating specific instances of objects or devices, defining their structure, properties, content, and behavior. This means that a prototype includes the definition of fields, their data types, content, methods, and functions for working with these fields and content, as well as logic for handling events and object states. A prototype is the basis for creating specific instances of objects. Each prototype instance inherits its properties and methods and can also have its own unique values for fields, content, and behavior. A prototype standardizes the creation and management of objects, ensuring code reuse and simplifying system development and maintenance. It also defines an interface for interacting with objects and devices, simplifying integration and extending system functionality.  
+* System object \- is a set of basic platform components designed for storing, processing, calculating, modeling, and exchanging data, as well as expanding the system's functionality. They organize the project structure, implement user and system logic, integrate with external sources, perform calculations, manage messages and events, and support the distributed and scalable FACEPLATE architecture.
 
 ![create_system](images/create_system.png)
 
 The following object types are supported:
 
-* Archive \- A system object for long-term storage and viewing of historical data and events.  
+  * Archive \- A system object for long-term storage and viewing of historical data and events.  
   * Folder \- A hierarchical container for logical grouping and organization of FACEPLATE objects.  
   * Replica \- A mechanism for synchronizing and copying data between FACEPLATE instances.  
   * Message \- An object for generating, storing and transmitting notifications, events and system messages.  
@@ -221,7 +221,7 @@ The main menu of FACEPLATE Studio editors. Located on the left, it includes edit
 * Prototypes \- prototype management module.  
 * Primitives \- module for managing primitives.  
 * Catalogs \- is a module for organizing data in the form of a set of tables.  
-* Library modules \- a module for creating a script library.  
+* Library modules \- is a module for creating a script library.  
 * Localizations \- language localization settings.  
 * Rights \- managing access and user rights.  
 * Servers \- server status monitoring module.  
