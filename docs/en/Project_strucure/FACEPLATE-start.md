@@ -238,7 +238,7 @@ The main menu of FACEPLATE Studio editors. Located on the left, it includes edit
 * Replica \- is a module for editing project replicas.  
 * Script \- script editing module.  
 * Storage \- setting up connections to databases.  
-* Run-Time \- button to switch to execution mode.  
+* Run-Time \- is a button to switch to execution mode.  
 * About the application \- information about the software version and build.  
 * Logout \-  is a button to log out of the application and account.
 
