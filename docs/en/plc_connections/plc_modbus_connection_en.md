@@ -1,100 +1,122 @@
 # Modbus (TCP/RTU) Configuration Guide
 
-## Overview
-**Modbus** is a de‑facto standard in industrial automation. In **Faceplate**, a universal driver is implemented that supports three operating modes, allowing polling of both modern controllers and legacy equipment/sensors via gateways.
+## General Description
+**Modbus** is the de facto standard for industrial automation. The **Faceplate** system implements a universal driver supporting three operation modes, allowing polling of both modern controllers and legacy equipment or sensors via gateways.
+
+
 
 Supported modes (`Type`):
-1. **tcp:** Classic Modbus TCP (Ethernet).
-2. **rtu-serial:** Modbus RTU via a physical COM port (RS‑485/232).
-3. **rtu-tcp:** Modbus RTU encapsulated into a TCP packet (Modbus‑over‑TCP). Used with transparent gateways (Moxa, HF, etc.).
+1.  **tcp:** Classic Modbus TCP (Ethernet).
+2.  **rtu-serial:** Modbus RTU via a physical COM port (RS-485/232).
+3.  **rtu-tcp:** Modbus RTU encapsulated in a TCP packet (Modbus-over-TCP). Used for working with transparent gateways (Moxa, HF, etc.).
 
-Configuration consists of two stages:
-1. **Connection (`plc_modbus_connection`):** Transport setup.
-2. **Binding (`plc_modbus_binding`):** Register addressing.
+The configuration process consists of two stages:
+1.  **Connection (`plc_modbus_connection`):** Configuring the transport.
+2.  **Binding (`plc_modbus_binding`):** Addressing registers.
 
 ---
 
-## STEP 1. Connection setup (Connection)
+## 1. Connection Configuration (Connection)
+> Create PLC connection → [Steps to create a PLC connection](./general_ru.md#создание-plc-соединения)
+At this stage, we select the physical connection type.
 
-At this stage you select the physical transport.
+### 1.1 Diagnostics Panel
+> PLC connection diagnostics → [Diagnostics](./general_ru.md#диагностика-diagnostics)
 
-### 1.1 Select transport type
-First, choose the connection type in the **Type** field.
-
-![Modbus transport type](images/modbus_type.png)
-
-### 1.2 Base settings (common for all types)
-
-| Parameter | Description / Recommendations |
+| Field | Description |
 | :--- | :--- |
-| **Name** | Unique connection name. |
-| **Period (ms)** | Polling interval (default `1000`). <br>*Tip:* for Serial use >100–200 ms. TCP can be faster. |
-| **Shutdown timeout** | Socket shutdown timeout (`60000`). |
-| **Support for group requests** | **Yes** — enable grouped register reads (optimization). The driver reads consecutive addresses using a single request. |
-| **Max. package length** | PDU length limit. If a gateway has a small buffer, reduce this value (default 250). |
+| **State** | **STOP** — driver is stopped.<br>**RUN** — driver is running. |
+| **Node** | Cluster node. Indicates on which node the process is running. |
+| **PID** | Process ID. |
+| **Error** | Error text (if any). |
+| **Disabled** | Connection disable flag. Through this button, the user disables or enables the driver. |
+| **Memory limit (bytes)** | Memory limit (RAM limits in bytes for the process serving the connection). Memory capacity determines the number of variables (tags) that can be processed. |
+| **Actual connection** | Current active communication channel. In systems with Redundancy, indicates exactly which connection (primary or backup) is currently exchanging data. |
+| **Master connection** | Link to the main communication channel. Filled for redundant connections. The field indicates which connection is the priority (Master), defining the logical pair for the redundancy mechanism. |
 
----
 
-### 1.3 Physical layer setup
+### 1.2 General Settings (Settings)
+| Parameter | Description |
+| :--- | :--- |
+| **Name** | Unique name of the connection. |
+| **Title** | Title (description) of this object. |
+| **Period (ms)** | Base driver processing cycle. |
+| **Shutdown timeout (ms)** | Waiting time for operations to complete when stopping the driver. |
+| **Support for group requests** *| **Yes** — enable support for General Interrogation. |
+| **Max. package length** *| Maximum packet size. Usually 250 bytes. |
+| **Line Delay Ratio** *| Line delay coefficient. |
 
-#### Option A: `tcp` mode (Ethernet)
-Used to communicate with PLCs or I/O modules that have Ethernet and support Modbus TCP.
+### 1.3 Transport Type Selection
+First, determine the connection type in the **Type** field.
+
+![Modbus type selection](images/modbus_type.png)
+
+#### 1.3.1 `tcp` Mode (Ethernet)
+Used for communication with PLCs or I/O modules that have an Ethernet port and support the Modbus TCP stack.
 
 ![Modbus TCP settings](images/tcp.png)
 
 | Field | Description |
 | :--- | :--- |
 | **IP/Hostname** | Device IP address (e.g., `192.168.1.10`). |
-| **Port** | Standard Modbus TCP port is **502**. |
-| **Timeout** | Server response timeout (ms). |
-| **Attempts** | Number of retries before a communication error is reported. |
+| **Port** | Standard Modbus TCP port — **502**. |
+| **Timeout** | Server response waiting time (in ms). |
+| **Attempts** | Number of retry attempts before a communication error. |
 
-#### Option B: `rtu-serial` mode (RS‑485/232)
-Used for direct connection of a daisy chain of devices to the server COM port.
+#### 1.3.2 `rtu-serial` Mode (RS-485/232)
+Used for direct connection of a daisy-chain of devices to the server's COM port.
 
 ![Modbus RTU Serial settings](images/rtu_serial.png)
 
 | Field | Description |
 | :--- | :--- |
-| **Port** | Port path (Linux: `/dev/ttyUSB0`, Windows: `COM1`). |
+| **Port** | Path to the port (Linux: `/dev/ttyUSB0`, Windows: `COM1`). |
 | **Baud rate** | Speed. Must strictly match on all devices on the line (9600, 19200, etc.). |
 | **Parity** | Parity (`no`, `even`, `odd`). |
 | **Stop bits / Data bits** | Usually `1` and `8`. |
-| **Line Delay Ratio** | Line delay coefficient. Increase if the line is long/noisy. |
+| **Line Delay Ratio** | Line delay coefficient. Increase if the line is long and "noisy". |
 
-> **Note:** `rtu-tcp` is configured similarly to TCP (requires IP and Port), but the internal frame format is RTU (with CRC checksum).
+> **Note:** The **rtu-tcp** mode is configured similarly to the TCP mode (requires IP and Port), but the packet structure inside will be like RTU (with CRC checksum).
 
 ---
 
-## STEP 2. Variable setup (Binding)
+## 2. Variable Configuration (Binding)
 
-Here you bind a specific Modbus register to a system tag.
+Here we bind a specific Modbus register to a system tag.
 
-![Modbus binding setup](images/bindings.png)
+![Modbus Binding settings](images/bindings.png)
+> Create PLC binding → [Steps to create a PLC binding](./general_ru.md#создание-plc-привязки)
 
-### 2.1 Addressing
+### 2.1 Binding Parameters
+| Field | Description |
+| :--- | :--- |
+| **Name** | Name of the binding. |
+| **Title** | Title (description) for this object. |
+| **State** | **STOP** — binding is stopped.<br>**RUN** — binding is running. |
+| **Tag** | Faceplate system tag. The incoming value will be written to the selected field of the selected object. See [Binding to a tag](./general_ru.md#привязка-к-тегу-на-примере-архива) |
+| **Transformation** | Value transformation. See [Transformation](./transformation_ru.md). |
+| **Access** | **R** (Read), **W** (Write), **RW** (Read/Write). |
+
+### 2.2 Addressing
+
+
 
 | Field | Description |
 | :--- | :--- |
 | **Slave address** | Device address (Unit ID). In TCP usually `1` (or `255`), in Serial — from `1` to `247`. |
-| **Memory area** | Modbus memory type:<br>• **HR** (Holding Registers) — 4xxxx, read/write.<br>• **IR** (Input Registers) — 3xxxx, read only.<br>• **CS** (Coils) — 0xxxx, bits read/write.<br>• **IS** (Discrete Inputs) — 1xxxx, bits read only. |
-| **Address** | Register address offset. <br>⚠️ *Attention:* In some maps indexing starts at 1, while drivers typically use 0. If data is shifted, try +/- 1. |
-| **Read / Write** | Modbus function codes. Usually auto‑selected based on Memory Area (e.g., Read `03`, Write `10` or `06`). |
+| **Memory area** | Modbus memory type:<br>• **HR** (Holding Registers) — 4xxxx, read/write.<br>• **IR** (Input Registers) — 3xxxx, read only.<br>• **CS** (Coils) — 0xxxx, bit read/write.<br>• **IS** (Discrete Inputs) — 1xxxx, bit read only. |
+| **Address** | Register address offset. <br>*Attention:* In some address maps, numbering starts from 1, in the driver usually from 0. If data is "shifted", try +/- 1. |
+| **Read / Write** | Modbus function codes. Usually set automatically when selecting Memory Area (e.g., Read `03`, Write `10` or `06`). |
 
-### 2.2 Data handling
+### 2.3 Data Handling
+
+
 
 | Field | Description |
 | :--- | :--- |
-| **The size** | Data size (Word = 16‑bit, DWord = 32‑bit, etc.). |
-| **Format** | Interpretation: `signed-integer`, `unsigned`, `float`. |
-| **Byte order** | **Byte order / endianness.** Critical setting.<br>• `21` — Big Endian (default).<br>• `12` — Little Endian.<br>• `2143` / `3412` — swap variants for 32‑bit values. Use experimentally if numbers are wrong. |
-| **Check CRC** | Force checksum verification (usually `Yes`). |
+| **The size** | Data size (Word = 16 bits, DWord = 32 bits, etc.). |
+| **Format** | Data interpretation: `signed-integer` (signed), `unsigned`, `float` (floating point). |
+| **Byte order** | **Byte order.** Critically important setting.<br>• `21` — Big Endian (standard).<br>• `12` — Little Endian.<br>• `2143` / `3412` — Various Swap options for 32-bit numbers. Selected experimentally if the number is displayed incorrectly. |
+| **Check CRC** | Forced checksum check (usually `Yes`). |
 
 ---
-
-<!-- ## Additional notes
-
-1. **Address shift:** The most common Modbus issue. If you expect value at register `100` but see `0`, try `99` or `101`.
-2. **Byte order (Endianness):** If instead of `25.0` you see a huge number or `0.0004`, change **Byte order**.
-3. **Timeouts:** For RTU Serial always keep a safe margin (min 100–200 ms) because RS‑485 is half‑duplex.
-4. **IP vs Slave Address:** For `rtu-tcp` gateways, ensure **Slave Address** is the RS‑485 device address behind the gateway, not the gateway IP. -->
