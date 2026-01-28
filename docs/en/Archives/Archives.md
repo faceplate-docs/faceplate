@@ -26,7 +26,7 @@ The "Archives" editor allows you to work with archived parameters, configure arc
 
 Creating new archives or editing the settings of existing ones is performed using the form:
 
-![](/images/1.png)
+![1](/images/1.png)
 
 **The following table describes the fields:**
 
