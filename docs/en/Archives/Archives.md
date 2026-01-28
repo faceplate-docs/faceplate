@@ -26,9 +26,7 @@ The "Archives" editor allows you to work with archived parameters, configure arc
 
 Creating new archives or editing the settings of existing ones is performed using the form:
 
-![first](/images/1.png)
-![PLC folder1](images/1.png)
-![common](images/1.png)
+![](images/1.png)
 
 **The following table describes the fields:**
 
@@ -51,7 +49,7 @@ Creating new archives or editing the settings of existing ones is performed usin
 
 The **Runtime** tab indicates the current state of the archive.
 
-![](/images/2.png)
+![](images/2.png)
 
 **The following table describes the fields:**
 
@@ -71,17 +69,17 @@ In this example, we consider the case of receiving data from an OPC server, subs
 
 Launch an OPC UA server with tags that will simulate temperature and pressure sensor values. For this example, **KEPServerEX 6** was used.
 
-![](/images/3.png)
+![](images/3.png)
 
 The `Temperature` tag is configured so that values change along a sine wave from 0 to 150, and `Pressure` receives random values from 0 to 10. Both tags have the `Float` variable type.
 
 For simplicity in this example, the OPC UA server is configured to allow anonymous connections.
 
-![](/images/4.png)
+![](images/4.png)
 
 In Faceplate, create an OPC UA client connection to this server. To do this, in the **General View**, click the "Create" button. In the menu that opens, select `plc_opcua_client_connection` and click "Ok".
 
-![](/images/5.png)
+![](images/5.png)
 
 The OPC UA client connection configuration form will open. In this form:
 1.  Set the **Name**.
@@ -92,62 +90,62 @@ To do this, you can use the function to search for available servers. Clicking t
 
 Next, click search, after which a list of points available for connection will be displayed below.
 
-![](/images/6.png)
+![](images/6.png)
 
 Select one of them (in our example, we used `opc.tcp://`) and click "Ok".
 (You can read more about configuring OPC UA connections in the OPC UA Client section).
 
-![](/images/7.png)
+![](images/7.png)
 
 After clicking "save", the OPC UA server connection object will appear in the project structure.
 Next, we need to enter this object (double-click on the object) and create bindings to the server tags.
 
 Enter the connection object and click the "Create" button - a form opens for configuring binding parameters to an OPC UA server tag.
 
-![](/images/8.png)
+![](images/8.png)
 
 Set "Pressure" as the binding name. To select an OPC UA tag, click on the search button.
 A window opens containing the entire tag tree of the OPC UA server. Select the required tag and click "Ok".
 
-![](/images/9.png)
+![](images/9.png)
 
 By clicking on the search icon in the **Type** section, Faceplate will automatically detect the data type of the selected tag.
 
-![](/images/10.png)
+![](images/10.png)
 
 Repeat the actions for the "Temperature" tag.
 
-![](/images/11.png)
+![](images/11.png)
 
 The result will be the following structure:
 
-![](/images/12.png)
+![](images/12.png)
 
 Now let's create 2 **ARCHIVE** objects that will write the received values to the archive.
 
 Go back to the root folder and click the "Create" button; the object creation window will open.
 Here, in the "system" folder, select "ARCHIVE" and click "Ok".
 
-![](/images/13.png)
+![](images/13.png)
 
 Next, the editing menu for the created archive will open. Fill in the required **Name** field and the **tag** field.
 In the "tag" section, using the search, select the binding to "Pressure".
 
-![](/images/14.png)
+![](images/14.png)
 
 In the field selection, choose the field - "value".
 
-![](/images/15.png)
+![](images/15.png)
 
 Let's create a second archive that will receive values from "Pressure" and "Temperature" and record a system load index to the archive.
 This functionality will be implemented using the **"script"** source, with a binding to the "value" fields of the two tags "Pressure" and "Temperature". We will choose **Erlang** as the programming language.
 
-![](/images/16.png)
+![](images/16.png)
 
 To compile the script, click the "Compile" button.
 If the compilation is successful without errors, "ok" will appear next to the compilation button; otherwise, a list of errors will be displayed, for example:
 
-![](/images/17.png)
+![](images/17.png)
 
 **General principle of operation:**
 The archiving system reads values from the tag fields to which the declared variables are bound with a specified cyclicity, calls the script passing a map with the variable values as input, and the value obtained at the script output is saved to the database with the current server timestamp.
@@ -155,45 +153,45 @@ The archiving system reads values from the tag fields to which the declared vari
 To check the operation of the archives, let's launch the runtime. To do this, click the "Start Runtime" button in the top panel.
 After that, go to the runtime page; to do this, open "Runtime" in the side menu.
 
-![](/images/18.png)
+![](images/18.png)
 
 Next, enter the runtime page, open **Trends** from the side menu, and add series with our archives.
 
-![](/images/19.png)
+![](images/19.png)
 
 To do this, in the "Trend Selection" window, go to the **Archive** section. Here you need to set the group name and series name.
 
-![](/images/20.png)
+![](images/20.png)
 
 After naming the series, you can specify the path to the archive (settings button - gear icon).
 
-![](/images/21.png)
+![](images/21.png)
 
 Clicking the search button allows us to select any previously created archive.
 
-![](/images/22.png)
+![](images/22.png)
 
 After selection, the path is saved, and the series is ready for display.
 
-![](/images/23.png)
+![](images/23.png)
 
 By default, the trend updates automatically with a cycle of once per second. You can stop the update by clicking the pause button.
 To select the depth of data display, click the trend depth setting button (by default, it is "minute X 10").
 In the dialog that opens, select a new value.
 
-![](/images/24.png)
+![](images/24.png)
 
-![](/images/25.png)
+![](images/25.png)
 
 To view data for a past period, stop the trend update and click on the button displaying the current period (in our case, it is "05:20:00 => 05:25:00"). In the dialog that opens, select the period of interest:
 
-![](/images/26.png)
+![](images/26.png)
 
-![](/images/27.png)
+![](images/27.png)
 
 To export data to Excel, click the button:
 
-![](/images/28.png)
+![](images/28.png)
 
 on the toolbar. In the opened form:
 1.  Select the Excel format (`.xlsx`).
@@ -201,4 +199,4 @@ on the toolbar. In the opened form:
 3.  Select the data aggregation function for the step, for example, `avg`.
 4.  Click OK.
 
-![](/images/29.png)
+![](images/29.png)
