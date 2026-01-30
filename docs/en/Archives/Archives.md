@@ -2,13 +2,13 @@
 
 In Faceplate, the **Archives** module is a subsystem for storing time-stamped data.
 
-Most often, this data comes from external sources, such as field equipment, PLCs, or integrated information systems. Also, data to be archived can be generated internally within the system, for example, as a result of intermediate calculations by script modules, forecasting modules, etc. A simple example of an archive is the archiving of temperature sensor readings read from a PLC via the Modbus protocol.
+Most often, this data comes from external sources, such as field equipment, PLCs or integrated information systems. Also, data to be archived can be generated internally within the system, for example, as a result of intermediate calculations by script modules, forecasting modules, etc. A simple example of an archive is the archiving of temperature sensor readings read from a PLC via the Modbus protocol.
 
 ## Purpose
 
 Archives can be effectively used by engineers and operators to analyze, control, and monitor production processes. Users can analyze archived data in the form of graphs and reports.
 
-Faceplate has a developed system for displaying archived data in the form of graphs. For the end-user, it is enough to simply select the archived points, and they will be displayed as graphs for the specified period. The user can scroll through them, set a new period, request aggregates, or export the data, for example, to Excel or XML.
+Faceplate has a developed system for displaying archived data in the form of graphs. For the end-user, it is enough to simply select the archived points, and they will be displayed as trend for the specified period. The user can scroll through them, set a new period, request aggregates, or export the data, for example, to Excel or XML.
 
 (You can read more about working with trends in the Trends section).
 
@@ -32,10 +32,10 @@ Creating new archives or editing the settings of existing ones is performed usin
 
 | Element | Description |
 | :--- | :--- |
-| **Folder** | This field indicates the location of the archive. |
+| **Folder** | This field indicates the location of the archive in the project tree. |
 | **Pattern** | Object pattern. |
 | **Name** | In this field, you need to write the name of the archive. It is usually recommended to give names related to the content of the archive (e.g., "Well Pressure"). During operation, the archive name will be reflected in the Trends window. The operator should understand from the archive name which graph they are working with. The name must be unique within the context of the folder containing the archive. |
-| **Title** | A short text description of the archived value. |
+| **Title** | A short text description of the archived point. |
 | **State** | Current state of the archiving process: `RUN` or `STOP`. |
 | **Node** | Indicates on which server the archiving process is running (relevant in a multi-server architecture). |
 | **PID** | Unique process identifier. |
@@ -44,7 +44,7 @@ Creating new archives or editing the settings of existing ones is performed usin
 | **Memory limit (bytes)** | Memory limit in bytes. If the process requires more memory than the set limit, for example due to a memory leak in a user script, the system will automatically restart the process. |
 | **ID** | System identifier of the archive, filled in automatically (service information). |
 | **Source** | Data for storage in the archive can be obtained from 2 types of sources:<br>1. **tag** - the value of a tag field acts as the archived parameter.<br>2. **script** - allows you to define a script that can be used for additional processing of the archived value or forming the archive value from several input parameters. For example, the average value of several measurement points can be stored in the archive.<br><br>Also, data can be written to the archive via the corresponding API. |
-| **Period (ms)** | In this field, you need to set the cycle (frequency) of recording the selected data values to the archive. The minimum value is 10 ms, the maximum value is 3600000 ms.<br>**ATTENTION!** Changing this parameter can significantly affect the hardware requirements of the Faceplate server. Reducing this parameter leads to an increase in the load on the storage system, as well as the amount of disk space required to store archives. |
+| **Period (ms)** | In this field, you need to set the cycle (frequency) of recording. The minimum value is 10 ms, the maximum value is 3600000 ms.<br>**ATTENTION!** Changing this parameter can significantly affect the hardware requirements of the Faceplate server. Reducing this parameter leads to an increase in the load on the storage system, as well as the amount of disk space required to store archives. |
 | **Minimum step** | This field allows you to set the minimum difference in value between the previous and current parameter values. This means that the system will write a new value to the archive only if it differs from the previous one by an amount greater than or equal to the minimum step value.<br>For example, if interference is observed in the measurement channel, in some cases it is acceptable to set the minimum change step equal to the average amplitude of the interference. This will allow the archive to reflect only the stable trend of parameter changes, disregarding short-term insignificant deviations. Setting this parameter can rid the data of noise and reduce load. |
 
 The **Runtime** tab indicates the current state of the archive.
@@ -84,9 +84,7 @@ In Faceplate, create an OPC UA client connection to this server. To do this, in 
 The OPC UA client connection configuration form will open. In this form:
 1.  Set the **Name**.
 2.  Disable **Secure connection**.
-3.  In the **URL** field, specify the connection string to the server.
-
-To do this, you can use the function to search for available servers. Clicking the search button opens a form where you need to specify the address (IP or Domain Name) of the server and the port on which the OPC UA server process is running.
+3.  In the **URL** field, specify the connection string to the server. To do this, you can use the function to search for available servers. Clicking the search button opens a form where you need to specify the address (IP or Domain Name) of the server and the port on which the OPC UA server process is running.
 
 Next, click search, after which a list of points available for connection will be displayed below.
 
