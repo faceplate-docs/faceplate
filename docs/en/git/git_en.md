@@ -17,7 +17,7 @@ Data Flow Diagram:
     * A hidden archive located on the same physical server (node) where Faceplate is installed.
     * The **Commit** command moves a "snapshot" of the project from the workspace to this archive.
     * This provides a full history and the ability to **Reset** locally without a network connection.
-3.  **Remote Server (GitLab / GitHub):**
+3.  **Remote Server GitLab:**
     * A centralized external storage system.
     * The **Push** command sends local commits to the server.
     * This ensures backup protection against local server failure and enables team collaboration via **Pull**.
@@ -44,11 +44,11 @@ The module interface is divided into three tabs corresponding to the development
 
 ---
 
-## 3. Repository Configuration (Settings)
+## 3. Connect with Repository
 
 Before starting work, determine how the project connects to Git. Two scenarios are available:
 
-### 3.1. Scenario A: Cloning (Clone)
+### 3.1. Cloning project from remote repository
 Used if the project already exists in GitLab and needs to be downloaded to a new Faceplate server.
 
 **Parameters:**
@@ -57,10 +57,31 @@ Used if the project already exists in GitLab and needs to be downloaded to a new
 * **Branch name:** The working branch (usually `main` or `master`).
 * **Project prefix:** Path to the project folder inside the repository (allows storing multiple projects in one repository).
 
-### 3.2. Scenario B: Initialization (Init)
+### 3.2. Initialization new repository
 Used to create a new repository from scratch or link a current local project to an empty GitLab repository.
 * After filling in data, press **Init**.
 * If an error occurs, a **Reset** button appears to allow re-initialization.
+
+Important!
+
+When cloning a project from a repository, all locally created users will be overwritten. To restore access to the connected repository, you must enter the repository's username and password.
+
+## 4.1. Local Diff
+
+This section manages data on your current server.
+
+- **View Diff:** The system automatically highlights modified files (tags, screens, scripts).
+- **Commit:** Enter a short description (e.g., "Added pump station diagram") and click Commit. The changes are saved to your local history.
+- **Push:** Click to send all accumulated commits to GitLab. Only then will colleagues be able to see them.
+
+## 4.2. Remote Diff
+
+This section is for retrieving data and managing history.
+
+- **Pull:** Click to update your project with data uploaded by other developers.
+- **Rebase:** Allows you to "rewrite" your local changes over the latest remote edits to maintain a linear history.
+- **Rollback:** Allows you to select any point in the past and revert the project to that state.
+**Caution:** The Rollback and Reset commands permanently remove any currently uncommitted changes. Be careful!
 
 ---
 
@@ -69,7 +90,7 @@ Used to create a new repository from scratch or link a current local project to 
 ### 4.1. Initial Setup and Deployment
 **Prerequisites:**
 * The Faceplate instance is deployed for cloning or initialization.
-* Default administrator account is available: user **system** with password **111111**.
+* Default administrator account is available: default user **system** with password **111111**.
 
 **Important:**
 * All user settings will be deleted upon cloning.
