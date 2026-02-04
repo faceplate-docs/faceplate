@@ -1,98 +1,115 @@
 # IEC 60870-5-104 Server Configuration Guide
 
 ## General Description
-The **IEC 104 Server** driver allows the **Faceplate** system to act as a Controlled Station (Slave/RTU). In this mode, the system opens a TCP port and awaits connections from external Controlling Stations (Top-level SCADA, Control Centers), transmitting internal tag data to them and accepting control commands.
+The **IEC 104 Server** driver allows the **Faceplate** system to act as a Controlled Station (Slave). In this mode, the system opens a TCP port and waits for connections from external control systems (Upper-level SCADA, Control Centers), transmitting data from its internal tags to them and accepting control commands.
 
 The configuration process consists of two stages:
 1.  **Connection (`plc_iec104_server_connection`):** Configuring the TCP port, ASDU addressing, and protocol timing parameters.
-2.  **Binding (`plc_iec104_server_binding`):** Publishing specific tags to the protocol address space (IOA) and configuring command acceptance parameters.
+2.  **Binding (`plc_iec104_server_binding`):** Publishing specific tags to the protocol address space (IOA) and configuring parameters for receiving commands.
 
 ---
 
-## STEP 1. Connection Configuration
+## 1. Connection Configuration (Connection)
+> Create PLC connection → [Steps to create a PLC connection](./general_ru.md#создание-plc-соединения)
+> 
+At this stage, the "listening" socket and link layer parameters are configured. These settings must match the settings of the Client (Master) that will connect to Faceplate.
 
-At this stage, the listening socket and link layer parameters are configured. These settings must match the configuration of the Client (Master) that will connect to Faceplate.
+![IEC 104 Server connection settings](images/iec104_server.png)
 
-![IEC 104 Server Connection Settings](images/iec104_server.png)
+### 1.1 Diagnostics Panel
+The upper part of the window displays the driver status.
+> PLC connection diagnostics → [Diagnostics](./general_ru.md#диагностика-diagnostics)
 
-### 1.1 Diagnostics Panel (Runtime)
-The upper part of the window displays the server process status.
 
 | Field | Description |
 | :--- | :--- |
-| **State** | **STOP** — server is stopped, port is closed.<br>**RUN** — server is running and listening for connections. |
-| **Error** | Error text (e.g., `Address already in use` if port 2404 is occupied by another application). |
-| **Actual connection** | Indicator of the active connection (relevant for server redundancy). |
+| **State** | **STOP** — driver is stopped.<br>**RUN** — driver is running. |
+| **Node** | Cluster node. Indicates on which node the process is running. |
+| **PID** | Process ID. |
+| **Error** | Error text. |
+| **Disabled** | |
+| **Memory limit (bytes)** | Memory limit (RAM limits (MB) for the process serving the connection). Memory capacity determines the number of variables (tags) that can be processed during the connection operation. |
+| **Actual connection** | Current active communication channel. In systems with Redundancy, indicates exactly which connection (primary or backup) is currently exchanging data. |
+| **Master connection** | Link to the main communication channel. Filled for redundant connections. The field indicates which connection is the priority (Master), defining the logical pair for the redundancy mechanism. |
 
-### 1.2 General Settings
+## 1.2 General Settings (Settings)
 
 | Parameter | Description |
 | :--- | :--- |
-| **Name** | Unique connection name in the system. |
-| **Period (ms)** | Internal driver event processing cycle. |
-| **Shutdown timeout (ms)** | Time allowed for graceful closure of TCP sessions when stopping the driver. |
-| **Support for group requests** | **Yes** — Allow processing of "Interrogation Commands" from the client. Recommended to be enabled. |
-| **Max. package length** | Maximum APDU (Application Protocol Data Unit) size. Standard value: **250**. |
-| **Line Delay Ratio** | Line delay coefficient (used for timeout calculation on slow channels). |
+| **Name** | Unique name of the connection. |
+| **Title** | Title (description) of this object. |
+| **Period (ms)** | Base driver processing cycle. |
+| **Shutdown timeout (ms)** | Waiting time for correct connection termination. |
+| **Support for group requests** | **Yes** — enable the possibility of periodic General Interrogation. |
+| **Max. package length** | Maximum APDU size. Standard is 250 bytes. |
+| **Line Delay Ratio** | Delay coefficient for slow communication lines. |
 
-### 1.3 Protocol Parameters
+### 1.3 Protocol Parameters (IEC 60870-5-104 server)
 
 | Field | Description |
 | :--- | :--- |
 | **Port** | TCP port for incoming connections. IANA Standard: **2404**. |
-| **Originator Address** | The originator address the server inserts into its responses by default (usually 0). |
-| **Common Address of ASDU** | **Station Address (CA).** The unique number of this device in the IEC 104 network. Must match the Client settings. |
+| **Originator Address** | Originator address that the server will substitute in its responses by default (usually 0). |
+| **Common Address of ASDU** | **Station Address (CA).** Unique number of this device in the IEC 104 network. Must match Client settings. |
 | **Common Address Size** | Size of the ASDU address field in bytes. Standard: **2 bytes**. |
 | **Originator Address Size** | Size of the originator address field. Standard: **1 byte** (sometimes 0). |
-| **Information Object Address Size** | Size of the Information Object Address (IOA) field. Standard: **3 bytes**. |
-| **K** | Parameter **k** (APDU transmit window). Maximum number of transmitted APDUs without acknowledgement. |
-| **W** | Parameter **w** (APDU receive window). Maximum number of received APDUs before sending an acknowledgement. |
+| **Information Object Address Size** | Size of the object address field (IOA). Standard: **3 bytes**. |
+| **K** | Parameter **k** (APDU transmit window). Maximum number of transmitted packets without confirmation. |
+| **W** | Parameter **w** (APDU receive window). Maximum number of received packets before sending a confirmation. |
 | **T1 (ms)** | Time-out for send confirmation. |
-| **T2 (ms)** | Time-out for acknowledgement in case of no data message. |
+| **T2 (ms)** | Time-out for ack in case of no data message. |
 | **T3 (ms)** | Time-out for send test frames. Interval for sending `TESTFR` if the channel is idle. |
 
 **Group broadcast:**
-Allows configuring periodic transmission of data for specific groups, even if the client has not explicitly requested them.
-* *Group number / Update frequency / Timeout.*
+Allows configuring the periodic sending of specific data groups, even if the client did not explicitly request them.
 
-**Accept updates via information objects:**
-Special option. If enabled (**On**), a Client writing a value to an IOA will update the value of the linked tag within the Faceplate system. Used for gateway implementation or receiving setpoints.
+**Managing the Group List:**
+1.  **Adding a group:** Use the interface controls to create a new row.
+2.  **Deleting a group:** Click the button with the trash bin icon (Delete) to the right of the corresponding row.
+3.  **Order:** Use the **↑** and **↓** arrows to change the group polling priority.
 
+**Group Parameters:**
+| Field | Description |
+| :--- | :--- |
+| **Group number** | Unique number (ID) of the polling group. Used for internal identification and standard compliance. |
+| **Update frequency (ms)** | Group polling period in milliseconds. Determines how often the driver will request data updates for tags included in this group. |
+| **Timeout (ms)** | Waiting time for a response from the device for this group of requests. |
 ---
 
-## STEP 2. Variable Configuration (Binding)
 
-This stage defines the list of signals the server will expose "upstream".
+## 2. Variable Configuration (Binding)
 
-![IEC 104 Server Binding Settings](images/iec104_server_bindings.png)
+This stage defines the list of signals that the server will provide to the "upper level".
 
-### 2.1 General Parameters
+![IEC 104 Server binding settings](images/iec104_server_bindings.png)
+> Create PLC binding → [Steps to create a PLC binding](./general_ru.md#создание-plc-привязки)
+> 
+### 2.1 Binding Parameters
 | Field | Description |
 | :--- | :--- |
-| **Name** | Binding object name. |
-| **Tag** | **Source Tag.** The internal Faceplate tag whose value will be translated into the protocol. |
-| **Access** | Access mode for the Client:<br>• **R** — Client can only Read (Monitoring/TM).<br>• **RW** — Client can Read and send Control Commands (Telecontrol/TC). |
-| **Address** | **IOA (Information Object Address).** The number under which the tag is visible on the network. (See calculation below). |
-| **Type** | **ASDU Type.** Data format for transmission.<br>Examples: `M_SP_NA_1` (Single Point), `M_ME_NC_1` (Float Measurement). |
-| **Parameter** | Tag attribute to transmit: `Value`, `Quality`, `Timestamp`. |
+| **Name** | Name of the binding. |
+| **Title** | Title (description) for this object. |
+| **State** | **STOP** — binding is stopped.<br>**RUN** — binding is running. |
+| **Tag** | Faceplate system tag. The value will be written from the selected field of the selected object to the protocol. See [Binding to a tag](./general_ru.md#привязка-к-тегу-на-примере-архива) |
+| **Transformation** | Value transformation. See [Transformation](./transformation_ru.md). |
+| **Access** | **R** (Read), **W** (Write), **RW** (Read/Write). |
+| **Address** | **IOA (Information Object Address).** Object address. Numeric value. |
+| **Type** | **ASDU Type.** Data format.<br>Examples: `1: M_SP_NA_1` (Single Point), `30: M_SP_TB_1` (Single Point + Time). More details at (https://support.kaspersky.com/kics-for-networks/3.0/206199) |
+| **Parameter** | Value attribute: `Value`, `Quality` (DIQ/SIQ/QDS), `Timestamp` (TS). |
 
-### IOA Address Calculation
-If the IOA is defined by octets (bytes) in the address map, use the Little-Endian formula:
-$$Address = Octet_1 + (Octet_2 \times 256) + (Octet_3 \times 65536)$$
+> Error in PLC binding -> [binding error](./general_ru.md#ошибка-в-привязке)
 
-### 2.2 Remote Control Parameters
-These fields become active and mandatory if `Access` is set to **RW**. They define how the server handles incoming commands.
+### 2.2 IOA Calculation (If defined by octets)
+If the address in the memory map is defined by bytes (e.g., `10.2.0`), use the formula to convert it to a decimal number:
+$$Address = Octet_1 + (Octet_2 \times 256) + (Octet_3 \times 256^2)$$
+
+### 2.3 Remote Control Parameters
+These fields become active and mandatory if `Access` is set to **RW**. They determine how the server should process incoming commands.
 
 | Field | Description |
 | :--- | :--- |
-| **Remote control type** | **Command Type.**<br>The ASDU type the server expects to receive from the client to control this object.<br>Examples: `C_SC_NA_1` (Single Command), `C_SE_NC_1` (Setpoint Float). |
+| **Remote control type** | **Command Type.**<br>The ASDU type the server expects to receive from the client to act on this object.<br>Examples: `C_SC_NA_1` (Single Command), `C_SE_NC_1` (Setpoint Float). |
 | **Remote control address** | **Command IOA.**<br>The address to which the client must send the control command. Often matches the monitoring address (`Address`), but can differ. |
-| **Group** | The Interrogation Group number this signal belongs to (usually 20 — General Interrogation). |
+| **Group** | The number of the Interrogation Group this signal belongs to (usually 20 — General Interrogation). |
 
 ---
-
-<!-- ## System Analyst Checklist
-
-1.  **Network Access:** Ensure TCP port **2404** is open in the inbound Firewall rules on the server running Faceplate.
-2.  **Type Matching:** The ASDU type in the `Type` field determines how the server *packs* the data before sending. Ensure the receiving side (SCADA) is configured to receive exactly this data type (e.g., distinguishing Float from Normalized value).
-3.  **Feedback (RW):** To implement full control (TU), you must not only configure the `Remote control address` but also ensure that changing the tag in the Faceplate system results in actual action on the equipment. -->

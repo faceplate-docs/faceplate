@@ -1,80 +1,83 @@
 # SNMP Configuration in Faceplate
 
-## Overview
-**SNMP** (Simple Network Management Protocol) is an open communication protocol defined by the IETF. It is widely used to exchange data with network devices (controllers, gateways, UPS, etc.).
+## General Description
+**SNMP** (Simple Network Management Protocol) is an open communication protocol defined by the Internet Engineering Task Force (IETF). The protocol is widely used for data exchange with network equipment (controllers, gateways, UPS).
 
-In **Faceplate**, **SNMPv2** and **SNMPv3** are supported.
+The **Faceplate** environment supports protocol versions **SNMPv2** and **SNMPv3**.
 
-Integration consists of two stages:
-1. **Connection (`plc_snmp_connection`):** Network transport setup and redundancy logic.
-2. **Binding (`plc_snmp_binding`):** Addressing specific variables (OIDs) within the device.
+The integration process consists of two stages:
+1.  **Creating a connection (`plc_snmp_connection`):** Configuring network transport and redundancy logic.
+2.  **Creating bindings (`plc_snmp_binding`):** Addressing specific variables (OID) inside the device.
 
 ---
 
-## STEP 1. Connection setup (Connection)
+## 1. Connection Configuration (Connection)
+> Create PLC connection → [Steps to create a PLC connection](./general_ru.md#создание-plc-соединения)
+> 
+At this stage, a transport channel to the equipment is created.
 
-At this stage you create a transport channel to the target equipment.
+![Connection settings window](images/snmp_connections.png)
 
-![Connection setup window](images/snmp_connections.png)
+### 1.1 Diagnostics Panel
+The upper part of the window displays the driver status.
+> PLC connection diagnostics → [Diagnostics](./general_ru.md#диагностика-diagnostics)
 
-### 1.1 Diagnostic panel (Runtime)
-*Top part of the window. Shows the current process state.*
 
 | Field | Description |
 | :--- | :--- |
-| **State** | **STOP** (Red) — driver stopped.<br>**RUN** (Green) — driver running. |
-| **Error** | Last error text. `no errors` — normal operation. |
-| **Actual connection** | **Active channel indicator.**<br>Shows which connection is currently used for polling.<br>• If redundancy is not configured — equals the current one.<br>• With redundancy — shows whether `Master` or backup channel is active. |
+| **State** | **STOP** — driver is stopped.<br>**RUN** — driver is running. |
+| **Node** | Cluster node. Indicates on which node the process is running. |
+| **PID** | Process ID. |
+| **Error** | Error text. |
+| **Disabled** | |
+| **Memory limit (bytes)** | Memory limit (RAM limits (MB) for the process serving the connection). Memory capacity determines the number of variables (tags) that can be processed during the connection operation. |
+| **Actual connection** | Current executable communication channel. In systems with Redundancy, indicates exactly which connection (primary or backup) is currently exchanging data. |
+| **Master connection** | Link to the main communication channel. Filled for redundant connections. The field indicates which connection is the priority (Master), defining the logical pair for the redundancy mechanism. |
 
-### 1.2 Configuration settings (Settings)
+### 1.2 General Settings (Settings)
 
-**Base settings:**
-- **Name:** Unique system name (Latin characters, no spaces).
-- **Period (ms):** Polling interval (default `1000` ms).
-- **Shutdown timeout (ms):** Time to gracefully close the socket (default `60000`).
+| Parameter | Description |
+| :--- | :--- |
+| **Name** | Unique name of the connection. |
+| **Title** | Title (description) of this object. |
+| **Period (ms)** | Base driver processing cycle. |
+| **Shutdown timeout (ms)** | Waiting time for correct connection termination. |
+| **Support for group requests** | **Yes** — enable the possibility of periodic General Interrogation. |
+| **Max. package length** | Maximum APDU size. Standard is 250 bytes. |
+| **Line Delay Ratio** | Delay coefficient for slow communication lines. |
 
-**Redundancy settings:**
-- **Master connection:** Reference to the main connection.  
-  *Used to configure a backup channel.* If the current connection is a backup, specify the main connection name here. The system will switch channels automatically based on availability.
 
-**Network settings:**
-- **IP/Hostname:** Target device IP address/hostname.
-- **Port:** `161` (standard UDP port for SNMP agent).
-- **Community:** Access password. Commonly `public` (read-only) or `private` (write).
-- **Support for group requests:** `Yes` — enable `GetBulk` (batch read). Recommended for faster polling if the device supports it.
+### 1.3 Protocol Parameters (SNMP) 
+| Field | Description |
+| :--- | :--- |
+| **Community** | **Community String.** Used as a password for accessing device data (for SNMP v1/v2c).<br>• **public** — standard value for "read-only" rights.<br>• **private** — standard value for "read-write" rights.<br>*Important: This value is case-sensitive and must match the settings in the polled device.* |
+| **IP** | IP address or domain name of the device to be polled.<br>Examples: `192.168.1.10` (network device) or `127.0.0.1` (local agent). |
+| **Port** | SNMP agent network port.<br>Standard port for requests: **161**. |
+| **Agent** | Agent identifier or additional driver parameter. Often defaults to `0` or `1`. |
 
-> **Action:** Click **Save**. After saving, open the object (double click) to configure tag bindings.
 
 ---
 
-## STEP 2. Variable setup (Binding)
+## 2. Variable Configuration (Binding)
 
-Inside the connection, create `plc_snmp_binding` objects. Each object corresponds to one variable (OID) on the device.
+Inside the connection, `plc_snmp_binding` objects are created. Each object corresponds to one variable (OID) on the device.
 
-![SNMP binding setup window](images/snmp_bindings.png)
+![Binding settings window](images/snmp_bindings.png)
+> Create PLC binding → [Steps to create a PLC binding](./general_ru.md#создание-plc-привязки)
 
-### 2.1 Binding parameters
+### 2.1 Binding Parameters
 
 | Field | Description |
 | :--- | :--- |
-| **Name** | Binding name in the project tree. |
-| **Tag** | Faceplate system tag where the value will be written. |
-| **Transformation** | *Optional.* On-the-fly data transformation (scaling, bit masks). |
-| **Access** | Variable access rights:<br>• **R** — Read-only.<br>• **W** — Write-only.<br>• **RW** — Read/Write. |
-| **Address** | **OID (Object Identifier).** Address of the variable in SNMP hierarchy.<br>*Examples:* `1.3.6.1.2.1.1.1.0` (absolute) or `1.6.3.1` (relative, if supported). |
+| **Name** | Name of the binding. |
+| **Title** | Title (description) for this object. |
+| **State** | **STOP** — binding is stopped.<br>**RUN** — binding is running. |
+| **Tag** | Faceplate system tag. The incoming value will be written to the selected field of the selected object. See [Binding to a tag](./general_ru.md#привязка-к-тегу-на-примере-архива) |
+| **Transformation** | Value transformation. See [Transformation](./transformation_ru.md). |
+| **Access** | Variable access rights:<br>• **R** — Read (Read only).<br>• **W** — Write (Write only).<br>• **RW** — Read/Write (Read and write). |
+| **Address** | **OID (Object Identifier).** Variable address in the SNMP hierarchy.<br>*Examples:* `1.3.6.1.2.1.1.1.0` (absolute) or `1.6.3.1` (relative, if supported). |
 
-### 2.2 Runtime control
-- **State:** Current binding state (active/error).
-- **Off:** Switch to temporarily disable polling for a specific tag without deleting the configuration.
+
+> Error in PLC binding -> [binding error](./general_ru.md#ошибка-в-привязке)
 
 ---
-
-<!-- ## Additional notes
-
-1. **Redundancy:** When configuring a backup channel, ensure `Master connection` contains the correct name of the main channel. `Actual connection` in Runtime shows which channel currently drives polling.
-2. **OID validation:** If you see `No Such Name`, verify the **Address**. Use a third‑party MIB Browser to validate OIDs before configuration.
-3. **Startup sequence:**
-   1. Configure Connection.
-   2. Start the driver (`State: RUN`).
-   3. Ensure there are no communication errors.
-   4. Create Bindings. -->

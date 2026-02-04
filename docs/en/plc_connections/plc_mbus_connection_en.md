@@ -1,99 +1,103 @@
-# M‑Bus (Meter‑Bus) Driver Configuration Guide
+# M-Bus (Meter-Bus) Driver Configuration Guide
 
-## Overview
-**M‑Bus (Meter‑Bus)** is a specialized European standard (EN 13757) for remote data reading from commercial metering devices: heat meters, water meters, gas meters, and electricity meters.
+## General Description
+**M-Bus (Meter-Bus)** is a specialized European standard (EN 13757) for remote data reading from utility meters: heat meters, water meters, gas meters, and electricity meters.
 
-In **Faceplate**, the M‑Bus driver is hybrid and supports two physical layers:
-1. **Serial (COM):** Direct connection to the server via a master level converter (M‑Bus <-> RS‑232/485).
-2. **TCP (Ethernet):** Connection via remote gateways (Ethernet‑to‑M‑Bus) or transparent converters.
+In the **Faceplate** system, the M-Bus driver is hybrid and supports two physical layers:
+1.  **Serial (COM):** Direct connection to the server via a Master level converter (M-Bus <-> RS-232/485).
+2.  **TCP (Ethernet):** Connection via remote gateways (Ethernet-to-MBus) or transparent converters.
 
-The configuration architecture has two steps:
-1. **Connection (`plc_mbus_connection`):** Transport setup to the bus.
-2. **Binding (`plc_mbus_binding`):** Polling a specific variable inside the device.
-
----
-
-## STEP 1. Connection setup (Connection)
-
-At this stage you configure the master device that polls the bus.
-
-### 1.1 Diagnostics and control (Runtime)
-*Panel for real‑time driver monitoring.*
-
-![M‑Bus diagnostics](images/mbus3.png)
-
-| Field | Description |
-| :--- | :--- |
-| **State** | **STOP** (Red) — polling stopped.<br>**RUN** (Green) — driver running. |
-| **Error** | Last error text (e.g., `Timeout` or `Checksum error`). |
-| **Actual connection** | In redundancy mode shows which channel is active (Master or Backup). |
-
-### 1.2 General settings
-
-| Parameter | System analyst recommendations |
-| :--- | :--- |
-| **Name** | Unique connection name in the system. |
-| **Period (ms)** | Bus polling interval. <br>⚠️ **Important:** M‑Bus is a slow protocol (typically 2400 baud). Do not set the period below **60000 ms** (1 minute), especially for battery‑powered meters, to avoid premature battery drain. |
-| **Type** | Mode switch: `serial` or `tcp`. |
+The configuration architecture consists of two steps:
+1.  **Connection (`plc_mbus_connection`):** Configuring the transport to the bus.
+2.  **Binding (`plc_mbus_binding`):** Configuring the polling of a specific variable within the device.
 
 ---
 
-### 1.3 Physical layer setup (depends on Type)
+## 1. Connection Configuration (Connection)
+> Create PLC connection → [Steps to create a PLC connection](./general_ru.md#создание-plc-соединения)
 
-#### Option A: `serial` mode (Direct connection)
-Used when the hardware M‑Bus converter is connected directly to the server COM port.
+At this stage, we configure the master device that polls the bus.
 
-![Serial M‑Bus settings](images/mbus2.png)
+### 1.1 Diagnostics Panel
+The upper part of the window displays the driver status.
+> PLC connection diagnostics → [Diagnostics](./general_ru.md#диагностика-diagnostics)
+
 
 | Field | Description |
 | :--- | :--- |
-| **Port** | System port name (Linux: `/dev/ttyUSB0`, Windows: `COM1`). |
-| **Baud rate** | Communication speed. <br>*Typical:* **2400** (less often 9600). Must match device settings. |
-| **Parity** | Parity. <br>*Typical:* **Even**. Screenshot shows `no`, but most heat meters require `Even`. |
+| **State** | **STOP** — driver is stopped.<br>**RUN** — driver is running. |
+| **Node** | Cluster node. Indicates on which node the process is running. |
+| **PID** | Process ID. |
+| **Error** | Error text. |
+| **Disabled** | |
+| **Memory limit (bytes)** | Memory limit (RAM limits (MB) for the process serving the connection). Memory capacity determines the number of variables (tags) that can be processed during the connection operation. |
+| **Actual connection** | Current active communication channel. In systems with Redundancy, indicates exactly which connection (primary or backup) is currently exchanging data. |
+| **Master connection** | Link to the main communication channel. Filled for redundant connections. The field indicates which connection is the priority (Master), defining the logical pair for the redundancy mechanism. |
+
+### 1.2 General Settings (Settings)
+
+| Parameter | Description |
+| :--- | :--- |
+| **Name** | Unique name of the connection. |
+| **Title** | Title (description) of this object. |
+| **Period (ms)** | Base driver processing cycle. |
+| **Shutdown timeout (ms)** | Waiting time for correct connection termination. |
+| **Support for group requests** | **Yes** — enable the possibility of periodic General Interrogation. |
+| **Max. package length** | Maximum APDU size. Standard is 250 bytes. |
+| **Line Delay Ratio** | Delay coefficient for slow communication lines. |
+
+
+### 1.3 Protocol Parameters (MBUS)
+
+#### 1.3.1 `serial` Mode (Direct connection)
+Used if the M-Bus hardware converter is connected directly to the server's COM port.
+
+![Serial M-Bus settings](images/mbus2.png)
+
+| Field | Description |
+| :--- | :--- |
+| **Port** | System port name (Linux: `/dev/ttyUSB0`, Win: `COM1`). |
+| **Baud rate** | Exchange speed. <br>*Standard:* Usually **2400** (less often 9600). Must match the device settings. |
+| **Parity** | Parity. <br>*Standard:* Usually **Even**. The screenshot shows `no`, but most heat meters require `Even`. |
 | **Data / Stop bits** | Usually 8 data bits and 1 stop bit. |
-| **Timeout** | Response timeout. For M‑Bus use a safe margin (3000–5000 ms). |
+| **Timeout** | Response waiting time. For M-Bus, it is better to set it with a margin (3000-5000 ms). |
+| **attempts** | Number of request attempts. Determines the maximum number of retries to send a request to the device in the absence of a response. |
 
-#### Option B: `tcp` mode (Network gateway)
-Used when the M‑Bus is remote and connected via an Ethernet converter.
+#### 1.3.2 `tcp` Mode (Network Gateway)
+Used if the M-Bus is located remotely and connected via an Ethernet converter.
 
-![TCP M‑Bus settings](images/mbus1.png)
+![TCP M-Bus settings](images/mbus1.png)
 
 | Field | Description |
 | :--- | :--- |
-| **IP/Hostname** | Gateway IP address/hostname. |
-| **Port** | TCP port (commonly `502`, `1001`, or `8000` — see gateway documentation). |
-| **Timeout** | Consider network latency + bus slowness. |
-
-> **Action:** Click **Save**, then double‑click the created connection to add bindings.
+| **IP/Hostname** | Gateway IP address. |
+| **Port** | TCP port (often `502`, `1001`, or `8000` — see gateway documentation). |
+| **Timeout** | Consider network delays + the slowness of the bus itself. |
+| **attempts** | Number of request attempts. Determines the maximum number of retries to send a request to the device in the absence of a response. |
 
 ---
 
-## STEP 2. Variable setup (Binding)
+## 2. Variable Configuration (Binding)
 
-A key feature of M‑Bus: the device returns **all** information in one large packet. A Binding “extracts” the required value from that packet.
+The peculiarity of M-Bus is that the device provides **all** information in one large packet. The Binding task is to "extract" the necessary value from this packet.
 
-![M‑Bus variable binding](images/mbus4.png)
+![M-Bus variable settings](images/mbus4.png)
+> Create PLC binding → [Steps to create a PLC binding](./general_ru.md#создание-plc-привязки)
 
-### 2.1 Binding parameters
+### 2.1 Binding Parameters
 
 | Field | Description |
 | :--- | :--- |
-| **Name** | Binding object name. |
-| **Tag** | System tag to store the value. |
-| **Access** | **R** — Read Only.<br>**W** — Write (rare in M‑Bus). |
+| **Name** | Name of the binding. |
+| **Title** | Title (description) for this object. |
+| **State** | **STOP** — binding is stopped.<br>**RUN** — binding is running. |
+| **Tag** | Faceplate system tag. The incoming value will be written to the selected field of the selected object. See [Binding to a tag](./general_ru.md#привязка-к-тегу-на-примере-архива) |
+| **Transformation** | Value transformation. See [Transformation](./transformation_ru.md). |
+| **Access** | **R** — Read Only.<br>**W** — Write (Rarely used in M-Bus).<br>**RW** — Read/Write. |
 | **Address** | **Primary Address.** A number from 1 to 250. Unique meter address on the bus. |
-| **Telegram** | Telegram number. For most simple devices = `0` (used if data does not fit in a single packet). |
-| **Index** | **Data index in the packet.** The most difficult parameter. <br>This is the ordinal number of the variable in the M‑Bus response structure. <br>*Example:* If the meter sends: [Time, Energy, Flow, Temperature], then Energy Index = `1` (or `0` depending on driver implementation — start with 0). |
+| **Telegram** | Telegram number. For most simple devices = `0`. (Used if data does not fit into one packet). |
+| **Index** | **Data index in the packet.** The most complex parameter. <br>This is the ordinal number of the variable in the M-Bus response structure. <br>*Example:* If the meter sends the sequence: [Time, Energy, Flow, Temperature], then to get Energy Index = `1` (or `0`, depends on driver implementation, start with 0). |
 
+
+> Error in PLC binding -> [binding error](./general_ru.md#ошибка-в-привязке)
 ---
-
-<!-- ## Additional notes
-
-1. **Physical layer (90% of issues):**
-   - Typical settings for many meters (Danfoss, Kamstrup, Techem): **2400 baud, 8E1 (Even parity)**.
-   - Ensure the `Serial` section matches this. The screenshots show `9600 8N1` — common for Modbus, rarely for M‑Bus.
-2. **Finding the correct Index:**
-   - The driver does not show variable names in the packet (“Energy”, “Volume”); it only sees a data stream.
-   - *Tip:* Use a third‑party utility (e.g., M‑Bus Sheet or vendor software) to read the full packet, identify the target parameter position, and put that number into `Index`.
-3. **Address collisions:**
-   - A common problem is two devices with factory address `0` or `1` on the same bus. Connect devices one by one and change addresses before assembling the full bus. -->

@@ -1,91 +1,90 @@
 # OPC UA Client Configuration Guide
 
-## Overview
-**OPC UA (Unified Architecture)** is a modern cross‑platform industrial communication standard (IEC 62541). Unlike classic OPC DA, it does not depend on Windows/DCOM, supports encryption, and works with complex data structures.
+## General Description
+**OPC UA (Unified Architecture)** is a modern cross-platform industrial communication standard (IEC 62541). Unlike classic OPC DA, it does not depend on Windows/DCOM, and it supports encryption and complex data structures.
 
-The **OPC UA Client** driver in **Faceplate** can connect to OPC UA servers (Siemens S7‑1500, Kepware, Prosys, B&R, etc.) using the binary `opc.tcp` protocol.
+The **OPC UA Client** driver in the **Faceplate** system allows connecting to servers (Siemens S7-1500 PLC, Kepware, Prosys, B&R, etc.) via the binary protocol `opc.tcp`.
 
-Configuration consists of two stages:
-1. **Connection (`plc_opcua_client_connection`):** Endpoint, security, and authentication setup.
-2. **Binding (`plc_opcua_client_binding`):** Subscribing to specific nodes.
+The configuration process consists of two stages:
+1.  **Connection (`plc_opcua_client_connection`):** Configuring the Endpoint, security, and authentication.
+2.  **Binding (`plc_opcua_client_binding`):** Subscribing to specific Nodes.
 
 ---
 
-## STEP 1. Connection setup (Connection)
+## 1. Connection Configuration (Connection)
+> Create PLC connection → [Steps to create a PLC connection](./general_ru.md#создание-plc-соединения)
+Here we create a secure communication channel with the server.
 
-Here you establish a secure channel to the server.
+![OPC UA connection settings](images/opcua_client.png)
 
-### 1.1 Diagnostic panel (Runtime)
-*Top part of the window used to monitor the session.*
+### 1.1 Diagnostics Panel
+> PLC connection diagnostics → [Diagnostics](./general_ru.md#диагностика-diagnostics)
 
 | Field | Description |
 | :--- | :--- |
-| **State** | **STOP** (Red) — client stopped.<br>**RUN** (Green) — session is activated. |
-| **Error** | Error text. <br>*Common:* `BadCertificateUntrusted` (certificate not trusted by server), `BadTimeout`. |
-| **Actual connection** | Current active channel (when redundancy is used). |
+| **State** | **STOP** — driver is stopped.<br>**RUN** — driver is running. |
+| **Node** | Cluster node. Indicates on which node the process is running. |
+| **PID** | Process ID. |
+| **Error** | Error text (if any). |
+| **Disabled** | Connection disable flag. Through this button, the user disables or enables the driver. |
+| **Memory limit (bytes)** | Memory limit (RAM limits in bytes for the process serving the connection). Memory capacity determines the number of variables (tags) that can be processed. |
+| **Actual connection** | Current active communication channel. In systems with Redundancy, indicates exactly which connection (primary or backup) is currently exchanging data. |
+| **Master connection** | Link to the main communication channel. Filled for redundant connections. The field indicates which connection is the priority (Master), defining the logical pair for the redundancy mechanism. |
 
-### 1.2 Configuration settings (Settings)
 
-![OPC UA connection setup](images/opcua_client.png)
-
-#### Base settings
-
+### 1.2 General Settings (Settings)
 | Parameter | Description |
 | :--- | :--- |
-| **Name** | Unique connection name. |
-| **Period (ms)** | Publishing Interval. The rate at which the client requests subscription updates from the server. |
-| **Support for group requests** | **Yes** — enable grouping nodes into subscriptions (recommended). |
-| **Master connection** | Reference to the main connection (for redundancy). |
+| **Name** | Unique name of the connection. |
+| **Title** | Title (description) of this object. |
+| **Period (ms)** | Base driver processing cycle. |
+| **Shutdown timeout (ms)** | Waiting time for operations to complete when stopping the driver. |
+| **Support for group requests** *| **Yes** — enable support for General Interrogation. |
+| **Max. package length** *| Maximum packet size. Usually 250 bytes. |
+| **Line Delay Ratio** *| Line delay coefficient. |
 
-#### Connection & Security (critical section)
 
-| Field | Description / Notes |
+### 1.3 Protocol Parameters (OPC UA client)
+The most important part of OPC UA configuration.
+
+| Field | Description and Analytics |
 | :--- | :--- |
 | **URL** | **Endpoint URL.** Server address.<br>*Format:* `opc.tcp://<IP-address>:<Port>`<br>*Example:* `opc.tcp://192.168.0.10:4840` |
-| **MaxNodesPerBrowse** | Maximum number of nodes returned when browsing the address space. Default: `1000`. |
-| **Timeout** | Server response timeout (ms). |
-| **Secure connection** | **Encryption mode.**<br>• **No:** `None` (no security), suitable for tests.<br>• **Yes:** `Sign` or `SignAndEncrypt` (requires certificates). |
-| **Certificate / Key** | Paths to the client public certificate (`.der`) and private key (`.pem`). |
-| **Generate a certificate** | Button to auto‑generate a self‑signed client certificate. |
-| **Login / Password** | **User authentication.**<br>• Empty — **Anonymous** token.<br>• Filled — **User/Password** token. |
+| **MaxNodesPerBrowse** | Limit on the number of nodes when browsing the address tree (Browse). Standard: `1000`. |
+| **Timeout** | Time to wait for a response from the server (ms). |
+| **Secure connection** | **Encryption mode.**<br>• **No (Off):** Mode `None` (no security). Suitable for tests.<br>• **Yes (On):** Use `Sign` or `SignAndEncrypt`. Requires certificates. |
+| **Certificate / Key** | Paths to the client's public certificate (`.der`) and private key (`.pem`) files. |
+| **Generate a certificate** | Button for automatic generation of a self-signed client certificate. |
+| **Login / Password** | **User Authentication.**<br>• If empty — **Anonymous** is used.<br>• If filled — **User/Password** token is used. |
 
 ---
 
-## STEP 2. Variable setup (Binding)
+## 2. Variable Configuration (Binding)
 
-In OPC UA, addressing is done via **NodeId**.
+In OPC UA, addressing is performed via **NodeId** (Node Identifier).
 
-![OPC UA client binding setup](images/opcua_client_bindings.png)
-
-### 2.1 Binding parameters
-
+![OPC UA binding settings](images/opcua_client_bindings.png)
+> Create PLC binding → [Steps to create a PLC binding](./general_ru.md#создание-plc-привязки)
+> 
+### 2.1 Binding Parameters
 | Field | Description |
 | :--- | :--- |
-| **Name** | Binding name in the project tree. |
-| **Tag** | Faceplate system tag where the value will be mapped. |
-| **Access** | **R** — Read (Subscription / Monitored Item).<br>**W** — Write (Write Attribute). |
-| **Transformation** | *Optional.* Value transformation (e.g., scaling). |
+| **Name** | Name of the binding. |
+| **Title** | Title (description) for this object. |
+| **State** | **STOP** — binding is stopped.<br>**RUN** — binding is running. |
+| **Tag** | Faceplate system tag. The incoming value will be written to the selected field of the selected object. See [Binding to a tag](./general_ru.md#привязка-к-тегу-на-примере-архива) |
+| **Transformation** | Value transformation. See [Transformation](./transformation_ru.md). |
+| **Access** | **R** (Read), **W** (Write), **RW** (Read/Write). |
 
-### 2.2 Node addressing (OPC UA Node)
+### 2.2 Node Addressing (OPC UA Node)
 
-| Field | How to fill |
+
+
+| Field | Instruction |
 | :--- | :--- |
-| **OPC tag** | **NodeId (node address).** A unique variable address on the server. Includes namespace index (ns) and identifier type (s, i, g, b).<br>*Examples:*<br>• `ns=2;s=Machine1.Sensor.Temp` (string ID)<br>• `ns=3;i=1005` (numeric ID)<br>• `i=2258` (standard node, ns=0) |
-| **Type** | OPC UA data type (Int32, Float, Boolean, String, etc.). Usually auto-detected, but can be set explicitly. |
+| **OPC tag** | **NodeId (Node Address).**<br>Unique address of the variable on the server. Consists of a namespace index (ns) and an identifier (s, i, g, b).<br>*Examples:*<br>• `ns=2;s=Machine1.Sensor.Temp` (String ID)<br>• `ns=3;i=1005` (Numeric ID)<br>• `i=2258` (Standard node, ns=0) |
+| **Type** | OPC UA data type (Int32, Float, Boolean, String, etc.). Usually detected automatically, but can be set rigidly. |
+
+> Error in PLC binding -> [binding error](./general_ru.md#ошибка-в-привязке)
 
 ---
-
-<!-- ## Additional notes
-
-OPC UA is the most secure protocol, and security is the most common source of first‑run issues.
-
-1. **Certificate trust:**
-   - Even with `Secure connection: No` (None), some servers still require the client certificate to be trusted.
-   - *Symptom:* `BadSecurityChecksFailed` or `BadCertificateUntrusted`.
-   - *Fix:* Open the OPC server configuration (PLC or SCADA side), locate **Rejected Certificates**, find the Faceplate certificate and move it to **Trusted**.
-2. **Endpoint URL:**
-   - Many servers expose multiple endpoints (different security policies). Ensure your URL matches what the server is listening on.
-3. **Clock synchronization:**
-   - Certificates have validity periods. If server and client clocks differ by more than a few minutes, the connection can be rejected.
-4. **NodeId syntax:**
-   - NodeIds are case‑ and whitespace‑sensitive. `ns=2;s=MyTag` and `ns=2;s=Mytag` are different nodes. Prefer selecting tags using Browse to avoid typos. -->
