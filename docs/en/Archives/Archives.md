@@ -52,7 +52,7 @@ Creating new archives or editing the settings of existing ones is performed usin
 The **Runtime** tab indicates the current state of the archive.
 
 <p align="center">
-  <img src="images/2.png" width="300">
+  <img src="images/2.png" width="200">
 </p>
 
 **The following table describes the fields:**
@@ -88,7 +88,7 @@ For simplicity in this example, the OPC UA server is configured to allow anonymo
 In Faceplate, create an OPC UA client connection to this server. To do this, in the **General View**, click the "Create" button. In the menu that opens, select `plc_opcua_client_connection` and click "Ok".
 
 <p align="center">
-  <img src="images/5.png" width="300">
+  <img src="images/5.png" width="500">
 </p>
 
 The OPC UA client connection configuration form will open. In this form:
@@ -99,7 +99,7 @@ The OPC UA client connection configuration form will open. In this form:
 Next, click search, after which a list of points available for connection will be displayed below.
 
 <p align="center">
-  <img src="images/6.png" width="300">
+  <img src="images/6.png" width="200">
 </p>
 
 Select one of them (in our example, we used `opc.tcp://`) and click "Ok".
@@ -115,32 +115,32 @@ Next, we need to enter this object (double-click on the object) and create bindi
 Enter the connection object and click the "Create" button - a form opens for configuring binding parameters to an OPC UA server tag.
 
 <p align="center">
-  <img src="images/8.png" width="300">
+  <img src="images/8.png" width="200">
 </p>
 
 Set "Pressure" as the binding name. To select an OPC UA tag, click on the search button.
 A window opens containing the entire tag tree of the OPC UA server. Select the required tag and click "Ok".
 
 <p align="center">
-  <img src="images/9.png" width="300">
+  <img src="images/9.png" width="200">
 </p>
 
 By clicking on the search icon in the **Type** section, Faceplate will automatically detect the data type of the selected tag.
 
 <p align="center">
-  <img src="images/10.png" width="300">
+  <img src="images/10.png" width="200">
 </p>
 
 Repeat the actions for the "Temperature" tag.
 
 <p align="center">
-  <img src="images/11.png" width="300">
+  <img src="images/11.png" width="200">
 </p>
 
 The result will be the following structure:
 
 <p align="center">
-  <img src="images/12.png" width="300">
+  <img src="images/12.png" width="500">
 </p>
 
 Now let's create 2 **ARCHIVE** objects that will write the received values to the archive.
@@ -149,20 +149,20 @@ Go back to the root folder and click the "Create" button; the object creation wi
 Here, in the "system" folder, select "ARCHIVE" and click "Ok".
 
 <p align="center">
-  <img src="images/13.png" width="300">
+  <img src="images/13.png" width="500">
 </p>
 
 Next, the editing menu for the created archive will open. Fill in the required **Name** field and the **tag** field.
 In the "tag" section, using the search, select the binding to "Pressure".
 
 <p align="center">
-  <img src="images/14.png" width="300">
+  <img src="images/14.png" width="500">
 </p>
 
 In the field selection, choose the field - "value".
 
 <p align="center">
-  <img src="images/15.png" width="300">
+  <img src="images/15.png" width="500">
 </p>
 
 Аfter that the "save" button gets active, click it to save the archive
@@ -178,7 +178,7 @@ To compile the script, click the "Compile" button.
 If the compilation is successful without errors, "ok" will appear next to the compilation button; otherwise, a list of errors will be displayed, for example:
 
 <p align="center">
-  <img src="images/17.png" width="300">
+  <img src="images/17.png" width="500">
 </p>
 
 Аfter that the "save" button gets active, click it to save the archive
@@ -190,7 +190,7 @@ To check the operation of the archives, let's launch the runtime. To do this, cl
 After that, go to the runtime page; to do this, open "Runtime" in the side menu.
 
 <p align="center">
-  <img src="images/18.png" width="300">
+  <img src="images/18.png" width="500">
 </p>
 
 Next, you will be redirected to the Runtime page. Next, you need to log in, open the side menu, and select **Trends**. 
@@ -203,7 +203,7 @@ Next, you will be redirected to the Runtime page. Next, you need to log in, open
 The “Select Trend” window will open. Go to the **Archive** section. Here you need to set the group name and series name.
 
 <p align="center">
-  <img src="images/20.png" width="300">
+  <img src="images/20.png" width="500">
 </p>
 
 After naming the series, you can specify the path to the archive (settings button - gear icon). A form with series settings will open.
@@ -215,13 +215,13 @@ After naming the series, you can specify the path to the archive (settings butto
 Clicking the search button allows us to select any previously created archive.
 
 <p align="center">
-  <img src="images/22.png" width="300">
+  <img src="images/22.png" width="500">
 </p>
 
 After selection, the path is saved, and the series is ready for display.
 
 <p align="center">
-  <img src="images/23.png" width="300">
+  <img src="images/23.png" width="500">
 </p>
 
 By default, the trend updates automatically with a cycle of once per second. You can stop the update by clicking the pause button.
@@ -229,21 +229,21 @@ To select the depth of data display, click the trend depth setting button (by de
 In the dialog that opens, select a new value.
 
 <p align="center">
-  <img src="images/24.png" width="300">
+  <img src="images/24.png" width="100">
 </p>
 
 <p align="center">
-  <img src="images/25.png" width="300">
+  <img src="images/25.png" width="500">
 </p>
 
 To view data for a past period, stop the trend update and click on the button displaying the current period (in our case, it is "05:20:00 => 05:25:00"). In the dialog that opens, select the period of interest:
 
 <p align="center">
-  <img src="images/26.png" width="300">
+  <img src="images/26.png" width="200">
 </p>
 
 <p align="center">
-  <img src="images/27.png" width="300">
+  <img src="images/27.png" width="500">
 </p>
 
 To export data to Excel, click the button:
@@ -259,5 +259,5 @@ on the toolbar. In the opened form:
 4.  Click OK.
 
 <p align="center">
-  <img src="images/29.png" width="300">
+  <img src="images/29.png" width="500">
 </p>
