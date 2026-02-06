@@ -24,10 +24,13 @@ The "Archives" editor allows you to work with archived parameters, configure arc
 
 ### Archive in Faceplate
 
-Creating new archives or editing the settings of existing ones is performed using the form:
+Creating new archives or editing existing settings is done using a form that is divided into three sections:
+1. General section for all objects
+2. General section for active elements
+3. Settings for a specific section
 
 <p align="center">
-  <img src="images/1.png" width="300">
+  <img src="images/1.png" width="600">
 </p>
 
 **The following table describes the fields:**
@@ -41,6 +44,7 @@ Creating new archives or editing the settings of existing ones is performed usin
 | **State** | Current state of the archiving process: `RUN` or `STOP`. |
 | **Node** | Indicates on which server the archiving process is running (relevant in a multi-server architecture). |
 | **PID** | Unique process identifier. |
+| **Diagnostics** | When you open Archives for editing, the “Diagnostics” button also becomes available. This button is necessary for quickly monitoring the status of the object in the database. Here you can view the logs: Info, Warning, Error, Debug. You can read more about "Diagnostics" button in the ["Diagnostics" section](#archives).
 | **Disabled** | This switch allows you to determine the archive state (enabled/disabled), i.e., whether data is being written to the archive or not. This setting allows you to disable parameter archiving in runtime mode. |
 | **Error** | In case of any errors related to the archive, the "Error" column will be populated. |
 | **Memory limit (bytes)** | Memory limit in bytes. If the process requires more memory than the set limit, for example due to a memory leak in a user script, the system will automatically restart the process. |
@@ -52,13 +56,11 @@ Creating new archives or editing the settings of existing ones is performed usin
 | **Cross Reference** | Clicking this button will open a list of items that reference this object. You can read more about working with Cross Reference in the ["Cross Reference" section](#archives) |
 | **Broken Dependencies** | This button generates a list of broken links for this object. You can read more about working with Broken Dependencies in the ["Broken Dependencies" section](#archives)|
 | **Copy Path** | This button copies the path to this object. |
-| **Diagnostics** | When you open Archives for editing, the “Diagnostics” button also becomes available. This button is necessary for quickly monitoring the status of the object in the database. Here you can view the logs: Info, Warning, Error, Debug. You can read more about "Diagnostics" button in the ["Diagnostics" section](#archives). |
-
 
 The **Runtime** tab indicates the current state of the archive.
 
 <p align="center">
-  <img src="images/2.png" width="200">
+  <img src="images/2.png" width="350">
 </p>
 
 **The following table describes the fields:**
@@ -80,7 +82,7 @@ In this example, we consider the case of receiving data from an OPC server, subs
 Launch an OPC UA server with tags that will simulate temperature and pressure sensor values. For this example, **KEPServerEX 6** was used.
 
 <p align="center">
-  <img src="images/3.png" width="300">
+  <img src="images/3.png" width="700">
 </p>
 
 The `Temperature` tag is configured so that values change along a sine wave from 0 to 150, and `Pressure` receives random values from 0 to 10. Both tags have the `Float` variable type.
@@ -88,13 +90,13 @@ The `Temperature` tag is configured so that values change along a sine wave from
 For simplicity in this example, the OPC UA server is configured to allow anonymous connections.
 
 <p align="center">
-  <img src="images/4.png" width="300">
+  <img src="images/4.png" width="700">
 </p>
 
 In Faceplate, create an OPC UA client connection to this server. To do this, in the **General View**, click the "Create" button. In the menu that opens, select `plc_opcua_client_connection` and click "Ok".
 
 <p align="center">
-  <img src="images/5.png" width="500">
+  <img src="images/5.png" width="1000">
 </p>
 
 The OPC UA client connection configuration form will open. In this form:
@@ -105,14 +107,14 @@ The OPC UA client connection configuration form will open. In this form:
 Next, click search, after which a list of points available for connection will be displayed below.
 
 <p align="center">
-  <img src="images/6.png" width="200">
+  <img src="images/6.png" width="400">
 </p>
 
 Select one of them (in our example, we used `opc.tcp://`) and click "Ok".
 (You can read more about configuring OPC UA connections in the [OPC UA Client section](../plc_connections/plc_opcua_client_connection_en.md).
 
 <p align="center">
-  <img src="images/7.png" width="300">
+  <img src="images/7.png" width="600">
 </p>
 
 After clicking "save", the OPC UA server connection object will appear in the project structure.
@@ -121,32 +123,32 @@ Next, we need to enter this object (double-click on the object) and create bindi
 Enter the connection object and click the "Create" button - a form opens for configuring binding parameters to an OPC UA server tag.
 
 <p align="center">
-  <img src="images/8.png" width="200">
+  <img src="images/8.png" width="500">
 </p>
 
 Set "Pressure" as the binding name. To select an OPC UA tag, click on the search button.
 A window opens containing the entire tag tree of the OPC UA server. Select the required tag and click "Ok".
 
 <p align="center">
-  <img src="images/9.png" width="200">
+  <img src="images/9.png" width="400">
 </p>
 
 By clicking on the search icon in the **Type** section, Faceplate will automatically detect the data type of the selected tag.
 
 <p align="center">
-  <img src="images/10.png" width="200">
+  <img src="images/10.png" width="500">
 </p>
 
 Repeat the actions for the "Temperature" tag.
 
 <p align="center">
-  <img src="images/11.png" width="200">
+  <img src="images/11.png" width="500">
 </p>
 
 The result will be the following structure:
 
 <p align="center">
-  <img src="images/12.png" width="500">
+  <img src="images/12.png" width="1000">
 </p>
 
 Now let's create 2 **ARCHIVE** objects that will write the received values to the archive.
@@ -162,7 +164,7 @@ Next, the editing menu for the created archive will open. Fill in the required *
 In the "tag" section, using the search, select the binding to "Pressure".
 
 <p align="center">
-  <img src="images/14.png" width="500">
+  <img src="images/14.png" width="600">
 </p>
 
 In the field selection, choose the field - "value".
@@ -177,14 +179,14 @@ Let's create a second archive that will receive values from "Pressure" and "Temp
 This functionality will be implemented using the **"script"** source, with a binding to the "value" fields of the two tags "Pressure" and "Temperature". We will choose **Erlang** as the programming language.
 
 <p align="center">
-  <img src="images/16.png" width="300">
+  <img src="images/16.png" width="700">
 </p>
 
 To compile the script, click the "Compile" button.
 If the compilation is successful without errors, "ok" will appear next to the compilation button; otherwise, a list of errors will be displayed, for example:
 
 <p align="center">
-  <img src="images/17.png" width="500">
+  <img src="images/17.png" width="600">
 </p>
 
 Аfter that the "save" button gets active, click it to save the archive
@@ -196,38 +198,38 @@ To check the operation of the archives, let's launch the runtime. To do this, cl
 After that, go to the runtime page; to do this, open "Runtime" in the side menu.
 
 <p align="center">
-  <img src="images/18.png" width="500">
+  <img src="images/18.png" width="800">
 </p>
 
 Next, you will be redirected to the Runtime page. Next, you need to log in, open the side menu, and select **Trends**. 
 
 
 <p align="center">
-  <img src="images/19.png" width="200">
+  <img src="images/19.png" width="300">
 </p>
 
 The “Select Trend” window will open. Go to the **Archive** section. Here you need to set the group name and series name.
 
 <p align="center">
-  <img src="images/20.png" width="500">
+  <img src="images/20.png" width="700">
 </p>
 
 After naming the series, you can specify the path to the archive (settings button - gear icon). A form with series settings will open.
 
 <p align="center">
-  <img src="images/21.png" width="300">
+  <img src="images/21.png" width="700">
 </p>
 
 Clicking the search button allows us to select any previously created archive.
 
 <p align="center">
-  <img src="images/22.png" width="500">
+  <img src="images/22.png" width="700">
 </p>
 
 After selection, the path is saved, and the series is ready for display.
 
 <p align="center">
-  <img src="images/23.png" width="500">
+  <img src="images/23.png" width="1900">
 </p>
 
 By default, the trend updates automatically with a cycle of once per second. You can stop the update by clicking the pause button.
@@ -235,21 +237,21 @@ To select the depth of data display, click the trend depth setting button (by de
 In the dialog that opens, select a new value.
 
 <p align="center">
-  <img src="images/24.png" width="100">
+  <img src="images/24.png" width="400">
 </p>
 
 <p align="center">
-  <img src="images/25.png" width="500">
+  <img src="images/25.png" width="1000">
 </p>
 
 To view data for a past period, stop the trend update and click on the button displaying the current period (in our case, it is "05:20:00 => 05:25:00"). In the dialog that opens, select the period of interest:
 
 <p align="center">
-  <img src="images/26.png" width="200">
+  <img src="images/26.png" width="600">
 </p>
 
 <p align="center">
-  <img src="images/27.png" width="500">
+  <img src="images/27.png" width="1000">
 </p>
 
 To export data to Excel, click the button:
@@ -265,5 +267,5 @@ on the toolbar. In the opened form:
 4.  Click OK.
 
 <p align="center">
-  <img src="images/29.png" width="500">
+  <img src="images/29.png" width="600">
 </p>
