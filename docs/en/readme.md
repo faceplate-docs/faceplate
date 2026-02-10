@@ -114,8 +114,6 @@ License issuance process:
 2. Attach the file and send it to [**license@faceplate.io**](mailto:license@faceplate.io)  
 3. Download the received license file
 
-In case if
-
 **Important\!** The license activation record is stored in the database of the running Faceplate instance. If the database is deleted or moved, the license will be deleted or unavailable and will need to be restored.
 
 # User Editor
