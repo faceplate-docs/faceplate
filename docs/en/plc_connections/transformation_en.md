@@ -1,124 +1,126 @@
-# Transformation Function Configuration
+# Transformation feature setup
 
-This document describes the data preprocessing (transformation) functionality when creating bindings. The module allows modifying, limiting, or mathematically processing input values before transmitting them to the system.
+> See also: [PLC Connections overview](./general_en.md)
 
-## 1. Overview of Available Methods
+This document describes the preprocessing (transformation) features for bindings. The module lets you modify, limit, or mathematically process incoming values before they are sent to the system.
 
-In the **Transformation** block, a **"Choose option..."** dropdown list is available, which opens a list of all available processing methods.
+## 1. Overview of available methods
 
-![Transformation selection menu](images/transformation/screen1.png)
+In the **Transformation** block, the **"Choose option..."** dropdown lists all available processing methods.
+
+![Transformation menu](images/transformation/screen1.png)
 
 Available methods:
-1.  **Scaling**
-2.  **Default Value**
-3.  **Limit Control**
-4.  **Integration**
-5.  **Derivative**
-6.  **Damper** (Damping/Smoothing)
-7.  **Script** (User script)
+1. **Scaling**
+2. **Default Value**
+3. **Limit Control**
+4. **Integration**
+5. **Derivative**
+6. **Damper**
+7. **Script**
 
-A detailed description of each method is provided below.
+Below is a detailed description of each method.
 
 ---
 
 ## 2. Scaling
 
-The method performs a linear transformation of the input value using the linear function formula:
+Performs a linear transformation using the formula:
 $$Y = (X \times \text{Factor}) + \text{Shift}$$
 
 ![Scaling settings](images/transformation/screen2.png)
 
 **Parameters:**
-* **Factor:** Multiplication coefficient (multiplier).
-* **Shift:** Shift value (offset).
+* **Factor:** Multiply factor.
+* **Shift:** Offset value.
 
 ---
 
 ## 3. Default Value
 
-Allows setting a fixed value. Can be used for variable initialization or replacing a value with a constant.
+Sets a fixed value. Useful for initialization or for replacing a value with a constant.
 
 ![Default Value settings](images/transformation/screen3.png)
 
 **Parameters:**
-* **Value:** The numeric value that will be passed forward.
+* **Value:** Numeric value to pass forward.
 
 ---
 
 ## 4. Limit Control
 
-Limits the input value to a specified range (Clamping). If the value falls outside the limits, it is equated to the nearest boundary.
+Clamps the input value to a specified range. If the value is out of range, it is set to the nearest limit.
 
 ![Limit Control settings](images/transformation/screen4.png)
 
 **Parameters:**
-* **Lower Limit:** The lower boundary of the range.
-* **Upper Limit:** The upper boundary of the range.
+* **Lower Limit:** Lower bound.
+* **Upper Limit:** Upper bound.
 
 ---
 
 ## 5. Integration
 
-Performs the mathematical operation of integrating the incoming signal over time (accumulation of value sum).
+Integrates the incoming signal over time (accumulates the sum).
 
 ![Integration settings](images/transformation/screen5.png)
 
-*Parameters are configured automatically.*
+*Parameters are set automatically.*
 
 ---
 
 ## 6. Derivative
 
-Calculates the derivative of the incoming signal, determining the rate of change of the value per unit of time.
+Calculates the derivative of the incoming signal, i.e. the rate of change per unit time.
 
 ![Derivative settings](images/transformation/screen6.png)
 
-*Parameters are configured automatically.*
+*Parameters are set automatically.*
 
 ---
 
 ## 7. Damper
 
-A filter for signal smoothing. Allows removing sharp spikes (noise) and making value changes smoother.
+A smoothing filter that reduces sudden jumps and makes changes more gradual.
 
 ![Damper settings](images/transformation/screen7.png)
 
 **Parameters:**
-* **Tlag:** Time constant (inertia coefficient). The larger the value, the stronger the smoothing and the slower the reaction to input changes.
+* **Tlag:** Time constant (inertia). Higher values mean stronger smoothing and slower response.
 
 ---
 
 ## 8. Script
 
-Allows writing arbitrary data processing logic in the **Erlang** language.
+Lets you implement custom logic using **Erlang**.
 
 ![Script editor](images/transformation/screen8.png)
 
 **Capabilities:**
-* **Variable / Tag / Field:** Allows accessing context variables.
+* **Variable / Tag / Field:** Access context variables.
 * **Code Editor:**
-    * The function accepts arguments: `Input` (input value), `Context` (variable context), `State` (accumulator state).
+    * The function receives arguments: `Input` (input value), `Context` (variable context), `State` (accumulator state).
     * The function must return a tuple: `{Output, State}`.
 
 ---
 
-## 9. Using Multiple Transformations
+## 9. Using multiple transformations
 
-The system supports creating processing chains where multiple transformation functions are applied to a single binding simultaneously.
+The system supports chains of transformations, where multiple methods are applied to a single binding.
 
 ![Transformation chain](images/transformation/screen9.png)
 
-### Operating Principle
+### How it works
 
-1.  **Execution Order:**
-    Functions are executed strictly **from top to bottom**. The output value of the first function becomes the input value for the second, and so on.
-    * *In the example above:* **Scaling** triggers first, then the result is passed to **Default Value**.
+1. **Execution order:**
+   Functions run strictly **top to bottom**. The output of one function becomes the input of the next.
+   *Example:* Scaling runs first, then its result is passed to Default Value.
 
-2.  **Adding a Function:**
-    To add a new step to the chain, click the **"Choose option..."** dropdown menu at the bottom of the list. The menu will open (see item 1), and the selected function will be added to the end of the list.
+2. **Adding a function:**
+   Click the **"Choose option..."** dropdown at the bottom of the list. Select a method and it will be appended to the chain.
 
-3.  **Managing Elements:**
-    To the right of each function are control buttons:
-    * ⬆️ **Up Arrow:** Moves the function higher up the list (it will execute earlier).
-    * ⬇️ **Down Arrow:** Moves the function lower down the list (it will execute later).
-    * 🗑 **Trash Bin:** Deletes the given transformation function from the chain.
+3. **Controls:**
+   Each function has control buttons on the right:
+   * **Up arrow:** Move the function up (executes earlier).
+   * **Down arrow:** Move the function down (executes later).
+   * **Trash:** Remove the transformation from the chain.

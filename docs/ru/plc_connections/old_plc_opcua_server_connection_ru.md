@@ -14,7 +14,7 @@
 
 На этом этапе определяется, на каком порту и интерфейсе сервер будет ожидать входящие подключения.
 
-![Настройка соединения OPC UA Server](images/opcua_server_conn.png)
+<img src="images/opcua_server_conn.png" alt="Настройка соединения OPC UA Server" width="600">
 
 ### 1.1 Панель диагностики
 >Диагностика PLC соединения → [Диагностика](./general_ru.md#диагностика-diagnostics)
@@ -47,7 +47,7 @@
 Настройка сервера производится через конфигурационное окно, разделенное на четыре основные вкладки: **Main**, **Users**, **Encryption** и **Restrictions**. Ниже приведено подробное описание каждого параметра.
 
 ## 1.3.1 Вкладка Main (Основные настройки)
-![main](images/opc_ua_server_main.png)
+<img src="images/opc_ua_server_main.png" alt="main" width="600">
 Здесь задаются сетевые параметры, необходимые для подключения клиентов к серверу.
 
 * **IP/Hostname/Localhost**
@@ -62,7 +62,7 @@
   * *Рекомендуемое значение:* `3000` (3 секунды).
 
 ## 1.3.2 Вкладка Users (Пользователи и Доступ)
-![users](images/opc_ua_server_users.png)
+<img src="images/opc_ua_server_users.png" alt="users" width="600">
 Управление правами доступа и учетными записями.
 
 * **Allow anonymous access**
@@ -76,7 +76,7 @@
   * Используйте кнопки `↑` `↓` для сортировки и иконку корзины для удаления.
 
 ## 1.3.3 Вкладка Encryption (Шифрование и Сертификаты)
-![encr](images/opc_ua_server_encr.png)
+<img src="images/opc_ua_server_encr.png" alt="encr" width="600">
 Настройка безопасности соединения (Security Policy) и управление сертификатами X.509.
 
 * **Secure connection**
@@ -95,7 +95,7 @@
   * Список отозванных сертификатов (Blacklist), которым запрещено подключение.
 
 ## 1.3.4 Вкладка Restrictions (Ограничения)
-![restr](images/opc_ua_retri.png)
+<img src="images/opc_ua_retri.png" alt="restr" width="600">
 Параметры для защиты сервера от перегрузки и управления ресурсами.
 
 * **Maximum number of sessions**
@@ -117,7 +117,7 @@
 
 Этот этап определяет "Адресное пространство" (Address Space) вашего сервера. Каждый объект binding создает узел (Node), видимый внешним клиентам.
 
-![Настройка переменных OPC UA Server](images/opcua_server_bindings.png)
+<img src="images/opcua_server_bindings.png" alt="Настройка переменных OPC UA Server" width="600">
 > Создать PLC привязку → [Шаги создания PLC привязки](./general_ru.md#создание-plc-привязки)
 >
 

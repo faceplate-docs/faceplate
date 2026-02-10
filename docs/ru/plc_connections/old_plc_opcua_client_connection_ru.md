@@ -15,7 +15,7 @@
 > Создать PLC cоединения → [Шаги создания PLC соединения](./general_ru.md#создание-plc-соединения)
 Здесь мы создаем защищенный канал связи с сервером.
 
-![Настройка соединения OPC UA](images/opcua_client.png)
+<img src="images/opcua_client.png" alt="Настройка соединения OPC UA" width="600">
 
 ### 1.1 Панель диагностики
 >Диагностика PLC соединения → [Диагностика](./general_ru.md#диагностика-diagnostics)
@@ -63,7 +63,7 @@
 
 В OPC UA адресация осуществляется по **NodeId** (Идентификатор узла).
 
-![Настройка привязки OPC UA](images/opcua_client_bindings.png)
+<img src="images/opcua_client_bindings.png" alt="Настройка привязки OPC UA" width="600">
 > Создать PLC привязку → [Шаги создания PLC привязки](./general_ru.md#создание-plc-привязки)
 > 
 ### 2.1 Параметры привязки

@@ -1,83 +1,53 @@
 # SNMP Configuration in Faceplate
 
-## General Description
-**SNMP** (Simple Network Management Protocol) is an open communication protocol defined by the Internet Engineering Task Force (IETF). The protocol is widely used for data exchange with network equipment (controllers, gateways, UPS).
+> See also: [PLC Connections overview](./general_en.md)
 
-The **Faceplate** environment supports protocol versions **SNMPv2** and **SNMPv3**.
+## Overview
+**SNMP** (Simple Network Management Protocol) is an open communication protocol defined by the IETF. It is widely used to exchange data with network equipment (controllers, gateways, UPS, and so on).
 
-The integration process consists of two stages:
-1.  **Creating a connection (`plc_snmp_connection`):** Configuring network transport and redundancy logic.
-2.  **Creating bindings (`plc_snmp_binding`):** Addressing specific variables (OID) inside the device.
+Faceplate supports **SNMPv2** and **SNMPv3**.
 
----
-
-## 1. Connection Configuration (Connection)
-> Create PLC connection → [Steps to create a PLC connection](./general_ru.md#создание-plc-соединения)
-> 
-At this stage, a transport channel to the equipment is created.
-
-![Connection settings window](images/snmp_connections.png)
-
-### 1.1 Diagnostics Panel
-The upper part of the window displays the driver status.
-> PLC connection diagnostics → [Diagnostics](./general_ru.md#диагностика-diagnostics)
-
-
-| Field | Description |
-| :--- | :--- |
-| **State** | **STOP** — driver is stopped.<br>**RUN** — driver is running. |
-| **Node** | Cluster node. Indicates on which node the process is running. |
-| **PID** | Process ID. |
-| **Error** | Error text. |
-| **Disabled** | |
-| **Memory limit (bytes)** | Memory limit (RAM limits (MB) for the process serving the connection). Memory capacity determines the number of variables (tags) that can be processed during the connection operation. |
-| **Actual connection** | Current executable communication channel. In systems with Redundancy, indicates exactly which connection (primary or backup) is currently exchanging data. |
-| **Master connection** | Link to the main communication channel. Filled for redundant connections. The field indicates which connection is the priority (Master), defining the logical pair for the redundancy mechanism. |
-
-### 1.2 General Settings (Settings)
-
-| Parameter | Description |
-| :--- | :--- |
-| **Name** | Unique name of the connection. |
-| **Title** | Title (description) of this object. |
-| **Period (ms)** | Base driver processing cycle. |
-| **Shutdown timeout (ms)** | Waiting time for correct connection termination. |
-| **Support for group requests** | **Yes** — enable the possibility of periodic General Interrogation. |
-| **Max. package length** | Maximum APDU size. Standard is 250 bytes. |
-| **Line Delay Ratio** | Delay coefficient for slow communication lines. |
-
-
-### 1.3 Protocol Parameters (SNMP) 
-| Field | Description |
-| :--- | :--- |
-| **Community** | **Community String.** Used as a password for accessing device data (for SNMP v1/v2c).<br>• **public** — standard value for "read-only" rights.<br>• **private** — standard value for "read-write" rights.<br>*Important: This value is case-sensitive and must match the settings in the polled device.* |
-| **IP** | IP address or domain name of the device to be polled.<br>Examples: `192.168.1.10` (network device) or `127.0.0.1` (local agent). |
-| **Port** | SNMP agent network port.<br>Standard port for requests: **161**. |
-| **Agent** | Agent identifier or additional driver parameter. Often defaults to `0` or `1`. |
-
+Integration is done in two stages:
+1. **Connection (`plc_snmp_connection`):** Network transport and redundancy settings.
+2. **Binding (`plc_snmp_binding`):** Address specific device variables (OID).
 
 ---
 
-## 2. Variable Configuration (Binding)
+## 1. Connection setup (Connection)
+> Create a PLC connection -> [Create a PLC connection](./general_en.md#create-a-plc-connection)
 
-Inside the connection, `plc_snmp_binding` objects are created. Each object corresponds to one variable (OID) on the device.
+This step creates the transport channel to the device.
 
-![Binding settings window](images/snmp_bindings.png)
-> Create PLC binding → [Steps to create a PLC binding](./general_ru.md#создание-plc-привязки)
+<img src="images/snmp_connections.png" alt="SNMP connection setup" width="600">
 
-### 2.1 Binding Parameters
+> Diagnostics and common settings are described in [Common connection settings](./general_en.md#common-connection-settings).
+
+### 1.1 Protocol parameters (SNMP)
+| Field | Description |
+| :--- | :--- |
+| **Community** | **Community string.** Used as a password for SNMP v1/v2c.<br>- **public** - standard read-only community.<br>- **private** - standard read-write community.<br>*Important: case-sensitive, must match device settings.* |
+| **IP** | IP address or DNS name of the device.<br>Examples: `192.168.1.10` (network device) or `127.0.0.1` (local agent). |
+| **Port** | SNMP agent port. Standard request port: **161**. |
+| **Agent** | Agent identifier or driver parameter. Used for SNMPv3 authentication; for SNMPv2 keep the default (often `0` or `1`). |
+
+---
+
+## 2. Binding setup (Binding)
+
+Within the connection, create `plc_snmp_binding` objects. Each object maps to one OID on the device.
+
+<img src="images/snmp_bindings.png" alt="SNMP binding setup" width="600">
+
+> Create a PLC binding -> [Create a PLC binding](./general_en.md#create-a-plc-binding)
+
+> Common binding fields are described in [Common PLC binding fields](./general_en.md#common-plc-binding-fields).
+
+### 2.1 Binding-specific parameters
 
 | Field | Description |
 | :--- | :--- |
-| **Name** | Name of the binding. |
-| **Title** | Title (description) for this object. |
-| **State** | **STOP** — binding is stopped.<br>**RUN** — binding is running. |
-| **Tag** | Faceplate system tag. The incoming value will be written to the selected field of the selected object. See [Binding to a tag](./general_ru.md#привязка-к-тегу-на-примере-архива) |
-| **Transformation** | Value transformation. See [Transformation](./transformation_ru.md). |
-| **Access** | Variable access rights:<br>• **R** — Read (Read only).<br>• **W** — Write (Write only).<br>• **RW** — Read/Write (Read and write). |
 | **Address** | **OID (Object Identifier).** Variable address in the SNMP hierarchy.<br>*Examples:* `1.3.6.1.2.1.1.1.0` (absolute) or `1.6.3.1` (relative, if supported). |
 
-
-> Error in PLC binding -> [binding error](./general_ru.md#ошибка-в-привязке)
+> Binding error -> [Binding errors](./general_en.md#binding-errors)
 
 ---
