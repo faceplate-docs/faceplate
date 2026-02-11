@@ -116,7 +116,7 @@ The mechanism's operation logic depends on the component's role in the data exch
 ## **1.3. Universal Components** {#1.3.-universal-components}
 
 These components are responsible for data transformation, filtering, and translation between module components and internal Faceplate subsystems.
-![Data flow directions](/IoT/images/iot_0.png)
+![Data flow directions](./images/iot_0.png)
 
 ### **1.3.1. Programmable Scripts (iot\_script)** {#1.3.1.-programmable-scripts-(iot_script)}
 
@@ -131,7 +131,7 @@ Used for implementing complex transformation logic when standard JSON mapping is
 Designed for simple "one-to-one" exchange scenarios without intermediate logic.
 
 * **iot\_tag\_source:** Reads the current tag value and sends it to the external system in its original form. Optimal for transmitting numeric values and simple strings.  
-![iot_tag_source](/IoT/images/iot_4.png)
+![iot_tag_source](./images/iot_4.png)
 
 * **iot\_tag\_action:** Receives data from the external system and writes it directly to the specified system tag without additional processing. Supports atomic value updates.
 
@@ -164,7 +164,7 @@ Located in the upper right corner of each component interface.
 **Config:** Opens the component configuration panel.
 
 **Delete:** Removes the current component from the system (warning: non-recoverable operation).
-![Status Panel](/IoT/images/iot_3.png)
+![Status Panel](./images/iot_3.png)
 
 ## **1.5 Request Triggering Mechanism (Triggers Tab)** {#1.5-request-triggering-mechanism-(triggers-tab)}
 
@@ -219,7 +219,7 @@ The `iot_http_client_connection` component initializes requests to remote server
 * **Key \-** Path to the private key file for mutual TLS (mTLS). `/etc/ssl/client.key`  
 * **Certificate \-** Path to the client SSL certificate file for HTTPS. `/etc/ssl/client.crt`  
 * **CA Certificate \-** Path to the certificate authority certificate for server verification. `/etc/ssl/certs/rootCA.pem`
-![Client (iot_http_client_connection](/IoT/images/iot_2.png)
+![Client (iot_http_client_connection](./images/iot_2.png)
 ### **2.1.2. Server (iot\_http\_server\_connection)** {#2.1.2.-server-(iot_http_server_connection)}
 
 This component allows the Faceplate system to act as an HTTP server, accepting requests from external clients (SCADA systems, web applications, sensors) for reading or writing data.
@@ -243,7 +243,7 @@ When configuring the connection, you can specify a list of permanent headers tha
 * **User-Agent:** Identifying the Faceplate system client.
 
 **Important:** Configuring **Path** and **Method** is mandatory.
-![Server (iot_http_server_connection)](/IoT/images/iot_5.png)
+![Server (iot_http_server_connection)](./images/iot_5.png)
 ## **2.2. MQTT** {#2.2.-mqtt}
 
 MQTT (Message Queuing Telemetry Transport) is an open network protocol at the application level, operating over TCP/IP.
@@ -271,11 +271,11 @@ The component is designed for publishing data from the Faceplate system to speci
 * **Key \-** Path to the private key file for mutual TLS (mTLS). `/etc/ssl/client.key`  
 * **Certificate \-** Path to the client SSL certificate file for HTTPS. `/etc/ssl/client.crt`  
 * **CA Certificate \-** Path to the certificate authority certificate for server verification. `/etc/ssl/certs/rootCA.pem`
-![MQTT Publisher](/IoT/images/iot_6.png)
+![MQTT Publisher](./images/iot_6.png)
 ### **2.2.3. Subscriber (iot\_mqtt\_subscriber)** {#2.2.3.-subscriber-(iot_mqtt_subscriber)}
 
 The component is designed for receiving data from external systems by subscribing to topics. To exchange data with the broker, you need to configure:
-![MQTT Subscriber](/IoT/images/iot_7.png)
+![MQTT Subscriber](./images/iot_7.png)
 * **Host / Port:** MQTT broker address and port (default 1883 or 8883 for SSL).  
 * **Client ID:** Determined by Faceplate software, for example  
 * faceplate\_emqtt\_n01BnvEEqYTTfLjRdt4ke4DpVIvzycdlRMhz3tsKpJEteupJY57RH5XOXTw3fWbPD4eCmut2gaepwdjFekklmg=.  
@@ -304,7 +304,7 @@ To exchange data, you need to configure:
 * **Key \-** Path to the private key file for mutual TLS (mTLS). `/etc/ssl/client.key`  
 * **Certificate \-** Path to the client SSL certificate file for HTTPS. `/etc/ssl/client.crt`  
 * **CA Certificate \-** Path to the certificate authority certificate for server verification. `/etc/ssl/certs/rootCA.pem`
-![Client (iot_websocket_client_connection)](/IoT/images/iot_9.png)
+![Client (iot_websocket_client_connection)](./images/iot_9.png)
 ### **2.3.2. Server (iot\_websocket\_server\_connection)** {#2.3.2.-server-(iot_websocket_server_connection)}
 
 The **iot\_websocket\_server\_connection** component turns the Faceplate system into a **WebSocket server**. Unlike the client, which connects to external resources itself, the server component opens a port and **awaits incoming connections** from external clients (browsers, mobile applications, or third-party controllers).
@@ -316,5 +316,7 @@ To exchange data, you need to configure:
 * **Path (Endpoint) \-** URL path for connecting specific clients.`/telemetry` or `/commands`
 
 **Start as a client \-** Hybrid mode in which the server can initiate an outgoing WebSocket connection as a client.
-![Server (iot_websocket_server_connection)](/IoT/images/iot_10.png)
+![Server (iot_websocket_server_connection)](./images/iot_10.png)
+
 #
+### written by Marlen Meimanov
