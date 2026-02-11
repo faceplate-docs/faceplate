@@ -116,7 +116,7 @@ Faceplate
 ## **1.3. Универсальные компоненты** {#1.3.-универсальные-компоненты}
 
 Эти компоненты отвечают за преобразование, фильтрацию и трансляцию данных между компонентами модуля и внутренними подсистемами Faceplate.
-![Направления потока данных](/IoT/images/iot_0.png)
+![Направления потока данных](./images/iot_0.png)
 
 ### **1.3.1. Программируемые скрипты (iot\_script)** {#1.3.1.-программируемые-скрипты-(iot_script)}
 
@@ -131,7 +131,7 @@ Faceplate
 Предназначена для простых сценариев обмена «один к одному» без промежуточной логики.
 
 * **iot\_tag\_source:** Считывает текущее значение тега и отправляет его во внешнюю систему в исходном виде. Оптимально для передачи числовых значений и простых строк.  
-![iot_tag_source](/IoT/images/iot_4.png)
+![iot_tag_source](./images/iot_4.png)
 * **iot\_tag\_action:** Принимает входящее значение (Payload) и записывает его напрямую в системный тег. Включает механизм автоматического приведения типов (например, из текста в число).
 ![iot_tag_action](/IoT/images/iot_8.png)
 ### **1.3.3. Работа с событиями (iot\_eventlog)** {#1.3.3.-работа-с-событиями-(iot_eventlog)}
@@ -139,17 +139,17 @@ Faceplate
 Позволяет транслировать аварийные сообщения и системные события.
 
 * **iot\_eventlog\_source (Экспорт):** Подписывается на шину событий Faceplate и передает новые записи во внешние системы (например, отправка уведомления о критической аварии в Telegram или внешнюю базу).
-![iot_eventlog_source](/IoT/images/iot_11.png)  
+![iot_eventlog_source](./images/iot_11.png)  
 * **iot\_eventlog\_action (Импорт):** Позволяет внешней системе создавать записи в журнале событий Faceplate (например, получение уведомления от удаленного контроллера о вскрытии шкафа).
-![iot_eventlog_action ](/IoT/images/iot_12.png)
+![iot_eventlog_action ](./images/iot_12.png)
 ### **1.3.4. Исторические данные (iot\_ts)** {#1.3.4.-исторические-данные-(iot_ts)}
 
 Компоненты для пакетной передачи архивных массивов, а не мгновенных значений.
 
 * **iot\_ts\_source (Экспорт архива):** Выгружает накопленные данные из архива Faceplate за определенный интервал времени (from/to) для передачи в облачные аналитические платформы.
-![iot_ts_source](/IoT/images/iot_13.png)  
+![iot_ts_source](./images/iot_13.png)  
 * **iot\_ts\_action (Импорт архива):** Позволяет записывать данные в архив системы «задним числом». Это критично для систем, работающих в режиме офлайн, когда накопленные на устройстве данные передаются пакетом после восстановления связи.
-![iot_ts_action](/IoT/images/iot_14.png) 
+![iot_ts_action](./images/iot_14.png) 
 ## **1.4. Панель состояния** {#1.4.-панель-состояния}
 
 Этот раздел описывает панель мониторинга и управления, которая является идентичной для всех типов соединений (HTTP, MQTT, WebSocket).
@@ -168,7 +168,7 @@ Faceplate
 * **Ошибка \-** Текстовое поле для вывода системных сообщений. При нормальной работе отображается `no errors`. При сбое — код и описание ошибки.  
 * **Ограничение памяти \-** Лимит ОЗУ, выделяемой под данный процесс (в байтах). Защищает систему от утечек памяти при получении аномально больших объемов данных.  
 * **Диагностика** \- открывает окно диагностики.
-![Панель состояния](/IoT/images/iot_3.png)
+![Панель состояния](./images/iot_3.png)
 ## **1.5 Механизма запуска запросов (вкладка Triggers)** {#1.5-механизма-запуска-запросов-(вкладка-triggers)}
 
 Триггеры определяют событие или условие, при котором компонент (например, `iot_http_client` или `iot_mqtt_publisher`) формирует пакет данных и отправляет его на сервер.
@@ -221,7 +221,7 @@ HTTP (HyperText Transfer Protocol) — это протокол передачи 
 * **Key \-** Путь к файлу приватного ключа для двустороннего TLS (mTLS). `/etc/ssl/client.key`  
 * **Certificate \-** Путь к файлу SSL-сертификата клиента для HTTPS. `/etc/ssl/client.crt`  
 * **CA Certificate \-** Путь к сертификату центра сертификации для проверки сервера. `/etc/ssl/certs/rootCA.pem`
-![Клиент (iot_http_client_connection](/IoT/images/iot_2.png)
+![Клиент (iot_http_client_connection](./images/iot_2.png)
 ### **2.1.2. Сервер (iot\_http\_server\_connection)** {#2.1.2.-сервер-(iot_http_server_connection)}
 
 Этот компонент позволяет системе Faceplate выступать в роли HTTP-сервера, принимая запросы от внешних клиентов (SCADA-систем, веб\-приложений, датчиков) для чтения или записи данных.
@@ -245,7 +245,7 @@ HTTP (HyperText Transfer Protocol) — это протокол передачи 
 * **User-Agent:** Идентификация клиента системы Faceplate.
 
 **Важно:** Настройка **Точка** и **Method** является обязательной.
-![Сервер (iot_http_server_connection)](/IoT/images/iot_5.png)
+![Сервер (iot_http_server_connection)](./images/iot_5.png)
 ## **2.2. MQTT** {#2.2.-mqtt}
 
 MQTT (Message Queuing Telemetry Transport) — это открытый сетевой протокол прикладного уровня, работающий поверх TCP/IP.
@@ -273,11 +273,11 @@ MQTT (Message Queuing Telemetry Transport) — это открытый сете�
 * **Key \-** Путь к файлу приватного ключа для двустороннего TLS (mTLS). `/etc/ssl/client.key`  
 * **Certificate \-** Путь к файлу SSL-сертификата клиента для HTTPS. `/etc/ssl/client.crt`  
 * **CA Certificate \-** Путь к сертификату центра сертификации для проверки сервера. `/etc/ssl/certs/rootCA.pem`
-![MQTT Publisher](/IoT/images/iot_6.png)
+![MQTT Publisher](./images/iot_6.png)
 ### **2.2.3. Subscriber (iot\_mqtt\_subscriber)** {#2.2.3.-subscriber-(iot_mqtt_subscriber)}
 
 Компонент предназначен для получения данных из внешних систем через подписку на топики. Для обмена данными с брокером необходимо настроить:
-![MQTT Subscriber](/IoT/images/iot_7.png)
+![MQTT Subscriber](./images/iot_7.png)
 * **Host / Port:** Адрес и порт MQTT-брокера (по умолчанию 1883 или 8883 для SSL).  
 * **Client ID:** Определяется ПО Faceplate например  
 * faceplate\_emqtt\_n01BnvEEqYTTfLjRdt4ke4DpVIvzycdlRMhz3tsKpJEteupJY57RH5XOXTw3fWbPD4eCmut2gaepwdjFekklmg=.  
@@ -306,7 +306,7 @@ WebSocket \- это протокол связи, который устанавл
 * **Key \-** Путь к файлу приватного ключа для двустороннего TLS (mTLS). `/etc/ssl/client.key`  
 * **Certificate \-** Путь к файлу SSL-сертификата клиента для HTTPS. `/etc/ssl/client.crt`  
 * **CA Certificate \-** Путь к сертификату центра сертификации для проверки сервера. `/etc/ssl/certs/rootCA.pem`
-![Клиент (iot_websocket_client_connection)](/IoT/images/iot_9.png)
+![Клиент (iot_websocket_client_connection)](./images/iot_9.png)
 ### **2.3.2. Сервер (iot\_websocket\_server\_connection)** {#2.3.2.-сервер-(iot_websocket_server_connection)}
 
 Компонент **iot\_websocket\_server\_connection** превращает систему Faceplate в **WebSocket-сервер**. В отличие от клиента, который сам подключается к внешним ресурсам, серверный компонент открывает порт и **ожидает входящие подключения** от внешних клиентов (браузеров, мобильных приложений или сторонних контроллеров).
@@ -318,6 +318,6 @@ WebSocket \- это протокол связи, который устанавл
 * **Path (Endpoint) \-** URL-путь для подключения конкретных клиентов.`/telemetry` или `/commands`
 
 **Start as a client \-** Гибридный режим, при котором сервер может инициировать исходящее WebSocket-подключение как клиент.
-![Сервер (iot_websocket_server_connection)](/IoT/images/iot_10.png)
+![Сервер (iot_websocket_server_connection)](./images/iot_10.png)
 # 
 ### written by Marlen Meimanov
