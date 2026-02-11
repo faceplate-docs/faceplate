@@ -320,4 +320,4 @@ WebSocket \- это протокол связи, который устанавл
 **Start as a client \-** Гибридный режим, при котором сервер может инициировать исходящее WebSocket-подключение как клиент.
 ![Сервер (iot_websocket_server_connection)](/IoT/images/iot_10.png)
 # 
-
+### written by Marlen Meimanov
