@@ -244,4 +244,6 @@ The main menu of FACEPLATE Studio editors. Located on the left, it includes edit
 
 ### Page navigation bar
 
-The project page navigation bar is located at the bottom of the interface and is used to navigate through the object list pages. It allows you to switch between pages, select the number of items displayed, and control your current position in the list.
+The project page navigation bar is located at the bottom of the interface and is used to navigate through the object list pages. It allows you to switch between pages, select the number of items displayed, and control your current position in the list.  
+
+> _written by nkn_ 

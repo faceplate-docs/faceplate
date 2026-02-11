@@ -61,4 +61,6 @@ To ensure stable operation and prevent performance degradation of the Ecomet DBM
 
 * Audit: Regularly check write queues and database size.  
 * Power: It is mandatory to use a UPS with a configured graceful shutdown script when the battery charge is low to maintain the integrity of RocksDB indexes.  
-* Network Connectivity: When running Historian on a separate node, it is recommended to use a dedicated network interface (VLAN) to protect process traffic from delays.
+* Network Connectivity: When running Historian on a separate node, it is recommended to use a dedicated network interface (VLAN) to protect process traffic from delays.  
+
+> _written by nkn_ 

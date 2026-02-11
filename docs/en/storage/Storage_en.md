@@ -194,4 +194,6 @@ You need to compile and save the changes. Clicking "save" will begin the databas
   * zaya\_schema\_srv:handle\_call/3:288 newdb\_ts\_database\_buffer\_0 copy removed from 'fp@server1.fp' (completion of migration process)
 
 The *newdb* database shard will be migrated from one server to another, which will ultimately use the second server's resources to store information.  
-This way, you can migrate the required database shards between servers in a cluster.
+This way, you can migrate the required database shards between servers in a cluster.  
+
+> _written by nkn_ 
