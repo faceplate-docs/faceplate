@@ -27,7 +27,7 @@
 # **Введение** {#введение}
 
 Интеграция Faceplate/EMS с Power BI превращает сырые технологические данные SCADA в управленческую аналитику. В основе лежит принцип «запрос-ответ»: Power BI выступает клиентом, который через HTTP-шлюз забирает данные из промышленной базы.
-![Схема интеграции](/PowerBI_en/images/img_1.png)
+![Схема интеграции](./images/img_1.png)
 
 Архитектура решения
 
@@ -202,5 +202,5 @@ archive\_handler:get\_json(\#{
 
 [PowerBI Desktop](https://www.microsoft.com/ru-ru/power-platform/products/power-bi/desktop?market=ru) \- это бесплатное приложение для Windows, предназначенное для глубокого анализа данных и создания профессиональных интерактивных отчетов. Оно служит основным инструментом разработки в экосистеме Microsoft Power BI.
 
- 
+ ### written by Marlen Meimanov
 
