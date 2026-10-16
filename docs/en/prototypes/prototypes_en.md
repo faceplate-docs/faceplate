@@ -14,7 +14,7 @@ A document for integration engineers who build projects in Studio. All examples 
 | Synchronization (Sync) | Transfer of the current state of a prototype to its instances in the selected modes |
 | Nested prototype | A prototype whose instance lies in the content of another prototype |
 | Prototype group | The folder of a prototype in the type selection dialog (`prototypes / <group>`) |
-| General View | The Studio section with the tree of project objects |
+| General View | The Studio section with the tree of project objects (see [Project structure](../Project_strucure/FACEPLATE-start.md)) |
 | Run-time field | A field with the **Run-time** flag. Shown on the **Runtime** tab of the instance form |
 | Storage `disc` / `ramdisc` / `ram` | Where the field value is stored: on disk; in memory with a copy on disk; in memory only |
 | Index `simple` / `3gram` / `datetime` | A search index of the field: by exact value; by substring; by date and time |
@@ -22,7 +22,7 @@ A document for integration engineers who build projects in Studio. All examples 
 
 # Introduction
 
-A **prototype** is a template for any repeating part of a project: a piece of equipment, a plant section, a metering point, a set of connections or calculations — anything that is built from project objects and occurs more than once. The structure is described once in the prototype, and any number of **instances** is then created from it. Each instance receives a copy of the structure. Changes to the prototype are transferred to all instances with the **Sync** command.
+A **prototype** is a template for any repeating part of a project: a piece of equipment, a plant section, a metering point, a set of connections or [calculations](../calculation/calculation_en.md) — anything that is built from project objects and occurs more than once. The structure is described once in the prototype, and any number of **instances** is then created from it. Each instance receives a copy of the structure. Changes to the prototype are transferred to all instances with the **Sync** command.
 
 The section is in the Studio main menu: **Prototypes**. Every prototype has three parts, each opened with its own button:
 
@@ -83,7 +83,7 @@ Add the folder `motor` to the `Pump` content:
 
    ![Folder form in the content](images/content_folder_form.png)
 
-Objects of other types are added the same way, from their groups in the type selection dialog: `iot`, `plc`, `primitives`, `prototypes`, `system`.
+Objects of other types are added the same way, from their groups in the type selection dialog: `iot` ([IoT](../IoT/IoT.md)), `plc` ([PLC connections](../plc_connections/general_en.md)), `primitives` ([Primitives](../primitives/Primitives_en.md)), `prototypes`, `system` (for example, [calculations](../calculation/calculation_en.md) and [User Script](../user_script/user_script_en.md)).
 
 The **Folder** line of the form shows the path from the content root: `/` is the root itself. In the instance `P_201`, the folder `/motor` ends up at `P_201/motor`.
 
