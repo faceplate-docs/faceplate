@@ -100,5 +100,3 @@ forecast on a screen, disabling a model, bulk review of models.
 For bulk review of all models in a project, use the
 [project export](project_export_en.md).
 
----
-Русская версия: [forecasting_models_ru.md](../../ru/machine_learning/forecasting_models_ru.md)

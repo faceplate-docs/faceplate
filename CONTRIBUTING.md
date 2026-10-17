@@ -7,8 +7,10 @@ docs/
   en/        English pages
   ru/        Russian pages
   source/    original .docx files that some pages were converted from
-tools/       helper scripts (link checker)
+tools/       helper scripts (link checker, site build)
+mkdocs.*.yml MkDocs configuration: shared settings and one nav per language
 README.md    table of contents for both languages
+DEPLOYMENT.md how the site is built and deployed
 ```
 
 Each topic lives in its own folder with an `images/` sub-folder next to the
@@ -41,6 +43,20 @@ the table of contents in `README.md`.
 
 - Keep product names and identifiers exactly as they appear in FACEPLATE
   Studio, for example `prototype@model_control`, `fp://`, `output_range`.
+
+## Previewing the site
+
+The documentation is published as a website built with MkDocs (see
+[DEPLOYMENT.md](DEPLOYMENT.md)). To preview your changes locally:
+
+```bash
+pip install -r requirements.txt
+mkdocs serve -f mkdocs.en.yml      # or mkdocs.ru.yml
+```
+
+A new page appears in the site menu only after it is added to the `nav`
+section of `mkdocs.en.yml` or `mkdocs.ru.yml`, with its path relative to
+`docs/en/` or `docs/ru/`.
 
 ## Checking links before you push
 

@@ -7,7 +7,9 @@ it, and giving access to it through the **Studio** (development) and
 
 The documentation is kept in two languages under `docs/en` and `docs/ru`.
 Source `.docx` files that some pages were converted from live in `docs/source`.
-See [CONTRIBUTING.md](CONTRIBUTING.md) for how pages are organised.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for how pages are organised and
+[DEPLOYMENT.md](DEPLOYMENT.md) for how the documentation website is built
+and deployed (MkDocs + Material, Docker or GitHub Pages).
 
 ---
 

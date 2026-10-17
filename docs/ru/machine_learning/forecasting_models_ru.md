@@ -102,5 +102,3 @@ TODO: создание модели в интерфейсе, обучение и
 Для массового просмотра всех моделей проекта используйте
 [экспорт проекта](project_export_ru.md).
 
----
-English version: [forecasting_models_en.md](../../en/machine_learning/forecasting_models_en.md)

@@ -44,5 +44,3 @@
 TODO: как запустить экспорт в интерфейсе и выгружаются ли другие листы или
 типы объектов.
 
----
-English version: [project_export_en.md](../../en/machine_learning/project_export_en.md)

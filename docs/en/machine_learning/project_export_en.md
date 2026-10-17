@@ -44,5 +44,3 @@ before matching.
 TODO: how to trigger the export in the UI and whether other sheets or
 object types are exported.
 
----
-Русская версия: [project_export_ru.md](../../ru/machine_learning/project_export_ru.md)

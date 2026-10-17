@@ -1,0 +1,65 @@
+INHERIT: mkdocs.base.yml
+
+docs_dir: docs/ru
+site_dir: site/ru
+site_url: !ENV [DOCS_SITE_URL_RU, "http://localhost:8080/ru/"]
+site_name: Документация FACEPLATE
+
+theme:
+  language: ru
+
+plugins:
+  - search:
+      lang:
+        - ru
+        - en
+
+exclude_docs: |
+  .DS_Store
+  *.docx
+  ~$*
+  title.md
+
+nav:
+  - Общие сведения:
+      - Общие сведения, запуск и лицензирование: readme.md
+      - Первые шаги в FACEPLATE Studio: Project_strucure/FACEPLATE-start.md
+      - Установка в Docker-контейнере: samples/deploy as docker.md
+  - Сбор данных:
+      - PLC-соединения, обзор: plc_connections/general_ru.md
+      - Modbus TCP/RTU: plc_connections/plc_modbus_connection_ru.md
+      - OPC UA Client: plc_connections/old_plc_opcua_client_connection_ru.md
+      - OPC UA Server: plc_connections/old_plc_opcua_server_connection_ru.md
+      - OPC DA (Classic): plc_connections/plc_opcda_connection_ru.md
+      - Siemens S7 (ISO-on-TCP): plc_connections/old_plc_s7_connection_ru.md
+      - Ethernet/IP: plc_connections/plc_ethernet_ip_connection_ru.md
+      - IEC 60870-5-101 Client: plc_connections/plc_iec101_client_connection_ru.md
+      - IEC 60870-5-101 Server: plc_connections/plc_iec101_server_connection_ru.md
+      - IEC 60870-5-104 Client: plc_connections/plc_iec104_client_connection_ru.md
+      - IEC 60870-5-104 Server: plc_connections/plc_iec104_server_connection_ru.md
+      - M-Bus (Meter-Bus): plc_connections/plc_mbus_connection_ru.md
+      - SNMP: plc_connections/plc_snmp_connection_ru.md
+      - Функция Transformation: plc_connections/transformation_ru.md
+      - Диагностика: plc_connections/diagnostics_ru.md
+      - Модуль IoT-соединений: IoT/IoT.docx.md
+  - Хранение данных:
+      - Хранилища: storage/Storage_ru.md
+      - Архивы и тренды: Архивы и Тренды.md
+      - Historian-сервер: historian/historian_server.md
+  - Интеграции:
+      - Microsoft Power BI: PowerBI_ru/PowerBi_FP_ru.md
+      - REST API интерфейс: samples/connectivity/rest api/rest api.md
+      - OPC UA Client (пример): samples/connectivity/opc_ua_client/opc_ua_client.md
+      - Power BI (пример): samples/connectivity/powerbi/powerbi_ru.md
+      - Загрузка данных в InfluxDB: samples/connectivity/influxdb/influxdb.md
+  - Шаблоны прототипов:
+      - Шаблон интеграции с InfluxDB: samples/prptotypes/influxdb/influxdb.md
+      - Шаблон Pump: samples/prptotypes/pump/pump.md
+      - Шаблон Sensor: samples/prptotypes/sensor/sensor.md
+  - Машинное обучение:
+      - Модели прогнозирования: machine_learning/forecasting_models_ru.md
+      - Экспорт проекта: machine_learning/project_export_ru.md
+  - Администрирование:
+      - Резервирование ресурсов: Redundancy/Redundancy_ru.md
+      - Модуль Git: git/git_ru.md
+      - Интеграция с Git (кратко): Git в Faceplate.md
