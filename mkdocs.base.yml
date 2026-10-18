@@ -1,0 +1,74 @@
+# Shared MkDocs settings for both language builds.
+# Language-specific files (mkdocs.en.yml, mkdocs.ru.yml) inherit from this one
+# and set docs_dir, site_dir, language and nav.
+
+site_name: FACEPLATE Documentation
+site_author: Faceplate
+repo_url: https://github.com/faceplate-docs/faceplate
+edit_uri: edit/dev/docs/
+copyright: "&copy; Faceplate"
+
+theme:
+  name: material
+  features:
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - navigation.footer
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.action.edit
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: blue grey
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: blue grey
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
+# Language switcher shown in the header. Links are relative to the language
+# site root, so they work both at "/" and under a sub-path such as
+# "/faceplate/" on GitHub Pages.
+extra:
+  alternate:
+    - name: English
+      link: ../en/
+      lang: en
+    - name: Русский
+      link: ../ru/
+      lang: ru
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+
+# Files inside docs_dir that must not be published.
+exclude_docs: |
+  .DS_Store
+  *.docx
+  ~$*
+
+validation:
+  omitted_files: info
+  absolute_links: warn
+  unrecognized_links: warn

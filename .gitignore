@@ -1,1 +1,10 @@
 *.pdf
+
+# Built documentation site and local tooling
+site/
+.venv/
+__pycache__/
+
+# macOS and Office temporary files
+.DS_Store
+~$*
