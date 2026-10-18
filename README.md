@@ -1,4 +1,4 @@
-<p align="center">
+<p align="left">
   <a href="https://faceplate-docs.github.io/faceplate/"><img src="brand/assets/faceplate-logo.png" alt="FACEPLATE" width="420"></a>
   <br>
   <em>Physical AI for energy and industrial infrastructure</em> · <a href="https://faceplate.io/">faceplate.io</a>
