@@ -1,0 +1,97 @@
+/* FACEPLATE brand styling for the Material for MkDocs theme.
+   Brand red is taken from the FACEPLATE wordmark (#D71921). */
+
+:root {
+  --fp-red: #d71921;
+  --fp-red-dark: #b3151b;
+  --fp-ink: #1c1c1e;
+}
+
+/* Accent and link colours */
+:root,
+[data-md-color-scheme="default"],
+[data-md-color-scheme="slate"] {
+  --md-accent-fg-color: var(--fp-red);
+  --md-accent-fg-color--transparent: rgba(215, 25, 33, 0.1);
+  --md-typeset-a-color: var(--fp-red);
+}
+
+/* Header: light background with the red wordmark (light scheme) */
+[data-md-color-scheme="default"] {
+  --md-primary-fg-color: #ffffff;
+  --md-primary-fg-color--light: #ffffff;
+  --md-primary-fg-color--dark: #f2f2f2;
+  --md-primary-bg-color: var(--fp-ink);
+  --md-primary-bg-color--light: rgba(28, 28, 30, 0.7);
+}
+
+/* Header: near-black background with the red wordmark (dark scheme) */
+[data-md-color-scheme="slate"] {
+  --md-primary-fg-color: #141416;
+  --md-primary-fg-color--light: #141416;
+  --md-primary-fg-color--dark: #0c0c0d;
+  --md-primary-bg-color: #ffffff;
+  --md-primary-bg-color--light: rgba(255, 255, 255, 0.7);
+}
+
+/* Thin brand-red line under the header */
+.md-header {
+  box-shadow: 0 1px 0 var(--fp-red), 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+/* Wordmark instead of the icon + site name */
+.md-header__button.md-logo {
+  padding: 0.4rem 0.6rem;
+  margin: 0;
+}
+.md-header__button.md-logo img {
+  height: 1.05rem;
+  width: auto;
+}
+.md-header__title {
+  display: none;
+}
+
+/* Active navigation items and the mobile drawer title */
+.md-nav__link--active,
+.md-nav__link:focus,
+.md-nav__link:hover {
+  color: var(--fp-red);
+}
+.md-nav__title .md-nav__button.md-logo img {
+  height: 1.05rem;
+  width: auto;
+}
+
+/* Search field on the light header */
+[data-md-color-scheme="default"] .md-search__form {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+[data-md-color-scheme="default"] .md-search__input::placeholder,
+[data-md-color-scheme="default"] .md-search__icon {
+  color: rgba(28, 28, 30, 0.6);
+}
+
+/* Headings and footer */
+.md-typeset h1 {
+  color: var(--fp-ink);
+  font-weight: 500;
+}
+[data-md-color-scheme="slate"] .md-typeset h1 {
+  color: #ffffff;
+}
+.md-footer {
+  background-color: var(--fp-ink);
+}
+
+/* Keep the wordmark visible on narrow screens, where Material would
+   normally hide the logo and show the site title instead. */
+@media screen and (max-width: 76.1875em) {
+  .md-header__button.md-logo {
+    display: inline-block;
+    padding: 0.4rem 0.4rem;
+  }
+  .md-header__button.md-logo img {
+    height: 0.9rem;
+  }
+}

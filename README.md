@@ -1,3 +1,7 @@
+<p align="center">
+  <a href="https://faceplate-docs.github.io/faceplate/"><img src="brand/assets/faceplate-logo.png" alt="FACEPLATE" width="420"></a>
+</p>
+
 # Faceplate Documentation
 
 Documentation for **FACEPLATE**, a software package for collecting data from
@@ -162,9 +166,10 @@ docs/
 ```
 
 Other files at the repository root: `mkdocs.base.yml`, `mkdocs.en.yml` and
-`mkdocs.ru.yml` (site configuration and navigation), `tools/` (site build and
-link checker), `Dockerfile`, `deploy/nginx.conf`, `docker-compose.yml`
-(self-hosting) and `.github/workflows/docs.yml` (CI and GitHub Pages).
+`mkdocs.ru.yml` (site configuration and navigation), `brand/assets/` (logo,
+favicon and brand stylesheet), `tools/` (site build and link checker),
+`Dockerfile`, `deploy/nginx.conf`, `docker-compose.yml` (self-hosting) and
+`.github/workflows/docs.yml` (CI and GitHub Pages).
 
 ## Contents (English)
 

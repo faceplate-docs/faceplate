@@ -87,6 +87,22 @@ any static hosting or S3-compatible storage. The server must serve
 `index.html` for directories (in `deploy/nginx.conf` this is
 `try_files $uri $uri/ $uri/index.html`).
 
+## Branding
+
+Brand assets live in `brand/assets/` and are copied into every build through
+`theme.custom_dir` in `mkdocs.base.yml`:
+
+| File | Use |
+|---|---|
+| `faceplate-logo.png` | Wordmark shown in the site header and in README.md |
+| `faceplate-mark.png`, `favicon.png`, `apple-touch-icon.png`, `favicon-32.png` | The "A" mark cropped from the wordmark, used as the favicon |
+| `brand.css` | Brand colours and header layout for the Material theme |
+
+The brand red is `#D71921`, sampled from the wordmark. Light scheme: white
+header with the red wordmark and a red rule beneath it. Dark scheme:
+near-black header. Links, active navigation items and accents use the brand
+red. To change a colour, edit the variables at the top of `brand.css`.
+
 ## Adding pages to the site
 
 A page appears in the site menu only when it is listed in the `nav` section

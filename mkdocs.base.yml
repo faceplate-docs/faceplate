@@ -10,6 +10,11 @@ copyright: "&copy; Faceplate"
 
 theme:
   name: material
+  # Brand assets (logo, favicon, stylesheet) live in brand/assets and are
+  # copied into every build through custom_dir.
+  custom_dir: brand
+  logo: assets/faceplate-logo.png
+  favicon: assets/favicon.png
   features:
     - navigation.sections
     - navigation.expand
@@ -19,21 +24,25 @@ theme:
     - search.highlight
     - content.code.copy
     - content.action.edit
+  # Colours are defined in brand/assets/brand.css (FACEPLATE red #D71921).
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: blue grey
-      accent: indigo
+      primary: custom
+      accent: custom
       toggle:
         icon: material/brightness-7
         name: Switch to dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
-      primary: blue grey
-      accent: indigo
+      primary: custom
+      accent: custom
       toggle:
         icon: material/brightness-4
         name: Switch to light mode
+
+extra_css:
+  - assets/brand.css
 
 # Language switcher shown in the header. Links are relative to the language
 # site root, so they work both at "/" and under a sub-path such as
