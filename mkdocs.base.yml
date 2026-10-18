@@ -25,21 +25,21 @@ theme:
     - content.code.copy
     - content.action.edit
   # Colours are defined in brand/assets/brand.css (FACEPLATE red #D71921).
+  # Dark is the default, matching faceplate.io; light is available via the
+  # toggle in the header.
   palette:
-    - media: "(prefers-color-scheme: light)"
-      scheme: default
-      primary: custom
-      accent: custom
-      toggle:
-        icon: material/brightness-7
-        name: Switch to dark mode
-    - media: "(prefers-color-scheme: dark)"
-      scheme: slate
+    - scheme: slate
       primary: custom
       accent: custom
       toggle:
         icon: material/brightness-4
         name: Switch to light mode
+    - scheme: default
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
 
 extra_css:
   - assets/brand.css

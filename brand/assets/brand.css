@@ -25,13 +25,42 @@
   --md-primary-bg-color--light: rgba(28, 28, 30, 0.7);
 }
 
-/* Header: near-black background with the red wordmark (dark scheme) */
+/* Dark scheme (default): black background and header, white text, red
+   accents, as on faceplate.io */
 [data-md-color-scheme="slate"] {
-  --md-primary-fg-color: #141416;
-  --md-primary-fg-color--light: #141416;
-  --md-primary-fg-color--dark: #0c0c0d;
+  --md-primary-fg-color: #000000;
+  --md-primary-fg-color--light: #000000;
+  --md-primary-fg-color--dark: #000000;
   --md-primary-bg-color: #ffffff;
   --md-primary-bg-color--light: rgba(255, 255, 255, 0.7);
+  --md-default-bg-color: #0a0a0b;
+  --md-default-bg-color--light: #0a0a0b;
+  --md-default-bg-color--lighter: #0a0a0b;
+  --md-default-bg-color--lightest: #0a0a0b;
+  --md-default-fg-color: #ffffff;
+  --md-default-fg-color--light: rgba(255, 255, 255, 0.78);
+  --md-default-fg-color--lighter: rgba(255, 255, 255, 0.5);
+  --md-default-fg-color--lightest: rgba(255, 255, 255, 0.12);
+  --md-code-bg-color: #161618;
+  --md-code-fg-color: #e6e6e6;
+  --md-footer-bg-color: #000000;
+  --md-footer-bg-color--dark: #000000;
+  --md-typeset-table-color: rgba(255, 255, 255, 0.12);
+  --md-admonition-bg-color: #111113;
+}
+[data-md-color-scheme="slate"] .md-header {
+  box-shadow: 0 1px 0 var(--fp-red);
+}
+[data-md-color-scheme="slate"] .md-search__form {
+  background-color: #161618;
+}
+[data-md-color-scheme="slate"] .md-typeset h1,
+[data-md-color-scheme="slate"] .md-typeset h2 {
+  color: #ffffff;
+}
+[data-md-color-scheme="slate"] .md-nav__title,
+[data-md-color-scheme="slate"] .md-nav__item--section > .md-nav__link {
+  color: rgba(255, 255, 255, 0.6);
 }
 
 /* Thin brand-red line under the header */
@@ -76,9 +105,6 @@
 .md-typeset h1 {
   color: var(--fp-ink);
   font-weight: 500;
-}
-[data-md-color-scheme="slate"] .md-typeset h1 {
-  color: #ffffff;
 }
 .md-footer {
   background-color: var(--fp-ink);

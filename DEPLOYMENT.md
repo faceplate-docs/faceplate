@@ -98,10 +98,12 @@ Brand assets live in `brand/assets/` and are copied into every build through
 | `faceplate-mark.png`, `favicon.png`, `apple-touch-icon.png`, `favicon-32.png` | The "A" mark cropped from the wordmark, used as the favicon |
 | `brand.css` | Brand colours and header layout for the Material theme |
 
-The brand red is `#D71921`, sampled from the wordmark. Light scheme: white
-header with the red wordmark and a red rule beneath it. Dark scheme:
-near-black header. Links, active navigation items and accents use the brand
-red. To change a colour, edit the variables at the top of `brand.css`.
+The brand red is `#D71921`, sampled from the wordmark. The dark scheme is the
+default, following faceplate.io: black header and background, white text, red
+wordmark and a red rule under the header. The light scheme (white header,
+dark text) is available through the toggle in the header. Links, active
+navigation items and accents use the brand red in both schemes. To change a
+colour, edit the variables at the top of `brand.css`.
 
 ## Adding pages to the site
 
