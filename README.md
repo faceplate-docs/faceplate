@@ -5,15 +5,168 @@ industrial equipment and IoT sources, converting it into information, storing
 it, and giving access to it through the **Studio** (development) and
 **Runtime** (operator) web interfaces.
 
+**Published site:** <https://faceplate-docs.github.io/faceplate/>
+(English at [/en/](https://faceplate-docs.github.io/faceplate/en/), Russian at
+[/ru/](https://faceplate-docs.github.io/faceplate/ru/)).
+
 The documentation is kept in two languages under `docs/en` and `docs/ru`.
-Source `.docx` files that some pages were converted from live in `docs/source`.
+This README links to the English pages only; the Russian version is read on
+the published site. Source `.docx` files that some pages were converted from
+live in `docs/source`.
 See [CONTRIBUTING.md](CONTRIBUTING.md) for how pages are organised and
 [DEPLOYMENT.md](DEPLOYMENT.md) for how the documentation website is built
 and deployed (MkDocs + Material, Docker or GitHub Pages).
 
----
+## Repository structure
 
-## English
+Each topic lives in its own folder with its images next to the page. The
+English and Russian trees are organised the same way, but some file and
+folder names differ between the languages.
+
+```
+docs/
+├── en/
+│   ├── Archives/
+│   │   ├── images/  (29 files)
+│   │   └── Archives.md
+│   ├── git/
+│   │   └── git_en.md
+│   ├── historian/
+│   │   └── historian_server_en.md
+│   ├── IoT/
+│   │   ├── images/  (15 files)
+│   │   └── IoT.md
+│   ├── machine_learning/
+│   │   ├── forecasting_models_en.md
+│   │   └── project_export_en.md
+│   ├── plc_connections/
+│   │   ├── images/  (63 files)
+│   │   ├── diagnostics_en.md
+│   │   ├── general_en.md
+│   │   ├── old_plc_opcua_client_connection_en.md
+│   │   ├── old_plc_opcua_server_connection_en.md
+│   │   ├── old_plc_s7_connection_en.md
+│   │   ├── plc_ethernet_ip_connection_en.md
+│   │   ├── plc_iec101_client_connection_en.md
+│   │   ├── plc_iec101_server_connection_en.md
+│   │   ├── plc_iec104_client_connection_en.md
+│   │   ├── plc_iec104_server_connection_en.md
+│   │   ├── plc_mbus_connection_en.md
+│   │   ├── plc_modbus_connection_en.md
+│   │   ├── plc_opcda_connection_en.md
+│   │   ├── plc_snmp_connection_en.md
+│   │   └── transformation_en.md
+│   ├── PowerBI_en/
+│   │   ├── images/  (1 file)
+│   │   └── PowerBi_FP_en.md
+│   ├── Project_strucure/
+│   │   ├── images/  (9 files)
+│   │   └── FACEPLATE-start.md
+│   ├── quick_start/
+│   │   ├── connectivity/
+│   │   │   ├── influxdb/
+│   │   │   │   └── influxdb_en.md
+│   │   │   ├── opc_ua/
+│   │   │   │   └── opc_ua_client.md
+│   │   │   ├── powerbi/
+│   │   │   │   └── powerbi_en.md
+│   │   │   └── rest api/
+│   │   │       └── rest api.md
+│   │   ├── prptotypes/
+│   │   │   ├── influxdb/
+│   │   │   │   └── influxdb_en.md
+│   │   │   ├── pump/
+│   │   │   │   └── pump_en.md
+│   │   │   └── sensor/
+│   │   │       └── sensor_en.md
+│   │   └── deploy as docker.md
+│   ├── Redundancy/
+│   │   ├── images/  (6 files)
+│   │   └── Redundancy_en.md
+│   ├── storage/
+│   │   ├── images/  (10 files)
+│   │   └── Storage_en.md
+│   └── readme.md
+├── ru/
+│   ├── git/
+│   │   └── git_ru.md
+│   ├── historian/
+│   │   └── historian_server.md
+│   ├── IoT/
+│   │   ├── images/  (15 files)
+│   │   └── IoT.docx.md
+│   ├── machine_learning/
+│   │   ├── forecasting_models_ru.md
+│   │   └── project_export_ru.md
+│   ├── plc_connections/
+│   │   ├── images/  (63 files)
+│   │   ├── diagnostics_ru.md
+│   │   ├── general_ru.md
+│   │   ├── old_plc_opcua_client_connection_ru.md
+│   │   ├── old_plc_opcua_server_connection_ru.md
+│   │   ├── old_plc_s7_connection_ru.md
+│   │   ├── plc_ethernet_ip_connection_ru.md
+│   │   ├── plc_iec101_client_connection_ru.md
+│   │   ├── plc_iec101_server_connection_ru.md
+│   │   ├── plc_iec104_client_connection_ru.md
+│   │   ├── plc_iec104_server_connection_ru.md
+│   │   ├── plc_mbus_connection_ru.md
+│   │   ├── plc_modbus_connection_ru.md
+│   │   ├── plc_opcda_connection_ru.md
+│   │   ├── plc_snmp_connection_ru.md
+│   │   └── transformation_ru.md
+│   ├── PowerBI_ru/
+│   │   ├── images/  (1 file)
+│   │   └── PowerBi_FP_ru.md
+│   ├── Project_strucure/
+│   │   ├── images/  (9 files)
+│   │   └── FACEPLATE-start.md
+│   ├── Redundancy/
+│   │   ├── images/  (6 files)
+│   │   └── Redundancy_ru.md
+│   ├── samples/
+│   │   ├── connectivity/
+│   │   │   ├── influxdb/
+│   │   │   │   └── influxdb.md
+│   │   │   ├── opc_ua_client/
+│   │   │   │   └── opc_ua_client.md
+│   │   │   ├── powerbi/
+│   │   │   │   └── powerbi_ru.md
+│   │   │   └── rest api/
+│   │   │       └── rest api.md
+│   │   ├── prptotypes/
+│   │   │   ├── influxdb/
+│   │   │   │   └── influxdb.md
+│   │   │   ├── pump/
+│   │   │   │   └── pump.md
+│   │   │   └── sensor/
+│   │   │       └── sensor.md
+│   │   └── deploy as docker.md
+│   ├── storage/
+│   │   ├── images/  (10 files)
+│   │   └── Storage_ru.md
+│   ├── Git в Faceplate.md
+│   ├── readme.md
+│   ├── title.md
+│   └── Архивы и Тренды.md
+└── source/
+    ├── git_ru.docx
+    ├── iot_ru.docx
+    ├── PLC-соединения OPC client.docx
+    ├── PLC-соединения OPC server.docx
+    ├── PLC_connections.docx
+    ├── powerbi_ru.docx
+    ├── Quick start.docx
+    ├── quick_start.docx
+    └── readme_ru.docx
+```
+
+Other files at the repository root: `mkdocs.base.yml`, `mkdocs.en.yml` and
+`mkdocs.ru.yml` (site configuration and navigation), `tools/` (site build and
+link checker), `Dockerfile`, `deploy/nginx.conf`, `docker-compose.yml`
+(self-hosting) and `.github/workflows/docs.yml` (CI and GitHub Pages).
+
+## Contents (English)
 
 ### General
 - [General information, launch and licensing](docs/en/readme.md)
@@ -62,56 +215,3 @@ and deployed (MkDocs + Material, Docker or GitHub Pages).
 ### Administration
 - [Resource redundancy](docs/en/Redundancy/Redundancy_en.md)
 - [Git module](docs/en/git/git_en.md)
-
----
-
-## Русский
-
-### Общие сведения
-- [Общие сведения, запуск и лицензирование](docs/ru/readme.md)
-- [Первые шаги в FACEPLATE Studio: структура проекта](docs/ru/Project_strucure/FACEPLATE-start.md)
-- [Установка и запуск FACEPLATE в Docker-контейнере](<docs/ru/samples/deploy as docker.md>)
-
-### Сбор данных
-- [PLC-соединения: обзор](docs/ru/plc_connections/general_ru.md)
-  - [Modbus TCP/RTU](docs/ru/plc_connections/plc_modbus_connection_ru.md)
-  - [OPC UA Client](docs/ru/plc_connections/old_plc_opcua_client_connection_ru.md)
-  - [OPC UA Server](docs/ru/plc_connections/old_plc_opcua_server_connection_ru.md)
-  - [OPC DA (Classic)](docs/ru/plc_connections/plc_opcda_connection_ru.md)
-  - [Siemens S7 (ISO-on-TCP)](docs/ru/plc_connections/old_plc_s7_connection_ru.md)
-  - [Ethernet/IP (Rockwell Automation)](docs/ru/plc_connections/plc_ethernet_ip_connection_ru.md)
-  - [IEC 60870-5-101 Client](docs/ru/plc_connections/plc_iec101_client_connection_ru.md)
-  - [IEC 60870-5-101 Server](docs/ru/plc_connections/plc_iec101_server_connection_ru.md)
-  - [IEC 60870-5-104 Client](docs/ru/plc_connections/plc_iec104_client_connection_ru.md)
-  - [IEC 60870-5-104 Server](docs/ru/plc_connections/plc_iec104_server_connection_ru.md)
-  - [M-Bus (Meter-Bus)](docs/ru/plc_connections/plc_mbus_connection_ru.md)
-  - [SNMP](docs/ru/plc_connections/plc_snmp_connection_ru.md)
-  - [Функция Transformation](docs/ru/plc_connections/transformation_ru.md)
-  - [Диагностика](docs/ru/plc_connections/diagnostics_ru.md)
-- [Модуль IoT-соединений](docs/ru/IoT/IoT.docx.md)
-
-### Хранение данных
-- [Хранилища: базы данных и распределённое хранение](docs/ru/storage/Storage_ru.md)
-- [Архивы и тренды](<docs/ru/Архивы и Тренды.md>)
-- [Historian-сервер](docs/ru/historian/historian_server.md)
-
-### Интеграции
-- [Microsoft Power BI](docs/ru/PowerBI_ru/PowerBi_FP_ru.md)
-- [REST API интерфейс](<docs/ru/samples/connectivity/rest api/rest api.md>)
-- [OPC UA Client (пример)](docs/ru/samples/connectivity/opc_ua_client/opc_ua_client.md)
-- [Power BI (пример)](docs/ru/samples/connectivity/powerbi/powerbi_ru.md)
-- [Загрузка данных в InfluxDB по HTTPS](docs/ru/samples/connectivity/influxdb/influxdb.md)
-
-### Шаблоны прототипов
-- [Шаблон интеграции с InfluxDB](docs/ru/samples/prptotypes/influxdb/influxdb.md)
-- [Шаблон Pump](docs/ru/samples/prptotypes/pump/pump.md)
-- [Шаблон Sensor](docs/ru/samples/prptotypes/sensor/sensor.md)
-
-### Машинное обучение
-- [Модели прогнозирования](docs/ru/machine_learning/forecasting_models_ru.md)
-- [Экспорт проекта (`faceplate_project-*.xlsx`)](docs/ru/machine_learning/project_export_ru.md)
-
-### Администрирование
-- [Резервирование ресурсов](docs/ru/Redundancy/Redundancy_ru.md)
-- [Модуль Git](docs/ru/git/git_ru.md)
-- [Интеграция с Git (краткое руководство)](<docs/ru/Git в Faceplate.md>)

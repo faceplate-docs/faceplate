@@ -1,56 +1,56 @@
-# Развёртывание документации как веб-сервиса
+# Deploying the documentation as a website
 
-Документация собирается в статический сайт генератором **MkDocs** с темой
-**Material for MkDocs** (оба — open source, MIT). Готовый сайт — обычные
-HTML-файлы, которые отдаёт любой веб-сервер.
+The documentation is built into a static site by **MkDocs** with the
+**Material for MkDocs** theme (both open source, MIT). The result is plain
+HTML that any web server can serve.
 
-Поскольку структура файлов в `docs/en` и `docs/ru` различается, для каждого
-языка собирается отдельный сайт. В шапке страницы есть переключатель языков.
+Because the file layouts of `docs/en` and `docs/ru` differ, each language is
+built as a separate site. A language switcher is shown in the page header.
 
 ```
 site/
-  index.html   — определяет язык браузера и перенаправляет на /ru/ или /en/
-  en/          — английский сайт   (конфиг mkdocs.en.yml)
-  ru/          — русский сайт      (конфиг mkdocs.ru.yml)
+  index.html   — detects the browser language and redirects to /ru/ or /en/
+  en/          — English site   (config mkdocs.en.yml)
+  ru/          — Russian site   (config mkdocs.ru.yml)
 ```
 
-## Файлы
+## Files
 
-| Файл | Назначение |
+| File | Purpose |
 |---|---|
-| `mkdocs.base.yml` | Общие настройки: тема, расширения Markdown, переключатель языков |
-| `mkdocs.en.yml`, `mkdocs.ru.yml` | Язык, каталог исходников и **навигация** (оглавление) сайта |
-| `requirements.txt` | Python-зависимости для сборки |
-| `tools/build_site.sh` | Собирает оба языка в `site/` и добавляет стартовые страницы |
-| `tools/check_links.py` | Проверяет относительные ссылки и картинки в `docs/` |
-| `Dockerfile`, `deploy/nginx.conf`, `docker-compose.yml` | Образ nginx с собранным сайтом |
-| `.github/workflows/docs.yml` | CI: сборка на каждый push/PR, публикация на GitHub Pages из `dev` |
+| `mkdocs.base.yml` | Shared settings: theme, Markdown extensions, language switcher |
+| `mkdocs.en.yml`, `mkdocs.ru.yml` | Language, source folder and the site **navigation** |
+| `requirements.txt` | Python dependencies for the build |
+| `tools/build_site.sh` | Builds both languages into `site/` and adds the entry pages |
+| `tools/check_links.py` | Checks relative links and images in `docs/` |
+| `Dockerfile`, `deploy/nginx.conf`, `docker-compose.yml` | nginx image with the built site |
+| `.github/workflows/docs.yml` | CI: build on every push/PR, publish to GitHub Pages from `dev` |
 
-## Локальный просмотр
+## Local preview
 
 ```bash
 pip install -r requirements.txt
-mkdocs serve -f mkdocs.ru.yml      # http://127.0.0.1:8000/ , перезагрузка при правках
-mkdocs serve -f mkdocs.en.yml -a 127.0.0.1:8001
+mkdocs serve -f mkdocs.en.yml      # http://127.0.0.1:8000/ , reloads on edit
+mkdocs serve -f mkdocs.ru.yml -a 127.0.0.1:8001
 ```
 
-Полная сборка обоих языков:
+Full build of both languages:
 
 ```bash
-tools/build_site.sh                # результат в ./site
+tools/build_site.sh                # output in ./site
 python3 -m http.server -d site 8080
 ```
 
-## Вариант 1. Docker (свой сервер)
+## Option 1. Docker (own server)
 
 ```bash
 docker compose up -d --build
 # http://localhost:8080/
 ```
 
-Порт задаётся переменной `DOCS_PORT`. Публичные адреса сайта (для
-canonical-ссылок и sitemap) — переменными `DOCS_SITE_URL_EN` и
-`DOCS_SITE_URL_RU`, например:
+The port is set with `DOCS_PORT`. The public site URLs (used for canonical
+links and sitemaps) are set with `DOCS_SITE_URL_EN` and `DOCS_SITE_URL_RU`,
+for example:
 
 ```bash
 DOCS_SITE_URL_EN=https://docs.faceplate.io/en/ \
@@ -58,52 +58,54 @@ DOCS_SITE_URL_RU=https://docs.faceplate.io/ru/ \
 DOCS_PORT=8080 docker compose up -d --build
 ```
 
-Образ содержит только nginx и статику, поэтому его можно поставить за
-существующий reverse proxy (nginx, Traefik, Caddy) с TLS. HTTPS в образе не
-настраивается — это задача внешнего прокси.
+The image contains only nginx and static files, so it can sit behind an
+existing reverse proxy (nginx, Traefik, Caddy) that terminates TLS. HTTPS is
+not configured inside the image; that is the job of the outer proxy.
 
-Обновление: `git pull`, затем снова `docker compose up -d --build`.
+To update: `git pull`, then `docker compose up -d --build` again.
 
-## Вариант 2. GitHub Pages (бесплатный хостинг)
+## Option 2. GitHub Pages (free hosting)
 
-Workflow `.github/workflows/docs.yml` собирает сайт на каждый push и pull
-request в `dev` и `main`, а при push в `dev` публикует его на GitHub Pages.
+The workflow `.github/workflows/docs.yml` builds the site on every push and
+pull request to `dev` and `main`, and publishes it to GitHub Pages on every
+push to `dev`.
 
-Разовая настройка в репозитории: **Settings → Pages → Build and deployment →
-Source: GitHub Actions**. После этого сайт доступен по адресу
-`https://faceplate-docs.github.io/faceplate/` (`/en/` и `/ru/`).
+One-time repository setup: **Settings → Pages → Build and deployment →
+Source: GitHub Actions**. The site is then served at
+<https://faceplate-docs.github.io/faceplate/> (`/en/` and `/ru/`).
 
-Чтобы публиковать с ветки `main`, замените `refs/heads/dev` в условии
-`if:` задачи `deploy` и добавьте `main` в адреса сборки.
+To publish from `main` instead, change `refs/heads/dev` in the `if:`
+condition of the `deploy` job.
 
-Собственный домен (например `docs.faceplate.io`) подключается в тех же
-настройках Pages; тогда нужно поправить `DOCS_SITE_URL_*` в workflow.
+A custom domain (for example `docs.faceplate.io`) is attached in the same
+Pages settings; then update `DOCS_SITE_URL_*` in the workflow.
 
-## Вариант 3. Любой статический хостинг
+## Option 3. Any static hosting
 
-`tools/build_site.sh` создаёт каталог `site/`, который можно выложить на
-любой статический хостинг или S3-совместимое хранилище. Сервер должен
-отдавать `index.html` для каталогов (в `deploy/nginx.conf` это
+`tools/build_site.sh` produces the `site/` folder, which can be uploaded to
+any static hosting or S3-compatible storage. The server must serve
+`index.html` for directories (in `deploy/nginx.conf` this is
 `try_files $uri $uri/ $uri/index.html`).
 
-## Добавление страниц в сайт
+## Adding pages to the site
 
-Страница попадает в меню сайта только если указана в секции `nav`
-соответствующего `mkdocs.<lang>.yml`. Файл, не указанный в `nav`, всё равно
-собирается и доступен по прямой ссылке. Пути в `nav` указываются
-относительно `docs/<lang>/`.
+A page appears in the site menu only when it is listed in the `nav` section
+of the corresponding `mkdocs.<lang>.yml`. A file that is not in `nav` is
+still built and reachable by direct link. Paths in `nav` are relative to
+`docs/<lang>/`.
 
-## Известные особенности
+## Known details
 
-- Стартовая страница каждого языка — `readme.md`. MkDocs не считает её
-  индексом каталога, поэтому `tools/build_site.sh` добавляет
-  `site/<lang>/index.html` с перенаправлением на `readme/`.
-- Имена файлов с пробелами и кириллицей (`Архивы и Тренды.md`,
-  `deploy as docker.md`) собираются корректно, но дают длинные URL с
-  процентным кодированием. При желании их можно переименовать и обновить
-  `nav` и ссылки.
-- В `docs/` есть ранее сломанные ссылки (см. `python3 tools/check_links.py`).
-  Сборка их не блокирует. Когда ссылки исправлены, включите строгий режим:
-  `MKDOCS_STRICT=1 tools/build_site.sh` и уберите `continue-on-error` в
-  workflow — тогда CI будет падать на новых сломанных ссылках.
-- Поиск работает на клиенте (lunr.js) и индексирует оба языка.
+- The entry page of each language is `readme.md`. MkDocs does not treat it as
+  the directory index, so `tools/build_site.sh` adds `site/<lang>/index.html`
+  with a redirect to `readme/`.
+- File names with spaces and Cyrillic characters (`Архивы и Тренды.md`,
+  `deploy as docker.md`) build correctly but produce long percent-encoded
+  URLs. They can be renamed if desired; update `nav` and links afterwards.
+- `docs/` contains some pre-existing broken links (see
+  `python3 tools/check_links.py`). They do not block the build. Once they are
+  fixed, enable strict mode: `MKDOCS_STRICT=1 tools/build_site.sh`, and
+  remove `continue-on-error` in the workflow so CI fails on new broken links.
+- Search runs in the browser (lunr.js) and indexes both languages.
+- MkDocs is pinned below 2.0 in `requirements.txt`; the Material theme prints
+  a notice about MkDocs 2.0 during the build, which can be ignored.
