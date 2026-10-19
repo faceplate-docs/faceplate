@@ -39,12 +39,20 @@ nav:
       - Storage: storage/Storage_en.md
       - Archives: Archives/Archives.md
       - Historian server: historian/historian_server_en.md
+  - Project objects:
+      - Primitives: primitives/Primitives_en.md
+      - Prototypes: prototypes/prototypes_en.md
+  - Project logic:
+      - Calculations: calculation/calculation_en.md
+      - User scripts: user_script/user_script_en.md
+      - Library modules: library_modules/library_modules_en.md
   - Integrations:
       - Microsoft Power BI: PowerBI_en/PowerBi_FP_en.md
       - REST API interface: quick_start/connectivity/rest api/rest api.md
       - OPC UA client (quick start): quick_start/connectivity/opc_ua/opc_ua_client.md
       - Power BI (quick start): quick_start/connectivity/powerbi/powerbi_en.md
       - Loading data into InfluxDB: quick_start/connectivity/influxdb/influxdb_en.md
+      - Powerfactory Service: powerfactory_service/powerfactory_service_en.md
   - Prototype templates:
       - InfluxDB integration template: quick_start/prptotypes/influxdb/influxdb_en.md
       - Pump template: quick_start/prptotypes/pump/pump_en.md

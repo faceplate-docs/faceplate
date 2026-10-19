@@ -35,6 +35,9 @@ docs/
 │   ├── Archives/
 │   │   ├── images/  (29 files)
 │   │   └── Archives.md
+│   ├── calculation/
+│   │   ├── images/  (11 files)
+│   │   └── calculation_en.md
 │   ├── git/
 │   │   └── git_en.md
 │   ├── historian/
@@ -42,6 +45,9 @@ docs/
 │   ├── IoT/
 │   │   ├── images/  (15 files)
 │   │   └── IoT.md
+│   ├── library_modules/
+│   │   ├── images/  (6 files)
+│   │   └── library_modules_en.md
 │   ├── machine_learning/
 │   │   ├── forecasting_models_en.md
 │   │   └── project_export_en.md
@@ -65,9 +71,18 @@ docs/
 │   ├── PowerBI_en/
 │   │   ├── images/  (1 file)
 │   │   └── PowerBi_FP_en.md
+│   ├── powerfactory_service/
+│   │   ├── images/  (7 files)
+│   │   └── powerfactory_service_en.md
+│   ├── primitives/
+│   │   ├── images/  (10 files)
+│   │   └── Primitives_en.md
 │   ├── Project_strucure/
 │   │   ├── images/  (9 files)
 │   │   └── FACEPLATE-start.md
+│   ├── prototypes/
+│   │   ├── images/  (18 files)
+│   │   └── prototypes_en.md
 │   ├── quick_start/
 │   │   ├── connectivity/
 │   │   │   ├── influxdb/
@@ -92,8 +107,14 @@ docs/
 │   ├── storage/
 │   │   ├── images/  (10 files)
 │   │   └── Storage_en.md
+│   ├── user_script/
+│   │   ├── images/  (9 files)
+│   │   └── user_script_en.md
 │   └── readme.md
 ├── ru/
+│   ├── calculation/
+│   │   ├── images/  (11 files)
+│   │   └── calculation_ru.md
 │   ├── git/
 │   │   └── git_ru.md
 │   ├── historian/
@@ -101,6 +122,9 @@ docs/
 │   ├── IoT/
 │   │   ├── images/  (15 files)
 │   │   └── IoT.docx.md
+│   ├── library_modules/
+│   │   ├── images/  (6 files)
+│   │   └── library_modules_ru.md
 │   ├── machine_learning/
 │   │   ├── forecasting_models_ru.md
 │   │   └── project_export_ru.md
@@ -124,9 +148,18 @@ docs/
 │   ├── PowerBI_ru/
 │   │   ├── images/  (1 file)
 │   │   └── PowerBi_FP_ru.md
+│   ├── powerfactory_service/
+│   │   ├── images/  (7 files)
+│   │   └── powerfactory_service_ru.md
+│   ├── primitives/
+│   │   ├── images/  (10 files)
+│   │   └── Primitives_ru.md
 │   ├── Project_strucure/
 │   │   ├── images/  (9 files)
 │   │   └── FACEPLATE-start.md
+│   ├── prototypes/
+│   │   ├── images/  (18 files)
+│   │   └── prototypes_ru.md
 │   ├── Redundancy/
 │   │   ├── images/  (6 files)
 │   │   └── Redundancy_ru.md
@@ -151,6 +184,9 @@ docs/
 │   ├── storage/
 │   │   ├── images/  (10 files)
 │   │   └── Storage_ru.md
+│   ├── user_script/
+│   │   ├── images/  (9 files)
+│   │   └── user_script_ru.md
 │   ├── Git в Faceplate.md
 │   ├── readme.md
 │   ├── title.md
@@ -203,12 +239,22 @@ favicon and brand stylesheet), `tools/` (site build and link checker),
 - [Archives](docs/en/Archives/Archives.md)
 - [Historian server](docs/en/historian/historian_server_en.md)
 
+### Project objects
+- [Primitives](docs/en/primitives/Primitives_en.md)
+- [Prototypes](docs/en/prototypes/prototypes_en.md)
+
+### Project logic
+- [Calculations](docs/en/calculation/calculation_en.md)
+- [User scripts](docs/en/user_script/user_script_en.md)
+- [Library modules](docs/en/library_modules/library_modules_en.md)
+
 ### Integrations
 - [Microsoft Power BI](docs/en/PowerBI_en/PowerBi_FP_en.md)
 - [REST API interface](<docs/en/quick_start/connectivity/rest api/rest api.md>)
 - [OPC UA client (quick start)](docs/en/quick_start/connectivity/opc_ua/opc_ua_client.md)
 - [Power BI (quick start)](docs/en/quick_start/connectivity/powerbi/powerbi_en.md)
 - [Loading data into InfluxDB over HTTPS](docs/en/quick_start/connectivity/influxdb/influxdb_en.md)
+- [Powerfactory Service](docs/en/powerfactory_service/powerfactory_service_en.md)
 
 ### Prototype templates
 - [InfluxDB integration template](docs/en/quick_start/prptotypes/influxdb/influxdb_en.md)

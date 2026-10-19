@@ -46,12 +46,20 @@ nav:
       - Хранилища: storage/Storage_ru.md
       - Архивы и тренды: Архивы и Тренды.md
       - Historian-сервер: historian/historian_server.md
+  - Объекты проекта:
+      - Примитивы: primitives/Primitives_ru.md
+      - Прототипы: prototypes/prototypes_ru.md
+  - Логика проекта:
+      - Расчёты (Calculation): calculation/calculation_ru.md
+      - Пользовательские скрипты: user_script/user_script_ru.md
+      - Библиотечные модули: library_modules/library_modules_ru.md
   - Интеграции:
       - Microsoft Power BI: PowerBI_ru/PowerBi_FP_ru.md
       - REST API интерфейс: samples/connectivity/rest api/rest api.md
       - OPC UA Client (пример): samples/connectivity/opc_ua_client/opc_ua_client.md
       - Power BI (пример): samples/connectivity/powerbi/powerbi_ru.md
       - Загрузка данных в InfluxDB: samples/connectivity/influxdb/influxdb.md
+      - Powerfactory Service: powerfactory_service/powerfactory_service_ru.md
   - Шаблоны прототипов:
       - Шаблон интеграции с InfluxDB: samples/prptotypes/influxdb/influxdb.md
       - Шаблон Pump: samples/prptotypes/pump/pump.md
