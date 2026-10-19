@@ -16,6 +16,7 @@ COPY requirements.txt .
 RUN pip install -r requirements.txt
 COPY mkdocs.base.yml mkdocs.en.yml mkdocs.ru.yml ./
 COPY tools/build_site.sh tools/
+COPY brand/ brand/
 COPY docs/ docs/
 RUN tools/build_site.sh
 
