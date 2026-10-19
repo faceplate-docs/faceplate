@@ -1,0 +1,57 @@
+INHERIT: mkdocs.base.yml
+
+docs_dir: docs/en
+site_dir: site/en
+site_url: !ENV [DOCS_SITE_URL_EN, "http://localhost:8080/en/"]
+
+theme:
+  language: en
+
+plugins:
+  - search:
+      lang:
+        - en
+        - ru
+
+nav:
+  - General:
+      - General information, launch and licensing: readme.md
+      - First steps in FACEPLATE Studio: Project_strucure/FACEPLATE-start.md
+      - Deploying in a Docker container: quick_start/deploy as docker.md
+  - Data acquisition:
+      - PLC connections overview: plc_connections/general_en.md
+      - Modbus TCP/RTU: plc_connections/plc_modbus_connection_en.md
+      - OPC UA client: plc_connections/old_plc_opcua_client_connection_en.md
+      - OPC UA server: plc_connections/old_plc_opcua_server_connection_en.md
+      - OPC DA (Classic): plc_connections/plc_opcda_connection_en.md
+      - Siemens S7 (ISO-on-TCP): plc_connections/old_plc_s7_connection_en.md
+      - EtherNet/IP: plc_connections/plc_ethernet_ip_connection_en.md
+      - IEC 60870-5-101 client: plc_connections/plc_iec101_client_connection_en.md
+      - IEC 60870-5-101 server: plc_connections/plc_iec101_server_connection_en.md
+      - IEC 60870-5-104 client: plc_connections/plc_iec104_client_connection_en.md
+      - IEC 60870-5-104 server: plc_connections/plc_iec104_server_connection_en.md
+      - M-Bus (Meter-Bus): plc_connections/plc_mbus_connection_en.md
+      - SNMP: plc_connections/plc_snmp_connection_en.md
+      - Transformation feature: plc_connections/transformation_en.md
+      - Diagnostics: plc_connections/diagnostics_en.md
+      - IoT Connections module: IoT/IoT.md
+  - Data storage:
+      - Storage: storage/Storage_en.md
+      - Archives: Archives/Archives.md
+      - Historian server: historian/historian_server_en.md
+  - Integrations:
+      - Microsoft Power BI: PowerBI_en/PowerBi_FP_en.md
+      - REST API interface: quick_start/connectivity/rest api/rest api.md
+      - OPC UA client (quick start): quick_start/connectivity/opc_ua/opc_ua_client.md
+      - Power BI (quick start): quick_start/connectivity/powerbi/powerbi_en.md
+      - Loading data into InfluxDB: quick_start/connectivity/influxdb/influxdb_en.md
+  - Prototype templates:
+      - InfluxDB integration template: quick_start/prptotypes/influxdb/influxdb_en.md
+      - Pump template: quick_start/prptotypes/pump/pump_en.md
+      - Sensor template: quick_start/prptotypes/sensor/sensor_en.md
+  - Machine learning:
+      - Forecasting models: machine_learning/forecasting_models_en.md
+      - Project export: machine_learning/project_export_en.md
+  - Administration:
+      - Resource redundancy: Redundancy/Redundancy_en.md
+      - Git module: git/git_en.md
