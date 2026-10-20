@@ -55,6 +55,7 @@ nav:
   - Объекты проекта:
       - Примитивы: primitives/Primitives.md
       - Прототипы: prototypes/prototypes.md
+      - Каталоги: catalogs/catalogs.md
   - Логика проекта:
       - Расчёты (Calculation): calculation/calculation.md
       - Пользовательские скрипты: user_script/user_script.md

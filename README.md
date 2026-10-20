@@ -38,6 +38,9 @@ docs/
 │   ├── calculation/
 │   │   ├── images/  (11 files)
 │   │   └── calculation.md
+│   ├── catalogs/
+│   │   ├── images/  (10 files)
+│   │   └── catalogs.md
 │   ├── git/
 │   │   └── git_en.md
 │   ├── historian/
@@ -120,6 +123,9 @@ docs/
 │   ├── calculation/
 │   │   ├── images/  (11 files)
 │   │   └── calculation.md
+│   ├── catalogs/
+│   │   ├── images/  (10 files)
+│   │   └── catalogs.md
 │   ├── git/
 │   │   └── git_ru.md
 │   ├── historian/
@@ -257,6 +263,7 @@ favicon and brand stylesheet), `tools/` (site build and link checker),
 ### Project objects
 - [Primitives](docs/en/primitives/Primitives.md)
 - [Prototypes](docs/en/prototypes/prototypes.md)
+- [Catalogs](docs/en/catalogs/catalogs.md)
 
 ### Project logic
 - [Calculations](docs/en/calculation/calculation.md)

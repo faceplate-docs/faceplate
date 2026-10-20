@@ -48,6 +48,7 @@ nav:
   - Project objects:
       - Primitives: primitives/Primitives.md
       - Prototypes: prototypes/prototypes.md
+      - Catalogs: catalogs/catalogs.md
   - Project logic:
       - Calculations: calculation/calculation.md
       - User scripts: user_script/user_script.md
