@@ -15,7 +15,7 @@ A library module is shared Erlang code for the whole project: any functions need
 
 You compile the module yourself: click **Compile**, wait for `OK`, then **Save**. A module cannot be saved without a successful **Compile**. After saving, the server loads the module on its own, and a change takes effect without restarting scripts.
 
-Running example: module `demo_units` with functions `c_to_f/1` (Celsius to Fahrenheit) and `clamp/3` (clamp a value to a range). User script `lib_demo` reads a temperature from object `temp_c` and writes the result of `demo_units:c_to_f/1` to object `temp_f`. Creating a user script is covered in [User Scripts](../user_script/user_script_en.md).
+Running example: module `demo_units` with functions `c_to_f/1` (Celsius to Fahrenheit) and `clamp/3` (clamp a value to a range). User script `lib_demo` reads a temperature from object `temp_c` and writes the result of `demo_units:c_to_f/1` to object `temp_f`. Creating a user script is covered in [User Scripts](../user_script/user_script.md).
 
 You need access to Studio (`http://<server>:9000/fp/studio`) with an account allowed to modify the project.
 

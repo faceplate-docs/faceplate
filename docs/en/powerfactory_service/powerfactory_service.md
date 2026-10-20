@@ -23,7 +23,7 @@ Powerfactory Service links Faceplate project objects to the network model in Pow
 | Mappings | The section table | Which fields of which objects take part in the exchange and which PowerFactory attributes they map to |
 | Settings | The **Settings** button | Where to connect, where modeling is allowed, which mapping each operation uses, how paths are converted |
 
-Running example: the `load_exchange` mapping for loads. A load in the project is an instance of the `load` [prototype](../prototypes/prototypes_en.md) with fields `p_set`, `q_set`, `pf_outserv`, a link `pole` to its node, and child objects `P` and `Q`. In PowerFactory it corresponds to the `ElmLod` class.
+Running example: the `load_exchange` mapping for loads. A load in the project is an instance of the `load` [prototype](../prototypes/prototypes.md) with fields `p_set`, `q_set`, `pf_outserv`, a link `pole` to its node, and child objects `P` and `Q`. In PowerFactory it corresponds to the `ElmLod` class.
 
 You need access to Studio (`http://<server>:9000/fp/studio`) with the right to change the project, and knowledge of the PowerFactory network model: element classes and their attribute names.
 
@@ -41,7 +41,7 @@ Toolbar buttons from left to right: refresh, create, edit, delete, **Settings**.
 
 1. Click the create button. A window titled **Настройки маппинга** (mapping settings) opens.
 2. Enter `load_exchange` in the **Name** field. This is the name you refer to in **Settings**.
-3. Write the mapping JSON in the editor (the format is described in "Mapping structure").
+3. Write the mapping JSON in the editor (the format is described in [Mapping structure](#mapping-structure)).
 4. Click **Compile**. `OK` appears next to it and the **save** button becomes available.
 5. Save.
 

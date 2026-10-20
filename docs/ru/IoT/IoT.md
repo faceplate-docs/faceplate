@@ -28,11 +28,11 @@ IoT-соединения нужны для обмена данными с вне
 
 Типы описаны в отдельных документах раздела:
 
-- [HTTP-соединения](http_ru.md)
-- [MQTT-соединения](mqtt_ru.md)
-- [WebSocket-соединения](websocket_ru.md)
-- [Источники](sources_ru.md)
-- [Действия](actions_ru.md)
+- [HTTP-соединения](http.md)
+- [MQTT-соединения](mqtt.md)
+- [WebSocket-соединения](websocket.md)
+- [Источники](sources.md)
+- [Действия](actions.md)
 
 Понадобится доступ к Studio (`http://<сервер>:9000/fp/studio`) под учётной записью с правом изменять проект.
 
@@ -44,20 +44,20 @@ IoT-соединения нужны для обмена данными с вне
 
 | Группа | Тип | Роль | Назначение |
 |---|---|---|---|
-| **HTTP** | [`iot_http_client_connection`](http_ru.md#iot_http_client_connection) | Клиент | Отправляет HTTP-запрос и разбирает ответ |
-| | [`iot_http_server_connection`](http_ru.md#iot_http_server_connection) | Сервер | Принимает HTTP-запросы на заданный путь и отвечает |
-| **MQTT** | [`iot_mqtt_publisher`](mqtt_ru.md#iot_mqtt_publisher) | Клиент | Публикует сообщения в топик брокера |
-| | [`iot_mqtt_subscriber`](mqtt_ru.md#iot_mqtt_subscriber) | Сервер | Получает сообщения из топика брокера |
-| **WEBSOCKET** | [`iot_websocket_client_connection`](websocket_ru.md#iot_websocket_client_connection) | Клиент | Подключается к WebSocket-серверу и обменивается сообщениями |
-| | [`iot_websocket_server_connection`](websocket_ru.md#iot_websocket_server_connection) | Сервер | Принимает WebSocket-подключения |
-| **source** | [`iot_tag_source`](sources_ru.md#iot_tag_source) | Источник | Значения полей тегов |
-| | [`iot_script_source`](sources_ru.md#iot_script_source) | Источник | Результат скрипта |
-| | [`iot_ts_source`](sources_ru.md#iot_ts_source) | Источник | Значения из архива |
-| | [`iot_eventlog_source`](sources_ru.md#iot_eventlog_source) | Источник | Записи журнала событий |
-| **action** | [`iot_tag_action`](actions_ru.md#iot_tag_action) | Действие | Запись в поля тегов |
-| | [`iot_script_action`](actions_ru.md#iot_script_action) | Действие | Обработка скриптом и запись в теги |
-| | [`iot_ts_action`](actions_ru.md#iot_ts_action) | Действие | Запись серии в архив |
-| | [`iot_eventlog_action`](actions_ru.md#iot_eventlog_action) | Действие | Создание записей в журнале событий |
+| **HTTP** | [`iot_http_client_connection`](http.md#iot_http_client_connection) | Клиент | Отправляет HTTP-запрос и разбирает ответ |
+| | [`iot_http_server_connection`](http.md#iot_http_server_connection) | Сервер | Принимает HTTP-запросы на заданный путь и отвечает |
+| **MQTT** | [`iot_mqtt_publisher`](mqtt.md#iot_mqtt_publisher) | Клиент | Публикует сообщения в топик брокера |
+| | [`iot_mqtt_subscriber`](mqtt.md#iot_mqtt_subscriber) | Сервер | Получает сообщения из топика брокера |
+| **WEBSOCKET** | [`iot_websocket_client_connection`](websocket.md#iot_websocket_client_connection) | Клиент | Подключается к WebSocket-серверу и обменивается сообщениями |
+| | [`iot_websocket_server_connection`](websocket.md#iot_websocket_server_connection) | Сервер | Принимает WebSocket-подключения |
+| **source** | [`iot_tag_source`](sources.md#iot_tag_source) | Источник | Значения полей тегов |
+| | [`iot_script_source`](sources.md#iot_script_source) | Источник | Результат скрипта |
+| | [`iot_ts_source`](sources.md#iot_ts_source) | Источник | Значения из архива |
+| | [`iot_eventlog_source`](sources.md#iot_eventlog_source) | Источник | Записи журнала событий |
+| **action** | [`iot_tag_action`](actions.md#iot_tag_action) | Действие | Запись в поля тегов |
+| | [`iot_script_action`](actions.md#iot_script_action) | Действие | Обработка скриптом и запись в теги |
+| | [`iot_ts_action`](actions.md#iot_ts_action) | Действие | Запись серии в архив |
+| | [`iot_eventlog_action`](actions.md#iot_eventlog_action) | Действие | Создание записей в журнале событий |
 
 ![Группа iot в окне выбора типа](images/01_types.png)
 
@@ -98,7 +98,7 @@ IoT-соединения нужны для обмена данными с вне
 | `http_recv`, **Request** | **Type** `JSON`, **Data** `t`, шаблон `{"temperature": $t}` |
 | `http_recv` → `to_t_dst` (`iot_tag_action`) | `t` — `/iot_demo/t_dst` — `value` |
 
-Запрос `{"temperature": 23.4}` → переменная `t` = `23.4` → действие `to_t_dst` пишет `23.4` в `t_dst.value`. Полная настройка — в [`iot_http_server_connection`](http_ru.md#iot_http_server_connection).
+Запрос `{"temperature": 23.4}` → переменная `t` = `23.4` → действие `to_t_dst` пишет `23.4` в `t_dst.value`. Полная настройка — в [`iot_http_server_connection`](http.md#iot_http_server_connection).
 
 Если список **variable** пуст — в **Data** нужной стороны нет переменных или соединение не сохранено (см. таблицу выше: у сервера действия берут переменные из **Request**, источники — из **Response**; у клиента наоборот).
 
@@ -122,7 +122,7 @@ IoT-соединения нужны для обмена данными с вне
 | **Отключено** | Остановить соединение, сохранив настройки |
 | **Ошибка** | Текст последней ошибки обмена; `no errors`, если её нет |
 | **Ограничение памяти (байт)** | Предел памяти процесса соединения |
-| **Диагностика** | Журнал процесса соединения (см. раздел «Диагностика» ниже) |
+| **Диагностика** | Журнал процесса соединения (см. раздел [«Диагностика»](#диагностика) ниже) |
 
 ## Формат сообщения
 
@@ -162,7 +162,7 @@ IoT-соединения нужны для обмена данными с вне
 | Сервер, **Request** | `Request` — тело входящего сообщения | Карту переменных для действий |
 | Сервер, **Response** | `Data` — переменные из источников | Текст ответа |
 
-Пример — ответ сервера `http_ts_obj` в виде массива объектов. **Response**: **Type** `Скрипт`, **Data** `ts`, `v`, `from`, `to` (`ts` и `v` заполняет источник `iot_ts_source`, как `ts_read` в разделе [iot_ts_source](sources_ru.md#iot_ts_source)), скрипт:
+Пример — ответ сервера `http_ts_obj` в виде массива объектов. **Response**: **Type** `Скрипт`, **Data** `ts`, `v`, `from`, `to` (`ts` и `v` заполняет источник `iot_ts_source`, как `ts_read` в разделе [iot_ts_source](sources.md#iot_ts_source)), скрипт:
 
 ```erlang
 fun(Data, _Context) ->

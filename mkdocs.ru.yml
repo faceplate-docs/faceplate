@@ -42,30 +42,30 @@ nav:
       - Функция Transformation: plc_connections/transformation_ru.md
       - Диагностика: plc_connections/diagnostics_ru.md
       - IoT-соединения:
-          - Общие сведения: IoT/IoT_ru.md
-          - HTTP: IoT/http_ru.md
-          - MQTT: IoT/mqtt_ru.md
-          - WebSocket: IoT/websocket_ru.md
-          - Источники: IoT/sources_ru.md
-          - Действия: IoT/actions_ru.md
+          - Общие сведения: IoT/IoT.md
+          - HTTP: IoT/http.md
+          - MQTT: IoT/mqtt.md
+          - WebSocket: IoT/websocket.md
+          - Источники: IoT/sources.md
+          - Действия: IoT/actions.md
   - Хранение данных:
       - Хранилища: storage/Storage_ru.md
       - Архивы и тренды: Архивы и Тренды.md
       - Historian-сервер: historian/historian_server.md
   - Объекты проекта:
-      - Примитивы: primitives/Primitives_ru.md
-      - Прототипы: prototypes/prototypes_ru.md
+      - Примитивы: primitives/Primitives.md
+      - Прототипы: prototypes/prototypes.md
   - Логика проекта:
-      - Расчёты (Calculation): calculation/calculation_ru.md
-      - Пользовательские скрипты: user_script/user_script_ru.md
-      - Библиотечные модули: library_modules/library_modules_ru.md
+      - Расчёты (Calculation): calculation/calculation.md
+      - Пользовательские скрипты: user_script/user_script.md
+      - Библиотечные модули: library_modules/library_modules.md
   - Интеграции:
       - Microsoft Power BI: PowerBI_ru/PowerBi_FP_ru.md
       - REST API интерфейс: samples/connectivity/rest api/rest api.md
       - OPC UA Client (пример): samples/connectivity/opc_ua_client/opc_ua_client.md
       - Power BI (пример): samples/connectivity/powerbi/powerbi_ru.md
       - Загрузка данных в InfluxDB: samples/connectivity/influxdb/influxdb.md
-      - Powerfactory Service: powerfactory_service/powerfactory_service_ru.md
+      - Powerfactory Service: powerfactory_service/powerfactory_service.md
   - Шаблоны прототипов:
       - Шаблон интеграции с InfluxDB: samples/prptotypes/influxdb/influxdb.md
       - Шаблон Pump: samples/prptotypes/pump/pump.md

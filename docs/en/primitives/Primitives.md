@@ -14,7 +14,7 @@ A document for integration engineers. Checked on FACEPLATE Studio 4.0.7.
 | Run-time field | A field with the **Run-time** flag. Shown in the instance form. |
 | Group | The folder of a primitive in the type selection dialog (`primitives / <group>`). |
 | Behaviour | An Erlang module with the functions `on_create/1`, `on_edit/1`, `on_delete/1`. The server calls them on instance operations. |
-| Prototype | A template from the **Prototypes** section (see [Prototypes](../prototypes/prototypes_en.md)). The field's **Prototype** flag enables copying its value when a prototype is synchronized. |
+| Prototype | A template from the **Prototypes** section (see [Prototypes](../prototypes/prototypes.md)). The field's **Prototype** flag enables copying its value when a prototype is synchronized. |
 
 # Introduction
 
@@ -72,7 +72,7 @@ Click **Create**, fill in the form, and click **save**. **save** becomes availab
 | **Storage** | `disc`, `ramdisc`, `ram` | Where the value is stored. Default: `ramdisc`. |
 | **Index** | see below | Indexes for searching and filtering by the field. Several can be selected. |
 | **Default value** | text | Pre-filled in the form of a new instance. |
-| **Prototype** | check box | The field value is copied when a prototype is synchronized with its copies. Needed if the primitive instance is placed inside a prototype (see [Prototypes](../prototypes/prototypes_en.md), synchronization). |
+| **Prototype** | check box | The field value is copied when a prototype is synchronized with its copies. Needed if the primitive instance is placed inside a prototype (see [Prototypes](../prototypes/prototypes.md), synchronization). |
 | **Run-time** | check box | The field is shown in the instance create/edit form in the General View. Without the flag the field is not shown in the form. |
 | **export** | check box | The field is included in folder or project export. |
 | **excel** | check box | The field takes part in `.xlsx` export and import. |

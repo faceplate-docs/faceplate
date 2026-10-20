@@ -37,22 +37,22 @@ docs/
 │   │   └── Archives.md
 │   ├── calculation/
 │   │   ├── images/  (11 files)
-│   │   └── calculation_en.md
+│   │   └── calculation.md
 │   ├── git/
 │   │   └── git_en.md
 │   ├── historian/
 │   │   └── historian_server_en.md
 │   ├── IoT/
 │   │   ├── images/  (26 files)
-│   │   ├── actions_en.md
-│   │   ├── http_en.md
-│   │   ├── IoT_en.md
-│   │   ├── mqtt_en.md
-│   │   ├── sources_en.md
-│   │   └── websocket_en.md
+│   │   ├── actions.md
+│   │   ├── http.md
+│   │   ├── IoT.md
+│   │   ├── mqtt.md
+│   │   ├── sources.md
+│   │   └── websocket.md
 │   ├── library_modules/
 │   │   ├── images/  (6 files)
-│   │   └── library_modules_en.md
+│   │   └── library_modules.md
 │   ├── machine_learning/
 │   │   ├── forecasting_models_en.md
 │   │   └── project_export_en.md
@@ -78,16 +78,16 @@ docs/
 │   │   └── PowerBi_FP_en.md
 │   ├── powerfactory_service/
 │   │   ├── images/  (7 files)
-│   │   └── powerfactory_service_en.md
+│   │   └── powerfactory_service.md
 │   ├── primitives/
 │   │   ├── images/  (10 files)
-│   │   └── Primitives_en.md
+│   │   └── Primitives.md
 │   ├── Project_strucure/
 │   │   ├── images/  (9 files)
 │   │   └── FACEPLATE-start.md
 │   ├── prototypes/
 │   │   ├── images/  (18 files)
-│   │   └── prototypes_en.md
+│   │   └── prototypes.md
 │   ├── quick_start/
 │   │   ├── connectivity/
 │   │   │   ├── influxdb/
@@ -114,27 +114,27 @@ docs/
 │   │   └── Storage_en.md
 │   ├── user_script/
 │   │   ├── images/  (9 files)
-│   │   └── user_script_en.md
+│   │   └── user_script.md
 │   └── readme.md
 ├── ru/
 │   ├── calculation/
 │   │   ├── images/  (11 files)
-│   │   └── calculation_ru.md
+│   │   └── calculation.md
 │   ├── git/
 │   │   └── git_ru.md
 │   ├── historian/
 │   │   └── historian_server.md
 │   ├── IoT/
 │   │   ├── images/  (26 files)
-│   │   ├── actions_ru.md
-│   │   ├── http_ru.md
-│   │   ├── IoT_ru.md
-│   │   ├── mqtt_ru.md
-│   │   ├── sources_ru.md
-│   │   └── websocket_ru.md
+│   │   ├── actions.md
+│   │   ├── http.md
+│   │   ├── IoT.md
+│   │   ├── mqtt.md
+│   │   ├── sources.md
+│   │   └── websocket.md
 │   ├── library_modules/
 │   │   ├── images/  (6 files)
-│   │   └── library_modules_ru.md
+│   │   └── library_modules.md
 │   ├── machine_learning/
 │   │   ├── forecasting_models_ru.md
 │   │   └── project_export_ru.md
@@ -160,16 +160,16 @@ docs/
 │   │   └── PowerBi_FP_ru.md
 │   ├── powerfactory_service/
 │   │   ├── images/  (7 files)
-│   │   └── powerfactory_service_ru.md
+│   │   └── powerfactory_service.md
 │   ├── primitives/
 │   │   ├── images/  (10 files)
-│   │   └── Primitives_ru.md
+│   │   └── Primitives.md
 │   ├── Project_strucure/
 │   │   ├── images/  (9 files)
 │   │   └── FACEPLATE-start.md
 │   ├── prototypes/
 │   │   ├── images/  (18 files)
-│   │   └── prototypes_ru.md
+│   │   └── prototypes.md
 │   ├── Redundancy/
 │   │   ├── images/  (6 files)
 │   │   └── Redundancy_ru.md
@@ -196,7 +196,7 @@ docs/
 │   │   └── Storage_ru.md
 │   ├── user_script/
 │   │   ├── images/  (9 files)
-│   │   └── user_script_ru.md
+│   │   └── user_script.md
 │   ├── Git в Faceplate.md
 │   ├── readme.md
 │   ├── title.md
@@ -242,12 +242,12 @@ favicon and brand stylesheet), `tools/` (site build and link checker),
   - [SNMP](docs/en/plc_connections/plc_snmp_connection_en.md)
   - [Transformation feature](docs/en/plc_connections/transformation_en.md)
   - [Diagnostics](docs/en/plc_connections/diagnostics_en.md)
-- [IoT connections](docs/en/IoT/IoT_en.md)
-  - [HTTP](docs/en/IoT/http_en.md)
-  - [MQTT](docs/en/IoT/mqtt_en.md)
-  - [WebSocket](docs/en/IoT/websocket_en.md)
-  - [Sources](docs/en/IoT/sources_en.md)
-  - [Actions](docs/en/IoT/actions_en.md)
+- [IoT connections](docs/en/IoT/IoT.md)
+  - [HTTP](docs/en/IoT/http.md)
+  - [MQTT](docs/en/IoT/mqtt.md)
+  - [WebSocket](docs/en/IoT/websocket.md)
+  - [Sources](docs/en/IoT/sources.md)
+  - [Actions](docs/en/IoT/actions.md)
 
 ### Data storage
 - [Storage: databases and distributed storage](docs/en/storage/Storage_en.md)
@@ -255,13 +255,13 @@ favicon and brand stylesheet), `tools/` (site build and link checker),
 - [Historian server](docs/en/historian/historian_server_en.md)
 
 ### Project objects
-- [Primitives](docs/en/primitives/Primitives_en.md)
-- [Prototypes](docs/en/prototypes/prototypes_en.md)
+- [Primitives](docs/en/primitives/Primitives.md)
+- [Prototypes](docs/en/prototypes/prototypes.md)
 
 ### Project logic
-- [Calculations](docs/en/calculation/calculation_en.md)
-- [User scripts](docs/en/user_script/user_script_en.md)
-- [Library modules](docs/en/library_modules/library_modules_en.md)
+- [Calculations](docs/en/calculation/calculation.md)
+- [User scripts](docs/en/user_script/user_script.md)
+- [Library modules](docs/en/library_modules/library_modules.md)
 
 ### Integrations
 - [Microsoft Power BI](docs/en/PowerBI_en/PowerBi_FP_en.md)
@@ -269,7 +269,7 @@ favicon and brand stylesheet), `tools/` (site build and link checker),
 - [OPC UA client (quick start)](docs/en/quick_start/connectivity/opc_ua/opc_ua_client.md)
 - [Power BI (quick start)](docs/en/quick_start/connectivity/powerbi/powerbi_en.md)
 - [Loading data into InfluxDB over HTTPS](docs/en/quick_start/connectivity/influxdb/influxdb_en.md)
-- [Powerfactory Service](docs/en/powerfactory_service/powerfactory_service_en.md)
+- [Powerfactory Service](docs/en/powerfactory_service/powerfactory_service.md)
 
 ### Prototype templates
 - [InfluxDB integration template](docs/en/quick_start/prptotypes/influxdb/influxdb_en.md)

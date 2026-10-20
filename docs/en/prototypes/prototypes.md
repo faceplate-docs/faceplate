@@ -22,7 +22,7 @@ A document for integration engineers who build projects in Studio. All examples 
 
 # Introduction
 
-A **prototype** is a template for any repeating part of a project: a piece of equipment, a plant section, a metering point, a set of connections or [calculations](../calculation/calculation_en.md) — anything that is built from project objects and occurs more than once. The structure is described once in the prototype, and any number of **instances** is then created from it. Each instance receives a copy of the structure. Changes to the prototype are transferred to all instances with the **Sync** command.
+A **prototype** is a template for any repeating part of a project: a piece of equipment, a plant section, a metering point, a set of connections or [calculations](../calculation/calculation.md) — anything that is built from project objects and occurs more than once. The structure is described once in the prototype, and any number of **instances** is then created from it. Each instance receives a copy of the structure. Changes to the prototype are transferred to all instances with the **Sync** command.
 
 The section is in the Studio main menu: **Prototypes**. Every prototype has three parts, each opened with its own button:
 
@@ -60,7 +60,7 @@ Click **Create** and fill in the form:
 | **Groups** | The folder of the prototype in the type selection dialog. Each next line adds a nested folder |
 | **Comment** | Free text |
 
-The **Sync** and **Show fields** buttons work only for a saved prototype; they are described in "Synchronizing a prototype with its instances" and "Fields".
+The **Sync** and **Show fields** buttons work only for a saved prototype; they are described in [Synchronizing a prototype with its instances](#synchronizing-a-prototype-with-its-instances) and [Fields](#fields).
 
 ![Prototype creation form](images/proto_create.png)
 
@@ -83,7 +83,7 @@ Add the folder `motor` to the `Pump` content:
 
    ![Folder form in the content](images/content_folder_form.png)
 
-Objects of other types are added the same way, from their groups in the type selection dialog: `iot` ([IoT](../IoT/IoT_en.md)), `plc` ([PLC connections](../plc_connections/general_en.md)), `primitives` ([Primitives](../primitives/Primitives_en.md)), `prototypes`, `system` (for example, [calculations](../calculation/calculation_en.md) and [User Script](../user_script/user_script_en.md)).
+Objects of other types are added the same way, from their groups in the type selection dialog: `iot` ([IoT](../IoT/IoT.md)), `plc` ([PLC connections](../plc_connections/general_en.md)), `primitives` ([Primitives](../primitives/Primitives.md)), `prototypes`, `system` (for example, [calculations](../calculation/calculation.md) and [User Script](../user_script/user_script.md)).
 
 The **Folder** line of the form shows the path from the content root: `/` is the root itself. In the instance `P_201`, the folder `/motor` ends up at `P_201/motor`.
 
@@ -171,7 +171,7 @@ Synchronization transfers the current state of a prototype to all its instances.
 | `create` | Adds content objects that instances do not have yet. Existing objects are not changed |
 | `update` | Overwrites the fields with the **Prototype** flag in instance objects with the prototype values, including the instance root |
 | `delete` | Removes from instances the objects deleted from the prototype. Objects added to an instance manually stay |
-| `recursive` | Extends synchronization to instances of outer prototypes whose content holds an instance of this prototype (see "Nested prototypes") |
+| `recursive` | Extends synchronization to instances of outer prototypes whose content holds an instance of this prototype (see [Nested prototypes](#nested-prototypes)) |
 
 Modes can be combined. For `update`, `delete` and `recursive` the system asks for confirmation; answer **yes**. If no mode is selected, the message "Options for sync are not selected" appears. After a successful synchronization the message is "Sync is finished".
 

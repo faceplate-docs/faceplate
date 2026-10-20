@@ -28,11 +28,11 @@ All examples live in folder `iot_demo`. It contains `demo_value` tags with a num
 
 Each type is described in a separate guide of this section:
 
-- [HTTP connections](http_en.md)
-- [MQTT connections](mqtt_en.md)
-- [WebSocket connections](websocket_en.md)
-- [Sources](sources_en.md)
-- [Actions](actions_en.md)
+- [HTTP connections](http.md)
+- [MQTT connections](mqtt.md)
+- [WebSocket connections](websocket.md)
+- [Sources](sources.md)
+- [Actions](actions.md)
 
 You need access to Studio (`http://<server>:9000/fp/studio`) with an account that is allowed to modify the project.
 
@@ -44,20 +44,20 @@ When you create an object in **General View**, the **iot** group of the type sel
 
 | Group | Type | Role | Purpose |
 |---|---|---|---|
-| **HTTP** | [`iot_http_client_connection`](http_en.md#iot_http_client_connection) | Client | Sends an HTTP request and parses the reply |
-| | [`iot_http_server_connection`](http_en.md#iot_http_server_connection) | Server | Accepts HTTP requests on a path and replies |
-| **MQTT** | [`iot_mqtt_publisher`](mqtt_en.md#iot_mqtt_publisher) | Client | Publishes messages to a broker topic |
-| | [`iot_mqtt_subscriber`](mqtt_en.md#iot_mqtt_subscriber) | Server | Receives messages from a broker topic |
-| **WEBSOCKET** | [`iot_websocket_client_connection`](websocket_en.md#iot_websocket_client_connection) | Client | Connects to a WebSocket server and exchanges messages |
-| | [`iot_websocket_server_connection`](websocket_en.md#iot_websocket_server_connection) | Server | Accepts WebSocket connections |
-| **source** | [`iot_tag_source`](sources_en.md#iot_tag_source) | Source | Tag field values |
-| | [`iot_script_source`](sources_en.md#iot_script_source) | Source | Script result |
-| | [`iot_ts_source`](sources_en.md#iot_ts_source) | Source | Archive values |
-| | [`iot_eventlog_source`](sources_en.md#iot_eventlog_source) | Source | Event log records |
-| **action** | [`iot_tag_action`](actions_en.md#iot_tag_action) | Action | Writes to tag fields |
-| | [`iot_script_action`](actions_en.md#iot_script_action) | Action | Processes with a script and writes to tags |
-| | [`iot_ts_action`](actions_en.md#iot_ts_action) | Action | Writes a series to an archive |
-| | [`iot_eventlog_action`](actions_en.md#iot_eventlog_action) | Action | Creates event log records |
+| **HTTP** | [`iot_http_client_connection`](http.md#iot_http_client_connection) | Client | Sends an HTTP request and parses the reply |
+| | [`iot_http_server_connection`](http.md#iot_http_server_connection) | Server | Accepts HTTP requests on a path and replies |
+| **MQTT** | [`iot_mqtt_publisher`](mqtt.md#iot_mqtt_publisher) | Client | Publishes messages to a broker topic |
+| | [`iot_mqtt_subscriber`](mqtt.md#iot_mqtt_subscriber) | Server | Receives messages from a broker topic |
+| **WEBSOCKET** | [`iot_websocket_client_connection`](websocket.md#iot_websocket_client_connection) | Client | Connects to a WebSocket server and exchanges messages |
+| | [`iot_websocket_server_connection`](websocket.md#iot_websocket_server_connection) | Server | Accepts WebSocket connections |
+| **source** | [`iot_tag_source`](sources.md#iot_tag_source) | Source | Tag field values |
+| | [`iot_script_source`](sources.md#iot_script_source) | Source | Script result |
+| | [`iot_ts_source`](sources.md#iot_ts_source) | Source | Archive values |
+| | [`iot_eventlog_source`](sources.md#iot_eventlog_source) | Source | Event log records |
+| **action** | [`iot_tag_action`](actions.md#iot_tag_action) | Action | Writes to tag fields |
+| | [`iot_script_action`](actions.md#iot_script_action) | Action | Processes with a script and writes to tags |
+| | [`iot_ts_action`](actions.md#iot_ts_action) | Action | Writes a series to an archive |
+| | [`iot_eventlog_action`](actions.md#iot_eventlog_action) | Action | Creates event log records |
 
 ![The iot group in the type selection dialog](images/01_types.png)
 
@@ -98,7 +98,7 @@ Example — server `http_recv` writes the temperature from the request to tag `t
 | `http_recv`, **Request** | **Type** `JSON`, **Data** `t`, template `{"temperature": $t}` |
 | `http_recv` → `to_t_dst` (`iot_tag_action`) | `t` — `/iot_demo/t_dst` — `value` |
 
-Request `{"temperature": 23.4}` → variable `t` = `23.4` → action `to_t_dst` writes `23.4` to `t_dst.value`. Full setup — in [`iot_http_server_connection`](http_en.md#iot_http_server_connection).
+Request `{"temperature": 23.4}` → variable `t` = `23.4` → action `to_t_dst` writes `23.4` to `t_dst.value`. Full setup — in [`iot_http_server_connection`](http.md#iot_http_server_connection).
 
 If the **variable** list is empty, the **Data** list of the matching side has no variables or the connection is not saved (see the table above: on a server, actions take variables from **Request** and sources from **Response**; on a client, the other way round).
 
@@ -122,7 +122,7 @@ The top panel of the form is the same for all connections:
 | **Disabled** | Stop the connection and keep its settings |
 | **Error** | Text of the last exchange error; `no errors` if there is none |
 | **Memory limit (bytes)** | Memory limit of the connection process |
-| **Diagnostics** | The connection process log (see the Diagnostics section below) |
+| **Diagnostics** | The connection process log (see the [Diagnostics](#diagnostics) section below) |
 
 ## Message format
 
@@ -162,7 +162,7 @@ Write the script on the **erlang** or **javascript** tab; the editor opens with 
 | Server, **Request** | `Request` — incoming message body | Map of variables for actions |
 | Server, **Response** | `Data` — variables from sources | Reply text |
 
-Example — the reply of server `http_ts_obj` as an array of objects. **Response**: **Type** `Script`, **Data** `ts`, `v`, `from`, `to` (`ts` and `v` are filled by an `iot_ts_source` source like `ts_read` in [iot_ts_source](sources_en.md#iot_ts_source)), script:
+Example — the reply of server `http_ts_obj` as an array of objects. **Response**: **Type** `Script`, **Data** `ts`, `v`, `from`, `to` (`ts` and `v` are filled by an `iot_ts_source` source like `ts_read` in [iot_ts_source](sources.md#iot_ts_source)), script:
 
 ```erlang
 fun(Data, _Context) ->

@@ -1,10 +1,10 @@
 # IoT actions
 
-A guide for the integration engineer. General concepts (roles, **Data** variables, message format, the **Triggers** tab, diagnostics) are described in [IoT connections](IoT_en.md). Verified on FACEPLATE Studio 4.0.7.
+A guide for the integration engineer. General concepts (roles, **Data** variables, message format, the **Triggers** tab, diagnostics) are described in [IoT connections](IoT.md). Verified on FACEPLATE Studio 4.0.7.
 
 # Introduction
 
-An action receives variables of the connection incoming message (the request of a server, the reply of a client) and writes them to tags or an archive. Actions can be created only inside a connection and run before sources. Setup order and an example — see the section “How sources and actions are linked to a connection” in [IoT connections](IoT_en.md).
+An action receives variables of the connection incoming message (the request of a server, the reply of a client) and writes them to tags or an archive. Actions can be created only inside a connection and run before sources. Setup order and an example — see the section [How sources and actions are linked to a connection](IoT.md#how-sources-and-actions-are-linked-to-a-connection) in [IoT connections](IoT.md).
 
 You need access to Studio (`http://<server>:9000/fp/studio`) with an account that is allowed to modify the project.
 
@@ -12,11 +12,11 @@ You need access to Studio (`http://<server>:9000/fp/studio`) with an account tha
 
 ## iot_tag_action
 
-Writes variables of the incoming message to tag fields. The binding rows are the same as in [iot_tag_source](sources_en.md#iot_tag_source). The value is converted to the field type.
+Writes variables of the incoming message to tag fields. The binding rows are the same as in [iot_tag_source](sources.md#iot_tag_source). The value is converted to the field type.
 
 ![iot_tag_action](images/17_tag_action.png)
 
-Examples: `to_t_dst` in [`http_recv`](http_en.md#iot_http_server_connection), `to_t_mqtt` in [`mqtt_sub`](mqtt_en.md#iot_mqtt_subscriber), `to_t_ws` in [`ws_recv`](websocket_en.md#iot_websocket_server_connection).
+Examples: `to_t_dst` in [`http_recv`](http.md#iot_http_server_connection), `to_t_mqtt` in [`mqtt_sub`](mqtt.md#iot_mqtt_subscriber), `to_t_ws` in [`ws_recv`](websocket.md#iot_websocket_server_connection).
 
 ## iot_script_action
 
@@ -90,7 +90,7 @@ Example 1 — server `http_ev_in` writes the text from the request to the event 
 curl -X POST -d '{"text": "Door open"}' http://<server>:7080/ev_in
 ```
 
-The reply is `OK`, and the event log gets the record `Door open`. Source `ev_read` in [iot_eventlog_source](sources_en.md#iot_eventlog_source) exports such records.
+The reply is `OK`, and the event log gets the record `Door open`. Source `ev_read` in [iot_eventlog_source](sources.md#iot_eventlog_source) exports such records.
 
 Example 2 — server `http_level` opens and closes the event "High level" by a flag from the request:
 

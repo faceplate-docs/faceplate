@@ -20,7 +20,7 @@ This document is for integration engineers who set up calculations over tag valu
 
 A calculation takes the current values of tag fields, computes new values with a formula and, if needed, writes them to fields of other tags.
 
-| Suitable for Calculation | Implement in [User Script](../user_script/user_script_en.md) |
+| Suitable for Calculation | Implement in [User Script](../user_script/user_script.md) |
 |---|---|
 | Unit conversion, scaling | Historical and time-window calculations, rate of change |
 | Formulas over several inputs: sum, difference, ratio, percentage, power, efficiency | Accumulation and totalizers, state between runs |
@@ -40,7 +40,7 @@ A calculation consists of three parts:
 
 A calculation runs on input changes, on a timer, or both.
 
-Running example: folder `calc_demo` with tags `p_in_1`, `p_in_2`, `p_avg`. They are instances of a primitive with a numeric field `out_value`; how to create such a type is covered in the [Primitives](../primitives/Primitives_en.md) guide. Calculation `p_avg_calc` writes the average of two pressures to `p_avg` and also computes their difference `DIFF`.
+Running example: folder `calc_demo` with tags `p_in_1`, `p_in_2`, `p_avg`. They are instances of a primitive with a numeric field `out_value`; how to create such a type is covered in the [Primitives](../primitives/Primitives.md) guide. Calculation `p_avg_calc` writes the average of two pressures to `p_avg` and also computes their difference `DIFF`.
 
 You need access to Studio (`http://<server>:9000/fp/studio`) with an account allowed to modify the project.
 
@@ -74,7 +74,7 @@ On the right are the edit (pencil) and delete (trash) buttons. Double-clicking a
    ![Selecting the calculation type](images/2_type_select.png)
 
 3. Fill in **Name**: `p_avg_calc`.
-4. Set the run conditions (see "Run conditions"). For the example, leave **Period (ms)** empty and **Execute on changing variables values** on, which is the default.
+4. Set the run conditions (see [Run conditions](#run-conditions)). For the example, leave **Period (ms)** empty and **Execute on changing variables values** on, which is the default.
 5. Fill in **Input data**, the script and **Output data** (see below).
 6. Click **Compile**, wait for `OK` and save.
 
@@ -222,6 +222,6 @@ Calculation setup sequence:
 2. In **General View**, enter the target folder and create a **system → calculation** object.
 3. Set the run conditions: a period greater than 10 ms, auto-run on input changes, or both.
 4. Define input variables with a tag and a field. Define outputs with a tag if the result must be written to a tag, or without one if the calculation runtime is enough. Do not direct an output to a field that is an input of the same calculation.
-5. Write the script: formulas separated by commas, no period at the end, every output variable assigned. Move historical calculations, accumulation and complex logic to [User Script](../user_script/user_script_en.md).
+5. Write the script: formulas separated by commas, no period at the end, every output variable assigned. Move historical calculations, accumulation and complex logic to [User Script](../user_script/user_script.md).
 6. Click **Compile**, wait for `OK`, save.
 7. Check the result in the **Calculation** section: status `OK`, input and output values, run time.
