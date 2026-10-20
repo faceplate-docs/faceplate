@@ -50,8 +50,13 @@ nav:
           - Действия: IoT/actions.md
   - Хранение данных:
       - Хранилища: storage/Storage_ru.md
-      - Архивы и тренды: Архивы и Тренды.md
+      - Архивы: archives/archives_ru.md
+      - Тренды: archives/trends_ru.md
+      - Агрегаты: archives/aggregates_ru.md
       - Historian-сервер: historian/historian_server.md
+  - Работа оператора:
+      - Сообщения и тревоги: alarm/alarm_ru.md
+      - Советчик диспетчера: dsf/dsf_ru.md
   - Объекты проекта:
       - Примитивы: primitives/Primitives.md
       - Прототипы: prototypes/prototypes.md
@@ -76,5 +81,5 @@ nav:
       - Экспорт проекта: machine_learning/project_export_ru.md
   - Администрирование:
       - Резервирование ресурсов: Redundancy/Redundancy_ru.md
+      - Репликация: replica/replica_ru.md
       - Модуль Git: git/git_ru.md
-      - Интеграция с Git (кратко): Git в Faceplate.md
