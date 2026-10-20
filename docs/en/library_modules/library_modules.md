@@ -1,6 +1,6 @@
 # Library Modules
 
-This document is for integration engineers who move shared Erlang code into a separate module and call it from the project's user scripts. Verified on FACEPLATE Studio 4.0.7.
+This document is for integration engineers who move shared Erlang code into a separate module and call it from the project's user scripts.
 
 # Glossary
 

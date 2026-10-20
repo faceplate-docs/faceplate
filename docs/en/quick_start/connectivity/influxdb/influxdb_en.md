@@ -1,7 +1,6 @@
 # Loading Data into InfluxDB (HTTPS)
 
 Document: Quick Start. Faceplate Data Exchange Specification → InfluxDB
-Version: 4.0.7
 
 ## 1. Solution Architecture
 

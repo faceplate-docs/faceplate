@@ -1,6 +1,6 @@
 # Calculations (Calculation)
 
-This document is for integration engineers who set up calculations over tag values in a Faceplate project. Verified on FACEPLATE Studio 4.0.7.
+This document is for integration engineers who set up calculations over tag values in a Faceplate project.
 
 # Glossary
 
@@ -204,7 +204,7 @@ To delete, select one or more rows in **Calculation** and click the trash button
 
 ![Delete confirmation](images/10_delete_confirm.png)
 
-## Interface notes for 4.0.7
+## Interface notes
 
 | On screen | Where |
 |---|---|

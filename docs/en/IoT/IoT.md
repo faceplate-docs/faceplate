@@ -1,6 +1,6 @@
 # IoT connections
 
-A guide for the integration engineer who sets up data exchange between FACEPLATE and external systems over HTTP, MQTT and WebSocket. Verified on FACEPLATE Studio 4.0.7.
+A guide for the integration engineer who sets up data exchange between FACEPLATE and external systems over HTTP, MQTT and WebSocket.
 
 # Glossary
 
@@ -149,7 +149,7 @@ On the **Request & Response** tab, each message has a **Type**:
 - An array in an incoming JSON is parsed with `$$`: the template `{"items": [$$ {"v": $v}]}` applied to `{"items": [{"v": 1}, {"v": 2.5}]}` gives `v` = `[1, 2.5]`.
 - A variable holding a list in an outgoing template (`{"got": $v}`) becomes a JSON array (`{"got": [1, 2.5]}`).
 
-> **Important.** In version 4.0.7, `$$` in an outgoing template (for example, `[$$ {"x": $v}]`) causes a processing error. Build an array of objects in an outgoing message with a script — see the example in the next section.
+> **Important.** `$$` in an outgoing template (for example, `[$$ {"x": $v}]`) causes a processing error. Build an array of objects in an outgoing message with a script — see the example in the next section.
 
 ### Message script
 

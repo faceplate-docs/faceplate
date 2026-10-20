@@ -1,6 +1,6 @@
 # Prototypes
 
-A document for integration engineers who build projects in Studio. All examples were checked on Faceplate 4.0.7.
+A document for integration engineers who build projects in Studio.
 
 # Glossary
 
@@ -125,7 +125,7 @@ The **Runtime** tab of the instance form shows only the fields with the **Run-ti
 ![Run-time field values of the prototype](images/own_fields.png)
 
 > [!NOTE]
-> In 4.0.7 the values from this window are not copied into a new instance on creation. In the example, `running` is on in `Pump`, while it is off in the instance `P_202` created afterwards. Existing instances receive the value by synchronization in `update` mode if the field has the **Prototype** flag.
+> The values from this window are not copied into a new instance on creation. In the example, `running` is on in `Pump`, while it is off in the instance `P_202` created afterwards. Existing instances receive the value by synchronization in `update` mode if the field has the **Prototype** flag.
 
 ## Behaviour
 
@@ -206,7 +206,7 @@ The station instance `ST_1` receives a copy of `P1`. The direct instances of `Pu
 | `Station`: `update` | — | Title of `motor` updated |
 
 > [!NOTE]
-> In 4.0.7 `recursive` transfers new objects (`create`) to the second level, but not field changes (`update`). To update fields in the instances of an outer prototype, run **Sync** with `update` on `Station` after synchronizing `Pump`.
+> `recursive` transfers new objects (`create`) to the second level, but not field changes (`update`). To update fields in the instances of an outer prototype, run **Sync** with `update` on `Station` after synchronizing `Pump`.
 
 ![Project tree after synchronization](images/tree_recursive.png)
 

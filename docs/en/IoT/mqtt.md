@@ -1,6 +1,6 @@
 # MQTT connections
 
-A guide for the integration engineer. General concepts (roles, **Data** variables, message format, the **Triggers** tab, diagnostics) are described in [IoT connections](IoT.md). Verified on FACEPLATE Studio 4.0.7.
+A guide for the integration engineer. General concepts (roles, **Data** variables, message format, the **Triggers** tab, diagnostics) are described in [IoT connections](IoT.md).
 
 # Introduction
 

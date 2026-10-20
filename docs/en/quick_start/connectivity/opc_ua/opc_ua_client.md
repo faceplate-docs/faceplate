@@ -1,7 +1,6 @@
 # Faceplate
 
 Document: Quick Start. Faceplate (OPC UA Client) → OPC UA Server
-Version: 4.0.7
 
 # Introduction: Integration via OPC UA
 

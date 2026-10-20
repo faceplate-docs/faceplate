@@ -1,6 +1,6 @@
 # User Scripts (User Script)
 
-A guide for the integration engineer who writes server-side project logic in Erlang or JavaScript: computed values, counters, moving data between objects. Verified on FACEPLATE Studio 4.0.7.
+A guide for the integration engineer who writes server-side project logic in Erlang or JavaScript: computed values, counters, moving data between objects.
 
 # Glossary
 
@@ -201,7 +201,7 @@ Scripts cannot be created in this section, only in the **General View**. Open a 
 
 ![Delete confirmation](images/9_delete.png)
 
-## UI notes for 4.0.7
+## UI notes
 
 | On screen | Where |
 |---|---|

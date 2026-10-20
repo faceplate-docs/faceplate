@@ -1,6 +1,6 @@
 # Powerfactory Service
 
-Документ для инженера-интегратора, который настраивает обмен данными проекта Faceplate с внешним сервисом расчётов DIgSILENT PowerFactory. Проверено на FACEPLATE Studio 4.0.7.
+Документ для инженера-интегратора, который настраивает обмен данными проекта Faceplate с внешним сервисом расчётов DIgSILENT PowerFactory.
 
 # Глоссарий
 
@@ -167,7 +167,7 @@ Powerfactory Service связывает объекты проекта Faceplate 
 | **modeling_apply_mapping** | `update_execute_get` | Расчёт в сеансе: что отправить в PowerFactory и куда записать результат |
 | **modeling_apply_mapping_dynamic** | `update_execute_get_dynamic` | Динамический расчёт |
 | **current_slice_mapping** | `produce_slice` | Загрузка среза из файла в **slices_folder** в объекты проекта |
-| **archive_slice_mapping** | `produce_slice_archive` | В 4.0.7 сервер это поле не использует |
+| **archive_slice_mapping** | `produce_slice_archive` | Сервер это поле не использует |
 
 Чтобы операция работала по маппингу из примера, укажите `load_exchange` в соответствующем поле и сохраните.
 
@@ -201,7 +201,7 @@ Powerfactory Service связывает объекты проекта Faceplate 
 
 Правила должны отражать структуру папок проекта. Если путь объекта после перевода не совпадает с путём в модели PowerFactory, его данные в обмен не попадут.
 
-## Особенности интерфейса 4.0.7
+## Особенности интерфейса
 
 | На экране | Где |
 |---|---|

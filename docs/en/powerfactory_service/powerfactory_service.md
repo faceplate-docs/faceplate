@@ -1,6 +1,6 @@
 # Powerfactory Service
 
-A document for integration engineers who set up data exchange between a Faceplate project and an external DIgSILENT PowerFactory calculation service. Checked on FACEPLATE Studio 4.0.7.
+A document for integration engineers who set up data exchange between a Faceplate project and an external DIgSILENT PowerFactory calculation service.
 
 # Glossary
 
@@ -31,7 +31,7 @@ You need access to Studio (`http://<server>:9000/fp/studio`) with the right to c
 
 ## Mappings section
 
-Open **Powerfactory Service** in the Studio main menu. The table shows each mapping's **Name** and its path in the project (the column header is **Путь** in 4.0.7).
+Open **Powerfactory Service** in the Studio main menu. The table shows each mapping's **Name** and its path in the project (the column header is **Путь**).
 
 ![Powerfactory Service section](images/1_mappings_list.png)
 
@@ -167,7 +167,7 @@ Each field takes the **Name** of a mapping from the section table. The service l
 | **modeling_apply_mapping** | `update_execute_get` | Calculation in a session: what to send to PowerFactory and where to write the result |
 | **modeling_apply_mapping_dynamic** | `update_execute_get_dynamic` | Dynamic calculation |
 | **current_slice_mapping** | `produce_slice` | Loading a slice from a file in **slices_folder** into project objects |
-| **archive_slice_mapping** | `produce_slice_archive` | Not used by the server in 4.0.7 |
+| **archive_slice_mapping** | `produce_slice_archive` | Not used by the server |
 
 To make an operation use the example mapping, enter `load_exchange` in the corresponding field and save.
 
@@ -201,7 +201,7 @@ converts `/root/FP/PROJECT/KAZ/SEVER/@lines/L1` to `Grid\KAZ\SEVER\@lines\L1`.
 
 The rules must reflect the project folder structure. If an object's converted path does not match its path in the PowerFactory model, its data does not take part in the exchange.
 
-## Interface notes for 4.0.7
+## Interface notes
 
 | On screen | Where |
 |---|---|

@@ -1,6 +1,6 @@
 # Primitives
 
-A document for integration engineers. Checked on FACEPLATE Studio 4.0.7.
+A document for integration engineers.
 
 # Glossary
 
