@@ -44,7 +44,12 @@ nav:
   - Data storage:
       - Storage: storage/Storage_en.md
       - Archives: Archives/Archives.md
+      - Trends: Archives/trends_en.md
+      - Aggregates: Archives/aggregates_en.md
       - Historian server: historian/historian_server_en.md
+  - Operator tools:
+      - Messages and alarms: alarm/alarm_en.md
+      - Dispatcher advisor: dsf/dsf_en.md
   - Project objects:
       - Primitives: primitives/Primitives.md
       - Prototypes: prototypes/prototypes.md
@@ -68,4 +73,5 @@ nav:
       - Project export: machine_learning/project_export_en.md
   - Administration:
       - Resource redundancy: Redundancy/Redundancy_en.md
+      - Replication: replica/replica_en.md
       - Git module: git/git_en.md
