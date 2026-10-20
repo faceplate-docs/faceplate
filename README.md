@@ -43,8 +43,13 @@ docs/
 │   ├── historian/
 │   │   └── historian_server_en.md
 │   ├── IoT/
-│   │   ├── images/  (15 files)
-│   │   └── IoT.md
+│   │   ├── images/  (26 files)
+│   │   ├── actions_en.md
+│   │   ├── http_en.md
+│   │   ├── IoT_en.md
+│   │   ├── mqtt_en.md
+│   │   ├── sources_en.md
+│   │   └── websocket_en.md
 │   ├── library_modules/
 │   │   ├── images/  (6 files)
 │   │   └── library_modules_en.md
@@ -120,8 +125,13 @@ docs/
 │   ├── historian/
 │   │   └── historian_server.md
 │   ├── IoT/
-│   │   ├── images/  (15 files)
-│   │   └── IoT.docx.md
+│   │   ├── images/  (26 files)
+│   │   ├── actions_ru.md
+│   │   ├── http_ru.md
+│   │   ├── IoT_ru.md
+│   │   ├── mqtt_ru.md
+│   │   ├── sources_ru.md
+│   │   └── websocket_ru.md
 │   ├── library_modules/
 │   │   ├── images/  (6 files)
 │   │   └── library_modules_ru.md
@@ -232,7 +242,12 @@ favicon and brand stylesheet), `tools/` (site build and link checker),
   - [SNMP](docs/en/plc_connections/plc_snmp_connection_en.md)
   - [Transformation feature](docs/en/plc_connections/transformation_en.md)
   - [Diagnostics](docs/en/plc_connections/diagnostics_en.md)
-- [IoT Connections module](docs/en/IoT/IoT.md)
+- [IoT connections](docs/en/IoT/IoT_en.md)
+  - [HTTP](docs/en/IoT/http_en.md)
+  - [MQTT](docs/en/IoT/mqtt_en.md)
+  - [WebSocket](docs/en/IoT/websocket_en.md)
+  - [Sources](docs/en/IoT/sources_en.md)
+  - [Actions](docs/en/IoT/actions_en.md)
 
 ### Data storage
 - [Storage: databases and distributed storage](docs/en/storage/Storage_en.md)

@@ -41,7 +41,13 @@ nav:
       - SNMP: plc_connections/plc_snmp_connection_ru.md
       - Функция Transformation: plc_connections/transformation_ru.md
       - Диагностика: plc_connections/diagnostics_ru.md
-      - Модуль IoT-соединений: IoT/IoT.docx.md
+      - IoT-соединения:
+          - Общие сведения: IoT/IoT_ru.md
+          - HTTP: IoT/http_ru.md
+          - MQTT: IoT/mqtt_ru.md
+          - WebSocket: IoT/websocket_ru.md
+          - Источники: IoT/sources_ru.md
+          - Действия: IoT/actions_ru.md
   - Хранение данных:
       - Хранилища: storage/Storage_ru.md
       - Архивы и тренды: Архивы и Тренды.md

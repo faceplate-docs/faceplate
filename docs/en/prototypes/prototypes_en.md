@@ -83,7 +83,7 @@ Add the folder `motor` to the `Pump` content:
 
    ![Folder form in the content](images/content_folder_form.png)
 
-Objects of other types are added the same way, from their groups in the type selection dialog: `iot` ([IoT](../IoT/IoT.md)), `plc` ([PLC connections](../plc_connections/general_en.md)), `primitives` ([Primitives](../primitives/Primitives_en.md)), `prototypes`, `system` (for example, [calculations](../calculation/calculation_en.md) and [User Script](../user_script/user_script_en.md)).
+Objects of other types are added the same way, from their groups in the type selection dialog: `iot` ([IoT](../IoT/IoT_en.md)), `plc` ([PLC connections](../plc_connections/general_en.md)), `primitives` ([Primitives](../primitives/Primitives_en.md)), `prototypes`, `system` (for example, [calculations](../calculation/calculation_en.md) and [User Script](../user_script/user_script_en.md)).
 
 The **Folder** line of the form shows the path from the content root: `/` is the root itself. In the instance `P_201`, the folder `/motor` ends up at `P_201/motor`.
 

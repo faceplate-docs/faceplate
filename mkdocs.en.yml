@@ -34,7 +34,13 @@ nav:
       - SNMP: plc_connections/plc_snmp_connection_en.md
       - Transformation feature: plc_connections/transformation_en.md
       - Diagnostics: plc_connections/diagnostics_en.md
-      - IoT Connections module: IoT/IoT.md
+      - IoT connections:
+          - Overview: IoT/IoT_en.md
+          - HTTP: IoT/http_en.md
+          - MQTT: IoT/mqtt_en.md
+          - WebSocket: IoT/websocket_en.md
+          - Sources: IoT/sources_en.md
+          - Actions: IoT/actions_en.md
   - Data storage:
       - Storage: storage/Storage_en.md
       - Archives: Archives/Archives.md
