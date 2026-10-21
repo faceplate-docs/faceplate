@@ -61,6 +61,7 @@ nav:
       - Примитивы: primitives/Primitives.md
       - Прототипы: prototypes/prototypes.md
       - Каталоги: catalogs/catalogs.md
+      - Локализация: localization/localization.md
   - Логика проекта:
       - Расчёты (Calculation): calculation/calculation.md
       - Пользовательские скрипты: user_script/user_script.md

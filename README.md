@@ -56,6 +56,9 @@ docs/
 │   ├── library_modules/
 │   │   ├── images/  (6 files)
 │   │   └── library_modules.md
+│   ├── localization/
+│   │   ├── images/  (9 files)
+│   │   └── localization.md
 │   ├── machine_learning/
 │   │   ├── forecasting_models_en.md
 │   │   └── project_export_en.md
@@ -141,6 +144,9 @@ docs/
 │   ├── library_modules/
 │   │   ├── images/  (6 files)
 │   │   └── library_modules.md
+│   ├── localization/
+│   │   ├── images/  (9 files)
+│   │   └── localization.md
 │   ├── machine_learning/
 │   │   ├── forecasting_models_ru.md
 │   │   └── project_export_ru.md
@@ -264,6 +270,7 @@ favicon and brand stylesheet), `tools/` (site build and link checker),
 - [Primitives](docs/en/primitives/Primitives.md)
 - [Prototypes](docs/en/prototypes/prototypes.md)
 - [Catalogs](docs/en/catalogs/catalogs.md)
+- [Localization](docs/en/localization/localization.md)
 
 ### Project logic
 - [Calculations](docs/en/calculation/calculation.md)
