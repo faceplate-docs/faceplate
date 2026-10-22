@@ -123,8 +123,6 @@ Select one or more modules (Ctrl+click), click **Delete**, and confirm with **ye
 
 ![Delete confirmation](images/6_delete.png)
 
-> **Important.** Deleting the object does not unload the module from the server: calls from scripts keep running the old code until the server restarts. Before deleting, find and fix every script that calls the module.
-
 # Conclusion
 
 Workflow:

@@ -108,7 +108,10 @@ The same variable is used both for reading and writing. Only a field declared as
 fun(VARS, State) ->
     A = maps:get("a", VARS),
     B = maps:get("b", VARS),
-    Runs = case State of undefined -> 1; N -> N + 1 end,
+    Runs = case State of
+        N when is_integer(N) -> N + 1;
+        _ -> 1
+    end,
     { #{"sum" => A + B, "runs" => Runs}, Runs }
 end.
 ```
@@ -117,43 +120,41 @@ end.
 |---|---|
 | `VARS` | A map keyed by variable names as strings: `"a"`, not `a` |
 | Values to write | A map "variable name — value". Keys missing from the variable table are ignored. An empty map `#{}` writes nothing |
-| `State` | `undefined` on the first call after start. Afterwards — the second element of the previous result |
+| `State` | The second element of the previous result. The example treats an integer as the counter and any other value as the first run |
 | Final dot | The code ends with `end.` |
-
-> **Important.** The template of a new form returns `none` as the state, but the first call receives `undefined`, not `none`. Code like `case State of none -> …` fails on the first run: the example above with `none` instead of `undefined` gets `badarith`.
 
 The value type follows the field type: a `float` field gives a number, a `string` field gives a string. Adding string fields gives `badarith`.
 
-![Code after Compile](images/4_code.png)
+![Example variables and code](images/4_code.png)
 
 ## JavaScript code
 
-**javascript** tab. An async function with the same arguments returns the object `{ vars, state }`:
+**javascript** tab. An async function with the same arguments. Values are written with `fp.api.set_value(path, field, value)`, the new state is returned in `{ state }`:
 
 ```javascript
 async function(VARS, State) {
-    const runs = (State ?? 0) + 1;
-    return { vars: { sum: VARS.a + VARS.b, runs: runs }, state: runs };
+    const runs = Number.isInteger(State) ? State + 1 : 1;
+    await fp.api.set_value('/root/FP/PROJECT/script_demo/sum_out', 'value', VARS.a + VARS.b);
+    await fp.api.set_value('/root/FP/PROJECT/script_demo/runs_out', 'value', runs);
+    return { state: runs };
 }
 ```
 
 - Variables are accessed by name: `VARS.a`.
-- No `vars` in the result — nothing is written.
-- `State` is not set on the first call, so the initial value is supplied with `??`.
+- The path in `fp.api.set_value` is the full one, with the `/root/FP/PROJECT` prefix.
+- The counter works as in Erlang: an integer in `State` is incremented, any other value gives `1`.
 
 Switching between the **erlang** and **javascript** tabs does not change the editor text. Replace the code entirely and click **Compile**.
-
-The JavaScript editor may mark lines with a red cross even for valid code. Rely on the **Compile** result.
 
 ## Compile and saving
 
 **Compile** checks the code and passes it to the form. Next to the button you see `OK` or the error text, for example:
 
-`{invalid_expression,{4,erl_parse,["syntax error before: ",",\"Runs\""]}}`
+`{invalid_expression,{4,erl_parse,["syntax error before: ","Runs"]}}`
 
 ![Compile error](images/5_compile_error.png)
 
-> **Important.** Only code that passed **Compile** is saved. After a failed **Compile**, **save** stays disabled until a successful one. If you fix the code without **Compile** and change another field (for example **Period (ms)**), **save** becomes available, but the previous code is saved without warning. Always click **Compile** and wait for `OK` before saving.
+The order is always the same: **Compile** → `OK` → **save**.
 
 Every save restarts the script: the code is reloaded and `State` is reset.
 
@@ -167,9 +168,8 @@ An error raised while the function runs is shown in three places:
 
 | Text | Cause |
 |---|---|
-| `badarith` | Arithmetic on a non-numeric value: a string field or `State` = `undefined` |
+| `badarith` | Arithmetic on a non-numeric value, for example on a string field |
 | `{badkey,"c"}` | The code reads variable `c`, which is not in the variable table |
-| `{badmatch,{error,{undefined_field,<<"out_value">>}}}` | The object has no field named in the variable |
 
 The error is cleared after the first successful run. Variable values are not written when an error occurs.
 
@@ -201,16 +201,6 @@ Scripts cannot be created in this section, only in the **General View**. Open a 
 
 ![Delete confirmation](images/9_delete.png)
 
-## UI notes
-
-| On screen | Where |
-|---|---|
-| Path column header stays Russian: **Путь** | **Script** section |
-| **Runtime** tab shows fields by system names: **disabled**, **error**, **node**, **pid**, **state**, **trigger_execute** | Script form |
-| First tab is labelled **settings** in lower case | Script form |
-| Name filter placeholder `NameOrPart` | **Script** section |
-| Caption `delete items: N` | Delete confirmation |
-
 # Conclusion
 
 Workflow:
@@ -219,6 +209,6 @@ Workflow:
 2. In the **General View**, create a `user_script` (group `system`).
 3. Declare variables for every field the script reads or writes.
 4. Choose how it runs: **Period (ms)**, **Execute on changing variables values**, or both.
-5. Write the function. In Erlang, `VARS` keys are strings and the first `State` is `undefined`. In JavaScript, the result is `{ vars, state }`.
+5. Write the function. In Erlang, `VARS` keys are strings. In JavaScript, write values with `fp.api.set_value`.
 6. Click **Compile**, wait for `OK`, save.
 7. Check **Status** in the **Script** section. On **ERROR**, read the text in the tooltip or in the form's **Error** field.
