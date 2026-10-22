@@ -53,6 +53,9 @@ docs/
 │   │   ├── mqtt.md
 │   │   ├── sources.md
 │   │   └── websocket.md
+│   ├── js_library/
+│   │   ├── images/  (8 files)
+│   │   └── js_library.md
 │   ├── library_modules/
 │   │   ├── images/  (6 files)
 │   │   └── library_modules.md
@@ -141,6 +144,9 @@ docs/
 │   │   ├── mqtt.md
 │   │   ├── sources.md
 │   │   └── websocket.md
+│   ├── js_library/
+│   │   ├── images/  (8 files)
+│   │   └── js_library.md
 │   ├── library_modules/
 │   │   ├── images/  (6 files)
 │   │   └── library_modules.md
@@ -276,6 +282,7 @@ favicon and brand stylesheet), `tools/` (site build and link checker),
 - [Calculations](docs/en/calculation/calculation.md)
 - [User scripts](docs/en/user_script/user_script.md)
 - [Library modules](docs/en/library_modules/library_modules.md)
+- [JS libraries](docs/en/js_library/js_library.md)
 
 ### Integrations
 - [Microsoft Power BI](docs/en/PowerBI_en/PowerBi_FP_en.md)

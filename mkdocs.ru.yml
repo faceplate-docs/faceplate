@@ -66,6 +66,7 @@ nav:
       - Расчёты (Calculation): calculation/calculation.md
       - Пользовательские скрипты: user_script/user_script.md
       - Библиотечные модули: library_modules/library_modules.md
+      - JS-библиотеки: js_library/js_library.md
   - Интеграции:
       - Microsoft Power BI: PowerBI_ru/PowerBi_FP_ru.md
       - REST API интерфейс: samples/connectivity/rest api/rest api.md

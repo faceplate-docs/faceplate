@@ -59,6 +59,7 @@ nav:
       - Calculations: calculation/calculation.md
       - User scripts: user_script/user_script.md
       - Library modules: library_modules/library_modules.md
+      - JS libraries: js_library/js_library.md
   - Integrations:
       - Microsoft Power BI: PowerBI_en/PowerBi_FP_en.md
       - REST API interface: quick_start/connectivity/rest api/rest api.md
