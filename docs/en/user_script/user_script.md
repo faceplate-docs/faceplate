@@ -2,6 +2,21 @@
 
 A guide for the integration engineer who writes server-side project logic in Erlang or JavaScript: computed values, counters, moving data between objects.
 
+# Contents
+
+- [Glossary](#glossary)
+- [Introduction](#introduction)
+- [Main part](#main-part)
+    - [Creating a script](#creating-a-script)
+    - [Script form](#script-form)
+    - [Erlang code](#erlang-code)
+    - [JavaScript code](#javascript-code)
+    - [Compile and saving](#compile-and-saving)
+    - [Runtime errors](#runtime-errors)
+    - [Manual run](#manual-run)
+    - [The "Script" section](#the-script-section)
+- [Conclusion](#conclusion)
+
 # Glossary
 
 | Term | Meaning |

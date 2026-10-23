@@ -2,6 +2,14 @@
 
 Документ для инженера-интегратора. Общие понятия (роли, переменные **Data**, формат сообщения, вкладка **Triggers**, диагностика) описаны в документе [«IoT-соединения»](IoT.md).
 
+# Содержание
+
+- [Введение](#введение)
+- [Основная часть](#основная-часть)
+    - [iot_websocket_client_connection](#iot_websocket_client_connection)
+    - [iot_websocket_server_connection](#iot_websocket_server_connection)
+- [Заключение](#заключение)
+
 # Введение
 
 WebSocket-соединения держат постоянный канал: `iot_websocket_client_connection` подключается к серверу, `iot_websocket_server_connection` принимает подключения. Пример в документе — пара клиент → сервер внутри одного FACEPLATE: значение `t_src` попадает в `t_ws`.

@@ -2,6 +2,14 @@
 
 A guide for the integration engineer. General concepts (roles, **Data** variables, message format, the **Triggers** tab, diagnostics) are described in [IoT connections](IoT.md).
 
+# Contents
+
+- [Introduction](#introduction)
+- [Main part](#main-part)
+    - [iot_websocket_client_connection](#iot_websocket_client_connection)
+    - [iot_websocket_server_connection](#iot_websocket_server_connection)
+- [Conclusion](#conclusion)
+
 # Introduction
 
 WebSocket connections keep a persistent channel: `iot_websocket_client_connection` connects to a server, `iot_websocket_server_connection` accepts connections. The example in this guide is a client → server pair inside one FACEPLATE: the value of `t_src` reaches `t_ws`.

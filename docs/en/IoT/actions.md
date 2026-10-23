@@ -2,6 +2,16 @@
 
 A guide for the integration engineer. General concepts (roles, **Data** variables, message format, the **Triggers** tab, diagnostics) are described in [IoT connections](IoT.md).
 
+# Contents
+
+- [Introduction](#introduction)
+- [Main part](#main-part)
+    - [iot_tag_action](#iot_tag_action)
+    - [iot_script_action](#iot_script_action)
+    - [iot_ts_action](#iot_ts_action)
+    - [iot_eventlog_action](#iot_eventlog_action)
+- [Conclusion](#conclusion)
+
 # Introduction
 
 An action receives variables of the connection incoming message (the request of a server, the reply of a client) and writes them to tags or an archive. Actions can be created only inside a connection and run before sources. Setup order and an example — see the section [How sources and actions are linked to a connection](IoT.md#how-sources-and-actions-are-linked-to-a-connection) in [IoT connections](IoT.md).

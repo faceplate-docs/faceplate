@@ -2,6 +2,19 @@
 
 A document for integration engineers.
 
+# Contents
+
+- [Glossary](#glossary)
+- [Introduction](#introduction)
+- [Main Part](#main-part)
+    - [Primitive List](#primitive-list)
+    - [Creating a Primitive](#creating-a-primitive)
+    - [Fields](#fields)
+    - [Behaviour](#behaviour)
+    - [Instances in the General View](#instances-in-the-general-view)
+    - [Editing and Deleting a Primitive](#editing-and-deleting-a-primitive)
+- [Conclusion](#conclusion)
+
 # Glossary
 
 | Term | Meaning |

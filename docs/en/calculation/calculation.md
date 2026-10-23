@@ -2,6 +2,21 @@
 
 This document is for integration engineers who set up calculations over tag values in a Faceplate project.
 
+# Contents
+
+- [Glossary](#glossary)
+- [Introduction](#introduction)
+- [Main part](#main-part)
+    - [Calculation list](#calculation-list)
+    - [Creating a calculation](#creating-a-calculation)
+    - [Variables](#variables)
+    - [Script](#script)
+    - [Run conditions](#run-conditions)
+    - [Errors](#errors)
+    - [Editing and deleting](#editing-and-deleting)
+    - [Interface notes](#interface-notes)
+- [Conclusion](#conclusion)
+
 # Glossary
 
 | Term | Meaning |

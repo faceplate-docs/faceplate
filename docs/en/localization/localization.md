@@ -2,6 +2,18 @@
 
 A document for the integration engineer who sets up translations of the FACEPLATE interface and of project screen texts.
 
+# Contents
+
+- [Glossary](#glossary)
+- [Introduction](#introduction)
+- [Main part](#main-part)
+    - [Dictionary](#dictionary)
+    - [Keys and translations](#keys-and-translations)
+    - [Text on a screen](#text-on-a-screen)
+    - [Choosing the language](#choosing-the-language)
+    - [Exchange via Excel](#exchange-via-excel)
+- [Conclusion](#conclusion)
+
 # Glossary
 
 | Term | Meaning |

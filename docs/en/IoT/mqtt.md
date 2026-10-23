@@ -2,6 +2,14 @@
 
 A guide for the integration engineer. General concepts (roles, **Data** variables, message format, the **Triggers** tab, diagnostics) are described in [IoT connections](IoT.md).
 
+# Contents
+
+- [Introduction](#introduction)
+- [Main part](#main-part)
+    - [iot_mqtt_publisher](#iot_mqtt_publisher)
+    - [iot_mqtt_subscriber](#iot_mqtt_subscriber)
+- [Conclusion](#conclusion)
+
 # Introduction
 
 MQTT connections work through an external broker: `iot_mqtt_publisher` publishes messages to a topic, `iot_mqtt_subscriber` receives them. The example in this guide is the chain `t_src` → broker → `t_mqtt`.

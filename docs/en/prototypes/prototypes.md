@@ -2,6 +2,21 @@
 
 A document for integration engineers who build projects in Studio.
 
+# Contents
+
+- [Glossary](#glossary)
+- [Introduction](#introduction)
+- [Main part](#main-part)
+    - [Creating a prototype](#creating-a-prototype)
+    - [Content](#content)
+    - [Fields](#fields)
+    - [Behaviour](#behaviour)
+    - [Creating an instance](#creating-an-instance)
+    - [Synchronizing a prototype with its instances](#synchronizing-a-prototype-with-its-instances)
+    - [Nested prototypes](#nested-prototypes)
+    - [Exporting and importing a prototype](#exporting-and-importing-a-prototype)
+- [Conclusion](#conclusion)
+
 # Glossary
 
 | Term | Meaning |

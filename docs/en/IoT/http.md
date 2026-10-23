@@ -2,6 +2,14 @@
 
 A guide for the integration engineer. General concepts (roles, **Data** variables, message format, the **Triggers** tab, diagnostics) are described in [IoT connections](IoT.md).
 
+# Contents
+
+- [Introduction](#introduction)
+- [Main part](#main-part)
+    - [iot_http_client_connection](#iot_http_client_connection)
+    - [iot_http_server_connection](#iot_http_server_connection)
+- [Conclusion](#conclusion)
+
 # Introduction
 
 HTTP connections link FACEPLATE to web services: `iot_http_client_connection` sends requests itself, `iot_http_server_connection` accepts requests from external systems. The example in this guide is a client → server pair inside one FACEPLATE: the value of tag `t_src` reaches tag `t_dst`.

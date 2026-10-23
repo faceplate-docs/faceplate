@@ -2,6 +2,20 @@
 
 This document is for integration engineers who move shared Erlang code into a separate module and call it from the project's user scripts.
 
+# Contents
+
+- [Glossary](#glossary)
+- [Introduction](#introduction)
+- [Main part](#main-part)
+    - [The Library modules section](#the-library-modules-section)
+    - [Creating a module](#creating-a-module)
+    - [Compile and save](#compile-and-save)
+    - [Calling from a user script](#calling-from-a-user-script)
+    - [Changing a module](#changing-a-module)
+    - [Copying](#copying)
+    - [Deleting](#deleting)
+- [Conclusion](#conclusion)
+
 # Glossary
 
 | Term | Meaning |

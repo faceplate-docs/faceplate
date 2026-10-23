@@ -2,6 +2,20 @@
 
 This document is for integration engineers who move shared JavaScript code into a separate project object and include it from user scripts.
 
+# Contents
+
+- [Glossary](#glossary)
+- [Introduction](#introduction)
+- [Main part](#main-part)
+    - [Creating a library](#creating-a-library)
+    - [Library code](#library-code)
+    - [Compile and save](#compile-and-save)
+    - [Including a library in a script](#including-a-library-in-a-script)
+    - [A library that uses another library](#a-library-that-uses-another-library)
+    - [Changing a library](#changing-a-library)
+    - [Wrong path](#wrong-path)
+- [Conclusion](#conclusion)
+
 # Glossary
 
 | Term | Meaning |

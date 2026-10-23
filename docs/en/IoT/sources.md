@@ -2,6 +2,16 @@
 
 A guide for the integration engineer. General concepts (roles, **Data** variables, message format, the **Triggers** tab, diagnostics) are described in [IoT connections](IoT.md).
 
+# Contents
+
+- [Introduction](#introduction)
+- [Main part](#main-part)
+    - [iot_tag_source](#iot_tag_source)
+    - [iot_script_source](#iot_script_source)
+    - [iot_ts_source](#iot_ts_source)
+    - [iot_eventlog_source](#iot_eventlog_source)
+- [Conclusion](#conclusion)
+
 # Introduction
 
 A source fills variables of the connection outgoing message: the request of a client, the reply of a server. Sources can be created only inside a connection; their variables come from the **Data** list of that side. Setup order and an example — see the section [How sources and actions are linked to a connection](IoT.md#how-sources-and-actions-are-linked-to-a-connection) in [IoT connections](IoT.md).

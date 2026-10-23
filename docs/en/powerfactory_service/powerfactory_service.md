@@ -2,6 +2,19 @@
 
 A document for integration engineers who set up data exchange between a Faceplate project and an external DIgSILENT PowerFactory calculation service.
 
+# Contents
+
+- [Glossary](#glossary)
+- [Introduction](#introduction)
+- [Main part](#main-part)
+    - [Mappings section](#mappings-section)
+    - [Creating a mapping](#creating-a-mapping)
+    - [Editing and deleting](#editing-and-deleting)
+    - [Mapping structure](#mapping-structure)
+    - [Service settings](#service-settings)
+    - [Interface notes](#interface-notes)
+- [Conclusion](#conclusion)
+
 # Glossary
 
 | Term | Meaning |

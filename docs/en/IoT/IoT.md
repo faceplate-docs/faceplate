@@ -2,6 +2,21 @@
 
 A guide for the integration engineer who sets up data exchange between FACEPLATE and external systems over HTTP, MQTT and WebSocket.
 
+# Contents
+
+- [Glossary](#glossary)
+- [Introduction](#introduction)
+- [Main part](#main-part)
+    - [Module contents](#module-contents)
+    - [Roles and variables](#roles-and-variables)
+    - [How sources and actions are linked to a connection](#how-sources-and-actions-are-linked-to-a-connection)
+    - [Creating a connection](#creating-a-connection)
+    - [Message format](#message-format)
+    - [Triggers](#triggers)
+    - [IoT connections tab](#iot-connections-tab)
+    - [Diagnostics](#diagnostics)
+- [Conclusion](#conclusion)
+
 # Glossary
 
 | Term | Meaning |
