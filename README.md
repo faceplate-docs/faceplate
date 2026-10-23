@@ -32,9 +32,11 @@ folder names differ between the languages.
 ```
 docs/
 ├── en/
-│   ├── Archives/
-│   │   ├── images/  (29 files)
-│   │   └── Archives.md
+│   ├── archives/
+│   │   ├── images/  (10 files)
+│   │   ├── aggregates_en.md
+│   │   ├── archives_en.md
+│   │   └── trends_en.md
 │   ├── calculation/
 │   │   ├── images/  (11 files)
 │   │   └── calculation.md
@@ -269,7 +271,7 @@ favicon and brand stylesheet), `tools/` (site build and link checker),
 
 ### Data storage
 - [Storage: databases and distributed storage](docs/en/storage/Storage_en.md)
-- [Archives](docs/en/Archives/Archives.md)
+- [Archives](docs/en/archives/archives_en.md)
 - [Historian server](docs/en/historian/historian_server_en.md)
 
 ### Project objects

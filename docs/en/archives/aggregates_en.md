@@ -4,7 +4,7 @@
 
 Aggregates calculate indicators from stored history over a selected interval: average, minimum, maximum, integral, and standard deviation. Use them to prepare shift results, estimate volume from flow, and produce hourly summaries. «Аналитика» (Analytics) calculates indicators for one period; «Экспорт аналитики» (Export analytics) produces a file with results for consecutive intervals.
 
-An aggregate is not a separate archive source type. History preparation is described in [Archives: configuring sources and recording data](./Archives.md); chart selection and ordinary chart data export are covered in [Trends: viewing and exporting history](./trends_en.md).
+An aggregate is not a separate archive source type. History preparation is described in [Archives: configuring sources and recording data](./archives_en.md); chart selection and ordinary chart data export are covered in [Trends: viewing and exporting history](./trends_en.md).
 
 The screenshots show the Russian interface. Russian button and field labels are retained below with English explanations so that you can match the instructions to the screen.
 

@@ -41,7 +41,7 @@ A model takes one or more inputs:
 
 | Input | Role | Description |
 |---|---|---|
-| Historical signal | required | Archived values of the forecast quantity, referenced by `fp://` address, for example `fp://PROJECT/REGION/OBJECT/SIGNAL`. See [Archives](../Archives/Archives.md). |
+| Historical signal | required | Archived values of the forecast quantity, referenced by `fp://` address, for example `fp://PROJECT/REGION/OBJECT/SIGNAL`. See [Archives](../archives/archives_en.md). |
 | Weather | feature | Weather data for the object's location, used as an additional feature. |
 | Maintenance requests | regressor | Planned repair / maintenance requests, used as a regressor. |
 
