@@ -62,6 +62,10 @@ nav:
       - Прототипы: prototypes/prototypes.md
       - Каталоги: catalogs/catalogs.md
       - Локализация: localization/localization.md
+  - Мнемосхемы:
+      - Редактор мнемосхем: mnemo/editor.md
+      - Графические элементы: mnemo/graphics.md
+      - Кнопки и ввод значений: mnemo/controls.md
   - Логика проекта:
       - Расчёты (Calculation): calculation/calculation.md
       - Пользовательские скрипты: user_script/user_script.md
