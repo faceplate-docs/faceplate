@@ -43,9 +43,9 @@ nav:
           - Actions: IoT/actions.md
   - Data storage:
       - Storage: storage/Storage_en.md
-      - Archives: Archives/Archives.md
-      - Trends: Archives/trends_en.md
-      - Aggregates: Archives/aggregates_en.md
+      - Archives: archives/archives_en.md
+      - Trends: archives/trends_en.md
+      - Aggregates: archives/aggregates_en.md
       - Historian server: historian/historian_server_en.md
   - Operator tools:
       - Messages and alarms: alarm/alarm_en.md

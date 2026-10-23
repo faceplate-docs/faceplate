@@ -117,7 +117,7 @@ An input variable requires a tag and a field. An output variable does not:
 | With tag and field | To the specified tag field and to the calculation runtime |
 | Without tag | Only to the calculation runtime (the `out` field). Also visible in the form's **value** column and in the list's **Output data** |
 
-Outputs without a tag are handy for intermediate values and debugging. Bind an output to a tag only when other project objects need the value: a screen, an [archive](../Archives/Archives.md), another calculation.
+Outputs without a tag are handy for intermediate values and debugging. Bind an output to a tag only when other project objects need the value: a screen, an [archive](../archives/archives_en.md), another calculation.
 
 Do not write an output to a field that the same calculation reads as an input. This creates a feedback loop: the calculation keeps changing its own input.
 

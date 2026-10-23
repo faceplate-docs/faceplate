@@ -4,7 +4,7 @@
 
 Trends display the history of one or more archives on a shared timeline. Use them to analyze a shift, compare process variables, and locate the time of a deviation. You can configure series and two vertical axes, select a period, inspect values with the cursor and a fixed slice, save a group, pin a chart to a process screen, and export data.
 
-Source configuration is described in [Archives: configuring sources and recording data](./Archives.md). Calculations based on history and hourly summaries are covered in [Aggregates: calculating and exporting indicators](./aggregates_en.md).
+Source configuration is described in [Archives: configuring sources and recording data](./archives_en.md). Calculations based on history and hourly summaries are covered in [Aggregates: calculating and exporting indicators](./aggregates_en.md).
 
 The screenshots show the Russian interface. Russian button and field labels are retained below with English explanations so that you can match the instructions to the screen.
 
