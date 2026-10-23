@@ -104,7 +104,7 @@ The **Folder** line of the form shows the path from the content root: `/` is the
 
 ![Content of the Pump prototype](images/content_list.png)
 
-The **Screen** button at the content root opens the prototype screens: `screen` and `view1`–`view6`. These screens are placed on project screens as the "Prototype" graphic element, which is described in the screen editor documentation.
+The **Screen** button at the content root opens the prototype screens: `screen`, `view1`–`view15` and `settings`. The screens are placed on project screens as the "Prototype" graphic element; `settings` is shown on the **User** tab of every instance form. See ["Screen editor"](../mnemo/editor.md), section "Prototype screens".
 
 ## Fields
 

@@ -65,8 +65,8 @@ Select the catalog and click **Fields**. The field form is the same as for a pro
 |---|---|
 | **Type** | The input control in the record form: `string` — text, `integer` and `float` — number, `bool` — switch |
 | **Default value** | Prefilled in the form of a new record |
-| **Index** | `3gram` enables search by part of a value (section "Searching records" below) |
-| **excel** | The field takes part in the Excel exchange (section "Excel exchange" below) |
+| **Index** | `3gram` enables search by part of a value (section [Searching records](#searching-records) below) |
+| **excel** | The field takes part in the Excel exchange (section [Excel exchange](#excel-exchange) below) |
 
 Fields of the example: `vendor` and `unit` of type `string`, `range_min` and `range_max` of type `float` with default values `0` and `100`, `certified` of type `bool`. All fields have the **export** and **excel** flags set.
 
