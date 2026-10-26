@@ -1,0 +1,15 @@
+# Local or on-premises deployment of the documentation site.
+#
+#   docker compose up -d --build
+#   open http://localhost:8080/
+services:
+  docs:
+    build:
+      context: .
+      args:
+        DOCS_SITE_URL_EN: ${DOCS_SITE_URL_EN:-http://localhost:8080/en/}
+        DOCS_SITE_URL_RU: ${DOCS_SITE_URL_RU:-http://localhost:8080/ru/}
+    image: faceplate-docs:latest
+    ports:
+      - "${DOCS_PORT:-8080}:80"
+    restart: unless-stopped
