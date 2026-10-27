@@ -21,7 +21,7 @@
 | operator/monitoring.md | 3 | — | — | экран `monitoring_objects` (`fp_grid`), стенд |
 | operator/control.md | 3 | — | — | `Faceplate_pump_control.md` (пульт управления) |
 | operator/alarms.md | 3 | — | — | стенд, `fp_alarm` |
-| operator/trends.md | 3 | — | — | стенд, виджет `rt.js` |
+| operator/trends.md | 3 | черновик | — | `operator/Архивы и Тренды.md` (разд. 5–7), стенд, виджет `rt.js` |
 | operator/reports.md | 2 | — | — | выгрузка архивов в CSV/JSON |
 
 ## Инженеру проекта
