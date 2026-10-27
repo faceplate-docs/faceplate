@@ -31,7 +31,7 @@
 | engineer/project-model.md | 2 | — | — | код `fp`, заметки по путям `/root/FP/...` |
 | engineer/query-language.md | 2 | — | — | `Faceplate_API_Reference.docx`, примеры запросов `get … from … where` |
 | engineer/connections/* | 2 | — | — | код `git/fp/apps/fp_*` (протоколы) |
-| engineer/archives.md | 1 | — | — | `fp_archive_module.md`, `fp_userlib_archive_handler`, `archive_filter_example.json` |
+| engineer/archives.md | 1 | черновик | — | `operator/Архивы и Тренды.md` (разд. 1–4), `fp_archive_module.md`, `fp_userlib_archive_handler`, `archive_filter_example.json` |
 | engineer/alarms.md | 2 | — | — | код `fp_alarm` |
 | engineer/calculations.md | 2 | — | — | код `fp_calculation`, заметки по полю `script` |
 | engineer/scripts.md | 2 | — | — | `fp_prototype_SE_node.erl`, `fp_script`, `fp_script_js` |
