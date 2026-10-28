@@ -66,6 +66,7 @@ nav:
       - Редактор мнемосхем: mnemo/editor.md
       - Графические элементы: mnemo/graphics.md
       - Кнопки и ввод значений: mnemo/controls.md
+      - Выбор из списков: mnemo/lists.md
   - Логика проекта:
       - Расчёты (Calculation): calculation/calculation.md
       - Пользовательские скрипты: user_script/user_script.md

@@ -68,10 +68,11 @@ docs/
 │   │   ├── forecasting_models_en.md
 │   │   └── project_export_en.md
 │   ├── mnemo/
-│   │   ├── images/  (30 files)
+│   │   ├── images/  (40 files)
 │   │   ├── controls.md
 │   │   ├── editor.md
-│   │   └── graphics.md
+│   │   ├── graphics.md
+│   │   └── lists.md
 │   ├── plc_connections/
 │   │   ├── images/  (63 files)
 │   │   ├── diagnostics_en.md
@@ -164,10 +165,11 @@ docs/
 │   │   ├── forecasting_models_ru.md
 │   │   └── project_export_ru.md
 │   ├── mnemo/
-│   │   ├── images/  (30 files)
+│   │   ├── images/  (40 files)
 │   │   ├── controls.md
 │   │   ├── editor.md
-│   │   └── graphics.md
+│   │   ├── graphics.md
+│   │   └── lists.md
 │   ├── plc_connections/
 │   │   ├── images/  (63 files)
 │   │   ├── diagnostics_ru.md
@@ -294,6 +296,7 @@ favicon and brand stylesheet), `tools/` (site build and link checker),
 - [Screen editor](docs/en/mnemo/editor.md)
 - [Graphic elements](docs/en/mnemo/graphics.md)
 - [Buttons and value input](docs/en/mnemo/controls.md)
+- [Selection from lists](docs/en/mnemo/lists.md)
 
 ### Project logic
 - [Calculations](docs/en/calculation/calculation.md)

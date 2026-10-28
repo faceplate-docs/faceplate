@@ -59,6 +59,7 @@ nav:
       - Screen editor: mnemo/editor.md
       - Graphic elements: mnemo/graphics.md
       - Buttons and value input: mnemo/controls.md
+      - Selection from lists: mnemo/lists.md
   - Project logic:
       - Calculations: calculation/calculation.md
       - User scripts: user_script/user_script.md

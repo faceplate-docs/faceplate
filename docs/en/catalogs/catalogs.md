@@ -194,7 +194,7 @@ Each catalog is a separate sheet `catalog@<catalog name>`. The first column is t
 
 ## Catalog on a mnemonic diagram
 
-The **Controls** palette of the mnemonic diagram editor contains the **CatalogSelect** element. Its **value** property group has three properties: **catalog** — a catalog from the **Catalogs** section (drop-down list), **value** and **config**.
+The operator picks a catalog record on a screen with the **CatalogSelect** element from the **Controls** palette: the `catalog` property sets the catalog, `value` is bound to a tag field, and the choice writes the full path of the record to the tag. Setup and Runtime behaviour are covered in [Selection from lists, section "Selecting a catalog record"](../mnemo/lists.md#selecting-a-catalog-record).
 
 # Conclusion
 
