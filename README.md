@@ -32,6 +32,10 @@ folder names differ between the languages.
 ```
 docs/
 ├── en/
+│   ├── access/
+│   │   ├── images/  (4 files)
+│   │   ├── roles.md
+│   │   └── users.md
 │   ├── archives/
 │   │   ├── images/  (10 files)
 │   │   ├── aggregates_en.md
@@ -134,6 +138,10 @@ docs/
 │   │   └── user_script.md
 │   └── readme.md
 ├── ru/
+│   ├── access/
+│   │   ├── images/  (4 files)
+│   │   ├── roles.md
+│   │   └── users.md
 │   ├── calculation/
 │   │   ├── images/  (11 files)
 │   │   └── calculation.md
@@ -257,6 +265,10 @@ favicon and brand stylesheet), `tools/` (site build and link checker),
 - [General information, launch and licensing](docs/en/readme.md)
 - [First steps in FACEPLATE Studio: project structure](docs/en/Project_strucure/FACEPLATE-start.md)
 - [Deploying FACEPLATE in a Docker container](<docs/en/quick_start/deploy as docker.md>)
+
+### Access
+- [Users](docs/en/access/users.md)
+- [Roles and access rights](docs/en/access/roles.md)
 
 ### Data acquisition
 - [PLC connections: overview](docs/en/plc_connections/general_en.md)

@@ -25,6 +25,9 @@ nav:
       - Общие сведения, запуск и лицензирование: readme.md
       - Первые шаги в FACEPLATE Studio: Project_strucure/FACEPLATE-start.md
       - Установка в Docker-контейнере: samples/deploy as docker.md
+  - Доступ:
+      - Пользователи: access/users.md
+      - Роли и права доступа: access/roles.md
   - Сбор данных:
       - PLC-соединения, обзор: plc_connections/general_ru.md
       - Modbus TCP/RTU: plc_connections/plc_modbus_connection_ru.md

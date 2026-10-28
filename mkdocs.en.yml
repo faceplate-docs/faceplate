@@ -18,6 +18,9 @@ nav:
       - General information, launch and licensing: readme.md
       - First steps in FACEPLATE Studio: Project_strucure/FACEPLATE-start.md
       - Deploying in a Docker container: quick_start/deploy as docker.md
+  - Access:
+      - Users: access/users.md
+      - Roles and access rights: access/roles.md
   - Data acquisition:
       - PLC connections overview: plc_connections/general_en.md
       - Modbus TCP/RTU: plc_connections/plc_modbus_connection_en.md
