@@ -43,7 +43,7 @@ A document for the integration engineer who draws the project's screens (mimic d
 
 A screen is the operator's view in Runtime. It is drawn in the Studio graphic editor: elements are placed on the canvas, their position, size and appearance are set, and the screen is saved. A screen belongs to a project folder; a folder has 17 screen slots, each with its own purpose.
 
-This document covers folder screens and their purpose, as well as working in the editor itself: the editor window, the canvas, selection, properties, alignment, grouping, saving and showing the screen in Runtime. The elements are described in [Graphic elements](graphics.md) and [Buttons and value input](controls.md).
+This document covers folder screens and their purpose, as well as working in the editor itself: the editor window, the canvas, selection, properties, alignment, grouping, saving and showing the screen in Runtime. The elements are described in [Graphic elements](graphics.md), [Buttons and value input](controls.md), [Selection from lists](lists.md) and [Dial and linear gauges](gauges.md).
 
 The running example is the folder `mnemo_demo`: the main screen `screen` made of two rectangles and an ellipse, the additional screen `view2` "Насос" (Pump) embedded into `screen`, and the prototype `demo_pump` with the instance `pump_1`.
 
@@ -130,9 +130,9 @@ Four panels lie on top of the canvas. Drag them by the title, close them with th
 
 | Panel | Button | Content |
 |---|---|---|
-| **Primitives** | **Drawing** | Shapes: rectangle, image, polyline, connector polyline, polygon, ellipse |
-| **Controls** | **Control elements** | Input fields, buttons, lists, indicators, trends and other elements |
-| **Reports** | **Report items** | Date pickers, data sources, grid, bar chart |
+| **Primitives** | **Drawing** | Shapes: rectangle, image, polyline, connector polyline, polygon, ellipse (see [Graphic elements](graphics.md)) |
+| **Controls** | **Control elements** | [Input fields, buttons](controls.md), [lists](lists.md), [indicators](gauges.md), trends and other elements |
+| **Reports** | **Report items** | Date pickers, data sources, grid, [bar chart](gauges.md#bar-chart) |
 | **Properties** | **Properties** | Properties of the selected element |
 
 Panel positions and visibility are remembered per user and restored the next time the editor opens.

@@ -63,6 +63,7 @@ nav:
       - Graphic elements: mnemo/graphics.md
       - Buttons and value input: mnemo/controls.md
       - Selection from lists: mnemo/lists.md
+      - Dial and linear gauges: mnemo/gauges.md
   - Project logic:
       - Calculations: calculation/calculation.md
       - User scripts: user_script/user_script.md
