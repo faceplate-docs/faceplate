@@ -36,7 +36,6 @@ nav:
       - M-Bus (Meter-Bus): plc_connections/plc_mbus_connection_en.md
       - SNMP: plc_connections/plc_snmp_connection_en.md
       - Transformation feature: plc_connections/transformation_en.md
-      - Diagnostics: plc_connections/diagnostics_en.md
       - IoT connections:
           - Overview: IoT/IoT.md
           - HTTP: IoT/http.md

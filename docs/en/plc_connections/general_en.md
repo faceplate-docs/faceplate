@@ -65,7 +65,7 @@ The tested installation provides the following 15 types. The first column contai
 | mercury230 | Communication with Mercury 230 meters | Meter polling |
 | [modbus](./plc_modbus_connection_en.md) | Communication with Modbus PLCs, modules, and gateways | Client / device polling |
 
-The links in the table open the individual protocol references. Value conversion is covered in [Transformation](./transformation_en.md), debugging tools in [Diagnostics](./diagnostics_en.md), and channel and service redundancy in [Resource redundancy](../Redundancy/Redundancy_en.md).
+The links in the table open the individual protocol references. Value conversion is covered in [Transformation](./transformation_en.md), the **Диагностика** (Diagnostics) window in [Diagnostics of Runtime objects](../diagnostics/diagnostics.md), and channel and service redundancy in [Resource redundancy](../Redundancy/Redundancy_en.md).
 
 The Modbus form offers **tcp**, **rtu-tcp**, and **rtu-serial**. This guide uses **tcp** only. IEC 101 is serial telecontrol; IEC 104 communicates over TCP. Detailed addressing, transport, and security for individual drivers are covered separately.
 
@@ -280,27 +280,9 @@ One register is sufficient to check that both modes operate and the settings are
 
 ### Check diagnostics
 
-Diagnostics helps you relate the connection state to its execution and messages. Open it for the object whose settings you changed. Check the selected output level and limit, start collection, inspect available messages, and then stop collection.
+Open **Диагностика** (Diagnostics) for the saved **TrainingPLC**, click **Start** and inspect **Logs**; select **debug** for detailed output. Working with the window is described in [Diagnostics of Runtime objects](../diagnostics/diagnostics.md).
 
-**Start** and **Stop** in this window control diagnostic information collection. **Отключено** in the connection settings controls communication itself. After stopping collection, check the connection state separately to distinguish diagnostic collection control from channel control.
-
-1. Open the saved **TrainingPLC** settings and click **Диагностика** (Diagnostics).
-2. Set **Log limit** to **100**.
-3. Select **info** in **Log level**.
-4. Click **Start**.
-5. Inspect **Logs**.
-6. Select **warning** in **Log level** and inspect the result.
-7. Select **error** in **Log level** and inspect the result.
-8. Select **debug** in **Log level** and inspect the result.
-9. Click **Копировать** (Copy) for the available output.
-10. Click **Очистить** (Clear) to clear the displayed output.
-11. Click **Stop**.
-12. Close the diagnostics window.
-13. Check **RUN** and the presence of a **PID** in the connection form.
-
-While collection is active, **Start** is unavailable and **Stop** is available; after stopping, the reverse applies. **Stop** stops diagnostic collection while the connection continues running. The log refreshes approximately once per second during collection.
-
-During testing, **Logs** and **Процессы** (Processes) remained empty at all four levels. **Копировать** and **Очистить** were clicked with empty output; copying meaningful text to the clipboard was not verified. An empty **Процессы** list does not establish that the worker process is absent: check the **PID** and the connection's own state. Opening the process details was not reproduced in this test.
+**Start** and **Stop** in this window control only log recording. Communication is stopped by **Отключено** in the connection settings; after **Stop** the connection keeps running.
 
 ### Disable the connection and verify reading resumes
 
@@ -441,10 +423,6 @@ Value conversion is configured in the PLC binding's **Трансформация
 | Статус OK / ОШИБКА — OK / error status | Communication result in the list; inspect the message if an error occurs |
 | no process / no node | The form has no current worker process / execution node |
 | shutdown after disabling | Appeared with a timestamp after turning on Отключено during testing; relate it to the action performed |
-| Log level | info, warning, error, debug — diagnostic output level selection |
-| Log limit | Initially 1000 lines; range 1–100000; 100 in the example |
-| Start / Stop | Start / stop diagnostic collection |
-| Очистить / Копировать — clear / copy | Clear the displayed output / copy the available output |
 
 <a id="diagnostics"></a>
 <a id="binding-errors"></a>
@@ -461,16 +439,14 @@ Check three levels: whether execution is permitted, whether the channel is worki
 | Value differs from the expected 1000 | Адрес slave, Область, Адрес, Размер, Порядок байт, Формат | Settings do not match the training register | Compare the fields with the binding table | Training tag displays 1000 |
 | 0 is displayed after stopping | Connection state and tag form | Training field display behavior when communication stops | Relate the displayed value to STOP; perform the re-enabling check | After re-enabling, 1000 and RUN/OK are displayed |
 | 1000 remains after deletion | Presence of the connection and incoming tag references | Retained tag display value | Check that the connection and binding are absent | Communication has ended; the old number is not treated as a new reading |
-| Logs and Процессы are empty | Start/Stop, Log level, connection PID | No diagnostic output arrived during testing | Check the connection's own state and actual reading | Operation is assessed through the channel and data, rather than an empty list |
 | Search does not return the expected row | Поиск по пути and Тип соединения: | Incorrect path fragment or a remaining filter | Use a path fragment of at least three characters, check the type, and click Найти / refresh | The required object is found, or its deletion is confirmed |
 
-For the diagnostic window and logging levels, see the separate [PLC connection diagnostics reference](./diagnostics_en.md).
+Working with the window is described in [Diagnostics of Runtime objects](../diagnostics/diagnostics.md).
 
 ## Limitations
 
 - Available types depend on the installed drivers. The catalog in this guide does not replace checking support for a particular device.
 - Practical verification covered Modbus TCP with one R binding. Configuration of other protocols, RTU transports, transformations, and write commands is covered separately.
 - Shared fields do not imply identical communication algorithms or grouping support in every driver.
-- Diagnostic **Процессы** and **Logs** were empty on the tested setup. Opening process details and copying a meaningful log were not verified; a step-by-step process-details procedure is therefore not provided here.
 - Communication latency, load, and grouping efficiency were not measured in these training scenarios.
 - The memory limit field has an inconsistent unit label; the interpretation for the tested build is stated beside the field in the reference section.

@@ -200,21 +200,15 @@ Start with a working pair for which history reception has already been confirmed
 2. Check the enabled and disabled object filters.
 3. Reset the filters.
 4. Refresh the list.
-5. Open diagnostics for the site object.
-6. Select the message level and output limit.
-7. Start collecting diagnostic messages.
-8. Open the process information.
-9. Copy the required line or the entire diagnostic output.
-10. Clear the displayed diagnostic output.
-11. Select **Disabled** in the site object.
+5. Open **Diagnostics** of the site object and click **Start**, see [Diagnostics of Runtime objects](../diagnostics/diagnostics.md).
+6. Select **Disabled** in the site object.
+7. Save the change.
+8. Record the time when replication was disabled.
+9. Change **Pressure** at the site so that its archive contains distinguishable records.
+10. Verify that these records exist in the site archive.
+11. Clear **Disabled** in the site object.
 12. Save the change.
-13. Record the time when replication was disabled.
-14. Change **Pressure** at the site so that its archive contains distinguishable records.
-15. Verify that these records exist in the site archive.
-16. Clear **Disabled** in the site object.
-17. Save the change.
-18. At the center, check the records for the interval when replication was disabled.
-19. Stop collecting diagnostic messages.
+13. At the center, check the records for the interval when replication was disabled; the site's messages for this time are in the **Diagnostics** window.
 
 Processing is expected to resume from the saved boundary. Verify the specific values and timestamps at the center: a transition to RUN or an advancing boundary does not replace this check. The time needed to process the accumulated interval depends on its size and the data exchange settings.
 
@@ -288,8 +282,6 @@ List validation does not confirm that addresses are correct or nodes exist. Succ
 | Error | Faceplate | General text of the latest history or message error; not a complete log of all data flows |
 | History processing boundary | Faceplate | Numeric timestamp of the last processed interval; set to the current time on the first run |
 | Message processing boundary | Faceplate | Equivalent boundary for messages |
-| Diagnostic level | User | Default info; available levels: info, warning, error, debug |
-| Diagnostic output limit | User | Default 1000; range 1–100000 |
 
 Boundaries are expressed in milliseconds since January 1, 1970, UTC. They describe the processed interval, not the number of received points. The general Error text may be cleared after successful processing of another data flow. Also check diagnostics for errors in current value transfer.
 
@@ -311,7 +303,7 @@ First identify the missing result: a current value, history, a message, or a cha
 
 If RUN is shown but the required data is missing, check the relative paths and the specific data flow. If Error is empty, check diagnostics: successful history processing may clear an error from another flow. An advancing boundary alone does not prove that data has been stored at the receiver.
 
-Clearing diagnostics clears the displayed output. Stopping collection or closing the form ends the current collection session. Copy any required messages before clearing. Record the verification time, object, source value, and expected result at the receiver to distinguish a replication error from a missing source record.
+Working with the **Diagnostics** window is described in [Diagnostics of Runtime objects](../diagnostics/diagnostics.md). Record the verification time, object, source value, and expected result at the receiver to distinguish a replication error from a missing source record.
 
 ## Replication limitations
 

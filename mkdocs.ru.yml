@@ -43,7 +43,6 @@ nav:
       - M-Bus (Meter-Bus): plc_connections/plc_mbus_connection_ru.md
       - SNMP: plc_connections/plc_snmp_connection_ru.md
       - Функция Transformation: plc_connections/transformation_ru.md
-      - Диагностика: plc_connections/diagnostics_ru.md
       - IoT-соединения:
           - Общие сведения: IoT/IoT.md
           - HTTP: IoT/http.md

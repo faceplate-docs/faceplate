@@ -247,7 +247,7 @@ An instruction is not required in this example because the secondary request and
 
 ### Find the message and check diagnostics
 
-Follow “Search, time selection, and list refresh” and “State and diagnostic log” below using the message and service from this example. These procedures are part of the first scenario's verification, rather than separate examples.
+Follow [Search, time selection, and list refresh](#search-time-selection-and-list-refresh) and [State and diagnostic log](#state-and-diagnostic-log) below using the message and service from this example. These procedures are part of the first scenario's verification, rather than separate examples.
 
 After the check, return the pressure of Н-101 to **6.0**. Allow for a possible clearing event when reviewing subsequent results.
 
@@ -371,19 +371,12 @@ Follow this procedure using the training service from the first example.
 2. Check **State** and **Error**.
 3. If an error is present, read its full text in the tooltip.
 4. Copy the error text using the available command.
-5. Open the diagnostic log.
-6. Start log collection using **Start**.
-7. Select a detail level for the verification run.
-8. Set the diagnostic log record limit.
-9. Generate a new training pressure event.
-10. Read the processing and request records.
-11. Copy the log records.
-12. Stop collection using **Stop**.
-13. Clear only the training diagnostic log.
-14. Open the process information.
-15. Restore the chosen operating log level and record limit.
+5. Open **Diagnostics** and click **Start**, see [Diagnostics of Runtime objects](../diagnostics/diagnostics.md).
+6. Generate a new training pressure event.
+7. Read the processing and request records.
+8. Copy the log records and click **Stop**.
 
-The available levels and the names of the copy and clear commands require UI verification. Skip copying the error if there is no error; you do not need to deliberately break a working configuration for this check.
+Skip copying the error if there is no error; you do not need to deliberately break a working configuration for this check.
 
 **RUN** confirms that a process is running. By itself, it does not confirm a response, retrieved instructions, or correct grouping.
 
@@ -471,7 +464,7 @@ Check the stages in sequence: source event → filtering and grouping → model 
 | No sources | Secondary request, region, and document library | No suitable instructions or search response | Check the document and search scope separately from the model | A new message includes a relevant document |
 | The short response is empty or incomplete | Full message response | Response text processing behavior | Open the full response and check the model's output format | The required text can be read |
 
-**RUN** and the absence of a current error line are not enough to establish success. An individual group's error may appear only in the diagnostic log.
+**RUN** and the absence of a current error line are not enough to establish success. An individual group's error may appear only in the log of the **Diagnostics** window, see [Diagnostics of Runtime objects](../diagnostics/diagnostics.md).
 
 After correcting a problem, use a new test event. A previously saved response does not confirm that the modified configuration has run.
 

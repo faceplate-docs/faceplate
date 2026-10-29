@@ -81,8 +81,7 @@ docs/
 │   │   ├── graphics.md
 │   │   └── lists.md
 │   ├── plc_connections/
-│   │   ├── images/  (63 files)
-│   │   ├── diagnostics_en.md
+│   │   ├── images/  (54 files)
 │   │   ├── general_en.md
 │   │   ├── old_plc_opcua_client_connection_en.md
 │   │   ├── old_plc_opcua_server_connection_en.md
@@ -185,8 +184,7 @@ docs/
 │   │   ├── graphics.md
 │   │   └── lists.md
 │   ├── plc_connections/
-│   │   ├── images/  (63 files)
-│   │   ├── diagnostics_ru.md
+│   │   ├── images/  (54 files)
 │   │   ├── general_ru.md
 │   │   ├── old_plc_opcua_client_connection_ru.md
 │   │   ├── old_plc_opcua_server_connection_ru.md
@@ -291,7 +289,6 @@ favicon and brand stylesheet), `tools/` (site build and link checker),
   - [M-Bus (Meter-Bus)](docs/en/plc_connections/plc_mbus_connection_en.md)
   - [SNMP](docs/en/plc_connections/plc_snmp_connection_en.md)
   - [Transformation feature](docs/en/plc_connections/transformation_en.md)
-  - [Diagnostics](docs/en/plc_connections/diagnostics_en.md)
 - [IoT connections](docs/en/IoT/IoT.md)
   - [HTTP](docs/en/IoT/http.md)
   - [MQTT](docs/en/IoT/mqtt.md)
