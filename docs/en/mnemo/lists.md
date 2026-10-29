@@ -77,9 +77,8 @@ The **multiselect** element from the **Reports** palette. A click on the field o
 |---|---|
 | `options` | The list items, edited the same way as in the dropdown list |
 | `value` | The selected items |
-| `required` | `true` — the selection cannot be empty: when the operator removes the last item, a message appears, the item stays and the tag value does not change |
 
-The tag receives a list of the texts of the selected items, so the tag field must be of type `list` with subtype `string`. An empty selection is written as an empty list. To forbid an empty selection, set `required` = `true`.
+The tag receives a list of the texts of the selected items, so the tag field must be of type `list` with subtype `string`. An empty selection is written as an empty list.
 
 Chips that do not fit in the width wrap to the next line below the element border. Give the element enough height and width for the largest selection.
 

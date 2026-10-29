@@ -87,7 +87,7 @@ Several elements can be bound to one field: in the example the slider and the se
 | Group | Property | Purpose |
 |---|---|---|
 | **misc** | `enabled` | `false` — the element accepts no input. A button's text takes the `disabled_color` colour |
-| **value** | `name` | For input fields: title of the on-screen keyboard window and the `panel` input window |
+| **value** | `name` | For input fields: title of the on-screen keyboard window |
 | | `required` | For input fields: `true` — an empty value is not accepted, the operator sees a message |
 
 The **appearance**, **geometry**, **misc** (`z_index`, `title`, `cursor`), **border** and **font** groups are the same as for graphic elements (see [Graphic elements, section "Common properties"](graphics.md#common-properties)).
@@ -145,9 +145,6 @@ The `InOut` field shows a number and accepts input. The input method is set by t
 | empty | No input, the field only shows the value |
 | `direct` | Click the field, type on the keyboard; Enter or moving elsewhere writes the value. Only digits, a point and a sign are accepted |
 | `keyboard` | On hover a keyboard button appears to the right of the field. It opens the numeric on-screen keyboard |
-| `panel` | Clicking the field opens an input window titled with `name`: a value box, a numeric keyboard and, when `min` and `max` are set, the −5%, −1%, +1%, +5% buttons (a share of the `max` − `min` range) and a slider. **Accept** or Enter in the value box writes the value with the `min`/`max` check, **Cancel** closes the window without writing |
-
-![Input window in panel mode](images/controls_09_panel.png)
 
 Other properties of the **value** group:
 
@@ -199,7 +196,7 @@ The **Date** and **Date - Time** elements of the **Reports** palette are fields 
 
 | Property (**value** group) | Purpose |
 |---|---|
-| `value` | The value; to write it into a tag, bind it to a `string` field. If the field has another type, picking a date shows an error window with the field path and a demand for a `string` field, the value is not written and the field returns to the previous date |
+| `value` | The value; to write it into a tag, bind it to a `string` field |
 | `interval` | **Date - Time** only: step of the time list in minutes, 30 by default |
 | `config` | Settings in JSON. `disableDates` is a list of dates that cannot be picked |
 
