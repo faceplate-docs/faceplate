@@ -20,7 +20,7 @@ Fields: Реальные значения датчиков (числа или с
 Внешние источники: 
     1. [Line Protocol](https://docs.influxdata.com/influxdb/v2/reference/syntax/line-protocol/)
     2. [InfluxDB API](https://docs.influxdata.com/influxdb/v2/write-data/developer-tools/api/)
-    3. [Faceplate](/docs/en/README.md)
+    3. [Faceplate](../../../readme.md)
 
 ## 1. Технические требования
 

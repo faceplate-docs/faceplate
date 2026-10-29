@@ -267,7 +267,7 @@ In Studio, open «Меню» (Menu) → «Архив» (Archive). The table show
 | Enable Отключено → save | Pause collection | In the archive form | New values are not collected |
 | Clear Отключено → save | Resume | Archive was disabled | Collection resumes; State accumulates again |
 | Compile | Check the function | Source is script | Compilation result |
-| Диагностика (Diagnostics) | Archive log, see [Diagnostics of Runtime objects](../administration/diagnostics/diagnostics.md) | Saved archive | The **Diagnostics** window is open |
+| Диагностика (Diagnostics) | Archive log, see [Diagnostics of Runtime objects](../../administration/diagnostics/diagnostics.md) | Saved archive | The **Diagnostics** window is open |
 | Найти (Find) | Search by name and source | Archive list is open | Filtered rows |
 
 After changing settings, reopen the form to check them. The RUN status, «Ошибка» (Error) field, and Runtime tab are populated automatically; you do not enter them manually.
@@ -287,6 +287,6 @@ After changing settings, reopen the form to check them. The RUN status, «Оши
 | Current form shows an old value | Reopen the tab / form | Compare the fresh result with history |
 | Error with minimum step | Zero or a fractional value | Leave blank or enter an integer > 0 |
 
-View the archive log in the **Диагностика** (Diagnostics) window, see [Diagnostics of Runtime objects](../administration/diagnostics/diagnostics.md): click **Start**, reproduce the problem, then click **Stop**. The absence of messages during a brief check does not confirm recording: also check history and point tooltips.
+View the archive log in the **Диагностика** (Diagnostics) window, see [Diagnostics of Runtime objects](../../administration/diagnostics/diagnostics.md): click **Start**, reproduce the problem, then click **Stop**. The absence of messages during a brief check does not confirm recording: also check history and point tooltips.
 
 A repeated missing result does not necessarily create another point. The length of a gap and the number of records therefore do not equal the number of unsuccessful function calls.

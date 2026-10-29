@@ -26,7 +26,7 @@ This project is a solution developed in standard Faceplate editors that implemen
 a. influxdb - a prototype containing all the necessary mechanisms for exchanging data with an InfluxDB instance;
 b. pump - an object representing a pump as an object in the project hierarchy;
 c. sensor - an object representing a single measurement point.
-Descriptions of these prototypes are provided in the [prototypes] section (docs/ru/samples/prptotypes).
+Descriptions of these prototypes are provided in the [prototypes](../../prptotypes/influxdb/influxdb_en.md) section.
 3. The project tree should contain a structure with objects describing the hierarchy:
 
 <project hierarchy>/<monitoring object>/<sensor set>

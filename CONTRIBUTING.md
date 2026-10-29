@@ -14,8 +14,8 @@ DEPLOYMENT.md how the site is built and deployed
 ```
 
 Each topic lives in its own folder with an `images/` sub-folder next to the
-page, for example `docs/en/storage/Storage_en.md` and
-`docs/en/storage/images/1.png`. English pages end in `_en.md`, Russian pages
+page, for example `docs/en/data_storage/storage/Storage_en.md` and
+`docs/en/data_storage/storage/images/1.png`. English pages end in `_en.md`, Russian pages
 in `_ru.md`, where the folder name alone is not enough to tell them apart.
 
 Every topic should exist in both languages. When you add or rename a page,

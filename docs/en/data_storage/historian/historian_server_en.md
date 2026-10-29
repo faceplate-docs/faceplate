@@ -45,7 +45,7 @@ Historian can operate in various configurations:
   * env ATTACH\_TO=fp@runtime-node.fp ./bin/fp\_historian console  
 * Replication (Hot Standby): Supports hot standby, where data is written to both the primary and secondary Historian servers simultaneously.
 
-A more detailed description of the settings is available at [the link](https://github.com/faceplate-docs/faceplate/blob/dev/docs/ru/storage/Storage_ru.md) .
+A more detailed description of the settings is available at [the link](../storage/Storage_en.md) .
 
 # Maintenance schedule
 

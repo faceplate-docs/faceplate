@@ -45,7 +45,7 @@ Historian может функционировать в различных кон
   * env ATTACH\_TO=fp@runtime-node.fp ./bin/fp\_historian console  
 * Репликация (Hot Standby): поддержка «горячего» резервирования, при котором данные записываются одновременно на основной и дублирующий сервера Historian.
 
-Более подробное описание настройки доступно по [ссылке](https://github.com/faceplate-docs/faceplate/blob/dev/docs/ru/storage/Storage_ru.md).
+Более подробное описание настройки доступно по [ссылке](../storage/Storage_ru.md).
 
 # Регламент технического обслуживания
 
