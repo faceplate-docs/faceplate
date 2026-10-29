@@ -47,6 +47,9 @@ docs/
 │   ├── catalogs/
 │   │   ├── images/  (10 files)
 │   │   └── catalogs.md
+│   ├── diagnostics/
+│   │   ├── images/  (5 files)
+│   │   └── diagnostics.md
 │   ├── git/
 │   │   └── git_en.md
 │   ├── historian/
@@ -148,6 +151,9 @@ docs/
 │   ├── catalogs/
 │   │   ├── images/  (10 files)
 │   │   └── catalogs.md
+│   ├── diagnostics/
+│   │   ├── images/  (5 files)
+│   │   └── diagnostics.md
 │   ├── git/
 │   │   └── git_ru.md
 │   ├── historian/
@@ -336,3 +342,4 @@ favicon and brand stylesheet), `tools/` (site build and link checker),
 ### Administration
 - [Resource redundancy](docs/en/Redundancy/Redundancy_en.md)
 - [Git module](docs/en/git/git_en.md)
+- [Diagnostics of Runtime objects](docs/en/diagnostics/diagnostics.md)

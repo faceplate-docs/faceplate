@@ -86,3 +86,4 @@ nav:
       - Resource redundancy: Redundancy/Redundancy_en.md
       - Replication: replica/replica_en.md
       - Git module: git/git_en.md
+      - Diagnostics of Runtime objects: diagnostics/diagnostics.md

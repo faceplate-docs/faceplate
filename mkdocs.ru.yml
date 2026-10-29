@@ -93,3 +93,4 @@ nav:
       - Резервирование ресурсов: Redundancy/Redundancy_ru.md
       - Репликация: replica/replica_ru.md
       - Модуль Git: git/git_ru.md
+      - Диагностика объектов Runtime: diagnostics/diagnostics.md
