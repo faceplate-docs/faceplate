@@ -22,27 +22,28 @@ nav:
       - Users: access/users.md
       - Roles and access rights: access/roles.md
   - Data acquisition:
-      - PLC connections overview: plc_connections/general_en.md
-      - Modbus TCP/RTU: plc_connections/plc_modbus_connection_en.md
-      - OPC UA client: plc_connections/old_plc_opcua_client_connection_en.md
-      - OPC UA server: plc_connections/old_plc_opcua_server_connection_en.md
-      - OPC DA (Classic): plc_connections/plc_opcda_connection_en.md
-      - Siemens S7 (ISO-on-TCP): plc_connections/old_plc_s7_connection_en.md
-      - EtherNet/IP: plc_connections/plc_ethernet_ip_connection_en.md
-      - IEC 60870-5-101 client: plc_connections/plc_iec101_client_connection_en.md
-      - IEC 60870-5-101 server: plc_connections/plc_iec101_server_connection_en.md
-      - IEC 60870-5-104 client: plc_connections/plc_iec104_client_connection_en.md
-      - IEC 60870-5-104 server: plc_connections/plc_iec104_server_connection_en.md
-      - M-Bus (Meter-Bus): plc_connections/plc_mbus_connection_en.md
-      - SNMP: plc_connections/plc_snmp_connection_en.md
-      - Transformation feature: plc_connections/transformation_en.md
+      - PLC connections:
+          - Overview: data_collection/plc_connections/general_en.md
+          - Modbus TCP/RTU: data_collection/plc_connections/plc_modbus_connection_en.md
+          - OPC UA client: data_collection/plc_connections/old_plc_opcua_client_connection_en.md
+          - OPC UA server: data_collection/plc_connections/old_plc_opcua_server_connection_en.md
+          - OPC DA (Classic): data_collection/plc_connections/plc_opcda_connection_en.md
+          - Siemens S7 (ISO-on-TCP): data_collection/plc_connections/old_plc_s7_connection_en.md
+          - EtherNet/IP: data_collection/plc_connections/plc_ethernet_ip_connection_en.md
+          - IEC 60870-5-101 client: data_collection/plc_connections/plc_iec101_client_connection_en.md
+          - IEC 60870-5-101 server: data_collection/plc_connections/plc_iec101_server_connection_en.md
+          - IEC 60870-5-104 client: data_collection/plc_connections/plc_iec104_client_connection_en.md
+          - IEC 60870-5-104 server: data_collection/plc_connections/plc_iec104_server_connection_en.md
+          - M-Bus (Meter-Bus): data_collection/plc_connections/plc_mbus_connection_en.md
+          - SNMP: data_collection/plc_connections/plc_snmp_connection_en.md
+          - Transformation feature: data_collection/plc_connections/transformation_en.md
       - IoT connections:
-          - Overview: IoT/IoT.md
-          - HTTP: IoT/http.md
-          - MQTT: IoT/mqtt.md
-          - WebSocket: IoT/websocket.md
-          - Sources: IoT/sources.md
-          - Actions: IoT/actions.md
+          - Overview: data_collection/IoT/IoT.md
+          - HTTP: data_collection/IoT/http.md
+          - MQTT: data_collection/IoT/mqtt.md
+          - WebSocket: data_collection/IoT/websocket.md
+          - Sources: data_collection/IoT/sources.md
+          - Actions: data_collection/IoT/actions.md
   - Data storage:
       - Storage: storage/Storage_en.md
       - Archives: archives/archives_en.md
