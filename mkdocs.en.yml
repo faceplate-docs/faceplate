@@ -45,11 +45,11 @@ nav:
           - Sources: data_collection/IoT/sources.md
           - Actions: data_collection/IoT/actions.md
   - Data storage:
-      - Storage: storage/Storage_en.md
-      - Archives: archives/archives_en.md
-      - Trends: archives/trends_en.md
-      - Aggregates: archives/aggregates_en.md
-      - Historian server: historian/historian_server_en.md
+      - Storage: data_storage/storage/Storage_en.md
+      - Archives: data_storage/archives/archives_en.md
+      - Trends: data_storage/archives/trends_en.md
+      - Aggregates: data_storage/archives/aggregates_en.md
+      - Historian server: data_storage/historian/historian_server_en.md
   - Operator tools:
       - Messages and alarms: alarm/alarm_en.md
       - Dispatcher advisor: dsf/dsf_en.md

@@ -52,11 +52,11 @@ nav:
           - Источники: data_collection/IoT/sources.md
           - Действия: data_collection/IoT/actions.md
   - Хранение данных:
-      - Хранилища: storage/Storage_ru.md
-      - Архивы: archives/archives_ru.md
-      - Тренды: archives/trends_ru.md
-      - Агрегаты: archives/aggregates_ru.md
-      - Historian-сервер: historian/historian_server.md
+      - Хранилища: data_storage/storage/Storage_ru.md
+      - Архивы: data_storage/archives/archives_ru.md
+      - Тренды: data_storage/archives/trends_ru.md
+      - Агрегаты: data_storage/archives/aggregates_ru.md
+      - Historian-сервер: data_storage/historian/historian_server.md
   - Работа оператора:
       - Сообщения и тревоги: alarm/alarm_ru.md
       - Советчик диспетчера: dsf/dsf_ru.md

@@ -49,11 +49,6 @@ docs/
 │   │   └── replica/
 │   │       ├── images/  (2 files)
 │   │       └── replica_en.md
-│   ├── archives/
-│   │   ├── images/  (10 files)
-│   │   ├── aggregates_en.md
-│   │   ├── archives_en.md
-│   │   └── trends_en.md
 │   ├── calculation/
 │   │   ├── images/  (11 files)
 │   │   └── calculation.md
@@ -85,8 +80,17 @@ docs/
 │   │       ├── plc_opcda_connection_en.md
 │   │       ├── plc_snmp_connection_en.md
 │   │       └── transformation_en.md
-│   ├── historian/
-│   │   └── historian_server_en.md
+│   ├── data_storage/
+│   │   ├── archives/
+│   │   │   ├── images/  (10 files)
+│   │   │   ├── aggregates_en.md
+│   │   │   ├── archives_en.md
+│   │   │   └── trends_en.md
+│   │   ├── historian/
+│   │   │   └── historian_server_en.md
+│   │   └── storage/
+│   │       ├── images/  (10 files)
+│   │       └── Storage_en.md
 │   ├── js_library/
 │   │   ├── images/  (8 files)
 │   │   └── js_library.md
@@ -138,9 +142,6 @@ docs/
 │   │   │   └── sensor/
 │   │   │       └── sensor_en.md
 │   │   └── deploy as docker.md
-│   ├── storage/
-│   │   ├── images/  (10 files)
-│   │   └── Storage_en.md
 │   ├── user_script/
 │   │   ├── images/  (9 files)
 │   │   └── user_script.md
@@ -194,8 +195,17 @@ docs/
 │   │       ├── plc_opcda_connection_ru.md
 │   │       ├── plc_snmp_connection_ru.md
 │   │       └── transformation_ru.md
-│   ├── historian/
-│   │   └── historian_server.md
+│   ├── data_storage/
+│   │   ├── archives/
+│   │   │   ├── images/  (10 files)
+│   │   │   ├── aggregates_ru.md
+│   │   │   ├── archives_ru.md
+│   │   │   └── trends_ru.md
+│   │   ├── historian/
+│   │   │   └── historian_server.md
+│   │   └── storage/
+│   │       ├── images/  (10 files)
+│   │       └── Storage_ru.md
 │   ├── js_library/
 │   │   ├── images/  (8 files)
 │   │   └── js_library.md
@@ -247,9 +257,6 @@ docs/
 │   │   │   └── sensor/
 │   │   │       └── sensor.md
 │   │   └── deploy as docker.md
-│   ├── storage/
-│   │   ├── images/  (10 files)
-│   │   └── Storage_ru.md
 │   ├── user_script/
 │   │   ├── images/  (9 files)
 │   │   └── user_script.md
@@ -309,9 +316,9 @@ favicon and brand stylesheet), `tools/` (site build and link checker),
   - [Actions](docs/en/data_collection/IoT/actions.md)
 
 ### Data storage
-- [Storage: databases and distributed storage](docs/en/storage/Storage_en.md)
-- [Archives](docs/en/archives/archives_en.md)
-- [Historian server](docs/en/historian/historian_server_en.md)
+- [Storage: databases and distributed storage](docs/en/data_storage/storage/Storage_en.md)
+- [Archives](docs/en/data_storage/archives/archives_en.md)
+- [Historian server](docs/en/data_storage/historian/historian_server_en.md)
 
 ### Project objects
 - [Primitives](docs/en/primitives/Primitives.md)
