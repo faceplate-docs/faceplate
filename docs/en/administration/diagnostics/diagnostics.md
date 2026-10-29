@@ -38,7 +38,7 @@ The running example is the folder `diag_demo` with two Erlang user scripts:
 | `diag_script` | 2000 | Counts cycles, writes `cycle N` to the log on every cycle and the warning `cycle N: every fifth` on every fifth one |
 | `diag_fail` | 5000 | Divides by zero on every run and fails with `badarith` |
 
-How to create a user script is described in [User scripts](../user_script/user_script.md).
+How to create a user script is described in [User scripts](../../user_script/user_script.md).
 
 You need access to Studio (`http://<server>:9000/fp/studio`) with an account that is allowed to change the project.
 
@@ -175,11 +175,11 @@ The form of `diag_fail` shows **Error** `badarith`. The log gives the full pictu
 
 Module-specific messages and their meaning are described in the module documents:
 
-- IoT connections — [IoT connections, section "Diagnostics"](../IoT/IoT.md#diagnostics);
-- PLC connections — [PLC Connections in Faceplate, section "Troubleshooting"](../plc_connections/general_en.md#troubleshooting);
+- IoT connections — [IoT connections, section "Diagnostics"](../../IoT/IoT.md#diagnostics);
+- PLC connections — [PLC Connections in Faceplate, section "Troubleshooting"](../../plc_connections/general_en.md#troubleshooting);
 - replication — [Replication in Faceplate, section "Troubleshooting"](../replica/replica_en.md#troubleshooting);
-- archives — [Archives, section "Diagnostics and recording behavior"](../archives/archives_en.md#diagnostics-and-recording-behavior);
-- dispatcher support (DSF) — [Dispatcher Support, section "If no recommendation appears"](../dsf/dsf_en.md#if-no-recommendation-appears).
+- archives — [Archives, section "Diagnostics and recording behavior"](../../archives/archives_en.md#diagnostics-and-recording-behavior);
+- dispatcher support (DSF) — [Dispatcher Support, section "If no recommendation appears"](../../dsf/dsf_en.md#if-no-recommendation-appears).
 
 # Conclusion
 

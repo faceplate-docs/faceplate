@@ -371,7 +371,7 @@ Follow this procedure using the training service from the first example.
 2. Check **State** and **Error**.
 3. If an error is present, read its full text in the tooltip.
 4. Copy the error text using the available command.
-5. Open **Diagnostics** and click **Start**, see [Diagnostics of Runtime objects](../diagnostics/diagnostics.md).
+5. Open **Diagnostics** and click **Start**, see [Diagnostics of Runtime objects](../administration/diagnostics/diagnostics.md).
 6. Generate a new training pressure event.
 7. Read the processing and request records.
 8. Copy the log records and click **Stop**.
@@ -464,7 +464,7 @@ Check the stages in sequence: source event → filtering and grouping → model 
 | No sources | Secondary request, region, and document library | No suitable instructions or search response | Check the document and search scope separately from the model | A new message includes a relevant document |
 | The short response is empty or incomplete | Full message response | Response text processing behavior | Open the full response and check the model's output format | The required text can be read |
 
-**RUN** and the absence of a current error line are not enough to establish success. An individual group's error may appear only in the log of the **Diagnostics** window, see [Diagnostics of Runtime objects](../diagnostics/diagnostics.md).
+**RUN** and the absence of a current error line are not enough to establish success. An individual group's error may appear only in the log of the **Diagnostics** window, see [Diagnostics of Runtime objects](../administration/diagnostics/diagnostics.md).
 
 After correcting a problem, use a new test event. A previously saved response does not confirm that the modified configuration has run.
 

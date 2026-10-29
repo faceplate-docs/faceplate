@@ -36,6 +36,19 @@ docs/
 │   │   ├── images/  (4 files)
 │   │   ├── roles.md
 │   │   └── users.md
+│   ├── administration/
+│   │   ├── diagnostics/
+│   │   │   ├── images/  (5 files)
+│   │   │   └── diagnostics.md
+│   │   ├── git/
+│   │   │   ├── images/  (2 files)
+│   │   │   └── git_en.md
+│   │   ├── Redundancy/
+│   │   │   ├── images/  (6 files)
+│   │   │   └── Redundancy_en.md
+│   │   └── replica/
+│   │       ├── images/  (2 files)
+│   │       └── replica_en.md
 │   ├── archives/
 │   │   ├── images/  (10 files)
 │   │   ├── aggregates_en.md
@@ -47,11 +60,6 @@ docs/
 │   ├── catalogs/
 │   │   ├── images/  (10 files)
 │   │   └── catalogs.md
-│   ├── diagnostics/
-│   │   ├── images/  (5 files)
-│   │   └── diagnostics.md
-│   ├── git/
-│   │   └── git_en.md
 │   ├── historian/
 │   │   └── historian_server_en.md
 │   ├── IoT/
@@ -129,9 +137,6 @@ docs/
 │   │   │   └── sensor/
 │   │   │       └── sensor_en.md
 │   │   └── deploy as docker.md
-│   ├── Redundancy/
-│   │   ├── images/  (6 files)
-│   │   └── Redundancy_en.md
 │   ├── storage/
 │   │   ├── images/  (10 files)
 │   │   └── Storage_en.md
@@ -144,17 +149,25 @@ docs/
 │   │   ├── images/  (4 files)
 │   │   ├── roles.md
 │   │   └── users.md
+│   ├── administration/
+│   │   ├── diagnostics/
+│   │   │   ├── images/  (5 files)
+│   │   │   └── diagnostics.md
+│   │   ├── git/
+│   │   │   ├── images/  (2 files)
+│   │   │   └── git_ru.md
+│   │   ├── Redundancy/
+│   │   │   ├── images/  (6 files)
+│   │   │   └── Redundancy_ru.md
+│   │   └── replica/
+│   │       ├── images/  (2 files)
+│   │       └── replica_ru.md
 │   ├── calculation/
 │   │   ├── images/  (11 files)
 │   │   └── calculation.md
 │   ├── catalogs/
 │   │   ├── images/  (10 files)
 │   │   └── catalogs.md
-│   ├── diagnostics/
-│   │   ├── images/  (5 files)
-│   │   └── diagnostics.md
-│   ├── git/
-│   │   └── git_ru.md
 │   ├── historian/
 │   │   └── historian_server.md
 │   ├── IoT/
@@ -214,9 +227,6 @@ docs/
 │   ├── prototypes/
 │   │   ├── images/  (18 files)
 │   │   └── prototypes.md
-│   ├── Redundancy/
-│   │   ├── images/  (6 files)
-│   │   └── Redundancy_ru.md
 │   ├── samples/
 │   │   ├── connectivity/
 │   │   │   ├── influxdb/
@@ -337,6 +347,7 @@ favicon and brand stylesheet), `tools/` (site build and link checker),
 - [Project export (`faceplate_project-*.xlsx`)](docs/en/machine_learning/project_export_en.md)
 
 ### Administration
-- [Resource redundancy](docs/en/Redundancy/Redundancy_en.md)
-- [Git module](docs/en/git/git_en.md)
-- [Diagnostics of Runtime objects](docs/en/diagnostics/diagnostics.md)
+- [Resource redundancy](docs/en/administration/Redundancy/Redundancy_en.md)
+- [Replication](docs/en/administration/replica/replica_en.md)
+- [Git module](docs/en/administration/git/git_en.md)
+- [Diagnostics of Runtime objects](docs/en/administration/diagnostics/diagnostics.md)

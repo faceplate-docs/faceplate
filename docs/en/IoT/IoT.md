@@ -226,7 +226,7 @@ Objects cannot be created on this tab — only in **General View**.
 
 ## Diagnostics
 
-The **Error** field shows exchange errors; connection errors may not appear in it. Open the connection form, click **Diagnostics**, then **Start**: the window shows the connection process log. **Log level** sets the detail, **Stop** stops the output. The window is described in detail in [Diagnostics of Runtime objects](../diagnostics/diagnostics.md).
+The **Error** field shows exchange errors; connection errors may not appear in it. Open the connection form, click **Diagnostics**, then **Start**: the window shows the connection process log. **Log level** sets the detail, **Stop** stops the output. The window is described in detail in [Diagnostics of Runtime objects](../administration/diagnostics/diagnostics.md).
 
 ![Diagnostics window: broker unreachable](images/24_diagnostics.png)
 

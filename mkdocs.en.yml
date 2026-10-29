@@ -82,7 +82,7 @@ nav:
       - Forecasting models: machine_learning/forecasting_models_en.md
       - Project export: machine_learning/project_export_en.md
   - Administration:
-      - Resource redundancy: Redundancy/Redundancy_en.md
-      - Replication: replica/replica_en.md
-      - Git module: git/git_en.md
-      - Diagnostics of Runtime objects: diagnostics/diagnostics.md
+      - Resource redundancy: administration/Redundancy/Redundancy_en.md
+      - Replication: administration/replica/replica_en.md
+      - Git module: administration/git/git_en.md
+      - Diagnostics of Runtime objects: administration/diagnostics/diagnostics.md

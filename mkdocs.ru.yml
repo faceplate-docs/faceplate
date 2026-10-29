@@ -89,7 +89,7 @@ nav:
       - Модели прогнозирования: machine_learning/forecasting_models_ru.md
       - Экспорт проекта: machine_learning/project_export_ru.md
   - Администрирование:
-      - Резервирование ресурсов: Redundancy/Redundancy_ru.md
-      - Репликация: replica/replica_ru.md
-      - Модуль Git: git/git_ru.md
-      - Диагностика объектов Runtime: diagnostics/diagnostics.md
+      - Резервирование ресурсов: administration/Redundancy/Redundancy_ru.md
+      - Репликация: administration/replica/replica_ru.md
+      - Модуль Git: administration/git/git_ru.md
+      - Диагностика объектов Runtime: administration/diagnostics/diagnostics.md
