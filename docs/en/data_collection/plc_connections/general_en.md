@@ -65,7 +65,7 @@ The tested installation provides the following 15 types. The first column contai
 | mercury230 | Communication with Mercury 230 meters | Meter polling |
 | [modbus](./plc_modbus_connection_en.md) | Communication with Modbus PLCs, modules, and gateways | Client / device polling |
 
-The links in the table open the individual protocol references. Value conversion is covered in [Transformation](./transformation_en.md), the **Диагностика** (Diagnostics) window in [Diagnostics of Runtime objects](../administration/diagnostics/diagnostics.md), and channel and service redundancy in [Resource redundancy](../administration/Redundancy/Redundancy_en.md).
+The links in the table open the individual protocol references. Value conversion is covered in [Transformation](./transformation_en.md), the **Диагностика** (Diagnostics) window in [Diagnostics of Runtime objects](../../administration/diagnostics/diagnostics.md), and channel and service redundancy in [Resource redundancy](../../administration/Redundancy/Redundancy_en.md).
 
 The Modbus form offers **tcp**, **rtu-tcp**, and **rtu-serial**. This guide uses **tcp** only. IEC 101 is serial telecontrol; IEC 104 communicates over TCP. Detailed addressing, transport, and security for individual drivers are covered separately.
 
@@ -280,7 +280,7 @@ One register is sufficient to check that both modes operate and the settings are
 
 ### Check diagnostics
 
-Open **Диагностика** (Diagnostics) for the saved **TrainingPLC**, click **Start** and inspect **Logs**; select **debug** for detailed output. Working with the window is described in [Diagnostics of Runtime objects](../administration/diagnostics/diagnostics.md).
+Open **Диагностика** (Diagnostics) for the saved **TrainingPLC**, click **Start** and inspect **Logs**; select **debug** for detailed output. Working with the window is described in [Diagnostics of Runtime objects](../../administration/diagnostics/diagnostics.md).
 
 **Start** and **Stop** in this window control only log recording. Communication is stopped by **Отключено** in the connection settings; after **Stop** the connection keeps running.
 
@@ -441,7 +441,7 @@ Check three levels: whether execution is permitted, whether the channel is worki
 | 1000 remains after deletion | Presence of the connection and incoming tag references | Retained tag display value | Check that the connection and binding are absent | Communication has ended; the old number is not treated as a new reading |
 | Search does not return the expected row | Поиск по пути and Тип соединения: | Incorrect path fragment or a remaining filter | Use a path fragment of at least three characters, check the type, and click Найти / refresh | The required object is found, or its deletion is confirmed |
 
-Working with the window is described in [Diagnostics of Runtime objects](../administration/diagnostics/diagnostics.md).
+Working with the window is described in [Diagnostics of Runtime objects](../../administration/diagnostics/diagnostics.md).
 
 ## Limitations
 

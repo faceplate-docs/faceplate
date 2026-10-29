@@ -98,7 +98,7 @@
 
    ![Форма папки в контенте](images/content_folder_form.png)
 
-Объекты других типов добавляются так же, из своих групп окна выбора типа: `iot` ([IoT](../IoT/IoT.md)), `plc` ([PLC-соединения](../plc_connections/general_ru.md)), `primitives` ([«Примитивы»](../primitives/Primitives.md)), `prototypes`, `system` (например, [расчёты](../calculation/calculation.md) и [User Script](../user_script/user_script.md)).
+Объекты других типов добавляются так же, из своих групп окна выбора типа: `iot` ([IoT](../data_collection/IoT/IoT.md)), `plc` ([PLC-соединения](../data_collection/plc_connections/general_ru.md)), `primitives` ([«Примитивы»](../primitives/Primitives.md)), `prototypes`, `system` (например, [расчёты](../calculation/calculation.md) и [User Script](../user_script/user_script.md)).
 
 Поле **Папка** в форме показывает путь от корня контента: `/` — это сам корень. В экземпляре `P_201` папка `/motor` окажется по пути `P_201/motor`.
 
