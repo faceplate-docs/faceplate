@@ -104,12 +104,13 @@ docs/
 │   │   ├── forecasting_models_en.md
 │   │   └── project_export_en.md
 │   ├── mnemo/
-│   │   ├── images/  (46 files)
+│   │   ├── images/  (51 files)
 │   │   ├── controls.md
 │   │   ├── editor.md
 │   │   ├── gauges.md
 │   │   ├── graphics.md
-│   │   └── lists.md
+│   │   ├── lists.md
+│   │   └── tables.md
 │   ├── PowerBI_en/
 │   │   ├── images/  (1 file)
 │   │   └── PowerBi_FP_en.md
@@ -220,12 +221,13 @@ docs/
 │   │   ├── forecasting_models_ru.md
 │   │   └── project_export_ru.md
 │   ├── mnemo/
-│   │   ├── images/  (46 files)
+│   │   ├── images/  (51 files)
 │   │   ├── controls.md
 │   │   ├── editor.md
 │   │   ├── gauges.md
 │   │   ├── graphics.md
-│   │   └── lists.md
+│   │   ├── lists.md
+│   │   └── tables.md
 │   ├── PowerBI_ru/
 │   │   ├── images/  (1 file)
 │   │   └── PowerBi_FP_ru.md
@@ -334,6 +336,7 @@ favicon and brand stylesheet), `tools/` (site build and link checker),
 - [Buttons and value input](docs/en/mnemo/controls.md)
 - [Selection from lists](docs/en/mnemo/lists.md)
 - [Dial and linear gauges](docs/en/mnemo/gauges.md)
+- [Tables and timeline](docs/en/mnemo/tables.md)
 
 ### Project logic
 - [Calculations](docs/en/calculation/calculation.md)
