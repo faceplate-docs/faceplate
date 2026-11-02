@@ -104,9 +104,10 @@ docs/
 │   │   ├── forecasting_models_en.md
 │   │   └── project_export_en.md
 │   ├── mnemo/
-│   │   ├── images/  (73 files)
+│   │   ├── images/  (78 files)
 │   │   ├── bindings.md
 │   │   ├── controls.md
+│   │   ├── datasources.md
 │   │   ├── editor.md
 │   │   ├── events.md
 │   │   ├── gauges.md
@@ -224,9 +225,10 @@ docs/
 │   │   ├── forecasting_models_ru.md
 │   │   └── project_export_ru.md
 │   ├── mnemo/
-│   │   ├── images/  (73 files)
+│   │   ├── images/  (78 files)
 │   │   ├── bindings.md
 │   │   ├── controls.md
+│   │   ├── datasources.md
 │   │   ├── editor.md
 │   │   ├── events.md
 │   │   ├── gauges.md
@@ -344,6 +346,7 @@ favicon and brand stylesheet), `tools/` (site build and link checker),
 - [Dial and linear gauges](docs/en/mnemo/gauges.md)
 - [Tables and timeline](docs/en/mnemo/tables.md)
 - [Bindings and animation](docs/en/mnemo/bindings.md)
+- [Data sources on a screen](docs/en/mnemo/datasources.md)
 - [Scripts and events](docs/en/mnemo/events.md)
 - [Screens and navigation](docs/en/mnemo/screens.md)
 

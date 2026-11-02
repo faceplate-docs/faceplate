@@ -130,6 +130,8 @@ function(VARS,element,context){
 
 There may be several variables: each table row is its own variable, and the script gets all of them through `VARS`. In the example `return VARS.tname.get() + ": " + VARS.level.get();` for the fields `name` and `level` gives "T-1: 62". For the `text` property to show a word, return a string.
 
+A script can also calculate a value from the records of a data source — the **variabledatasource** section of the window (see [Data sources on a screen, section "A source in a script"](datasources.md#a-source-in-a-script)).
+
 ## Masking
 
 Masking extracts bits from an integer field — a controller status word. It is set on the **Source** tab: the mode in the **Masking** list and the number to the right.

@@ -73,6 +73,7 @@ nav:
       - Стрелочные и линейные индикаторы: mnemo/gauges.md
       - Таблицы и временная шкала: mnemo/tables.md
       - Привязки и анимация: mnemo/bindings.md
+      - Источники данных на схеме: mnemo/datasources.md
       - Скрипты и события: mnemo/events.md
       - Экраны и переходы: mnemo/screens.md
   - Логика проекта:

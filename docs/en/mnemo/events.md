@@ -130,7 +130,7 @@ An assignment suits "Start", "Stop", "Reset", "Set setpoint 50" buttons: the val
 A script is a JavaScript function that runs on the event. The window is arranged like the script binding window (see [Script binding](bindings.md#script-binding)):
 
 1. Choose the **Scripts** type.
-2. Define the variables in the **variable** / **tag** / **field** table: the variable name, the object (magnifier) and the field. The empty bottom row adds a variable. A script that only changes screen elements needs no variables.
+2. Define the variables in the **variable** / **tag** / **field** table: the variable name, the object (magnifier) and the field. The empty bottom row adds a variable. A script that only changes screen elements needs no variables. A script receives the records of a data source through the **variabledatasource** section (see [Data sources on a screen, section "A source in a script"](datasources.md#a-source-in-a-script)).
 3. Write the function body in the editor and click **Compile**.
 4. Click **OK**.
 

@@ -107,6 +107,8 @@ Select the table and in the **value** group choose the source name in `datasourc
 
 In the editor the table shows a sample: four rows `cell_1_1`, `cell_1_2`… by the number of columns. Source records are visible only in Runtime.
 
+A table also reads **Time-series datasource** — the history of archives for a period. All sources, their subscription, page-by-page output and the `change` event are described in [Data sources on a screen](datasources.md).
+
 ## Table: columns and headers
 
 Columns are set by the `columns` property, headers by `header`. Both are arrays with one item per column, in the same order.

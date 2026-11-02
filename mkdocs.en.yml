@@ -66,6 +66,7 @@ nav:
       - Dial and linear gauges: mnemo/gauges.md
       - Tables and timeline: mnemo/tables.md
       - Bindings and animation: mnemo/bindings.md
+      - Data sources on a screen: mnemo/datasources.md
       - Scripts and events: mnemo/events.md
       - Screens and navigation: mnemo/screens.md
   - Project logic:

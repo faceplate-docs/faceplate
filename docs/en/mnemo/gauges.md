@@ -198,7 +198,7 @@ The **Bar Chart** element from the **Reports** palette draws bars by category: f
 
 ### Data source
 
-The data source is the **Local Datasource** element from the **Reports** palette. In the editor the data source is a rectangle with its name, in Runtime it is not visible.
+The data source is the **Local Datasource** element from the **Reports** palette. In the editor the data source is a rectangle with its name, in Runtime it is not visible. Properties common to all sources are described in [Data sources on a screen](datasources.md).
 
 | Group | Property | Purpose |
 |---|---|---|
