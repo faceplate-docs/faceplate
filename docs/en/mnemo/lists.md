@@ -31,7 +31,7 @@ This document describes four selection elements, their properties, how they writ
 
 The running example is the `screen` of the `lists_demo` folder. The data is in the object `list_1` of a custom primitive `demo_list` with the fields `mode` (integer), `modes` (list, subtype string), `obj` (string) and `model` (string). Next to it is a second object of the same type, `list_2`. The catalog `sensor_models` with sensor models is created as described in [Catalogs](../catalogs/catalogs.md).
 
-The screen, top to bottom: the operating mode ("Auto", "Manual", "Repair"), the pumps in operation ("Pump 1", "Pump 2", "Pump 3"), selection of a `demo_list` object and selection of a sensor model from the catalog.
+The example screen, top to bottom: the operating mode ("Auto", "Manual", "Repair"), the pumps in operation ("Pump 1", "Pump 2", "Pump 3"), selection of a `demo_list` object and selection of a sensor model from the catalog.
 
 ![The example in the editor: the dropdown list is selected](images/lists_01_editor.png)
 
@@ -122,7 +122,7 @@ In Runtime the magnifier opens a window titled with the path to the catalog reco
 
 In the example `catalog` = `sensor_models`, and `value` is bound to `list_1.model`. After `PT_3051` is picked, `model` holds `/root/FP/catalogs/sensor_models/content/PT_3051`.
 
-The fields of `list_1` after a choice in all four elements:
+In the example the fields of `list_1` after a choice in all four elements:
 
 ![Fields of list_1 after the choice](images/lists_09_values.png)
 

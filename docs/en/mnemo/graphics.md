@@ -33,7 +33,7 @@ The terms "Screen", "Element", "Palette" and "Group" are defined in ["Screen edi
 
 Graphic elements are the shapes that make up the picture of a process plant: vessels and units, pipelines, flow-direction arrows, labels, status lamps. They are on the **Primitives** palette of the graphic editor.
 
-This document describes each element of the palette: what it is for, what properties it has and how to draw it. Working in the editor itself — adding, selecting, moving, aligning, grouping, saving — is covered in ["Screen editor"](editor.md). Binding properties to project data, animation and scripts are covered in other documents of this section.
+This document describes each element of the palette: what it is for, what properties it has and how to draw it. Working in the editor itself — adding, selecting, moving, aligning, grouping, saving — is covered in ["Screen editor"](editor.md). Binding properties to project data and animation are covered in [Bindings and animation](bindings.md).
 
 The running example is the screen `view3` of the folder `mnemo_demo`: the tank `Т-1` (a rectangle), the pump picture (an image), under it a status lamp (an ellipse) and the label "Н-1" (a rectangle with no background and no border), a pipeline from the tank to the pump with a flow-direction arrow, and a branch going up from the pump.
 
@@ -70,7 +70,7 @@ Every graphic element has these groups:
 | | `title` | Tooltip: appears in Runtime when the operator hovers the mouse over the element |
 | | `cursor` | Mouse pointer shape over the element in Runtime: `inherit`, `default`, `crosshair`, `pointer`, `text`, `help` |
 
-The **events** group and the buttons in the **Binding** column connect an element to data and scripts; an example is in [Buttons and value input](controls.md), sections [Linking an element to a tag](controls.md#linking-an-element-to-a-tag) and [Button](controls.md#button).
+The **events** group and the buttons in the **Binding** column connect an element to data and scripts; an example is in [Buttons and value input](controls.md), sections [Linking an element to a tag](controls.md#linking-an-element-to-a-tag) and [Button](controls.md#button). All binding modes are described in [Bindings and animation](bindings.md), events and scripts in [Scripts and events](events.md).
 
 ## Choosing a color
 

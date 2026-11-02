@@ -217,7 +217,7 @@ For the chart, set `schema`:
 }
 ```
 
-`data` holds an array of series. A series has two fields: `name` — the series name, `data` — a list of "category, value" pairs:
+`data` holds an array of series. A series has two fields: `name` — the series name, `data` — a list of "category, value" pairs. In the example the `shifts` source has one series:
 
 ```
 [

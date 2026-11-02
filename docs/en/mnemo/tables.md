@@ -77,12 +77,12 @@ A table is not bound to a tag: it takes its rows from a data source on the same 
 Selecting the objects of one folder:
 
 ```
-[".folder", "=", "$oid('/root/FP/PROJECT/tables_demo')"]
+[".folder", "=", "$oid('/root/FP/PROJECT/<folder>')"]
 ```
 
-The path starts with `/root/FP/PROJECT/`, followed by the folder path in the project tree.
+The path starts with `/root/FP/PROJECT/`, followed by the folder path in the project tree. In the example it is `$oid('/root/FP/PROJECT/tables_demo')`.
 
-In `schema`, list the fields and their types as in the sample of a new source. The service field `.name` is the object name. Describe a `float` field as `String`: the value is shown as is (`42.5`), while `Integer` rounds it to a whole number:
+In `schema`, list the fields and their types as in the sample of a new source. The service field `.name` is the object name. Describe a `float` field as `String`: the value is shown as is (`42.5`), while `Integer` rounds it to a whole number. In the example:
 
 ```
 {
@@ -134,7 +134,7 @@ columns: [".name", "state", "flow"]
 
 ![The JSON window: the columns property](images/tables_03_columns.png)
 
-A function is handy for turning a code into text. The column `{fields: ["state"], handler: ({state}) => state === 1 ? "running" : "stopped"}` shows "running" for a pump with `state` = 1 and "stopped" for the others.
+A function is handy for turning a code into text. In the example the column `{fields: ["state"], handler: ({state}) => state === 1 ? "running" : "stopped"}` shows "running" for a pump with `state` = 1 and "stopped" for the others.
 
 ## Table: colors
 

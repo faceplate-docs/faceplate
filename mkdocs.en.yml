@@ -65,6 +65,9 @@ nav:
       - Selection from lists: mnemo/lists.md
       - Dial and linear gauges: mnemo/gauges.md
       - Tables and timeline: mnemo/tables.md
+      - Bindings and animation: mnemo/bindings.md
+      - Scripts and events: mnemo/events.md
+      - Screens and navigation: mnemo/screens.md
   - Project logic:
       - Calculations: calculation/calculation.md
       - User scripts: user_script/user_script.md

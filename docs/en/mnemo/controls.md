@@ -25,7 +25,7 @@ A document for the integration engineer who builds operator controls on a screen
 |---|---|
 | Tag | A project object whose field a screen element shows or changes. In the example, the instance `ctrl_1` |
 | Binding | A link between an element property and a tag field. Set with the button in the **Binding** column of the **Properties** panel |
-| Assignment | A reaction to an element event without a script: write a constant, another field value or an element property into a tag field |
+| Assignment | A reaction to an element event without a script: write a constant or another field value into a tag field |
 | On-screen keyboard | A window with keys for entering a value with the mouse or by touch, without a physical keyboard |
 
 The terms "Screen", "Element", "Palette" are explained in [Screen editor](editor.md).
@@ -69,7 +69,7 @@ The checkbox, slider, input fields and date fields keep their value in the `valu
 
 ![Binding the setpoint field to ctrl_1.setpoint](images/controls_03_link.png)
 
-Clicking a filled binding opens it for editing.
+Clicking a filled binding opens it for editing. The other binding modes (script, masking, value map, shimmer) are described in [Bindings and animation](bindings.md).
 
 The field type must suit the element:
 
@@ -101,12 +101,12 @@ To make a button write a value into a tag without a script:
 1. Select the button, open the **events** group and click the **Reaction** cell in the `click` row.
 2. In the "Event - click" window keep **Assignment**.
 3. In the **Variable** column: **Tag**, magnifier → object → **OK**, the field on the right. In the example `ctrl_1`, field `run`.
-4. In the **Value** column: **Constant** and the value. `true` for **Start**, `false` for **Stop**.
+4. In the **Value** column: **Constant** and the value the button writes. In the example `true` for **Start**, `false` for **Stop**.
 5. Click **OK**.
 
 ![Assignment on the Start button click](images/controls_02_event.png)
 
-When a row is filled, an empty row appears below it for the next assignment. The bin deletes a row. Instead of a constant, the **Value** column can take a field of another tag (**Tag**) or a property of the button itself (**Property**).
+When a row is filled, an empty row appears below it for the next assignment. The bin deletes a row. Instead of a constant, the **Value** column can take a field of another tag (**Tag**). The other events and a script on an event are described in [Scripts and events](events.md).
 
 | Group | Property | Purpose |
 |---|---|---|

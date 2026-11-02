@@ -83,7 +83,7 @@ Any saved screen, `settings` included, can be chosen in **Folder Screen** and in
 
 The **Folder Screen** element (**Controls** palette) shows a screen of any folder inside another screen. This way the same picture (a unit, an assembly, a legend) is drawn once and shown on several screens.
 
-1. Draw and save the screen to embed, for example `view2` of the folder `mnemo_demo`, and give it a name in the "Views" window (`Насос` in the example).
+1. Draw and save the screen to embed — one of `view1`…`view15` of any folder — and give it a name in the "Views" window. In the example it is `view2` of the folder `mnemo_demo` named `Насос`.
 2. Open the screen you embed into and drag **Folder Screen** onto the canvas. Until a screen is chosen, the element reads "Screen folder is undefined" and "View is undefined".
 3. In the **Properties** panel open the **settings** group. In the `folder_list` property press the magnifier and choose the folder in the project tree (**OK**), then choose the screen in the **View** list. The list shows the saved screens of that folder by name; the screen you are editing is not in it.
 4. Set the position and size of the element in the **geometry** group and save.
@@ -149,7 +149,7 @@ The canvas is the grey area of the screen. The size of a new screen is set by th
 
 Drag an icon from a palette onto the canvas. The element appears where you release it, becomes selected, and the **Properties** panel shows its properties. The element name is shown in the icon tooltip.
 
-Every element gets a number that is unique within the screen. The number is shown at the root of the properties tree: `Rectangle: 1`, `Ellipse: 3`.
+Every element gets a number that is unique within the screen. The number is shown at the root of the properties tree together with the element type: `<type>: <number>`, for example `Rectangle: 1`.
 
 ## Selection
 
@@ -182,7 +182,7 @@ When you click an empty spot of the canvas, the panel shows the properties of th
 
 ![Screen properties](images/editor_15_screen_props.png)
 
-A value is changed right in the cell: a number by typing or with the arrows, an option from the list. The change is visible on the canvas at once. The button in the **Binding** column links the property to project data, and the **events** group sets the reaction to events; an example of both is in [Buttons and value input](controls.md), sections [Linking an element to a tag](controls.md#linking-an-element-to-a-tag) and [Button](controls.md#button).
+A value is changed right in the cell: a number by typing or with the arrows, an option from the list. The change is visible on the canvas at once. The button in the **Binding** column links the property to project data, and the **events** group sets the reaction to events; an example of both is in [Buttons and value input](controls.md), sections [Linking an element to a tag](controls.md#linking-an-element-to-a-tag) and [Button](controls.md#button). All binding modes are described in [Bindings and animation](bindings.md), events and scripts in [Scripts and events](events.md).
 
 ## Copy, paste, delete
 
@@ -218,7 +218,7 @@ An alignment is undone with a single Ctrl + Z.
 
 ## Grouping
 
-Select elements and press **Group**. The group gets its own number (`Group: 6`) and the properties **appearance**, **background**, **border**, **geometry**, **misc**, **events**; the **subitems** node holds its elements. A click on any element of the group selects the whole group, dragging moves it as a whole.
+Select elements and press **Group**. The group gets its own number (`Group: <number>`) and the properties **appearance**, **background**, **border**, **geometry**, **misc**, **events**; the **subitems** node holds its elements. A click on any element of the group selects the whole group, dragging moves it as a whole.
 
 ![Group](images/editor_06_group.png)
 
@@ -236,7 +236,7 @@ The **Проверить зависимости** button checks that the project
 
 ## Exporting and importing a screen
 
-**Export to file** saves the current screen to a `.scn` file. The file name is built from the screen path: `PROJECT_mnemo_demo_screen.scn`.
+**Export to file** saves the current screen to a `.scn` file. The file name is built from the screen path: `PROJECT_<folder>_<screen>.scn`. In the example it is `PROJECT_mnemo_demo_screen.scn`.
 
 **Import from file** opens the "File select" window. Choose a `.scn` file with **Select files...** and press **OK**: the content of the open screen is replaced with the content of the file. Save the screen to keep the result.
 
@@ -254,7 +254,7 @@ In Runtime (`http://<server>:9000/fp/runtime`) open the menu, then **Screens**. 
 
 ![The screen in Runtime](images/editor_09_runtime.png)
 
-To view a screen without leaving Studio, use the preview button in the "Views" window.
+To view a screen without leaving Studio, use the preview button in the "Views" window. Screen properties, the fixed screen and navigation between screens are described in [Screens and navigation](screens.md).
 
 # Conclusion
 

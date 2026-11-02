@@ -104,12 +104,15 @@ docs/
 │   │   ├── forecasting_models_en.md
 │   │   └── project_export_en.md
 │   ├── mnemo/
-│   │   ├── images/  (51 files)
+│   │   ├── images/  (73 files)
+│   │   ├── bindings.md
 │   │   ├── controls.md
 │   │   ├── editor.md
+│   │   ├── events.md
 │   │   ├── gauges.md
 │   │   ├── graphics.md
 │   │   ├── lists.md
+│   │   ├── screens.md
 │   │   └── tables.md
 │   ├── PowerBI_en/
 │   │   ├── images/  (1 file)
@@ -221,12 +224,15 @@ docs/
 │   │   ├── forecasting_models_ru.md
 │   │   └── project_export_ru.md
 │   ├── mnemo/
-│   │   ├── images/  (51 files)
+│   │   ├── images/  (73 files)
+│   │   ├── bindings.md
 │   │   ├── controls.md
 │   │   ├── editor.md
+│   │   ├── events.md
 │   │   ├── gauges.md
 │   │   ├── graphics.md
 │   │   ├── lists.md
+│   │   ├── screens.md
 │   │   └── tables.md
 │   ├── PowerBI_ru/
 │   │   ├── images/  (1 file)
@@ -337,6 +343,9 @@ favicon and brand stylesheet), `tools/` (site build and link checker),
 - [Selection from lists](docs/en/mnemo/lists.md)
 - [Dial and linear gauges](docs/en/mnemo/gauges.md)
 - [Tables and timeline](docs/en/mnemo/tables.md)
+- [Bindings and animation](docs/en/mnemo/bindings.md)
+- [Scripts and events](docs/en/mnemo/events.md)
+- [Screens and navigation](docs/en/mnemo/screens.md)
 
 ### Project logic
 - [Calculations](docs/en/calculation/calculation.md)

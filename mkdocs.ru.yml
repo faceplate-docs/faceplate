@@ -72,6 +72,9 @@ nav:
       - Выбор из списков: mnemo/lists.md
       - Стрелочные и линейные индикаторы: mnemo/gauges.md
       - Таблицы и временная шкала: mnemo/tables.md
+      - Привязки и анимация: mnemo/bindings.md
+      - Скрипты и события: mnemo/events.md
+      - Экраны и переходы: mnemo/screens.md
   - Логика проекта:
       - Расчёты (Calculation): calculation/calculation.md
       - Пользовательские скрипты: user_script/user_script.md
