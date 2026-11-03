@@ -80,8 +80,6 @@ The **multiselect** element from the **Reports** palette. A click on the field o
 
 The tag receives a list of the texts of the selected items, so the tag field must be of type `list` with subtype `string`. An empty selection is written as an empty list.
 
-Chips that do not fit in the width wrap to the next line below the element border. Give the element enough height and width for the largest selection.
-
 In the example `options` = "Pump 1", "Pump 2", "Pump 3", and `value` is bound to `list_1.modes`.
 
 ![Multiple selection: "Pump 1" is selected, the list is open](images/lists_05_rt_multiselect.png)

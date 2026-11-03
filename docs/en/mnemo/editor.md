@@ -141,7 +141,7 @@ Panel positions and visibility are remembered per user and restored the next tim
 
 The canvas is the grey area of the screen. The size of a new screen is set by the screen-size button on the toolbar (**1920 X 1080** by default). It opens the "Set client screen size" window with the **Width (px)** and **Height (px)** fields, from 400 to 30000. The value is common to the project and applies to screens created after the change. The size of an existing screen is changed in its properties, see [Properties panel](#properties-panel).
 
-**Zoom.** Ctrl + mouse wheel zooms the canvas in and out. The **Zoom** button (magnifier) opens a panel with the current zoom in percent, **−** and **+** buttons and a reset button (back to 100 %).
+**Zoom.** Ctrl + mouse wheel zooms the canvas in and out. The **Zoom** button (magnifier) opens a panel with the current zoom in percent, **−**, **+** and **Reset** buttons (back to 100 %).
 
 **Grid.** The **Grid** field sets the step in pixels (1 to 100, 5 by default). Coordinates snap to the grid when dragging and resizing; the arrow keys move an element by one grid step.
 
