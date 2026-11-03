@@ -76,6 +76,7 @@ nav:
       - Источники данных на схеме: mnemo/datasources.md
       - Скрипты и события: mnemo/events.md
       - Экраны и переходы: mnemo/screens.md
+      - Отчёты и печать экрана: mnemo/reports.md
   - Логика проекта:
       - Расчёты (Calculation): calculation/calculation.md
       - Пользовательские скрипты: user_script/user_script.md

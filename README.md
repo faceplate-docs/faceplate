@@ -104,7 +104,7 @@ docs/
 │   │   ├── forecasting_models_en.md
 │   │   └── project_export_en.md
 │   ├── mnemo/
-│   │   ├── images/  (78 files)
+│   │   ├── images/  (85 files)
 │   │   ├── bindings.md
 │   │   ├── controls.md
 │   │   ├── datasources.md
@@ -113,6 +113,7 @@ docs/
 │   │   ├── gauges.md
 │   │   ├── graphics.md
 │   │   ├── lists.md
+│   │   ├── reports.md
 │   │   ├── screens.md
 │   │   └── tables.md
 │   ├── PowerBI_en/
@@ -225,7 +226,7 @@ docs/
 │   │   ├── forecasting_models_ru.md
 │   │   └── project_export_ru.md
 │   ├── mnemo/
-│   │   ├── images/  (78 files)
+│   │   ├── images/  (85 files)
 │   │   ├── bindings.md
 │   │   ├── controls.md
 │   │   ├── datasources.md
@@ -234,6 +235,7 @@ docs/
 │   │   ├── gauges.md
 │   │   ├── graphics.md
 │   │   ├── lists.md
+│   │   ├── reports.md
 │   │   ├── screens.md
 │   │   └── tables.md
 │   ├── PowerBI_ru/
@@ -349,6 +351,7 @@ favicon and brand stylesheet), `tools/` (site build and link checker),
 - [Data sources on a screen](docs/en/mnemo/datasources.md)
 - [Scripts and events](docs/en/mnemo/events.md)
 - [Screens and navigation](docs/en/mnemo/screens.md)
+- [Reports and screen printing](docs/en/mnemo/reports.md)
 
 ### Project logic
 - [Calculations](docs/en/calculation/calculation.md)
