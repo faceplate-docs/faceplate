@@ -70,6 +70,7 @@ nav:
       - Scripts and events: mnemo/events.md
       - Screens and navigation: mnemo/screens.md
       - Reports and screen printing: mnemo/reports.md
+      - Alarms and trends on a screen: mnemo/alarms_trends.md
   - Project logic:
       - Calculations: calculation/calculation.md
       - User scripts: user_script/user_script.md

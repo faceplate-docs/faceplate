@@ -131,7 +131,7 @@ Four panels lie on top of the canvas. Drag them by the title, close them with th
 | Panel | Button | Content |
 |---|---|---|
 | **Primitives** | **Drawing** | Shapes: rectangle, image, polyline, connector polyline, polygon, ellipse (see [Graphic elements](graphics.md)) |
-| **Controls** | **Control elements** | [Input fields, buttons](controls.md), [lists](lists.md), [indicators](gauges.md), trends and other elements |
+| **Controls** | **Control elements** | [Input fields, buttons](controls.md), [lists](lists.md), [indicators](gauges.md), [alarms and trends](alarms_trends.md) and other elements |
 | **Reports** | **Report items** | Date pickers, data sources, grid, [bar chart](gauges.md#bar-chart) |
 | **Properties** | **Properties** | Properties of the selected element |
 
