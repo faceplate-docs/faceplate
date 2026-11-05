@@ -103,7 +103,7 @@ The field must give a value the property understands:
 | `visible`, `bold`, `italic`, `transparent` | `bool` |
 | `left`, `top`, `width`, `height`, `font_size`, `border_width`, `border_radius`, `text_rotation`, `z_index` | `integer`, `float` within the range allowed for the property |
 | `border_style`, `gradient` | `string` with one of the values of the property's list, for example `dashed`, `horizontal` |
-| `texture` | `string` with the path to an image of the image library, for example `/IMAGES/textures/red_brick.jpg` |
+| `texture` | `string` with the path to an image of the [image library](images.md), for example `/IMAGES/textures/red_brick.jpg` |
 
 A [value map](#value-map) turns a number into a color or a state text, [masking](#masking) turns bits into "yes/no", and a [script](#script-binding) does any other conversion.
 

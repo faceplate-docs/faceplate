@@ -78,6 +78,7 @@ nav:
       - Экраны и переходы: mnemo/screens.md
       - Отчёты и печать экрана: mnemo/reports.md
       - Тревоги и тренды на экране: mnemo/alarms_trends.md
+      - Библиотека изображений: mnemo/images.md
   - Логика проекта:
       - Расчёты (Calculation): calculation/calculation.md
       - Пользовательские скрипты: user_script/user_script.md

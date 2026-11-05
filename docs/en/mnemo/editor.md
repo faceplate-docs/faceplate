@@ -138,6 +138,8 @@ Four panels lie on top of the canvas. Drag them by the title, close them with th
 
 Panel positions and visibility are remembered per user and restored the next time the editor opens.
 
+The **Image library** button in the right part of the toolbar opens the project's picture store: uploading, folders, moving to another project (see [Image library](images.md)).
+
 ## Canvas
 
 The canvas is the grey area of the screen. The size of a new screen is set by the screen-size button on the toolbar (**1920 X 1080** by default). It opens the "Set client screen size" window with the **Width (px)** and **Height (px)** fields, from 400 to 30000. The value is common to the project and applies to screens created after the change. The size of an existing screen is changed in its properties, see [Properties panel](#properties-panel).
@@ -258,6 +260,8 @@ The **Проверить зависимости** button checks that the project
 **Export to file** saves the current screen to a `.scn` file. The file name is built from the screen path: `PROJECT_<folder>_<screen>.scn`. In the example it is `PROJECT_mnemo_demo_screen.scn`.
 
 **Import from file** opens the "File select" window. Choose a `.scn` file with **Select files...** and press **OK**: the content of the open screen is replaced with the content of the file. Save the screen to keep the result.
+
+The screen file keeps picture paths, not the pictures themselves. If the screen is moved to another project, move its pictures there too (see [Image library, the Moving to another project section](images.md#moving-to-another-project)).
 
 ## Concurrent editing
 

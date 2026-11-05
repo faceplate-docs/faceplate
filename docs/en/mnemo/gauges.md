@@ -151,7 +151,7 @@ Unlike the radial gauge, the linear gauge has a border and a background:
 | | `border_radius` | Rounding of the border and background corners |
 | **background** | `transparent` | `true` — the background is transparent. This is the default for a new element |
 | | `background_color` | Background color when `transparent` = `false` |
-| | `texture` | Background picture from the image library; the `textures` folder opens by default. Covers the background color |
+| | `texture` | Background picture from the [image library](images.md); the `textures` folder opens by default. Covers the background color |
 
 In the example `min` = 0, `max` = 120, `major_ticks` = 6, `value` is bound to `gauge_1.temp`.
 

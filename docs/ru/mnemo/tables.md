@@ -214,7 +214,7 @@ columns: [".name", "state", "flow"]
 | **border** | `border_width`, `border_color`, `border_style`, `border_radius` | Рамка: толщина, цвет, вид линии, скругление углов. Пока вид линии не выбран, рамки нет |
 | **background** | `transparent` | `true` — фон прозрачный. Так у нового элемента |
 | | `background_color` | Цвет фона при `transparent` = `false`. Виден в полях `margin` |
-| | `texture` | Картинка фона из библиотеки изображений |
+| | `texture` | Картинка фона из [библиотеки изображений](images.md) |
 
 В примере шкала 700 × 70 пикселей, `axis` = `bottom`, остальные свойства по умолчанию.
 

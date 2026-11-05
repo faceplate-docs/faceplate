@@ -25,7 +25,7 @@ A document for the integration engineer who draws the static part of a screen: e
 |---|---|
 | Point | A vertex of a polyline, connector polyline or polygon. The list of points is stored in the `path` property |
 | Handle | A square on a selected element. On a rectangle, image, ellipse and group the handles sit at the corners and sides of the frame; on lines and polygons, at the points |
-| Image library | The project's picture store, shared by all screens. It opens from an element's properties and with the **Image library** button on the editor toolbar |
+| Image library | The project's picture store, shared by all screens. It opens from an element's properties and with the **Image library** button on the editor toolbar. Details are in the [Image library](images.md) document |
 
 The terms "Screen", "Element", "Palette" and "Group" are defined in ["Screen editor"](editor.md).
 
@@ -87,7 +87,7 @@ The most versatile element: a shape with a background, a border and text inside.
 | **background** | `background_color` | Background color |
 | | `gradient` | Gradient fill. Empty — solid color. `horizontal` — horizontal bands: `background_color` at the top and bottom edges, `gradient_color` in the middle. `vertical` — the same from left to right |
 | | `gradient_color` | The second gradient color |
-| | `texture` | A fill picture from the image library. When set, it replaces the color and the gradient |
+| | `texture` | A fill picture from the [image library](images.md). When set, it replaces the color and the gradient |
 | | `transparent` | `true` — transparent background, only the border and text are visible |
 | **border** | `border_width` | Border width in pixels, 0 — no border |
 | | `border_color` | Border color |
@@ -107,7 +107,7 @@ The most versatile element: a shape with a background, a border and text inside.
 
 ## Image
 
-Shows a picture from the image library: a pump, a gate valve, a motor, etc.
+Shows a picture from the [image library](images.md): a pump, a gate valve, a motor, etc.
 
 1. Drag **Image** onto the canvas. The "Image library" window opens at once.
 2. Select a folder on the left and a picture on the right, press **OK**.

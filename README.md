@@ -104,7 +104,7 @@ docs/
 │   │   ├── forecasting_models_en.md
 │   │   └── project_export_en.md
 │   ├── mnemo/
-│   │   ├── images/  (94 files)
+│   │   ├── images/  (101 files)
 │   │   ├── alarms_trends.md
 │   │   ├── bindings.md
 │   │   ├── controls.md
@@ -113,6 +113,7 @@ docs/
 │   │   ├── events.md
 │   │   ├── gauges.md
 │   │   ├── graphics.md
+│   │   ├── images.md
 │   │   ├── lists.md
 │   │   ├── reports.md
 │   │   ├── screens.md
@@ -227,7 +228,7 @@ docs/
 │   │   ├── forecasting_models_ru.md
 │   │   └── project_export_ru.md
 │   ├── mnemo/
-│   │   ├── images/  (94 files)
+│   │   ├── images/  (101 files)
 │   │   ├── alarms_trends.md
 │   │   ├── bindings.md
 │   │   ├── controls.md
@@ -236,6 +237,7 @@ docs/
 │   │   ├── events.md
 │   │   ├── gauges.md
 │   │   ├── graphics.md
+│   │   ├── images.md
 │   │   ├── lists.md
 │   │   ├── reports.md
 │   │   ├── screens.md
@@ -355,6 +357,7 @@ favicon and brand stylesheet), `tools/` (site build and link checker),
 - [Screens and navigation](docs/en/mnemo/screens.md)
 - [Reports and screen printing](docs/en/mnemo/reports.md)
 - [Alarms and trends on a screen](docs/en/mnemo/alarms_trends.md)
+- [Image library](docs/en/mnemo/images.md)
 
 ### Project logic
 - [Calculations](docs/en/calculation/calculation.md)

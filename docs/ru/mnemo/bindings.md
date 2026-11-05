@@ -103,7 +103,7 @@
 | `visible`, `bold`, `italic`, `transparent` | `bool` |
 | `left`, `top`, `width`, `height`, `font_size`, `border_width`, `border_radius`, `text_rotation`, `z_index` | `integer`, `float` в пределах, допустимых для свойства |
 | `border_style`, `gradient` | `string` с одним из значений списка свойства, например `dashed`, `horizontal` |
-| `texture` | `string` с путём к картинке библиотеки изображений, например `/IMAGES/textures/red_brick.jpg` |
+| `texture` | `string` с путём к картинке [библиотеки изображений](images.md), например `/IMAGES/textures/red_brick.jpg` |
 
 Число в цвет или текст состояния превращает [карта значений](#карта-значений), биты в «да/нет» — [маскирование](#маскирование), любое другое преобразование — [скрипт](#привязка-script).
 

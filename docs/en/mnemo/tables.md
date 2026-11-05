@@ -214,7 +214,7 @@ Other styling:
 | **border** | `border_width`, `border_color`, `border_style`, `border_radius` | Border: width, color, line style, corner radius. There is no border until a line style is chosen |
 | **background** | `transparent` | `true` — transparent background. This is the default for a new element |
 | | `background_color` | Background color when `transparent` = `false`. Visible in the `margin` area |
-| | `texture` | Background image from the image library |
+| | `texture` | Background image from the [image library](images.md) |
 
 In the example the timeline is 700 × 70 pixels, `axis` = `bottom`, other properties are default.
 
