@@ -19,6 +19,7 @@ A document for the integration engineer who draws the project's screens (mimic d
     - [Moving and resizing](#moving-and-resizing)
     - [Properties panel](#properties-panel)
     - [Copy, paste, delete](#copy-paste-delete)
+    - [Replacing a tag in bindings](#replacing-a-tag-in-bindings)
     - [Undo and redo](#undo-and-redo)
     - [Alignment](#alignment)
     - [Grouping](#grouping)
@@ -143,6 +144,10 @@ The canvas is the grey area of the screen. The size of a new screen is set by th
 
 **Zoom.** Ctrl + mouse wheel zooms the canvas in and out. The **Zoom** button (magnifier) opens a panel with the current zoom in percent, **−**, **+** and **Reset** buttons (back to 100 %).
 
+**Back to the origin.** The **Reset position** button scrolls the canvas back to the top left corner of the screen. The zoom and the screen itself do not change.
+
+**Fit to content.** The **Min position** button shifts all elements left and up so that the leftmost one touches the left edge of the screen and the topmost one touches the top edge, and shrinks the screen to the rectangle the elements occupy. The distances between elements are kept. This changes the screen: **Save** becomes active, Ctrl + Z restores the previous positions and size. Use the button on screens that are inserted into other screens: a Prototype element takes the size of the prototype screen (see [Prototype screens](#prototype-screens)), and empty space around the drawing would take room on the main screen.
+
 **Grid.** The **Grid** field sets the step in pixels (1 to 100, 5 by default). Coordinates snap to the grid when dragging and resizing; the arrow keys move an element by one grid step.
 
 ## Adding elements
@@ -195,6 +200,20 @@ A value is changed right in the cell: a number by typing or with the arrows, an 
 The copy appears 10 px to the right and below the original and becomes selected. Pasting again gives one more copy with the next offset.
 
 **Copying the look.** Select a sample and press **Copy properties**, then select one or more elements and press **Paste properties**. Appearance properties are transferred — background and text colours, border, font; position, size and opacity do not change.
+
+## Replacing a tag in bindings
+
+A part of a screen bound to one tag is moved to another tag at once, without editing each binding. This is done when elements of one unit are copied for a second unit of the same kind.
+
+The **Change bindings** button is on the editor toolbar, to the left of the field before **Grid**, not in the **Binding** column of the **Properties** panel, although the icon is the same. The **Binding** column creates a binding for one property: a tag and a field are chosen there. **Change bindings** replaces only the tag in all bindings of the selected elements and leaves the fields as they are.
+
+1. Select the elements. To find them by tag, type part of the tag path in the field to the right of the **Change bindings** button and press Enter: all elements whose bindings contain such a tag are selected. Letter case does not matter; field and element names are not searched. If nothing matches, the selection does not change.
+2. Click **Change bindings**. The button is active when something is selected. The "Change links" window opens: one row for each tag in the bindings of the selected elements, with a magnifier field to the right of the path.
+3. Use the magnifier to pick the new tag in the rows you need and click **OK**.
+
+![Change bindings: tag search and the "Change links" window](images/editor_16_rebind.png)
+
+The bindings move to the new tag, the fields stay the same: `/<folder>/<tag_1> :level` becomes `/<folder>/<tag_2> :level`. Ctrl + Z undoes the replacement.
 
 ## Undo and redo
 

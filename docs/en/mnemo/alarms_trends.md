@@ -204,6 +204,7 @@ The gear opens the series window:
 | **Группа** | Which series group the series belongs to. The group name is shown above the series in the legend and slice |
 | **Ось** | `y` — left axis, `y2` — right axis. Use `y2` for a parameter with a different range, for example pressure next to level |
 | **Archives** | Archive whose values the series draws. Selected with the magnifier |
+| **Видимость** | **No** — when the screen opens the series is hidden and its check box in the description table is cleared. The operator shows the series by selecting the check box. Useful for auxiliary series that are not always needed |
 | **Thickness**, **Color** | Line thickness and color |
 | **Ступенчатость** | **Yes** — the value holds until the next archive record, the line is stepped. **No** — points are joined with sloped segments |
 | **Маркер**, **Размер маркеров** | **Yes** — a dot at each archive record; dot size in pixels |
@@ -252,10 +253,13 @@ The trend shows the last stretch of time, which moves along with the current tim
 | | `y2_range_min`, `y2_range_max` | Limits of the right axis |
 | **value** | `cycle` | Chart refresh period in seconds. A new archive value appears on the chart within `cycle` seconds |
 | | `show_description` | `false` — the series description table below the chart is hidden, the chart takes the full height |
+| | `update_depth` | How far back the archive is re-read on each refresh, in seconds. Integer from 1, default 5 |
 
 The window length is shown in Runtime on a toolbar button, for example "minute X 15". In the example `time_step` = `minute`, `time_factor` = 15, `range_min` = 0, `range_max` = 100, `cycle` = 1.
 
 If the axis limits are empty, the axis fits the visible values: with an almost constant level, small fluctuations stretch over the full height. For a parameter with a known range set the limits explicitly so that the operator compares the line position with the thresholds.
+
+When the screen opens, the trend loads the whole window; on each refresh it re-reads the last `update_depth` seconds of the archive. Values that reach the archive late — with a timestamp earlier than the moment of writing, for example from an archive script that returns `ts` (see [Archives: configuring sources and recording data, section "Script sources"](../data_storage/archives/archives_en.md#script-sources)) — are picked up by the trend if the delay is less than `update_depth`. For such an archive set `update_depth` greater than the write delay.
 
 ## Trend: appearance and legend
 

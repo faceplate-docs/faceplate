@@ -144,7 +144,6 @@ A function is handy for turning a code into text. In the example the column `{fi
 |---|---|
 | `grid_text_color` | Cell text color |
 | `grid_header_text_color` | Header text color |
-| `grid_header_background` | Header row background color |
 
 A color is chosen by clicking the field (see [Graphic elements, section "Choosing a color"](graphics.md#choosing-a-color)).
 

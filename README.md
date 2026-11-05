@@ -104,7 +104,7 @@ docs/
 │   │   ├── forecasting_models_en.md
 │   │   └── project_export_en.md
 │   ├── mnemo/
-│   │   ├── images/  (93 files)
+│   │   ├── images/  (94 files)
 │   │   ├── alarms_trends.md
 │   │   ├── bindings.md
 │   │   ├── controls.md
@@ -227,7 +227,7 @@ docs/
 │   │   ├── forecasting_models_ru.md
 │   │   └── project_export_ru.md
 │   ├── mnemo/
-│   │   ├── images/  (93 files)
+│   │   ├── images/  (94 files)
 │   │   ├── alarms_trends.md
 │   │   ├── bindings.md
 │   │   ├── controls.md
