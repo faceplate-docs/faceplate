@@ -14,7 +14,7 @@ Faceplate supports [various protocols](../../data_collection/plc_connections/gen
 
 Service redundancy is achieved through **clustering**. Multiple servers (Runtime) are combined into a single Erlang cluster. Cluster assembly is described in [section 4](#4-cluster-startup-and-assembly).
 
-- **Scaling:** Processes are distributed across nodes. If one node (server) goes down, the remaining nodes continue operating, ensuring system availability. For this, the remaining nodes must hold copies of the project databases, see [Storages](../../data_storage/storage/Storage_en.md#redundancy-a-database-copy-on-a-second-server).
+- **Scaling:** Processes are distributed across nodes. If one node (server) goes down, the remaining nodes continue operating, ensuring system availability. For this, the remaining nodes must hold copies of the project databases, see [Storages](../../data_storage/storage/storage.md#redundancy-a-database-copy-on-a-second-server).
 
 - **Identification:** Nodes discover each other through a shared Cookie (secret key) and DNS/Hosts configuration.
 

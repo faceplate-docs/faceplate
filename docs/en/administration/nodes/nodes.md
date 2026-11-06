@@ -20,8 +20,8 @@ This document is for the integration engineer who looks after FACEPLATE servers:
 
 | Term | Meaning |
 |---|---|
-| Node | One FACEPLATE server. A name like `fp@<host>` is set by the `-name` parameter in `vm.args`, see [Resource Redundancy in Faceplate](../Redundancy/Redundancy_en.md#31-virtual-machine-configuration-vmargs) |
-| Cluster | Several nodes combined into one system. Assembly is described in [Resource Redundancy in Faceplate](../Redundancy/Redundancy_en.md#4-cluster-startup-and-assembly) |
+| Node | One FACEPLATE server. A name like `fp@<host>` is set by the `-name` parameter in `vm.args`, see [Resource Redundancy in Faceplate](../redundancy/redundancy.md#31-virtual-machine-configuration-vmargs) |
+| Cluster | Several nodes combined into one system. Assembly is described in [Resource Redundancy in Faceplate](../redundancy/redundancy.md#4-cluster-startup-and-assembly) |
 | Session | A connection to a node under a user account. Every Studio and Runtime window opens its own sessions; in addition, the node keeps service sessions created at its startup |
 | Process | A worker on the node. Identified like `<0.1353.0>` |
 
@@ -70,7 +70,7 @@ Node address in the list:
 
 Set **URL** if the node's host name cannot be opened from the operator workstation: for example, it is known only inside the server network, or operators connect by IP address. Specify the address as it is opened from the operator workstation: protocol, host or IP address, and port, without a path, for example `http://10.0.0.11:9000`.
 
-A node can accept an operator only if it holds a copy of the project database. How to add a copy on another node is described in [Storages](../../data_storage/storage/Storage_en.md#redundancy-a-database-copy-on-a-second-server). Without a copy, Runtime does not load on such a node after the first one fails.
+A node can accept an operator only if it holds a copy of the project database. How to add a copy on another node is described in [Storages](../../data_storage/storage/storage.md#redundancy-a-database-copy-on-a-second-server). Without a copy, Runtime does not load on such a node after the first one fails.
 
 To set the address:
 
@@ -110,7 +110,7 @@ For a folder, the **Run Nodes** column shows its **Runtime nodes** list.
 
 A change of the list applies when the folder is saved: objects restart on suitable nodes within a few seconds.
 
-If a node stops, the objects that ran on it restart on another node from the list within a few seconds. For the folder's objects to survive a server failure, list at least two nodes, and each of these nodes must hold a copy of the project database, see [Storages](../../data_storage/storage/Storage_en.md#redundancy-a-database-copy-on-a-second-server).
+If a node stops, the objects that ran on it restart on another node from the list within a few seconds. For the folder's objects to survive a server failure, list at least two nodes, and each of these nodes must hold a copy of the project database, see [Storages](../../data_storage/storage/storage.md#redundancy-a-database-copy-on-a-second-server).
 
 The **Stop Runtime** and **Start Runtime** buttons on the **General View** panel stop and start all project objects at once after confirmation.
 

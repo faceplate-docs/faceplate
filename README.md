@@ -46,9 +46,9 @@ docs/
 │   │   ├── nodes/
 │   │   │   ├── images/  (9 files)
 │   │   │   └── nodes.md
-│   │   ├── Redundancy/
+│   │   ├── redundancy/
 │   │   │   ├── images/  (6 files)
-│   │   │   └── Redundancy_en.md
+│   │   │   └── redundancy.md
 │   │   └── replica/
 │   │       ├── images/  (2 files)
 │   │       └── replica_en.md
@@ -93,7 +93,7 @@ docs/
 │   │   │   └── historian_server_en.md
 │   │   └── storage/
 │   │       ├── images/  (10 files)
-│   │       └── Storage_en.md
+│   │       └── storage.md
 │   ├── js_library/
 │   │   ├── images/  (8 files)
 │   │   └── js_library.md
@@ -173,9 +173,9 @@ docs/
 │   │   ├── nodes/
 │   │   │   ├── images/  (9 files)
 │   │   │   └── nodes.md
-│   │   ├── Redundancy/
+│   │   ├── redundancy/
 │   │   │   ├── images/  (6 files)
-│   │   │   └── Redundancy_ru.md
+│   │   │   └── redundancy.md
 │   │   └── replica/
 │   │       ├── images/  (2 files)
 │   │       └── replica_ru.md
@@ -220,7 +220,7 @@ docs/
 │   │   │   └── historian_server.md
 │   │   └── storage/
 │   │       ├── images/  (10 files)
-│   │       └── Storage_ru.md
+│   │       └── storage.md
 │   ├── js_library/
 │   │   ├── images/  (8 files)
 │   │   └── js_library.md
@@ -340,7 +340,7 @@ favicon and brand stylesheet), `tools/` (site build and link checker),
   - [Actions](docs/en/data_collection/IoT/actions.md)
 
 ### Data storage
-- [Storages: which servers hold the project data](docs/en/data_storage/storage/Storage_en.md)
+- [Storages: which servers hold the project data](docs/en/data_storage/storage/storage.md)
 - [Archives](docs/en/data_storage/archives/archives_en.md)
 - [Historian server](docs/en/data_storage/historian/historian_server_en.md)
 
@@ -389,7 +389,7 @@ favicon and brand stylesheet), `tools/` (site build and link checker),
 - [Project export (`faceplate_project-*.xlsx`)](docs/en/machine_learning/project_export_en.md)
 
 ### Administration
-- [Resource redundancy](docs/en/administration/Redundancy/Redundancy_en.md)
+- [Resource redundancy](docs/en/administration/redundancy/redundancy.md)
 - [Cluster nodes](docs/en/administration/nodes/nodes.md)
 - [Replication](docs/en/administration/replica/replica_en.md)
 - [Git module](docs/en/administration/git/git_en.md)

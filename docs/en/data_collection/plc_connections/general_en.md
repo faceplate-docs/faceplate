@@ -65,7 +65,7 @@ The tested installation provides the following 15 types. The first column contai
 | mercury230 | Communication with Mercury 230 meters | Meter polling |
 | [modbus](./plc_modbus_connection_en.md) | Communication with Modbus PLCs, modules, and gateways | Client / device polling |
 
-The links in the table open the individual protocol references. Value conversion is covered in [Transformation](./transformation_en.md), the **Диагностика** (Diagnostics) window in [Diagnostics of Runtime objects](../../administration/diagnostics/diagnostics.md), and channel and service redundancy in [Resource redundancy](../../administration/Redundancy/Redundancy_en.md).
+The links in the table open the individual protocol references. Value conversion is covered in [Transformation](./transformation_en.md), the **Диагностика** (Diagnostics) window in [Diagnostics of Runtime objects](../../administration/diagnostics/diagnostics.md), and channel and service redundancy in [Resource redundancy](../../administration/redundancy/redundancy.md).
 
 The Modbus form offers **tcp**, **rtu-tcp**, and **rtu-serial**. This guide uses **tcp** only. IEC 101 is serial telecontrol; IEC 104 communicates over TCP. Detailed addressing, transport, and security for individual drivers are covered separately.
 

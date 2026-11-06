@@ -45,7 +45,7 @@ nav:
           - Sources: data_collection/IoT/sources.md
           - Actions: data_collection/IoT/actions.md
   - Data storage:
-      - Storage: data_storage/storage/Storage_en.md
+      - Storage: data_storage/storage/storage.md
       - Archives: data_storage/archives/archives_en.md
       - Trends: data_storage/archives/trends_en.md
       - Aggregates: data_storage/archives/aggregates_en.md
@@ -92,7 +92,7 @@ nav:
       - Forecasting models: machine_learning/forecasting_models_en.md
       - Project export: machine_learning/project_export_en.md
   - Administration:
-      - Resource redundancy: administration/Redundancy/Redundancy_en.md
+      - Resource redundancy: administration/redundancy/redundancy.md
       - Cluster nodes: administration/nodes/nodes.md
       - Replication: administration/replica/replica_en.md
       - Git module: administration/git/git_en.md

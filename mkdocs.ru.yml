@@ -52,7 +52,7 @@ nav:
           - Источники: data_collection/IoT/sources.md
           - Действия: data_collection/IoT/actions.md
   - Хранение данных:
-      - Хранилища: data_storage/storage/Storage_ru.md
+      - Хранилища: data_storage/storage/storage.md
       - Архивы: data_storage/archives/archives_ru.md
       - Тренды: data_storage/archives/trends_ru.md
       - Агрегаты: data_storage/archives/aggregates_ru.md
@@ -99,7 +99,7 @@ nav:
       - Модели прогнозирования: machine_learning/forecasting_models_ru.md
       - Экспорт проекта: machine_learning/project_export_ru.md
   - Администрирование:
-      - Резервирование ресурсов: administration/Redundancy/Redundancy_ru.md
+      - Резервирование ресурсов: administration/redundancy/redundancy.md
       - Узлы кластера: administration/nodes/nodes.md
       - Репликация: administration/replica/replica_ru.md
       - Модуль Git: administration/git/git_ru.md
