@@ -6,7 +6,34 @@ A guide for integrators: choose a driver, configure a connection, and verify dat
 
 The examples and screenshots use the Russian UI. Original on-screen labels are retained in bold, with English explanations where needed, so you can match the instructions to the interface.
 
+**Contents**
+
+- [Configuration route](#configuration-route)
+- [Purpose and operating principles](#purpose-and-operating-principles)
+- [Choosing a protocol](#choosing-a-protocol)
+- [Prerequisites and training objects](#prerequisites-and-training-objects)
+- [Core settings](#core-settings)
+- [Bindings: creation and configuration](#bindings-creation-and-configuration)
+- [Connect a pump station PLC](#connect-a-pump-station-plc)
+- [Restore reading after configuration changes](#restore-reading-after-configuration-changes)
+- [Managing a connection](#managing-a-connection)
+- [Settings and state reference](#settings-and-state-reference)
+- [Troubleshooting](#troubleshooting)
+- [Limitations](#limitations)
+
+[Connection catalogue](./index.md) · [Prepare fields and bindings](./bindings_en.md) · [Transformations](./transformation_en.md) · [Diagnostics and recovery](./diagnostics_en.md)
+
+## Configuration route
+
+Prepare an external source or client and a compatible tag field using the shared guide. Configure the channel, save a complete binding and verify a new value. For supported writing/reception, separately confirm the external result; after correcting a failure repeat verification with a new control value.
+
+[Alternative channels and signal maps](./bindings_en.md#configure-an-alternative-channel) share one procedure; check driver-specific switching conditions.
+
+This document retains the detailed Modbus TCP training route and its earlier evidence. Start other protocols from the catalogue; shared bindings, processing and diagnostics are linked above. Prepare the source using the Modbus guide's training-source section with port 15020.
+
 <a id="module-purpose"></a>
+
+The **Diagnostics** window is covered in [Diagnostics of Runtime objects](../../administration/diagnostics/diagnostics.md). General channel and service redundancy settings are covered in [Resource redundancy](../../administration/redundancy/redundancy.md).
 
 ## Purpose and operating principles
 
@@ -18,7 +45,7 @@ A PLC connection exchanges data with a controller, I/O module, meter, gateway, o
 | Driver | Faceplate support for the selected protocol |
 | Connection | Settings for a particular channel: address, transport, and data exchange parameters |
 | Binding | Device data address, exchange direction, and the linked tag field |
-| Tag | A project object whose field receives a value for further use |
+| Tag | A project object whose field receives data or supplies a write command |
 
 In this example, data follows this path: training register → Modbus TCP → **TrainingPLC** connection → **Register1** binding → **value** field of the **PLCValue** tag.
 
@@ -36,6 +63,19 @@ A tag belongs to the Faceplate project and provides a point where the data can b
 
 This separation helps with maintenance. If the device address or the common communication period changes, check the connection. If a single signal is read incorrectly, check its binding and destination tag field. Assess a displayed tag value together with channel state and evidence of a new read.
 
+### What belongs to the connection, binding, and tag
+
+| Setting | Where it is configured | What to check |
+|---|---|---|
+| Driver, transport, and source access parameters | Connection | Protocol, role, node address, port, or other transport settings from the driver documentation |
+| Period, shutdown wait, grouping, and connection-wide disable | Connection | These settings apply to the channel's bindings; support depends on the driver |
+| Individual signal address and data representation | Binding | Area, register, channel, parameter name, format, and other driver-specific fields |
+| Project field link, exchange direction, transformation, and independent disable | Binding | Selected tag and field, **Доступ** (Access), **Трансформация** (Transformation), **Отключить** (Disable) |
+| Field type and purpose, user permissions, and initial write command | Tag and project configuration | Signal compatibility and permission for the required action |
+| State, error, node, and exchange result | Populated by Faceplate | Use these values to check operation, rather than as substitutes for address settings |
+
+For example, Modbus TCP configures the source network address in the connection, while **Адрес slave** (Slave address) and the register address belong to the binding. Another driver may use a different set of addressing fields.
+
 <a id="supported-plc-connection-types"></a>
 <a id="client-connections-supported"></a>
 <a id="server-connections-supported"></a>
@@ -50,22 +90,20 @@ The tested installation provides the following 15 types. The first column contai
 | Type in the list | Purpose | Faceplate role |
 |---|---|---|
 | dcon | I/O modules using DCON | Device polling |
-| [ethernet_ip](./plc_ethernet_ip_connection_en.md) | Communication with supported controllers over EtherNet/IP | Client |
-| [opcda](./plc_opcda_connection_en.md) | Connection to an OPC DA data source | Client |
-| [opcua_client](./old_plc_opcua_client_connection_en.md) | Receiving data from an OPC UA server | Client |
-| [opcua_server](./old_plc_opcua_server_connection_en.md) | Providing Faceplate data to external OPC UA clients | Server |
-| [s7](./old_plc_s7_connection_en.md) | Communication with supported Siemens S7 controllers | Client |
-| [snmp](./plc_snmp_connection_en.md) | Reading parameters from an SNMP agent; the tested implementation uses v2c | Device polling |
-| [iec101_client](./plc_iec101_client_connection_en.md) | IEC 60870-5-101 telecontrol | Client |
-| [iec101_server](./plc_iec101_server_connection_en.md) | Providing data over IEC 60870-5-101 | Server |
-| [iec104_client](./plc_iec104_client_connection_en.md) | IEC 60870-5-104 telecontrol over TCP | Client |
-| [iec104_server](./plc_iec104_server_connection_en.md) | Providing data over IEC 60870-5-104 | Server |
+| ethernet_ip | Communication with supported controllers over EtherNet/IP | Client |
+| opcda | Connection to an OPC DA data source | Client |
+| opcua_client | Receiving data from an OPC UA server | Client |
+| opcua_server | Providing Faceplate data to external OPC UA clients | Server |
+| s7 | Communication with supported Siemens S7 controllers | Client |
+| snmp | Reading parameters from an SNMP agent; the tested implementation uses v2c | Device polling |
+| iec101_client | IEC 60870-5-101 telecontrol | Client |
+| iec101_server | Providing data over IEC 60870-5-101 | Server |
+| iec104_client | IEC 60870-5-104 telecontrol over TCP | Client |
+| iec104_server | Providing data over IEC 60870-5-104 | Server |
 | iec62056 | Communication with meters using IEC 62056 | Meter polling |
-| [mbus](./plc_mbus_connection_en.md) | Communication with M-Bus meters | Meter polling |
+| mbus | Communication with M-Bus meters | Meter polling |
 | mercury230 | Communication with Mercury 230 meters | Meter polling |
-| [modbus](./plc_modbus_connection_en.md) | Communication with Modbus PLCs, modules, and gateways | Client / device polling |
-
-The links in the table open the individual protocol references. Value conversion is covered in [Transformation](./transformation_en.md), the **Диагностика** (Diagnostics) window in [Diagnostics of Runtime objects](../../administration/diagnostics/diagnostics.md), and channel and service redundancy in [Resource redundancy](../../administration/redundancy/redundancy.md).
+| modbus | Communication with Modbus PLCs, modules, and gateways | Client / device polling |
 
 The Modbus form offers **tcp**, **rtu-tcp**, and **rtu-serial**. This guide uses **tcp** only. IEC 101 is serial telecontrol; IEC 104 communicates over TCP. Detailed addressing, transport, and security for individual drivers are covered separately.
 
@@ -97,17 +135,79 @@ The number 1000 is a training value in raw register counts, without conversion t
 
 To check the tag, open **Меню → Общий вид** (Menu → General view), open the training folder, and then open **PLCValue**. Before creating a binding, **value** should display 0. Close the form with **cancel**.
 
-One binding is used here to verify reading. Other binding and transformation capabilities are covered separately.
+The training scenarios use one binding to verify reading. Common binding configuration and fields are described below; detailed configuration of individual transformations is covered separately.
 
 ## Core settings
 
-**Период (мс)** (Period, ms) sets the period of the cyclic part of data exchange. In this Modbus example, it is the polling period. If polling finishes before the period expires, the connection waits for the remaining time. If polling takes longer, the next cycle starts without an additional pause. The period does not guarantee that a new value will appear on screen after exactly that many milliseconds.
+**Период (мс)** (Period, ms) sets the period of the cyclic part of data exchange. In this Modbus example, it is the polling period. If polling finishes before the period expires, the connection waits for the remaining time. If polling takes longer, the next cycle starts without an additional pause. The period does not guarantee that a new value will appear on screen after exactly that many milliseconds. For some drivers, cyclic reading retrieves values already held in the driver's cache. The period therefore does not necessarily equal the frequency of network requests to the equipment.
 
 **Таймаут** (Timeout) in the Modbus TCP settings controls how long to wait for a device response. **Shutdown timeout (ms)** controls how long to wait for the connection's worker process to stop normally. These parameters serve different purposes.
 
-**Поддержка групповых запросов** (Support grouped requests) allows reads to be combined if the driver supports it. When set to **Нет** (No), the packet length and coefficient fields cannot be edited. **Макс. длина пакета** (Maximum packet length) and **Коэффициент задержки линии** (Line delay coefficient) affect grouping; the coefficient does not define a separate pause between requests or replace the attempts setting. Group size units and valid sizes depend on the protocol.
+**Поддержка групповых запросов** (Support grouped requests) allows driver-supported requests to be combined. The training R binding uses reads; grouped write support is determined by the driver. When set to **Нет** (No), the packet length and coefficient fields cannot be edited. **Макс. длина пакета** (Maximum packet length) and **Коэффициент задержки линии** (Line delay coefficient) affect grouping; the coefficient does not define a separate pause between requests or replace the attempts setting. Group size units and valid sizes depend on the protocol.
 
 Changing connection parameters used during execution restarts the connection's execution. After saving, check its state and the tag value. Initial values and field limits are listed in the reference section.
+
+## Bindings: creation and configuration
+
+A binding is created inside the selected connection and uses its driver. Specify the signal address and project field for each required signal. A tag can have several fields; the field does not have to be named **value**.
+
+During client reading, the driver obtains source data, the binding applies the configured transformation, and the result is adapted to the tag field type. The result then becomes available in the project field. Creating a binding does not automatically create the tag or an additional signal.
+
+### Create and check a binding
+
+The following is the common procedure for the form shown in the Modbus example. Address fields depend on the selected driver and device data map; there is no register address or format shared by all PLC connections.
+
+1. In **Общий вид** (General view), double-click the required connection.
+2. Click **Создать** (Create).
+3. Enter an available **Название** (Name) for the binding.
+4. On **Настройки** (Settings), turn on **Отключить** (Disable) to save the prepared configuration before allowing communication.
+5. Use the selection button beside **тег** (Tag) to choose the required project object.
+6. Select the required object field in the list to the right of **тег**.
+7. Select **Доступ** (Access) according to the table below.
+8. Configure addressing and data representation according to the driver documentation.
+9. Configure **Трансформация** (Transformation) if processing is required; leave the block empty for transfer without processing.
+10. Click **save**.
+11. Select the new binding in the list.
+12. Click **Редактировать** (Edit).
+13. Check the saved tag, field, access, addressing, format, transformation, and enabled **Отключить** switch.
+
+The prepared disabled binding should not exchange data. Starting exchange also requires an enabled connection, active project Runtime, and permission to execute in parent folders.
+
+14. When the source and signal are ready, turn off **Отключить**.
+15. Click **save**.
+16. Check the binding state and error, then verify the transfer result in the selected direction.
+
+For reading, check the tag field after a known input signal change. For writing, check that the device accepted the command and verify the actual result where independent feedback is available. Saving the form confirms configuration, not execution of a device command.
+
+The field list can contain more options than **value**. A field appearing in the list does not establish driver type compatibility or permission for the required change. Choose a field with a clear purpose; for write commands, define one authoritative command source.
+
+### R, W, and RW modes
+
+**Доступ** specifies exchange direction, not user permissions. For client polling, the values mean:
+
+| Access | Reading | Writing |
+|---|---|---|
+| **R** | Driver data is transferred to the linked tag field | Field changes do not send commands |
+| **W** | The binding does not participate in periodic reading | Linked field changes are sent to the driver |
+| **RW** | Driver data is transferred to the tag field | External field changes are sent to the driver; an update produced by reading does not create a feedback command |
+
+When a tag link exists, the selected tag field is the command source. The binding's **Runtime** tab is for observation; its **value** should not be treated as a universal manual command-input field.
+
+Writes are normally triggered by command changes. **W** also sends the current value on connection, recovery, and creation or editing of an enabled W binding. Before enabling it, check the initial command and the device's allowed range. Client **RW** has no equivalent common rule requiring the initial value to be sent on every connection.
+
+Do not rely on guaranteed delivery of command changes made while communication is unavailable. After recovery, check the actual device state. **W/RW** appearing in the list and a successful binding state alone do not establish driver write support or a physical output change.
+
+For server drivers, interpret exchange direction relative to their server data model. Do not apply a “remote device → tag” model to publishing data for external clients; the driver determines the addressed objects and supported operations.
+
+### Transformations, disabling, and retained values
+
+**Трансформация** is an optional processing chain; an empty block passes values without this processing. For **W/RW**, the chain must support reverse transformation. Not every read operation is suitable for writing; the selected chain is validated when saving.
+
+**Отключить** affects this binding only. **Отключено** (Disabled) on the connection affects the whole channel. Disabling one binding can leave the other bindings in a running connection exchanging data.
+
+Disabling a binding does not guarantee that its linked tag field or last **value** is cleared. A client **R/RW** read error can pass a missing-data indication to the field, including through the configured transformation. This is not a universal assignment of numeric zero: the display depends on the field and processing.
+
+**Runtime → value** may be a transformed result or a retained earlier value. During a connection-wide error, it can retain the last successful result even after the binding stops. Always assess the value together with state, error, and evidence of a new read. Do not assume a quality field, freshness timestamp, or guaranteed validity period shared by all drivers.
 
 ## Connect a pump station PLC
 
@@ -280,9 +380,27 @@ One register is sufficient to check that both modes operate and the settings are
 
 ### Check diagnostics
 
-Open **Диагностика** (Diagnostics) for the saved **TrainingPLC**, click **Start** and inspect **Logs**; select **debug** for detailed output. Working with the window is described in [Diagnostics of Runtime objects](../../administration/diagnostics/diagnostics.md).
+Diagnostics helps you relate the connection state to its execution and messages. Open it for the object whose settings you changed. Check the selected output level and limit, start collection, inspect available messages, and then stop collection.
 
-**Start** and **Stop** in this window control only log recording. Communication is stopped by **Отключено** in the connection settings; after **Stop** the connection keeps running.
+**Start** and **Stop** in this window control diagnostic information collection. **Отключено** in the connection settings controls communication itself. After stopping collection, check the connection state separately to distinguish diagnostic collection control from channel control.
+
+1. Open the saved **TrainingPLC** settings and click **Диагностика** (Diagnostics).
+2. Set **Log limit** to **100**.
+3. Select **info** in **Log level**.
+4. Click **Start**.
+5. Inspect **Logs**.
+6. Select **warning** in **Log level** and inspect the result.
+7. Select **error** in **Log level** and inspect the result.
+8. Select **debug** in **Log level** and inspect the result.
+9. Click **Копировать** (Copy) for the available output.
+10. Click **Очистить** (Clear) to clear the displayed output.
+11. Click **Stop**.
+12. Close the diagnostics window.
+13. Check **RUN** and the presence of a **PID** in the connection form.
+
+While collection is active, **Start** is unavailable and **Stop** is available; after stopping, the reverse applies. **Stop** stops diagnostic collection while the connection continues running. The log refreshes approximately once per second during collection.
+
+During testing, **Logs** and **Процессы** (Processes) remained empty at all four levels. **Копировать** and **Очистить** were clicked with empty output; copying meaningful text to the clipboard was not verified. An empty **Процессы** list does not establish that the worker process is absent: check the **PID** and the connection's own state. Opening the process details was not reproduced in this test.
 
 ### Disable the connection and verify reading resumes
 
@@ -385,23 +503,26 @@ The values below apply to the tested form and build. Numeric limits come from th
 | Узел, PID — node and PID | System-populated | Execution node and worker process identifier |
 | Ошибка — error | System-populated | Diagnostic message; no errors during successful verification |
 
-### Common PLC binding fields
+### Common binding fields
 
-Addressing and additional fields depend on the selected driver and are described in the individual protocol references.
+These fields belong to the common binding model. The selected driver adds protocol addresses and numeric limits.
 
-| Field | Purpose |
-|---|---|
-| Name / Название | Binding name in the project tree |
-| Title / Заголовок | Binding description |
-| State / Состояние | Binding execution state: STOP or RUN |
-| Off / Отключено | Disable the binding without deleting it |
-| Tag / Тег and field | Project object and its field for reading or writing |
-| Transformation / Трансформация | Value conversion during data exchange |
-| Access / Доступ | Exchange direction: R — read, W — write, RW — read and write |
+| Field | Responsibility and initial state | Purpose and check |
+|---|---|---|
+| **Папка** (Folder) | Creation location; parent connection | Check the required connection path before saving |
+| **Название** (Name) | User-defined; a new form is empty | Available binding name within the connection |
+| **Заголовок** (Title) | User-defined; optional, empty | Signal description for maintenance |
+| **тег** (Tag) | User-defined; initially not selected | Project object receiving data or supplying a command |
+| Field list to the right of **тег** | User-defined; select explicitly | Specific object field; **value** is used by the training example, not a mandatory common name |
+| **Доступ** (Access) | User-defined; initially **R** | **R**, **W**, **RW**; check direction and operation support against the driver |
+| **Отключить** (Disable) | User-defined; initially off | When on, excludes this binding from exchange |
+| **Трансформация** (Transformation) | User-defined; empty, optional | Data processing; writing requires a reversible chain |
+| **Состояние** (State) | Populated by Faceplate; **STOP** before operation | Binding execution result; **RUN** does not prove freshness or a number's correct physical meaning |
+| **Runtime → error**, **Статус** (Status) in the list | Populated by Faceplate | Individual signal error; the list shows **OK** or **ОШИБКА** (Error) with an explanation |
+| **Runtime → value** | Populated by Faceplate | Exchange and processing result; it may be retained or reflect error processing |
+| Protocol fields | User-defined; fields and values depend on the driver | Address, area, channel, format, and other parameters from the device map; there is no common range for all drivers |
 
-### Data transformation
-
-Value conversion is configured in the PLC binding's **Трансформация** (Transformation) field. Methods and settings are described in the separate [Transformation reference](./transformation_en.md). The training scenario does not use conversion.
+Specify both the tag and field to transfer the result to the required project field. If the link does not work, check that the object and field exist, the parent connection, and dependency state. The binding object existing does not establish that it participates in exchange.
 
 ### Modbus TCP fields
 
@@ -423,6 +544,10 @@ Value conversion is configured in the PLC binding's **Трансформация
 | Статус OK / ОШИБКА — OK / error status | Communication result in the list; inspect the message if an error occurs |
 | no process / no node | The form has no current worker process / execution node |
 | shutdown after disabling | Appeared with a timestamp after turning on Отключено during testing; relate it to the action performed |
+| Log level | info, warning, error, debug — diagnostic output level selection |
+| Log limit | Initially 1000 lines; range 1–100000; 100 in the example |
+| Start / Stop | Start / stop diagnostic collection |
+| Очистить / Копировать — clear / copy | Clear the displayed output / copy the available output |
 
 <a id="diagnostics"></a>
 <a id="binding-errors"></a>
@@ -439,14 +564,14 @@ Check three levels: whether execution is permitted, whether the channel is worki
 | Value differs from the expected 1000 | Адрес slave, Область, Адрес, Размер, Порядок байт, Формат | Settings do not match the training register | Compare the fields with the binding table | Training tag displays 1000 |
 | 0 is displayed after stopping | Connection state and tag form | Training field display behavior when communication stops | Relate the displayed value to STOP; perform the re-enabling check | After re-enabling, 1000 and RUN/OK are displayed |
 | 1000 remains after deletion | Presence of the connection and incoming tag references | Retained tag display value | Check that the connection and binding are absent | Communication has ended; the old number is not treated as a new reading |
+| Logs and Процессы are empty | Start/Stop, Log level, connection PID | No diagnostic output arrived during testing | Check the connection's own state and actual reading | Operation is assessed through the channel and data, rather than an empty list |
 | Search does not return the expected row | Поиск по пути and Тип соединения: | Incorrect path fragment or a remaining filter | Use a path fragment of at least three characters, check the type, and click Найти / refresh | The required object is found, or its deletion is confirmed |
-
-Working with the window is described in [Diagnostics of Runtime objects](../../administration/diagnostics/diagnostics.md).
 
 ## Limitations
 
 - Available types depend on the installed drivers. The catalog in this guide does not replace checking support for a particular device.
-- Practical verification covered Modbus TCP with one R binding. Configuration of other protocols, RTU transports, transformations, and write commands is covered separately.
+- Practical verification covered Modbus TCP with one R binding. Common W/RW modes, transformations, and independent binding disable are described for reference; this example does not verify their operation with equipment. Detailed configuration of other protocols and RTU transports is covered separately.
 - Shared fields do not imply identical communication algorithms or grouping support in every driver.
+- Diagnostic **Процессы** and **Logs** were empty on the tested setup. Opening process details and copying a meaningful log were not verified; a step-by-step process-details procedure is therefore not provided here.
 - Communication latency, load, and grouping efficiency were not measured in these training scenarios.
 - The memory limit field has an inconsistent unit label; the interpretation for the tested build is stated beside the field in the reference section.
