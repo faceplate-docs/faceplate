@@ -93,6 +93,7 @@ nav:
       - Project export: machine_learning/project_export_en.md
   - Administration:
       - Resource redundancy: administration/Redundancy/Redundancy_en.md
+      - Cluster nodes: administration/nodes/nodes.md
       - Replication: administration/replica/replica_en.md
       - Git module: administration/git/git_en.md
       - Diagnostics of Runtime objects: administration/diagnostics/diagnostics.md

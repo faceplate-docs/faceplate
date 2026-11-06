@@ -4,7 +4,7 @@ To ensure process continuity and high availability, Faceplate implements a multi
 
 ## 1. Equipment Connection Redundancy
 
-Faceplate supports various protocols for communication with field devices (PLCs, sensors, RTUs).
+Faceplate supports [various protocols](../../data_collection/plc_connections/general_en.md#choosing-a-protocol) for communication with field devices (PLCs, sensors, RTUs). An example of configuring a backup channel is given in [section 5](#5-plc-connection-redundancy).
 
 - **Mechanism:** The system allows configuring multiple data exchange paths for a single logical node.
 
@@ -12,9 +12,9 @@ Faceplate supports various protocols for communication with field devices (PLCs,
 
 ## 2. Faceplate Service Redundancy
 
-Service redundancy is achieved through **clustering**. Multiple servers (Runtime) are combined into a single Erlang cluster.
+Service redundancy is achieved through **clustering**. Multiple servers (Runtime) are combined into a single Erlang cluster. Cluster assembly is described in [section 4](#4-cluster-startup-and-assembly).
 
-- **Scaling:** Processes are distributed across nodes. If one node (server) goes down, the remaining nodes continue operating, ensuring system availability.
+- **Scaling:** Processes are distributed across nodes. If one node (server) goes down, the remaining nodes continue operating, ensuring system availability. For this, the remaining nodes must hold copies of the project databases, see [Storages](../../data_storage/storage/Storage_en.md#redundancy-a-database-copy-on-a-second-server).
 
 - **Identification:** Nodes discover each other through a shared Cookie (secret key) and DNS/Hosts configuration.
 
@@ -34,7 +34,7 @@ The `vm.args` file defines unique Erlang environment parameters for each node:
 
 ### 3.2. Logging Configuration (fp.logger.config)
 
-Configure the log output paths in the `console_handler` and `error_handler` sections. The paths must correspond to the directory structure specified in section 2.1:
+Configure the log output paths in the `console_handler` and `error_handler` sections, for example:
 
 - **Console path:** `/DATASET/project/scada/local/logs/console.log`
 
@@ -64,7 +64,7 @@ env ATTACH_TO=fp@rt-server1.fp ./faceplate console
 
 *(where `fp@rt-server1.fp` is the name of the primary node).*
 
-**Note:** After a node has been successfully added to the cluster, all subsequent restarts are performed using the standard command `./faceplate console`.
+**Note:** After a node has been successfully added to the cluster, all subsequent restarts are performed using the standard command `./faceplate console`. Connected nodes are shown in Studio on the **Servers** panel, see [Cluster nodes](../nodes/nodes.md); the same panel sets the node address the operator's Runtime switches to.
 
 ![Cluster node configuration](./images/img_1.png)
 
@@ -86,7 +86,7 @@ The Faceplate communication module ensures guaranteed delivery of telemetry data
 
 **1. Creating the Master Connection:**
 
-Create a standard connection (e.g., `plc_modbus_connection`). Leave the Master Connection field empty. This connection will serve as the primary one.
+Create a [standard connection](../../data_collection/plc_connections/general_en.md#create-the-connection-object-and-configure-the-channel) (e.g., `plc_modbus_connection`). Leave the Master Connection field empty. This connection will serve as the primary one.
 
 ![Creating the master connection](./images/img_3.png)
 
@@ -102,16 +102,14 @@ Create a second connection (e.g., `plc_modbus_connection_redundancy`). In the Ma
 
 #### Logs and Monitoring
 
-The connection status is displayed in the State (RUN/STOP) and Status (OK/ERROR) fields in the driver editor.
+The connection status is displayed in the State (RUN/STOP) and Status (OK/ERROR) fields in the driver editor. State values are described in the [PLC connections reference](../../data_collection/plc_connections/general_en.md#states-and-diagnostic-controls).
 
 ![Connection status in the editor](./images/img_5.png)
 
 *Figure 5. Connection status in the editor*
 
-The Diagnostics window allows viewing logs for the current connection. The Start and Stop buttons allow starting and stopping the logging process. Log level categorizes messages by severity and detail. Selecting a specific level typically acts as a threshold filter: the console displays messages of the selected level and all messages of higher criticality.
+The [Diagnostics window](../diagnostics/diagnostics.md#the-diagnostics-window) allows viewing logs for the current connection. The Start and Stop buttons allow starting and stopping the logging process. [Log level](../diagnostics/diagnostics.md#log-level) categorizes messages by severity and detail. Selecting a specific level typically acts as a threshold filter: the console displays messages of the selected level and all messages of higher criticality.
 
 ![Connection diagnostics window](./images/img_6.png)
 
 *Figure 6. Connection diagnostics window*
-
-### written by Marlen Meimanov

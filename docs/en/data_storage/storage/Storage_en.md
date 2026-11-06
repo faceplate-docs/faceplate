@@ -1,200 +1,234 @@
+# Storages: which servers hold the project data
+
+This document is for the integration engineer who decides where FACEPLATE project data is stored: so that the system keeps working when a server fails, so that a large project is spread across disks and servers, or so that data is moved to another server without stopping the system.
+
+# Contents
+
+- [Glossary](#glossary)
+- [Introduction](#introduction)
+- [Main part](#main-part)
+    - [Preparing the servers](#preparing-the-servers)
+    - [The Storages editor](#the-storages-editor)
+    - [Redundancy: a database copy on a second server](#redundancy-a-database-copy-on-a-second-server)
+    - [A separate database for a folder](#a-separate-database-for-a-folder)
+    - [Moving a database to another server](#moving-a-database-to-another-server)
+    - [Checking in the log](#checking-in-the-log)
+- [Conclusion](#conclusion)
+
+# Glossary
+
+| Term | Meaning |
+|---|---|
+| Database | Where FACEPLATE stores project data. On first start, the `project` database is created, and everything in the project is stored in it. Other databases can be created in the **Storages** editor |
+| Database parts | Each database has three parts, one per editor tab: **Runtime** — project objects and their current values; **Log** — the message and alarm log; **Timeseries** — value archives |
+| Database copy | An instance of a database on a specific server. If a database has copies on two servers, FACEPLATE keeps them identical and, when one server fails, works with the other |
+| Node | A FACEPLATE server named like `fp@<host>`. Cluster nodes are shown on the **Servers** panel, see [Cluster nodes](../../administration/nodes/nodes.md) |
+| Cluster | Several nodes combined into one system, see [Resource Redundancy in Faceplate](../../administration/Redundancy/Redundancy_en.md#2-faceplate-service-redundancy) |
+| Separate database for a folder | A database attached to a project folder with the **Storage** property: everything created in that folder is stored in this database instead of `project`. Also called a shard |
+| Segment | A part of the message or archive database covering a time period. The segment name contains dates, for example `project___2026_01_20__2026_02_18` |
+
 # Introduction
 
-One of FACEPLATE's key features is its ability to quickly and flexibly configure distributed data storage. This allows for load balancing between storage servers and, if necessary, moving data to separate databases or nodes.  
-Using the built-in storage editor module, you can perform the following operations:
+By default, the whole project is one `project` database on one server. All objects, messages, and archives are on that server's disk. If the server stops, Studio and Runtime are unavailable until it is started again.
 
-* create new databases  
-* change database storage directories  
-* organize cluster data storage  
-* migrate databases between cluster nodes
+The **Storages** editor changes where the data lives without stopping the system. It solves three tasks:
 
-Within a single server, the data storage mechanism is implemented similarly to UNIX-like systems, where available disks are mounted into directories, and all data created within a directory is physically stored on the corresponding disk. In FACEPLATE, these "disks" are databases, which can be located on different physical media. Furthermore, FACEPLATE allows for distributed data storage. Individual databases can be migrated to different servers. It's important to note that more than one copy of each database can be configured, and these copies can be stored on different servers, thus providing hot backup.
+| Task | What you do | What you get |
+|---|---|---|
+| Redundancy | Add a copy of the database on a second server | A server can be lost: Studio and Runtime keep working on the other server, and the operator's Runtime switches by itself (see [Cluster nodes](../../administration/nodes/nodes.md#node-address-for-runtime)). No data is lost: the copies are identical |
+| Separate database for a folder | Create a new database and attach it to a project folder | The folder's data is stored separately: on another disk or server. A large project is no longer one database, and the load is shared between disks and servers |
+| Moving | Add a copy of the database on a new server and remove the old one | The data moves to another server while the system is running. For example, archives move to a dedicated archive server (see [Historian Server](../historian/historian_server_en.md)) |
 
-# Possibilities
+Redundancy here means data redundancy. Redundancy of communication channels with equipment is described separately, in [Resource Redundancy in Faceplate](../../administration/Redundancy/Redundancy_en.md#5-plc-connection-redundancy).
 
-The ability to divide a logically unified database into several physically independent shards, and the ability to organize their distributed storage and backup provide FACEPLATE with the following advantages:
+The running example uses two servers, `fp@server1.fp` and `fp@server2.fp`. In the example, the `project` database gets a copy on `server2`, then the `newdb` database is created for the `another data` folder, and finally `newdb` is moved to `server2`. Your server names, paths, and parameter values may differ: the settings copy the values that are already set on your first server.
 
-* Fault tolerance – FACEPLATE can survive the failure of individual storage devices or nodes without loss of functionality or data access. Depending on the storage architecture configuration, FACEPLATE allows the loss of more than half of the nodes without system failure.  
-* Load balancing is the distribution of computing resources between servers to optimize performance and prevent overload.  
-* Scalability \- the ability to easily add new nodes without stopping the system.
+You will need access to Studio (`http://<server>:9000/fp/studio`) with an account that has permission to modify the project. Redundancy and moving require a cluster of at least two servers.
 
-The FACEPLATE data storage architecture can be modified on the fly, without shutting down the system or individual nodes. For example, you can add new servers to an existing system, assign them functions, and add copies of your databases to them, or completely migrate some of your databases to them.  
-Sharding enables horizontal scaling—data from a single logical database is divided into independent parts (shards), which can be hosted on either a single server or different servers in a cluster. This approach effectively addresses scaling challenges when vertical scaling is economically unfeasible or impossible. Each shard stores its own portion of the data and can be located on a separate physical disk or server, allowing for load balancing across available resources and efficient processing of large volumes of data. Benefits:
+# Main part
 
-* Performance \- increased speed of query processing when working with large volumes of data;  
-* Scalability \- increasing system resources as the project grows;  
-* Management flexibility – manage your data storage architecture without having to shut down the system or any of its nodes.
+## Preparing the servers
 
-# Description
+Redundancy and moving work between servers of one cluster. Before configuring storages, prepare the servers:
 
-The FACEPLATE Studio database is used to store project settings, real-time data continuously streaming into the system, generated messages, and archives. The Storage Editor is used to manage the data storage architecture.  
-When you first launch FACEPLATE, a "*project*" database is created by default. The database configuration consists of three main sections: Runtime, Messages, and Archives.
+* a stable link between the servers — at least 100 Mbit/s;
+* open access between the servers to port 4369 and to the FACEPLATE inter-node port. By default the inter-node port is chosen anew at every start; to open it on a firewall, fix it in `vm.args` with two lines with the same value, for example:
+    * `-kernel inet_dist_listen_min 9100`
+    * `-kernel inet_dist_listen_max 9100`
+* open access from workstations to ports 9000 (HTTP) and 9443 (HTTPS), and to the ECOMET interface — 8000, see [Launch](../../Project_strucure/FACEPLATE-start.md#launch);
+* each server has its own name in `faceplate/releases/<version>/vm.args` (the `-name` parameter, see [Resource Redundancy in Faceplate](../../administration/Redundancy/Redundancy_en.md#31-virtual-machine-configuration-vmargs)) and a common `-setcookie`;
+* the servers find each other by name: `/etc/hosts` on each server lists the addresses of all cluster servers.
 
-![1](images/1.png)
+In the example, `vm.args` of the first server has `-name fp@server1.fp`, the second has `-name fp@server2.fp`, and `/etc/hosts` on both servers contains:
 
-***Runtime*** – This section is used to configure the storage of project configurations and real-time data. The configuration defines the storage types used on a specific FACEPLATE node and the driver modules that support them (for more details, see the [Database section](https://github.com/faceplate-docs/faceplate/blob/dev/docs/ru/README.md)).
+```
+192.168.1.11   server1.fp
+192.168.1.22   server2.fp
+```
 
-***Log*** – This section is used to configure the storage parameters for system and application messages generated by the system (for more information on the message system, see [the Alarms section](../../alarm/alarm_en.md#9-storage-and-automatic-processing)). The configuration defines the storage, placement, and lifecycle parameters of messages (alarms, events, system messages) in the FACEPLATE system.
+The cluster is assembled like this: the first server is started with the usual command, the second with the `ATTACH_TO` variable pointing to the first. The commands are in [Resource Redundancy in Faceplate](../../administration/Redundancy/Redundancy_en.md#4-cluster-startup-and-assembly). In the example:
 
-***Timeseries*** \- This section is used to configure the storage of archived (historical) data. This section defines the operating parameters of the archive storage. You can read more about the archiving system in [the Archives section](../archives/archives_en.md). The configuration determines the storage, placement, and lifecycle of archives.
+```bash
+# server1
+ulimit -n 200000
+./faceplate/bin/faceplate console
 
-You can read more about setting up storage parameters in the section "[Setting up storage parameters](https://github.com/faceplate-docs/faceplate/blob/dev/docs/ru/README.md)."
+# server2, after server1 has started
+ulimit -n 200000
+env ATTACH_TO=fp@server1.fp ./faceplate/bin/faceplate console
+```
 
-# Redundancy
+A server is ready when the console shows `---FACEPLATE STARTED---` and Studio opens. Both servers are shown on the **Servers** panel.
 
-To improve fault tolerance and system performance, FACEPLATE allows for easy hot backup of data. This is achieved by adding database copies to other available servers. If a database is configured with copies on two or more servers, FACEPLATE ensures their synchronization in real time. Requests to such a database are distributed among the servers that have a copy. Therefore, if a server fails, there is no failure; requests are simply transferred to the remaining available servers.
+Right after attaching, the second server works with the `project` database stored on the first one. It has no copy of its own: if the first server stops, the second cannot work. The copy is added in the **Storages** editor, see [Redundancy](#redundancy-a-database-copy-on-a-second-server).
 
-## Example
+## The Storages editor
 
-As an example, we'll demonstrate setting up a hot backup for a project database using two servers. The servers must be connected to each other via a network. The basic requirements and steps are outlined below:
+Open **Storages** in the Studio menu on the left. The list shows the project databases and the servers that hold each part of a database.
 
-* a stable communication channel between servers \- at least 100 Mbit/sec  
-* Open access to ports 4369, 8000, 9000 \- more details [here](https://github.com/faceplate-docs/faceplate/blob/dev/docs/ru/README.md)  
-* Prepare a directory with the FACEPLATE software on each server \- more details [here](https://github.com/faceplate-docs/faceplate/blob/dev/docs/ru/README.md)  
-  * unzip the FACEPLATE software and open the directory  
-  * Edit the FACEPLATE configuration file at faceplate/releases/4.0/vm.args \- more details [here](https://github.com/faceplate-docs/faceplate/blob/dev/docs/ru/README.md). For our example, we'll use the following names:  
-    * first server: \-name fp@server1.fp  
-    * second server: \-name fp@server2.fp  
-* To enable the servers to find each other using their domain names (server1.fp, server2.fp), we'll add the appropriate entries to the /etc/hosts file (Linux) on both servers. IP addresses are provided for clarity; use actual addresses:  
-  * 192.168.1.11 	server1.fp  
-  * 192.168.1.22 	server2.fp  
-* On the first server, go to the FACEPLATE folder, open a terminal, and run the following commands:  
-  * ulimit \-n 200000  
-  * ./faceplate/bin/faceplate console  
-* Next, wait for the first server to start, as indicated by the following message in the console (---FACEPLATE STARTED---) and the web interface accessible at the following address (http://192.168.1.11:9000/fp/studio). When first launched, FACEPLATE creates the *project* database and the necessary environment.  
-* After the first server is launched, we will launch the second one, but with the ATTACH command specified for the first server. To do this, go to the second server, open the terminal, go to the folder with FACEPLATE and execute the following commands:  
-  * ulimit \-n 200000  
-  * env ATTACH\_TO=fp@server1.fp ./faceplate/bin/faceplate console  
-* Next, you should wait for FACEPLATE to launch on the 2nd server (similarly to the 1st server, we check the logs and the available web interface)
+![Database list](images/1.png)
 
-As a result, after completing the steps listed above, we have two servers combined into a cluster. When the first server started, the *project database was created on it* . The second server does not have a copy of the database, as it was joined to the first server and accessed the existing database. To add a copy of the database to it, the following settings must be configured.
+| Column | Meaning |
+|---|---|
+| **Name** | Database name |
+| **Runtime** | Servers with a copy of project objects and current values |
+| **Log** | Servers with a copy of the message log |
+| **Timeseries** | Servers with a copy of archives |
 
-### Setting up {#setting-up}
+Buttons above the list:
 
-To add a database copy to a new server, simply add the connected instance to the appropriate section in the storage settings. In our example, we'll add a copy of the project database to server 2\.  
-To do this, open the Studio interface on Server 1 or Server 2 (it doesn't matter), go to the "Storage" editor, and open the project database for editing. In the Runtime tab, copy the configuration for Server 1 and replace the name *fp@server1.fp* with *fp@server2.fp* :  
+| Button | Purpose |
+|---|---|
+| **Create** | Create a new database, see [A separate database for a folder](#a-separate-database-for-a-folder) |
+| **Edit** | Open the selected database for changes |
 
-![2](images/2.png)
+Double-clicking a row opens the database for viewing only: the **save** button in that window is inactive.
 
-You need to compile and save the changes. Clicking "save" will begin copying the database to server 2\. The corresponding entries should appear in the log files. The logs will record the database copy process, which will look like this:
+The database window:
 
-* server1  
-  * zaya\_copy:copy\_request/1:219 copy: project to 'fp@server2.fp' (start copy process)  
-  * zaya\_schema\_srv:handle\_call/3:229 project db opened at 'fp@server2.fp' (completing the copy process)  
-* server2  
-  * zaya\_copy:try\_copy/1:119 copy: project from 'fp@server1.fp' (start of copy process)  
-  * zaya\_copy:wait\_ready/1:450 copy: project from 'fp@server1.fp' finish copy (completion of the copy process)
+| Element | Purpose |
+|---|---|
+| **Name** | Database name. Set at creation and not changed afterwards. Latin letters and digits, no spaces or special characters |
+| Tabs **Runtime**, **Log**, **Timeseries** | Settings of the three database parts in JSON |
+| **Compile** | Check the tab text. `OK` or an error appears next to it |
+| **save** | Save the database. Changes apply immediately; data copying runs in the background |
 
-At this point, server 2 has a copy of the project runtime database. By default, the database is created at the relative path *faceplate/DB*. If you access server 2, the database files should be located at this path.
+The order is always the same: edit the tab → **Compile** → `OK` → **save**. A new database can be saved only when all three tabs are filled in.
 
-Next, let's add a copy of the project message database to server 2\. To do this, open the project database again for editing and go to the "Log" tab. Here, copy the configuration from server 1 and replace the name *fp@server1.fp* with *fp@server2.fp* :  
+Each tab lists the servers that hold this part of the database. A server is written as the key `":atom:fp@<host>"`:
 
-![3](images/3.png)
+| Tab | Where the server list is | What is written for a server |
+|---|---|---|
+| **Runtime** | Top-level keys | Directory (`:atom:dir`) and storage modules (`:atom:disc`, `:atom:ram`, `:atom:ramdisc`) |
+| **Log** | Inside `":atom:database"` | Directory and storage module. The other keys (`read_only_age`, `max_age`, `shard_depth`) are described in [Alarms](../../alarm/alarm_en.md#9-storage-and-automatic-processing) |
+| **Timeseries** | Inside `":atom:nodes"` | Directory. The other keys define archive storage and do not change when a server is added or removed |
 
-You need to compile and save the changes. After clicking "save," the message database will begin copying to server 2\. Depending on the number of messages accumulated in the system, this process may take some time. The message database is divided into segments (more details can be found in [the Alarms](../../alarm/alarm_en.md#9-storage-and-automatic-processing) and [Database sections](https://github.com/faceplate-docs/faceplate/blob/dev/docs/ru/README.md)). Each segment covers a specific time period, as indicated by its name. For example, the segment project\_\_\_2026\_01\_20\_\_2026\_02\_18 contains messages from 2026-01-20 to 2026-02-18. The following entries will be recorded in the logs for each existing segment:
+The directory (`":atom:dir"`) is relative to the database directory `faceplate/DB`: `":string:./"` is `faceplate/DB` itself, `":string:./FP_ALARM"` is `faceplate/DB/FP_ALARM`.
 
-* server1  
-  * zaya\_copy:copy\_request/1:219 copy: project\_\_\_2026\_01\_20\_\_2026\_02\_18 to 'fp@server2.fp' (start copying process)  
-  * zaya\_copy:copy\_request/1:252 copy: project\_\_\_2026\_01\_20\_\_2026\_02\_18 to 'fp@server2.fp' finished (completion of the copy process)  
-* server2  
-  * zaya\_copy:try\_copy/1:119 copy: project\_\_\_2026\_01\_20\_\_2026\_02\_18 from 'fp@server1.fp' (start of copy process)  
-  * zaya\_copy:wait\_ready/1:450 copy: project\_\_\_2026\_01\_20\_\_2026\_02\_18 from 'fp@server1.fp' finish copy (completion of the copy process)
+To add a server, copy the block of an already configured server and change the name in the copy. The values inside the block come from your installation; they are not invented anew. To remove a server, delete its block.
 
-Next, let's add a copy of the project archive database to server 2\. To do this, open the project database again for editing and go to the "Timeseries" tab. Here, copy the configuration from server 1 and replace the name *fp@server1.fp* with *fp@server2.fp*:  
+## Redundancy: a database copy on a second server
 
-![4](images/4.png)
+A copy of the database on a second server gives:
 
-You need to compile and save the changes. After clicking "save," the process of copying the archive database to server 2 will begin. Depending on the number of archives accumulated in the system, the copying process may take some time. The archive database is divided into segments (more details can be found in [the Archives](../archives/archives_en.md) and [Database sections](https://github.com/faceplate-docs/faceplate/blob/dev/docs/ru/README.md)). Each segment covers a specific time period, as indicated by its name. For example, the segment project\_ts\_database\_2026-01-18 contains archives starting from 2026-02-18. The segment depth is determined by the shard\_depth setting *(the default is month).* The following entries will be recorded in the logs for each existing segment:
+* **operation on failure.** If the first server stops, Studio and Runtime continue on the second. The operator's Runtime switches by itself if the nodes have addresses set (see [Cluster nodes](../../administration/nodes/nodes.md#node-address-for-runtime));
+* **data safety.** The copies are identical; changes go to both at once;
+* **load sharing.** Both servers serve requests to the database.
 
-* server1  
-  * fp\_ts\_schema:add\_node/3:158 project\_ts\_database node 'fp@server2.fp' with path "./FP\_TS" added to schema (start copy process)  
-  * zaya\_copy:copy\_request/1:252 copy: project\_ts\_database\_2026-01-18 to 'fp@server2.fp' finished (completion of the copy process)  
-* server2  
-  * zaya\_copy:try\_copy/1:119 copy: project\_ts\_database\_2026-01-18 from 'fp@server1.fp' (start of copy process)  
-  * zaya\_copy:wait\_ready/1:450 copy: project\_ts\_database\_2026-01-18 from 'fp@server1.fp' finish copy (completion of the copy process)
+The copy is added part by part, on each tab separately. The screenshots show the `project` database from the example:
 
-Once these steps are successfully completed, a two-server cluster will be created, configured with hot standby for the project database (by default, this includes all project data). If necessary, you can add additional servers and redistribute database copies between them. For example, you can create a Historian Server that stores only archived data and transfer database copies with archives to it (for more details, see [Historian Server](../historian/historian_server_en.md)).
+1. **Storages** → database row → **Edit**.
+2. **Runtime** tab: copy the first server's block and change the server name in the copy to the second server's name. **Compile** → `OK` → **save**.
 
-# Sharding
+    ![Runtime: second server block](images/2.png)
 
-In projects with large data volumes (millions of objects) and high data flow rates, dividing the database into shards makes sense. This allows for load balancing across available storage subsystems and servers. To understand the principles of sharding, consider the analogy of disk mounting in UNIX-like systems. When a disk drive is mounted to a folder, everything stored within that folder is physically stored on the disk mounted to it. In the case of FACEPLATE, the database plays the role of the disk drive. By default, FACEPLATE creates a single project database and mounts it to the project's root folder. This means that by default, everything created in the project is stored in the project database. However, the user can create other databases and mount them to folders within the project, resulting in the project remaining logically a single entity but physically being divided into multiple databases (shards).
+3. **Edit** again, **Log** tab: the same inside `":atom:database"`. **Compile** → `OK` → **save**.
 
-## Example
+    ![Log: second server block](images/3.png)
 
-To create a new database shard, click the "Create" button in the storage editor.  
+4. **Edit** again, **Timeseries** tab: the same inside `":atom:nodes"`. **Compile** → `OK` → **save**.
 
-![5](images/5.png)
+    ![Timeseries: second server line](images/4.png)
 
-After this, a dialog box will open, you need to specify a unique name (Latin, without special characters) and in each section you need to specify:
+After each **save**, the second server receives a copy of that part of the database. The amount of copying depends on the accumulated data: project objects copy quickly, messages and archives copy segment by segment, which may take time. How to follow the copying, see [Checking in the log](#checking-in-the-log).
 
-* storage node, for example \- ":atom:fp@server1.fp"  
-* path to the storage directory \- ":atom:dir":":string:./" (relative and absolute paths are allowed)  
-* compile
+The result is visible in the list: the database's **Runtime**, **Log**, and **Timeseries** columns show both servers. Database files appear in `faceplate/DB` on the second server.
 
-![6](images/6.png)
+In the example, `":atom:fp@server2.fp"` blocks with the same values as `":atom:fp@server1.fp"` are added to the `project` database. After that, `server2` keeps working when `server1` is stopped.
 
-After saving the settings, the database will be created and added to the system. The following entries will be recorded in the logs:
+Any other database gets a copy the same way — for example, a separate database for a folder.
 
-* ecomet\_db:on\_create/1:820 creating a new database newdb\_\_\_2026\_02\_02\_\_2026\_02\_11 (start of creation process)  
-* fp\_ts\_db\_pool\_sup:init/1:36 DB pool Supervisor has been started newdb\_test\_ts\_database (completing the creation process)
+## A separate database for a folder
 
-If you access the server, directories and database files should be created at the specified path (faceplate/DB):
+By default, all project objects are stored in one `project` database. In a project with millions of objects and a dense data flow, one database becomes a bottleneck. A separate database for a folder splits the project: logically it is still one project, but physically the folder's content is stored in its own database — on a separate disk or server. It works like mounting a disk to a directory in Linux: everything written to the directory physically lives on the mounted disk.
 
-* newdb  
-* newdb\_\_\_2026\_01\_20\_\_2026\_01\_29  
-* newdb\_ts\_database
+Creating a database:
 
-### Usage
+1. **Storages** → **Create**. A window opens with a template on each tab.
 
-At this point, the shard has been created but contains no useful data. If you create a new folder in Studio and specify in its settings that the shard we created is mounted to it, everything created in this folder will be physically stored in this shard. To do this, go to the General View in Studio, select a previously created folder, or create a new one (for more details, see [Creating Objects](../../Project_strucure/FACEPLATE-start.md)). In the folder properties, there's a Storage setting; here, you can select the *newdb* shard for storing objects*.* Save the settings to confirm your changes.  
+    ![New database window](images/5.png)
 
-![7](images/7.png)
+2. **Name** — the database name.
+3. On each tab, replace `<INSERT NODE NAME HERE>` with the server name and `<INSERT NODE DIRECTORY HERE>` with a directory, for example `./`. **Compile** → `OK` on each tab.
+4. **save**.
 
-Thus, all objects created in the "some data" folder will be stored and processed in the "project" database shard by default. Similarly, for the "another data" folder, they will be stored and processed in the new "*newdb*" database shard.
+The database appears in the list.
 
-### Transfer
+![New database in the list](images/6.png)
 
-To move a database shard to another server, simply add a copy of the shard to the other server, then delete the copy from the current one. The entire procedure is also performed in the storage settings.  
-*newdb* database from server 1 to server 2\. The process for adding a copy is already described in the " [Setup](#setting-up)" section of this document. After we've added a copy of the *newdb database* to server 2, we'll delete the copy from server 1, leaving the only copy on server 2\. To do this, open the Studio interface on server 1 or 2 (it doesn't matter), go to the "Storage" editor, and open the *newdb database for editing* . In the Runtime tab, delete the configuration for server 1 and leave only server 2 in it \- *fp@server2.fp* :  
+Database directories appear in the server's `faceplate/DB`: `<name>` (objects), `<name>___<dates>` (message segment), `<name>_ts_database` (archives).
 
-![8](images/8.png)
+Attaching the database to a folder:
 
-You need to compile and save the changes. Clicking "save" will begin the database shutdown on server 1\. The corresponding entries should appear in the log files. The logs will record the database migration process, which will look like this:
+1. **General View** → create a folder or select an existing one → **Edit**.
+2. **Settings** tab → **Storage** → select the database. The list contains all project databases.
+3. **save**.
 
-* server1  
-  * zaya\_db\_srv:handle\_event/4:402 newdb database close (starting the closing process)  
-  * zaya\_schema\_srv:handle\_call/3:288 newdb copy removed from 'fp@server1.fp' (completing shutdown process)  
-* server2  
-  * zaya\_schema\_srv:handle\_call/3:246 newdb db closed at 'fp@server1.fp' (starting the closing process)  
-  * zaya\_schema\_srv:handle\_call/3:288 newdb copy removed from 'fp@server1.fp' (completing shutdown process)
+![The folder's Storage property](images/7.png)
 
-*newdb* message database from server 1\. To do this, open the *newdb* database again for editing and go to the "Log" tab. Here, delete the server 1 configuration and leave only server 2 \- *fp@server2.fp \-* in it :  
+Everything created in this folder from now on is stored in the selected database. Working with objects in Studio and Runtime does not change.
 
-![9](images/9.png)
+In the example, the `newdb` database is created on `server1` with the `./` directory. The `another data` folder is attached to `newdb`; the `some data` folder has no separate database, so its objects are stored in `project`.
 
-You need to compile and save the changes. Clicking "save" will begin the database shutdown on server 1\. The corresponding entries should appear in the log files. The logs will record the database migration process, which will look like this:
+## Moving a database to another server
 
-* server1  
-  * zaya\_db\_srv:handle\_event/4:402 newdb\_\_\_2026\_01\_20\_\_2026\_01\_29 database close (start of closing process)  
-  * zaya\_schema\_srv:handle\_call/3:288 newdb\_\_\_2026\_01\_20\_\_2026\_01\_29 copy removed from 'fp@server1.fp' (completing the shutdown process)  
-* server2  
-  * zaya\_schema\_srv:handle\_call/3:246 newdb\_\_\_2026\_01\_20\_\_2026\_01\_29 db closed at 'fp@server1.fp' (start of migration process)  
-  * zaya\_schema\_srv:handle\_call/3:288 newdb\_\_\_2026\_01\_20\_\_2026\_01\_29 copy removed from 'fp@server1.fp' (completing the shutdown process)
+Moving is needed when data must live on another server: the new server is more powerful, the old one is running out of disk, or archives are moved to a dedicated server. The system does not stop during the move.
 
-*newdb* database again for editing and go to the "Timeseries" tab. Here, delete the server 1 configuration and leave only server 2 \- *fp@server2.fp \-* in it :  
+Moving is two operations from the previous sections in a row. The screenshots show the `newdb` database from the example, with only `server2` left on every tab:
 
-![10](images/10.png)
+1. Add a copy of the database on the new server, as in [Redundancy](#redundancy-a-database-copy-on-a-second-server), on all three tabs. Wait until copying finishes (see [Checking in the log](#checking-in-the-log)).
+2. **Edit** → on the **Runtime** tab, delete the old server's block and keep only the new one. **Compile** → `OK` → **save**.
 
-You need to compile and save the changes. Clicking "save" will begin the database shutdown on server 1\. The corresponding entries should appear in the log files. The logs will record the database migration process, which will look like this:
+    ![Runtime: only the new server is left](images/8.png)
 
-* server1  
-  * fp\_ts\_schema:remove\_node/2:171 newdb\_ts\_database node 'fp@server1.fp' removed from schema (start of transfer process)  
-  * zaya\_schema\_srv:handle\_call/3:288 newdb\_ts\_database\_buffer\_0 copy removed from 'fp@server1.fp' (completion of migration process)  
-* server2  
-  * zaya\_schema\_srv:handle\_call/3:246 newdb\_ts\_database\_buffer\_0 db closed at 'fp@server1.fp' (starting migration process)  
-  * zaya\_schema\_srv:handle\_call/3:288 newdb\_ts\_database\_buffer\_0 copy removed from 'fp@server1.fp' (completion of migration process)
+3. The same on the **Log** tab inside `":atom:database"`.
 
-The *newdb* database shard will be migrated from one server to another, which will ultimately use the second server's resources to store information.  
-This way, you can migrate the required database shards between servers in a cluster.  
+    ![Log: only the new server is left](images/9.png)
 
-> _written by nkn_ 
+4. The same on the **Timeseries** tab inside `":atom:nodes"`.
+
+    ![Timeseries: only the new server is left](images/10.png)
+
+After each **save**, the old server closes its copy of that part of the database. The database's columns in the list show only the new server. The content of folders attached to the database still opens in Studio and Runtime on any cluster server. The database files remain on the old server's disk.
+
+In the example, `newdb` is moved from `server1` to `server2`: first the `":atom:fp@server2.fp"` blocks are added, then the `":atom:fp@server1.fp"` blocks are deleted.
+
+## Checking in the log
+
+Copying and closing of databases are recorded in each server's `console.log` (the log path is set in `fp.logger.config`, see [Resource Redundancy in Faceplate](../../administration/Redundancy/Redundancy_en.md#32-logging-configuration-fploggerconfig)). For messages and archives, the lines repeat for each segment.
+
+| Action | Server | Log lines |
+|---|---|---|
+| Copy added (**Runtime**, **Log**) | Server with the data | `copy: <database> to '<new server>'` — start;<br>`<database> db opened at '<new server>'` — copy ready |
+| | New server | `copy: <database> from '<server with the data>'` — start;<br>`copy: <database> from '<server with the data>' finish copy` — copy ready |
+| Copy added (**Timeseries**) | Server with the data | `<database>_ts_database node '<new server>' with path "<directory>" added to schema`, then `copy:` lines for the archive parts |
+| Database created | Database server | `creating a new database <database>___<dates>`;<br>`DB pool Supervisor has been started <database>_ts_database` |
+| Copy removed (**Runtime**, **Log**) | Old server | `<database> database close` — start;<br>`<database> copy removed from '<old server>'` — copy removed |
+| | Other servers | `<database> db closed at '<old server>'`;<br>`<database> copy removed from '<old server>'` |
+| Copy removed (**Timeseries**) | Old server | `<database>_ts_database node '<old server>' removed from schema`, then `copy removed` for the archive parts |
+
+For messages, the lines contain the segment name instead of `<database>`, for example `project___2026_01_20__2026_02_18`.
+
+# Conclusion
+
+By default, the whole project is stored in one `project` database on one server. The **Storages** editor changes this without stopping the system. A database copy on a second server protects against server failure and data loss. A separate database for a folder moves part of the project to another disk or server. Moving means adding a copy on the new server and removing the old one. Every change is done the same way: copy or delete a server block on the **Runtime**, **Log**, and **Timeseries** tabs, **Compile** → `OK` → **save** on each, and check the result in the list and in the log.

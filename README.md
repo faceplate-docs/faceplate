@@ -43,6 +43,9 @@ docs/
 │   │   ├── git/
 │   │   │   ├── images/  (2 files)
 │   │   │   └── git_en.md
+│   │   ├── nodes/
+│   │   │   ├── images/  (9 files)
+│   │   │   └── nodes.md
 │   │   ├── Redundancy/
 │   │   │   ├── images/  (6 files)
 │   │   │   └── Redundancy_en.md
@@ -167,6 +170,9 @@ docs/
 │   │   ├── git/
 │   │   │   ├── images/  (2 files)
 │   │   │   └── git_ru.md
+│   │   ├── nodes/
+│   │   │   ├── images/  (9 files)
+│   │   │   └── nodes.md
 │   │   ├── Redundancy/
 │   │   │   ├── images/  (6 files)
 │   │   │   └── Redundancy_ru.md
@@ -334,7 +340,7 @@ favicon and brand stylesheet), `tools/` (site build and link checker),
   - [Actions](docs/en/data_collection/IoT/actions.md)
 
 ### Data storage
-- [Storage: databases and distributed storage](docs/en/data_storage/storage/Storage_en.md)
+- [Storages: which servers hold the project data](docs/en/data_storage/storage/Storage_en.md)
 - [Archives](docs/en/data_storage/archives/archives_en.md)
 - [Historian server](docs/en/data_storage/historian/historian_server_en.md)
 
@@ -384,6 +390,7 @@ favicon and brand stylesheet), `tools/` (site build and link checker),
 
 ### Administration
 - [Resource redundancy](docs/en/administration/Redundancy/Redundancy_en.md)
+- [Cluster nodes](docs/en/administration/nodes/nodes.md)
 - [Replication](docs/en/administration/replica/replica_en.md)
 - [Git module](docs/en/administration/git/git_en.md)
 - [Diagnostics of Runtime objects](docs/en/administration/diagnostics/diagnostics.md)
