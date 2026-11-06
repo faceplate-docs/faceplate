@@ -23,8 +23,11 @@ nav:
       - Roles and access rights: access/roles.md
   - Data acquisition:
       - PLC connections:
-          - Overview: data_collection/plc_connections/general_en.md
+          - Overview: data_collection/plc_connections/index.md
+          - Field preparation and bindings: data_collection/plc_connections/bindings_en.md
+          - Modbus TCP training example: data_collection/plc_connections/general_en.md
           - Modbus TCP/RTU: data_collection/plc_connections/plc_modbus_connection_en.md
+          - DCON: data_collection/plc_connections/plc_dcon_connection_en.md
           - OPC UA client: data_collection/plc_connections/old_plc_opcua_client_connection_en.md
           - OPC UA server: data_collection/plc_connections/old_plc_opcua_server_connection_en.md
           - OPC DA (Classic): data_collection/plc_connections/plc_opcda_connection_en.md
@@ -35,8 +38,12 @@ nav:
           - IEC 60870-5-104 client: data_collection/plc_connections/plc_iec104_client_connection_en.md
           - IEC 60870-5-104 server: data_collection/plc_connections/plc_iec104_server_connection_en.md
           - M-Bus (Meter-Bus): data_collection/plc_connections/plc_mbus_connection_en.md
+          - Mercury 230: data_collection/plc_connections/plc_mercury230_connection_en.md
           - SNMP: data_collection/plc_connections/plc_snmp_connection_en.md
+          - IEC 62056: data_collection/plc_connections/plc_iec62056_connection_en.md
+          - "IEC101/IEC104 types and attributes": data_collection/plc_connections/iec_reference_en.md
           - Transformation feature: data_collection/plc_connections/transformation_en.md
+          - PLC communication checks: data_collection/plc_connections/diagnostics_en.md
       - IoT connections:
           - Overview: data_collection/IoT/IoT.md
           - HTTP: data_collection/IoT/http.md
