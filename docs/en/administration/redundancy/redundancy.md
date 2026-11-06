@@ -4,7 +4,7 @@ To ensure process continuity and high availability, Faceplate implements a multi
 
 ## 1. Equipment Connection Redundancy
 
-Faceplate supports [various protocols](../../data_collection/plc_connections/general_en.md#choosing-a-protocol) for communication with field devices (PLCs, sensors, RTUs). An example of configuring a backup channel is given in [section 5](#5-plc-connection-redundancy).
+Faceplate supports [various protocols](../../data_collection/plc_connections/index.md#choose-a-connection) for communication with field devices (PLCs, sensors, RTUs). An example of configuring a backup channel is given in [section 5](#5-plc-connection-redundancy).
 
 - **Mechanism:** The system allows configuring multiple data exchange paths for a single logical node.
 

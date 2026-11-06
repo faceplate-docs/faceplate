@@ -68,17 +68,26 @@ docs/
 │   │   │   ├── sources.md
 │   │   │   └── websocket.md
 │   │   └── plc_connections/
-│   │       ├── images/  (54 files)
+│   │       ├── images/  (108 files)
+│   │       ├── examples/
+│   │       │   └── modbus_training_server.py
+│   │       ├── bindings_en.md
+│   │       ├── diagnostics_en.md
 │   │       ├── general_en.md
+│   │       ├── iec_reference_en.md
+│   │       ├── index.md
 │   │       ├── old_plc_opcua_client_connection_en.md
 │   │       ├── old_plc_opcua_server_connection_en.md
 │   │       ├── old_plc_s7_connection_en.md
+│   │       ├── plc_dcon_connection_en.md
 │   │       ├── plc_ethernet_ip_connection_en.md
 │   │       ├── plc_iec101_client_connection_en.md
 │   │       ├── plc_iec101_server_connection_en.md
 │   │       ├── plc_iec104_client_connection_en.md
 │   │       ├── plc_iec104_server_connection_en.md
+│   │       ├── plc_iec62056_connection_en.md
 │   │       ├── plc_mbus_connection_en.md
+│   │       ├── plc_mercury230_connection_en.md
 │   │       ├── plc_modbus_connection_en.md
 │   │       ├── plc_opcda_connection_en.md
 │   │       ├── plc_snmp_connection_en.md
@@ -195,17 +204,26 @@ docs/
 │   │   │   ├── sources.md
 │   │   │   └── websocket.md
 │   │   └── plc_connections/
-│   │       ├── images/  (54 files)
+│   │       ├── images/  (108 files)
+│   │       ├── examples/
+│   │       │   └── modbus_training_server.py
+│   │       ├── bindings_ru.md
+│   │       ├── diagnostics_ru.md
 │   │       ├── general_ru.md
+│   │       ├── iec_reference_ru.md
+│   │       ├── index.md
 │   │       ├── old_plc_opcua_client_connection_ru.md
 │   │       ├── old_plc_opcua_server_connection_ru.md
 │   │       ├── old_plc_s7_connection_ru.md
+│   │       ├── plc_dcon_connection_ru.md
 │   │       ├── plc_ethernet_ip_connection_ru.md
 │   │       ├── plc_iec101_client_connection_ru.md
 │   │       ├── plc_iec101_server_connection_ru.md
 │   │       ├── plc_iec104_client_connection_ru.md
 │   │       ├── plc_iec104_server_connection_ru.md
+│   │       ├── plc_iec62056_connection_ru.md
 │   │       ├── plc_mbus_connection_ru.md
+│   │       ├── plc_mercury230_connection_ru.md
 │   │       ├── plc_modbus_connection_ru.md
 │   │       ├── plc_opcda_connection_ru.md
 │   │       ├── plc_snmp_connection_ru.md
@@ -318,8 +336,11 @@ favicon and brand stylesheet), `tools/` (site build and link checker),
 - [Roles and access rights](docs/en/access/roles.md)
 
 ### Data acquisition
-- [PLC connections: overview](docs/en/data_collection/plc_connections/general_en.md)
+- [PLC connections: overview](docs/en/data_collection/plc_connections/index.md)
+  - [Field preparation and bindings](docs/en/data_collection/plc_connections/bindings_en.md)
+  - [Modbus TCP training example](docs/en/data_collection/plc_connections/general_en.md)
   - [Modbus TCP/RTU](docs/en/data_collection/plc_connections/plc_modbus_connection_en.md)
+  - [DCON](docs/en/data_collection/plc_connections/plc_dcon_connection_en.md)
   - [OPC UA client](docs/en/data_collection/plc_connections/old_plc_opcua_client_connection_en.md)
   - [OPC UA server](docs/en/data_collection/plc_connections/old_plc_opcua_server_connection_en.md)
   - [OPC DA (Classic)](docs/en/data_collection/plc_connections/plc_opcda_connection_en.md)
@@ -330,8 +351,12 @@ favicon and brand stylesheet), `tools/` (site build and link checker),
   - [IEC 60870-5-104 client](docs/en/data_collection/plc_connections/plc_iec104_client_connection_en.md)
   - [IEC 60870-5-104 server](docs/en/data_collection/plc_connections/plc_iec104_server_connection_en.md)
   - [M-Bus (Meter-Bus)](docs/en/data_collection/plc_connections/plc_mbus_connection_en.md)
+  - [Mercury 230](docs/en/data_collection/plc_connections/plc_mercury230_connection_en.md)
   - [SNMP](docs/en/data_collection/plc_connections/plc_snmp_connection_en.md)
+  - [IEC 62056](docs/en/data_collection/plc_connections/plc_iec62056_connection_en.md)
+  - [IEC101/IEC104 types and attributes](docs/en/data_collection/plc_connections/iec_reference_en.md)
   - [Transformation feature](docs/en/data_collection/plc_connections/transformation_en.md)
+  - [PLC communication checks](docs/en/data_collection/plc_connections/diagnostics_en.md)
 - [IoT connections](docs/en/data_collection/IoT/IoT.md)
   - [HTTP](docs/en/data_collection/IoT/http.md)
   - [MQTT](docs/en/data_collection/IoT/mqtt.md)
