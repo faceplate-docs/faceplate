@@ -20,8 +20,8 @@ This document is for the integration engineer who looks after FACEPLATE servers:
 
 | Term | Meaning |
 |---|---|
-| Node | One FACEPLATE server. A name like `fp@<host>` is set by the `-name` parameter in `vm.args`, see [Resource Redundancy in Faceplate](../redundancy/redundancy.md#31-virtual-machine-configuration-vmargs) |
-| Cluster | Several nodes combined into one system. Assembly is described in [Resource Redundancy in Faceplate](../redundancy/redundancy.md#4-cluster-startup-and-assembly) |
+| Node | One FACEPLATE server. A name like `fp@<host>` is set by the `-name` parameter in `vm.args`, see [Resource Redundancy in Faceplate](../redundancy/redundancy.md#virtual-machine-settings-vmargs) |
+| Cluster | Several nodes combined into one system. Assembly is described in [Resource Redundancy in Faceplate](../redundancy/redundancy.md#starting-and-assembling-the-cluster) |
 | Session | A connection to a node under a user account. Every Studio and Runtime window opens its own sessions; in addition, the node keeps service sessions created at its startup |
 | Process | A worker on the node. Identified like `<0.1353.0>` |
 

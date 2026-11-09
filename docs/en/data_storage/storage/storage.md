@@ -23,7 +23,7 @@ This document is for the integration engineer who decides where FACEPLATE projec
 | Database parts | Each database has three parts, one per editor tab: **Runtime** — project objects and their current values; **Log** — the message and alarm log; **Timeseries** — value archives |
 | Database copy | An instance of a database on a specific server. If a database has copies on two servers, FACEPLATE keeps them identical and, when one server fails, works with the other |
 | Node | A FACEPLATE server named like `fp@<host>`. Cluster nodes are shown on the **Servers** panel, see [Cluster nodes](../../administration/nodes/nodes.md) |
-| Cluster | Several nodes combined into one system, see [Resource Redundancy in Faceplate](../../administration/redundancy/redundancy.md#2-faceplate-service-redundancy) |
+| Cluster | Several nodes combined into one system, see [Resource Redundancy in Faceplate](../../administration/redundancy/redundancy.md#faceplate-service-redundancy) |
 | Separate database for a folder | A database attached to a project folder with the **Storage** property: everything created in that folder is stored in this database instead of `project`. Also called a shard |
 | Segment | A part of the message or archive database covering a time period. The segment name contains dates, for example `project___2026_01_20__2026_02_18` |
 
@@ -39,7 +39,7 @@ The **Storages** editor changes where the data lives without stopping the system
 | Separate database for a folder | Create a new database and attach it to a project folder | The folder's data is stored separately: on another disk or server. A large project is no longer one database, and the load is shared between disks and servers |
 | Moving | Add a copy of the database on a new server and remove the old one | The data moves to another server while the system is running. For example, archives move to a dedicated archive server (see [Historian Server](../historian/historian_server_en.md)) |
 
-Redundancy here means data redundancy. Redundancy of communication channels with equipment is described separately, in [Resource Redundancy in Faceplate](../../administration/redundancy/redundancy.md#5-plc-connection-redundancy).
+Redundancy here means data redundancy. Redundancy of communication channels with equipment is described separately, in [Resource Redundancy in Faceplate](../../administration/redundancy/redundancy.md#plc-connection-redundancy).
 
 The running example uses two servers, `fp@server1.fp` and `fp@server2.fp`. In the example, the `project` database gets a copy on `server2`, then the `newdb` database is created for the `another data` folder, and finally `newdb` is moved to `server2`. Your server names, paths, and parameter values may differ: the settings copy the values that are already set on your first server.
 
@@ -56,7 +56,7 @@ Redundancy and moving work between servers of one cluster. Before configuring st
     * `-kernel inet_dist_listen_min 9100`
     * `-kernel inet_dist_listen_max 9100`
 * open access from workstations to ports 9000 (HTTP) and 9443 (HTTPS), and to the ECOMET interface — 8000, see [Launch](../../Project_strucure/FACEPLATE-start.md#launch);
-* each server has its own name in `faceplate/releases/<version>/vm.args` (the `-name` parameter, see [Resource Redundancy in Faceplate](../../administration/redundancy/redundancy.md#31-virtual-machine-configuration-vmargs)) and a common `-setcookie`;
+* each server has its own name in `faceplate/releases/<version>/vm.args` (the `-name` parameter, see [Resource Redundancy in Faceplate](../../administration/redundancy/redundancy.md#virtual-machine-settings-vmargs)) and a common `-setcookie`;
 * the servers find each other by name: `/etc/hosts` on each server lists the addresses of all cluster servers.
 
 In the example, `vm.args` of the first server has `-name fp@server1.fp`, the second has `-name fp@server2.fp`, and `/etc/hosts` on both servers contains:
@@ -66,7 +66,7 @@ In the example, `vm.args` of the first server has `-name fp@server1.fp`, the sec
 192.168.1.22   server2.fp
 ```
 
-The cluster is assembled like this: the first server is started with the usual command, the second with the `ATTACH_TO` variable pointing to the first. The commands are in [Resource Redundancy in Faceplate](../../administration/redundancy/redundancy.md#4-cluster-startup-and-assembly). In the example:
+The cluster is assembled like this: the first server is started with the usual command, the second with the `ATTACH_TO` variable pointing to the first. The commands are in [Resource Redundancy in Faceplate](../../administration/redundancy/redundancy.md#starting-and-assembling-the-cluster). In the example:
 
 ```bash
 # server1
@@ -215,7 +215,7 @@ In the example, `newdb` is moved from `server1` to `server2`: first the `":atom:
 
 ## Checking in the log
 
-Copying and closing of databases are recorded in each server's `console.log` (the log path is set in `fp.logger.config`, see [Resource Redundancy in Faceplate](../../administration/redundancy/redundancy.md#32-logging-configuration-fploggerconfig)). For messages and archives, the lines repeat for each segment.
+Copying and closing of databases are recorded in each server's `console.log` (the log path is set in `fp.logger.config`, see [Resource Redundancy in Faceplate](../../administration/redundancy/redundancy.md#logging-configuration-fploggerconfig)). For messages and archives, the lines repeat for each segment.
 
 | Action | Server | Log lines |
 |---|---|---|
