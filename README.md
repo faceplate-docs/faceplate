@@ -43,15 +43,24 @@ docs/
 │   │   ├── git/
 │   │   │   ├── images/  (2 files)
 │   │   │   └── git_en.md
+│   │   ├── license/
+│   │   │   ├── images/  (7 files)
+│   │   │   └── license.md
+│   │   ├── logs/
+│   │   │   ├── images/  (1 file)
+│   │   │   └── logs.md
 │   │   ├── nodes/
 │   │   │   ├── images/  (9 files)
 │   │   │   └── nodes.md
 │   │   ├── redundancy/
 │   │   │   ├── images/  (6 files)
 │   │   │   └── redundancy.md
-│   │   └── replica/
-│   │       ├── images/  (2 files)
-│   │       └── replica_en.md
+│   │   ├── replica/
+│   │   │   ├── images/  (2 files)
+│   │   │   └── replica_en.md
+│   │   └── update/
+│   │       ├── images/  (3 files)
+│   │       └── update.md
 │   ├── calculation/
 │   │   ├── images/  (11 files)
 │   │   └── calculation.md
@@ -179,15 +188,24 @@ docs/
 │   │   ├── git/
 │   │   │   ├── images/  (2 files)
 │   │   │   └── git_ru.md
+│   │   ├── license/
+│   │   │   ├── images/  (7 files)
+│   │   │   └── license.md
+│   │   ├── logs/
+│   │   │   ├── images/  (1 file)
+│   │   │   └── logs.md
 │   │   ├── nodes/
 │   │   │   ├── images/  (9 files)
 │   │   │   └── nodes.md
 │   │   ├── redundancy/
 │   │   │   ├── images/  (6 files)
 │   │   │   └── redundancy.md
-│   │   └── replica/
-│   │       ├── images/  (2 files)
-│   │       └── replica_ru.md
+│   │   ├── replica/
+│   │   │   ├── images/  (2 files)
+│   │   │   └── replica_ru.md
+│   │   └── update/
+│   │       ├── images/  (3 files)
+│   │       └── update.md
 │   ├── calculation/
 │   │   ├── images/  (11 files)
 │   │   └── calculation.md
@@ -416,6 +434,9 @@ favicon and brand stylesheet), `tools/` (site build and link checker),
 ### Administration
 - [Resource redundancy](docs/en/administration/redundancy/redundancy.md)
 - [Cluster nodes](docs/en/administration/nodes/nodes.md)
+- [Licensing](docs/en/administration/license/license.md)
 - [Replication](docs/en/administration/replica/replica_en.md)
 - [Git module](docs/en/administration/git/git_en.md)
 - [Diagnostics of Runtime objects](docs/en/administration/diagnostics/diagnostics.md)
+- [Server logs](docs/en/administration/logs/logs.md)
+- [Version and update](docs/en/administration/update/update.md)

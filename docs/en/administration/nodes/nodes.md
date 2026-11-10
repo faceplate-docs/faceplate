@@ -185,20 +185,9 @@ If **Item path** names a project object, open its form in **General View** and s
 
 ## Node license
 
-Clicking the **License** value opens the **Node license <node name>** window.
+Clicking the **License** value opens the **Node license <node name>** window: the license end date, saving the station parameters file, and uploading the license file. A license is uploaded to each node separately. How to obtain and upload a license and what the operator sees without one is described in [Licensing](../license/license.md).
 
 ![The Node license window](images/nodes_07_license.png)
-
-| Element | Purpose |
-|---|---|
-| **End date** | Until when the node license is valid; `unlimited` means no expiry |
-| **Info** | Details from the license file |
-| **Station parameters** | Save the `<node name>.stn` file with server parameters. The file is sent to the supplier to obtain a license for this node |
-| **Upload license** | Open the **Select license file** window: **Select files...** → `.lcn` file → **ok** |
-
-After upload, a success message appears, and the window fields and the card's **License** value are filled in. Runtime shows the license in its menu, in the `master license` line.
-
-A license file is issued for the parameters file of a specific node, so a license is uploaded to each node separately.
 
 # Conclusion
 

@@ -101,6 +101,9 @@ nav:
   - Administration:
       - Resource redundancy: administration/redundancy/redundancy.md
       - Cluster nodes: administration/nodes/nodes.md
+      - Licensing: administration/license/license.md
       - Replication: administration/replica/replica_en.md
       - Git module: administration/git/git_en.md
       - Diagnostics of Runtime objects: administration/diagnostics/diagnostics.md
+      - Server logs: administration/logs/logs.md
+      - Version and update: administration/update/update.md

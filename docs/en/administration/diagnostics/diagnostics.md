@@ -106,10 +106,11 @@ At level `warning`, the window for `diag_script` gets only the lines `cycle 5: e
 
 | Part | Meaning |
 |---|---|
-| `2026-10-28 04:37:19.967153+00:00` | Message time in UTC with microsecond precision |
+| `2026-10-28 04:37:19.967153+00:00` | Message time by the server clock with microsecond precision and the offset from UTC |
 | `[warning]` | Level |
-| `<0.78331.0>` | The process that emitted the message |
-| `@…` | Message source. For FACEPLATE service messages it names the place where the message was produced; for messages from a user script it is empty |
+| `<0.78331.0>` | The process that produced the message |
+| `@` | Separator |
+| `:` | The place in the platform code that emitted the message. You can skip it when investigating. Messages from a user script have no place specified, only `:` remains in the line |
 | `cycle 20: every fifth` | Message text |
 
 ## Line limit
