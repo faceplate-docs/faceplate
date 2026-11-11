@@ -6,8 +6,8 @@ External sources:
 
 1. [Line Protocol](https://docs.influxdata.com/influxdb/v2/reference/syntax/line-protocol/)
 2. [InfluxDB API](https://docs.influxdata.com/influxdb/v2/write-data/developer-tools/api/)
-3. [Faceplate prototypes](/docs/en/prototypes)
-4. [Faceplate primitives](/docs/en/primitives)
+3. [Faceplate prototypes](/docs/en/project_objects/prototypes)
+4. [Faceplate primitives](/docs/en/project_objects/primitives)
 
 ## 1. Technical requirements
 

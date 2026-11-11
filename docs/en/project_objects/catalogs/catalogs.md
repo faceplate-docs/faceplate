@@ -194,7 +194,7 @@ Each catalog is a separate sheet `catalog@<catalog name>`. The first column is t
 
 ## Catalog on a mnemonic diagram
 
-The operator picks a catalog record on a screen with the **CatalogSelect** element from the **Controls** palette: the `catalog` property sets the catalog, `value` is bound to a tag field, and the choice writes the full path of the record to the tag. Setup and Runtime behaviour are covered in [Selection from lists, section "Selecting a catalog record"](../mnemo/lists.md#selecting-a-catalog-record).
+The operator picks a catalog record on a screen with the **CatalogSelect** element from the **Controls** palette: the `catalog` property sets the catalog, `value` is bound to a tag field, and the choice writes the full path of the record to the tag. Setup and Runtime behaviour are covered in [Selection from lists, section "Selecting a catalog record"](../../mnemo/lists.md#selecting-a-catalog-record).
 
 # Conclusion
 

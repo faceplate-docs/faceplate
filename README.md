@@ -71,9 +71,6 @@ docs/
 │   ├── calculation/
 │   │   ├── images/  (11 files)
 │   │   └── calculation.md
-│   ├── catalogs/
-│   │   ├── images/  (10 files)
-│   │   └── catalogs.md
 │   ├── data_collection/
 │   │   ├── IoT/
 │   │   │   ├── images/  (26 files)
@@ -125,9 +122,6 @@ docs/
 │   ├── library_modules/
 │   │   ├── images/  (6 files)
 │   │   └── library_modules.md
-│   ├── localization/
-│   │   ├── images/  (9 files)
-│   │   └── localization.md
 │   ├── machine_learning/
 │   │   ├── forecasting_models_en.md
 │   │   └── project_export_en.md
@@ -152,15 +146,22 @@ docs/
 │   ├── powerfactory_service/
 │   │   ├── images/  (7 files)
 │   │   └── powerfactory_service.md
-│   ├── primitives/
-│   │   ├── images/  (10 files)
-│   │   └── primitives.md
+│   ├── project_objects/
+│   │   ├── catalogs/
+│   │   │   ├── images/  (10 files)
+│   │   │   └── catalogs.md
+│   │   ├── localization/
+│   │   │   ├── images/  (9 files)
+│   │   │   └── localization.md
+│   │   ├── primitives/
+│   │   │   ├── images/  (10 files)
+│   │   │   └── primitives.md
+│   │   └── prototypes/
+│   │       ├── images/  (18 files)
+│   │       └── prototypes.md
 │   ├── project_structure/
 │   │   ├── images/  (9 files)
 │   │   └── FACEPLATE-start.md
-│   ├── prototypes/
-│   │   ├── images/  (18 files)
-│   │   └── prototypes.md
 │   ├── quick_start/
 │   │   ├── connectivity/
 │   │   │   ├── influxdb/
@@ -223,9 +224,6 @@ docs/
 │   ├── calculation/
 │   │   ├── images/  (11 files)
 │   │   └── calculation.md
-│   ├── catalogs/
-│   │   ├── images/  (10 files)
-│   │   └── catalogs.md
 │   ├── data_collection/
 │   │   ├── IoT/
 │   │   │   ├── images/  (26 files)
@@ -277,9 +275,6 @@ docs/
 │   ├── library_modules/
 │   │   ├── images/  (6 files)
 │   │   └── library_modules.md
-│   ├── localization/
-│   │   ├── images/  (9 files)
-│   │   └── localization.md
 │   ├── machine_learning/
 │   │   ├── forecasting_models_ru.md
 │   │   └── project_export_ru.md
@@ -304,15 +299,22 @@ docs/
 │   ├── powerfactory_service/
 │   │   ├── images/  (7 files)
 │   │   └── powerfactory_service.md
-│   ├── primitives/
-│   │   ├── images/  (10 files)
-│   │   └── primitives.md
+│   ├── project_objects/
+│   │   ├── catalogs/
+│   │   │   ├── images/  (10 files)
+│   │   │   └── catalogs.md
+│   │   ├── localization/
+│   │   │   ├── images/  (9 files)
+│   │   │   └── localization.md
+│   │   ├── primitives/
+│   │   │   ├── images/  (10 files)
+│   │   │   └── primitives.md
+│   │   └── prototypes/
+│   │       ├── images/  (18 files)
+│   │       └── prototypes.md
 │   ├── project_structure/
 │   │   ├── images/  (9 files)
 │   │   └── FACEPLATE-start.md
-│   ├── prototypes/
-│   │   ├── images/  (18 files)
-│   │   └── prototypes.md
 │   ├── quick_start/
 │   │   ├── connectivity/
 │   │   │   ├── influxdb/
@@ -406,10 +408,10 @@ favicon and brand stylesheet), `tools/` (site build and link checker),
 - [Dispatcher advisor](docs/en/alarms/dsf/dsf_en.md)
 
 ### Project objects
-- [Primitives](docs/en/primitives/primitives.md)
-- [Prototypes](docs/en/prototypes/prototypes.md)
-- [Catalogs](docs/en/catalogs/catalogs.md)
-- [Localization](docs/en/localization/localization.md)
+- [Primitives](docs/en/project_objects/primitives/primitives.md)
+- [Prototypes](docs/en/project_objects/prototypes/prototypes.md)
+- [Catalogs](docs/en/project_objects/catalogs/catalogs.md)
+- [Localization](docs/en/project_objects/localization/localization.md)
 
 ### Screens
 - [Screen editor](docs/en/mnemo/editor.md)

@@ -68,10 +68,10 @@ nav:
       - Сообщения и тревоги: alarms/alarm/alarm_ru.md
       - Советчик диспетчера: alarms/dsf/dsf_ru.md
   - Объекты проекта:
-      - Примитивы: primitives/primitives.md
-      - Прототипы: prototypes/prototypes.md
-      - Каталоги: catalogs/catalogs.md
-      - Локализация: localization/localization.md
+      - Примитивы: project_objects/primitives/primitives.md
+      - Прототипы: project_objects/prototypes/prototypes.md
+      - Каталоги: project_objects/catalogs/catalogs.md
+      - Локализация: project_objects/localization/localization.md
   - Мнемосхемы:
       - Редактор мнемосхем: mnemo/editor.md
       - Графические элементы: mnemo/graphics.md

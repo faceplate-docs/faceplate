@@ -34,7 +34,7 @@ A document for the integration engineer who draws the project's screens (mimic d
 | Term | Meaning |
 |---|---|
 | Screen | A mimic diagram stored in a project folder or in prototype content. A folder has 17 screen slots: `screen`, `view1`…`view15` and `settings` |
-| Instance | A project object created from a prototype (see ["Prototypes"](../prototypes/prototypes.md)) |
+| Instance | A project object created from a prototype (see ["Prototypes"](../project_objects/prototypes/prototypes.md)) |
 | Graphic editor | The Studio window in which a screen is drawn |
 | Element | An object on a screen: a shape, a control, a data source, etc. |
 | Palette | An editor panel with element icons: **Primitives**, **Controls**, **Reports** |

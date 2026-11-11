@@ -61,10 +61,10 @@ nav:
       - Messages and alarms: alarms/alarm/alarm_en.md
       - Dispatcher advisor: alarms/dsf/dsf_en.md
   - Project objects:
-      - Primitives: primitives/primitives.md
-      - Prototypes: prototypes/prototypes.md
-      - Catalogs: catalogs/catalogs.md
-      - Localization: localization/localization.md
+      - Primitives: project_objects/primitives/primitives.md
+      - Prototypes: project_objects/prototypes/prototypes.md
+      - Catalogs: project_objects/catalogs/catalogs.md
+      - Localization: project_objects/localization/localization.md
   - Screens:
       - Screen editor: mnemo/editor.md
       - Graphic elements: mnemo/graphics.md

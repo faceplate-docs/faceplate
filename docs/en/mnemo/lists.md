@@ -19,7 +19,7 @@ A document for the integration engineer who lets the operator pick from a ready-
 | Term | Meaning |
 |---|---|
 | Full path | The address of an object in the Faceplate database. Project objects are under `/root/FP/PROJECT`, catalog records under `/root/FP/catalogs/<catalog>/content`. Example: `/root/FP/PROJECT/lists_demo/list_2` |
-| Catalog record | A row of a catalog from the **Catalogs** section (see [Catalogs](../catalogs/catalogs.md)) |
+| Catalog record | A row of a catalog from the **Catalogs** section (see [Catalogs](../project_objects/catalogs/catalogs.md)) |
 
 The terms "Tag" and "Binding" are explained in [Buttons and value input](controls.md#glossary), "Screen", "Palette" and "Element" in [Screen editor](editor.md#glossary).
 
@@ -29,7 +29,7 @@ Selection elements spare the operator from typing: the operator picks a value fr
 
 This document describes four selection elements, their properties, how they write the value to a tag and how they behave in Runtime. Working in the editor (adding, selecting, properties, saving) is covered in [Screen editor](editor.md); binding a property to a tag field is covered in [Buttons and value input, section "Linking an element to a tag"](controls.md#linking-an-element-to-a-tag).
 
-The running example is the `screen` of the `lists_demo` folder. The data is in the object `list_1` of a custom primitive `demo_list` with the fields `mode` (integer), `modes` (list, subtype string), `obj` (string) and `model` (string). Next to it is a second object of the same type, `list_2`. The catalog `sensor_models` with sensor models is created as described in [Catalogs](../catalogs/catalogs.md).
+The running example is the `screen` of the `lists_demo` folder. The data is in the object `list_1` of a custom primitive `demo_list` with the fields `mode` (integer), `modes` (list, subtype string), `obj` (string) and `model` (string). Next to it is a second object of the same type, `list_2`. The catalog `sensor_models` with sensor models is created as described in [Catalogs](../project_objects/catalogs/catalogs.md).
 
 The example screen, top to bottom: the operating mode ("Auto", "Manual", "Repair"), the pumps in operation ("Pump 1", "Pump 2", "Pump 3"), selection of a `demo_list` object and selection of a sensor model from the catalog.
 

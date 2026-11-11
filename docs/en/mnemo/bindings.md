@@ -213,7 +213,7 @@ A prototype screen is one for all instances, so a binding on it points not to an
 
 ![Binding on the screen of the demo_tank prototype](images/bind_09_proto.png)
 
-The field list holds the prototype fields (see [Prototypes, section "Fields"](../prototypes/prototypes.md#fields)).
+The field list holds the prototype fields (see [Prototypes, section "Fields"](../project_objects/prototypes/prototypes.md#fields)).
 
 In the example the prototype `demo_tank` has the field `level`, and its `screen` has a rectangle whose `text` is bound to `:level`. The `anim_demo` screen holds the instances `tank_p1` and `tank_p2`: in Runtime the first shows 37, the second 81 (see [the screenshot in the Introduction](#introduction)).
 

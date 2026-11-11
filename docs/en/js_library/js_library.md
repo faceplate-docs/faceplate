@@ -38,7 +38,7 @@ Running example, folder `script_demo`:
 | `js_in`, `js_out` | primitive with a `float` field `value` | Example input and output |
 | `js_lib_demo` | `user_script` | Reads `js_in`, writes the result of `c_to_f` to `js_out` |
 
-Creating a user script is covered in [User Scripts](../user_script/user_script.md), primitives in [Primitives](../primitives/primitives.md).
+Creating a user script is covered in [User Scripts](../user_script/user_script.md), primitives in [Primitives](../project_objects/primitives/primitives.md).
 
 You need access to Studio (`http://<server>:9000/fp/studio`) with an account allowed to modify the project.
 

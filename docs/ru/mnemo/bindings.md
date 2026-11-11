@@ -213,7 +213,7 @@ function(VARS,element,context){
 
 ![Привязка на схеме прототипа demo_tank](images/bind_09_proto.png)
 
-В списке полей — поля прототипа (см. [«Прототипы», раздел «Поля»](../prototypes/prototypes.md#поля)).
+В списке полей — поля прототипа (см. [«Прототипы», раздел «Поля»](../project_objects/prototypes/prototypes.md#поля)).
 
 В примере у прототипа `demo_tank` поле `level`, на его схеме `screen` прямоугольник с `text`, привязанным к `:level`. На схеме `anim_demo` стоят экземпляры `tank_p1` и `tank_p2`: в Runtime первый показывает 37, второй 81 (см. [скриншот во «Введении»](#введение)).
 

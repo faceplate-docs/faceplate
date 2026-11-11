@@ -55,7 +55,7 @@ A calculation consists of three parts:
 
 A calculation runs on input changes, on a timer, or both.
 
-Running example: folder `calc_demo` with tags `p_in_1`, `p_in_2`, `p_avg`. They are instances of a primitive with a numeric field `out_value`; how to create such a type is covered in the [Primitives](../primitives/primitives.md) guide. Calculation `p_avg_calc` writes the average of two pressures to `p_avg` and also computes their difference `DIFF`.
+Running example: folder `calc_demo` with tags `p_in_1`, `p_in_2`, `p_avg`. They are instances of a primitive with a numeric field `out_value`; how to create such a type is covered in the [Primitives](../project_objects/primitives/primitives.md) guide. Calculation `p_avg_calc` writes the average of two pressures to `p_avg` and also computes their difference `DIFF`.
 
 You need access to Studio (`http://<server>:9000/fp/studio`) with an account allowed to modify the project.
 
