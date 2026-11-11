@@ -24,7 +24,7 @@ A document for the integration engineer who needs to show the operator a summary
 | Table | The **Grid** element: rows are records of a data source, columns are their fields |
 | Data source | A screen element, invisible in Runtime, that holds a set of records for other elements. For a table it is **Table Datasource** (project objects) or **Local Datasource** (records defined on the screen) |
 | Timeline | The **Timeline** element: a strip in which every period of time is painted in the color of the unit's state |
-| Archive | A project object of type `ARCHIVE` that records the history of a tag field. Creating an archive is described in [Archives: configuring sources and recording data](../data_storage/archives/archives_en.md) |
+| Archive | A project object of type `ARCHIVE` that records the history of a tag field. Creating an archive is described in [Archives: configuring sources and recording data](../data_storage/archives/archives.md) |
 | State | An integer in a tag field that stands for the unit's mode: 0 — stopped, 1 — running, etc. |
 
 The terms "Tag", "Binding" and "Assignment" are explained in [Buttons and value input](controls.md#glossary), "Screen", "Palette" and "Element" in [Screen editor](editor.md#glossary).
@@ -152,7 +152,7 @@ A color is chosen by clicking the field (see [Graphic elements, section "Choosin
 **Timeline** shows the history of an integer field from an archive. Prepare:
 
 1. A state field of type `integer` in the tag. In the example `pump_1.state`.
-2. An `ARCHIVE` object with the **tag** source on that field (see [Archives, section "Archiving pressure from a tag"](../data_storage/archives/archives_en.md#archiving-pressure-from-a-tag)). In the example `tables_demo/pump_1_state`.
+2. An `ARCHIVE` object with the **tag** source on that field (see [Archives, section "Archiving pressure from a tag"](../data_storage/archives/archives.md#archiving-pressure-from-a-tag)). In the example `tables_demo/pump_1_state`.
 
 Drag **Timeline** from the **Controls** palette, open the **data** group, click the magnifier in the `archive` row, choose the archive and press **OK**.
 

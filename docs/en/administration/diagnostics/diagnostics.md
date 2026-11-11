@@ -177,10 +177,10 @@ The form of `diag_fail` shows **Error** `badarith`. The log gives the full pictu
 Module-specific messages and their meaning are described in the module documents:
 
 - IoT connections — [IoT connections, section "Diagnostics"](../../data_collection/IoT/IoT.md#diagnostics);
-- PLC connections — [PLC Connections in Faceplate, section "Troubleshooting"](../../data_collection/plc_connections/general_en.md#troubleshooting);
-- replication — [Replication in Faceplate, section "Troubleshooting"](../replica/replica_en.md#troubleshooting);
-- archives — [Archives, section "Diagnostics and recording behavior"](../../data_storage/archives/archives_en.md#diagnostics-and-recording-behavior);
-- dispatcher support (DSF) — [Dispatcher Support, section "If no recommendation appears"](../../alarms/dsf/dsf_en.md#if-no-recommendation-appears).
+- PLC connections — [PLC Connections in Faceplate, section "Troubleshooting"](../../data_collection/plc_connections/general.md#troubleshooting);
+- replication — [Replication in Faceplate, section "Troubleshooting"](../replica/replica.md#troubleshooting);
+- archives — [Archives, section "Diagnostics and recording behavior"](../../data_storage/archives/archives.md#diagnostics-and-recording-behavior);
+- dispatcher support (DSF) — [Dispatcher Support, section "If no recommendation appears"](../../alarms/dsf/dsf.md#if-no-recommendation-appears).
 
 # Conclusion
 

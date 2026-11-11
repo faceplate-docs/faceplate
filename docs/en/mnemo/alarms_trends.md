@@ -23,13 +23,13 @@ A document for the integration engineer who needs to show the operator, on a scr
 
 | Term | Meaning |
 |---|---|
-| Message template | A project object of type `alarm_template`: it watches a tag field and creates a message when its condition is met. Creating a template is described in [Messages and alarms in Faceplate, section "Configuring a message"](../alarms/alarm/alarm_en.md#2-configuring-a-message) |
+| Message template | A project object of type `alarm_template`: it watches a tag field and creates a message when its condition is met. Creating a template is described in [Messages and alarms in Faceplate, section "Configuring a message"](../alarms/alarm/alarm.md#2-configuring-a-message) |
 | Message | A log record created by a template: time on, time off, text, type. An alarm is a message about a violation |
 | Message type | `error`, `alarm`, `warning`, `info`, `dsf` — set in the template. The type defines the row color in the list and the indicator color |
 | Active message | The template condition is still met: time off is empty |
 | Acknowledgement | The operator's confirmation that they have seen the message. It does not clear the active state: an acknowledged message stays active while the condition is met |
 | Group | A project folder or a single template whose messages the element shows |
-| Archive | A project object of type `ARCHIVE` that records the history of a tag field. Creating an archive is described in [Archives: configuring sources and recording data](../data_storage/archives/archives_en.md) |
+| Archive | A project object of type `ARCHIVE` that records the history of a tag field. Creating an archive is described in [Archives: configuring sources and recording data](../data_storage/archives/archives.md) |
 | Series | One trend line: an archive, script or formula, with its own color and axis |
 | Slice | A vertical line on a trend labelled with the time and the series values at that moment |
 | Legend | A box on the trend chart: the time of the point under the mouse pointer and the names and values of the series at that point |
@@ -149,9 +149,9 @@ Above the table there are three buttons:
 
 After acknowledgement a row stays or leaves depending on `acknowledge` and `active`. In the example (`true` / `true`) the acknowledged alarm `level_high` is already cleared, so it leaves the list, while the acknowledged fault `pump_fault` stays while it is active.
 
-A double click on a row opens the message card: text, time on and time off, duration, acknowledgement, point, fact and categories. Below are the **Add** (comment) and **Export** buttons and the **Email** row. Working with the card is described in [Messages and alarms in Faceplate, section "Operator actions"](../alarms/alarm/alarm_en.md#3-operator-actions).
+A double click on a row opens the message card: text, time on and time off, duration, acknowledgement, point, fact and categories. Below are the **Add** (comment) and **Export** buttons and the **Email** row. Working with the card is described in [Messages and alarms in Faceplate, section "Operator actions"](../alarms/alarm/alarm.md#3-operator-actions).
 
-**Email** forwards the message by mail. The drop-down list contains users with the `operators` role; the mail goes to the address in the **Email** field of their account (Studio → **User rights** → **Users**). Select one or more recipients and click **Send**; after sending, a "Message sent" notification appears. The mail contains the message text, type, point, time on, fact and categories. Sending requires the SMTP parameters to be filled in and the email notifications switch to be on in Studio → **Alarm** → **Settings** → general settings (see [Messages and alarms in Faceplate, section "Email notifications"](../alarms/alarm/alarm_en.md#7-email-notifications)). In the example the `level_high` message was sent to the `mail_test` user and received.
+**Email** forwards the message by mail. The drop-down list contains users with the `operators` role; the mail goes to the address in the **Email** field of their account (Studio → **User rights** → **Users**). Select one or more recipients and click **Send**; after sending, a "Message sent" notification appears. The mail contains the message text, type, point, time on, fact and categories. Sending requires the SMTP parameters to be filled in and the email notifications switch to be on in Studio → **Alarm** → **Settings** → general settings (see [Messages and alarms in Faceplate, section "Email notifications"](../alarms/alarm/alarm.md#7-email-notifications)). In the example the `level_high` message was sent to the `mail_test` user and received.
 
 ![Message card of level_high](images/alarms_07_card.png)
 
@@ -259,7 +259,7 @@ The window length is shown in Runtime on a toolbar button, for example "minute X
 
 If the axis limits are empty, the axis fits the visible values: with an almost constant level, small fluctuations stretch over the full height. For a parameter with a known range set the limits explicitly so that the operator compares the line position with the thresholds.
 
-When the screen opens, the trend loads the whole window; on each refresh it re-reads the last `update_depth` seconds of the archive. Values that reach the archive late — with a timestamp earlier than the moment of writing, for example from an archive script that returns `ts` (see [Archives: configuring sources and recording data, section "Script sources"](../data_storage/archives/archives_en.md#script-sources)) — are picked up by the trend if the delay is less than `update_depth`. For such an archive set `update_depth` greater than the write delay.
+When the screen opens, the trend loads the whole window; on each refresh it re-reads the last `update_depth` seconds of the archive. Values that reach the archive late — with a timestamp earlier than the moment of writing, for example from an archive script that returns `ts` (see [Archives: configuring sources and recording data, section "Script sources"](../data_storage/archives/archives.md#script-sources)) — are picked up by the trend if the delay is less than `update_depth`. For such an archive set `update_depth` greater than the write delay.
 
 ## Trend: appearance and legend
 

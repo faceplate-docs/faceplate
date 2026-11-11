@@ -162,7 +162,7 @@ With `subscribe` = `true` the operator sees a new value at once: in the example,
 
 **Time-series datasource** reads values for a period from archives and gives them as records: one record per moment when at least one archive recorded a new value. Unlike the timeline, which shows only colored states (see [Tables and timeline, section "Timeline: archive"](tables.md#timeline-archive)), the source gives the numbers themselves — they can be shown in a table or processed by a script.
 
-Prepare an archive of the field (see [Archives, section "Archiving pressure from a tag"](../data_storage/archives/archives_en.md#archiving-pressure-from-a-tag)). In the example it is `ds_demo/tank_1_level` on field `tank_1.level`.
+Prepare an archive of the field (see [Archives, section "Archiving pressure from a tag"](../data_storage/archives/archives.md#archiving-pressure-from-a-tag)). In the example it is `ds_demo/tank_1_level` on field `tank_1.level`.
 
 ![Time-series datasource level_30m: archive and period](images/datasources_03_ts.png)
 

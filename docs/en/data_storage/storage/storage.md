@@ -37,7 +37,7 @@ The **Storages** editor changes where the data lives without stopping the system
 |---|---|---|
 | Redundancy | Add a copy of the database on a second server | A server can be lost: Studio and Runtime keep working on the other server, and the operator's Runtime switches by itself (see [Cluster nodes](../../administration/nodes/nodes.md#node-address-for-runtime)). No data is lost: the copies are identical |
 | Separate database for a folder | Create a new database and attach it to a project folder | The folder's data is stored separately: on another disk or server. A large project is no longer one database, and the load is shared between disks and servers |
-| Moving | Add a copy of the database on a new server and remove the old one | The data moves to another server while the system is running. For example, archives move to a dedicated archive server (see [Historian Server](../historian/historian_server_en.md)) |
+| Moving | Add a copy of the database on a new server and remove the old one | The data moves to another server while the system is running. For example, archives move to a dedicated archive server (see [Historian Server](../historian/historian_server.md)) |
 
 Redundancy here means data redundancy. Redundancy of communication channels with equipment is described separately, in [Resource Redundancy in Faceplate](../../administration/redundancy/redundancy.md#plc-connection-redundancy).
 
@@ -120,7 +120,7 @@ Each tab lists the servers that hold this part of the database. A server is writ
 | Tab | Where the server list is | What is written for a server |
 |---|---|---|
 | **Runtime** | Top-level keys | Directory (`:atom:dir`) and storage modules (`:atom:disc`, `:atom:ram`, `:atom:ramdisc`) |
-| **Log** | Inside `":atom:database"` | Directory and storage module. The other keys (`read_only_age`, `max_age`, `shard_depth`) are described in [Alarms](../../alarms/alarm/alarm_en.md#9-storage-and-automatic-processing) |
+| **Log** | Inside `":atom:database"` | Directory and storage module. The other keys (`read_only_age`, `max_age`, `shard_depth`) are described in [Alarms](../../alarms/alarm/alarm.md#9-storage-and-automatic-processing) |
 | **Timeseries** | Inside `":atom:nodes"` | Directory. The other keys define archive storage and do not change when a server is added or removed |
 
 The directory (`":atom:dir"`) is relative to the database directory `faceplate/DB`: `":string:./"` is `faceplate/DB` itself, `":string:./FP_ALARM"` is `faceplate/DB/FP_ALARM`.

@@ -162,7 +162,7 @@ data:
 
 **Time-series datasource** мұрағаттардан кезеңдегі мәндерді оқып, оларды жазба түрінде береді: кемінде бір мұрағат жаңа мән жазған әр сәтке бір жазба. Тек түрлі түсті күйлерді көрсететін уақыт шкаласынан айырмашылығы ([Кестелер және уақыт шкаласы, «Уақыт шкаласы: мұрағат» бөлімі](tables.md#уақыт-шкаласы-мұрағат) құжатын қараңыз), дереккөз сандардың өзін береді — оларды кестеде көрсетуге немесе скриптпен өңдеуге болады.
 
-Өріс мұрағатын дайындаңыз ([Archives, «Archiving pressure from a tag» бөлімі](../../en/data_storage/archives/archives_en.md#archiving-pressure-from-a-tag) құжатын қараңыз). Мысалда — `tank_1.level` өрісінің `ds_demo/tank_1_level` мұрағаты.
+Өріс мұрағатын дайындаңыз ([Archives, «Archiving pressure from a tag» бөлімі](../../en/data_storage/archives/archives.md#archiving-pressure-from-a-tag) құжатын қараңыз). Мысалда — `tank_1.level` өрісінің `ds_demo/tank_1_level` мұрағаты.
 
 ![Time-series datasource level_30m: мұрағат және кезең](images/datasources_03_ts.png)
 

@@ -115,11 +115,11 @@ Faceplate байланыс модулі жабдықтан телеметрия�
 
 ### Faceplate Studio-да баптау
 
-**1. Басты қосылымды құру.** [Стандартты қосылым](../../../en/data_collection/plc_connections/general_en.md#create-the-connection-object-and-configure-the-channel) құрыңыз (мысалы, `plc_modbus_connection`). **Негізгі байланыс** өрісін бос қалдырыңыз. Бұл қосылым басты болады.
+**1. Басты қосылымды құру.** [Стандартты қосылым](../../../en/data_collection/plc_connections/general.md#create-the-connection-object-and-configure-the-channel) құрыңыз (мысалы, `plc_modbus_connection`). **Негізгі байланыс** өрісін бос қалдырыңыз. Бұл қосылым басты болады.
 
 **2. Резервтік қосылымды құру.** Резервтік арна параметрлері бар, түрі сондай екінші қосылымды құрыңыз (мысалы, `plc_modbus_connection_redundancy`). **Негізгі байланыс** өрісінде басты қосылымды көрсетіңіз (оны тізімнен таңдаңыз).
 
-Резервтік арнаны тексеру реті — [«Байланыстырулар» → Альтернативті арнаны баптау](../../../en/data_collection/plc_connections/bindings_en.md#configure-an-alternative-channel) бөлімінде.
+Резервтік арнаны тексеру реті — [«Байланыстырулар» → Альтернативті арнаны баптау](../../../en/data_collection/plc_connections/bindings.md#configure-an-alternative-channel) бөлімінде.
 
 ![Бумадағы басты және резервтік қосылымдар](images/img_2.png)
 
@@ -135,7 +135,7 @@ Faceplate байланыс модулі жабдықтан телеметрия�
 
 ### Журналдар және мониторинг
 
-Қосылым күйі **PLC драйверлері** бетіндегі **Жағдайы** (`RUN`/`STOP`) және **Мәртебесі** (`OK`/`Қате`) өрістерінде көрсетіледі. Күй мәндері [PLC қосылымдарының анықтамалығында](../../../en/data_collection/plc_connections/general_en.md#states-and-diagnostic-controls) сипатталған.
+Қосылым күйі **PLC драйверлері** бетіндегі **Жағдайы** (`RUN`/`STOP`) және **Мәртебесі** (`OK`/`Қате`) өрістерінде көрсетіледі. Күй мәндері [PLC қосылымдарының анықтамалығында](../../../en/data_collection/plc_connections/general.md#states-and-diagnostic-controls) сипатталған.
 
 ![«PLC драйверлері» бетіндегі қосылым күйі](images/img_5.png)
 

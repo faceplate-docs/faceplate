@@ -98,7 +98,7 @@ Studio негізгі мәзірінен **Прототиптер** бөлімі
 
    ![Контенттегі буманың пішіні](images/content_folder_form.png)
 
-Басқа түрдегі нысандар да түрді таңдау терезесіндегі тиісті топтардан осылай қосылады: `iot` ([IoT](../../../en/data_collection/IoT/IoT.md)), `plc` ([PLC қосылымдары](../../../en/data_collection/plc_connections/general_en.md)), `primitives` ([«Примитивтер»](../../../en/project_objects/primitives/primitives.md)), `prototypes`, `system` (мысалы, [есептеулер](../../../en/project_logic/calculation/calculation.md) және [User Script](../../../en/project_logic/user_script/user_script.md)).
+Басқа түрдегі нысандар да түрді таңдау терезесіндегі тиісті топтардан осылай қосылады: `iot` ([IoT](../../../en/data_collection/IoT/IoT.md)), `plc` ([PLC қосылымдары](../../../en/data_collection/plc_connections/general.md)), `primitives` ([«Примитивтер»](../../../en/project_objects/primitives/primitives.md)), `prototypes`, `system` (мысалы, [есептеулер](../../../en/project_logic/calculation/calculation.md) және [User Script](../../../en/project_logic/user_script/user_script.md)).
 
 Пішіндегі **Бума** өрісі контент түбірінен басталатын жолды көрсетеді: `/` — түбірдің өзі. `P_201` данасында `/motor` бумасы `P_201/motor` жолында орналасады.
 

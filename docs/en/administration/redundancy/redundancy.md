@@ -115,11 +115,11 @@ The Faceplate communication module supports redundant physical and logical chann
 
 ### Setup in Faceplate Studio
 
-**1. Creating the master connection.** Create a [standard connection](../../data_collection/plc_connections/general_en.md#create-the-connection-object-and-configure-the-channel) (for example, `plc_modbus_connection`). Leave the **Master connection** field empty. This connection will be the main one.
+**1. Creating the master connection.** Create a [standard connection](../../data_collection/plc_connections/general.md#create-the-connection-object-and-configure-the-channel) (for example, `plc_modbus_connection`). Leave the **Master connection** field empty. This connection will be the main one.
 
 **2. Creating the backup connection.** Create a second connection of the same type (for example, `plc_modbus_connection_redundancy`) with the backup channel parameters. In the **Master connection** field, specify the main connection (select it from the list).
 
-How to check the backup channel is described in [Bindings → Configure an alternative channel](../../data_collection/plc_connections/bindings_en.md#configure-an-alternative-channel).
+How to check the backup channel is described in [Bindings → Configure an alternative channel](../../data_collection/plc_connections/bindings.md#configure-an-alternative-channel).
 
 ![Main and backup connections in the folder](images/img_2.png)
 
@@ -135,7 +135,7 @@ How to check the backup channel is described in [Bindings → Configure an alter
 
 ### Logs and monitoring
 
-The connection status is displayed in the **State** (`RUN`/`STOP`) and **Status** (`OK`/`ERROR`) fields on the **PLC Drivers** page. State values are described in the [PLC connection reference](../../data_collection/plc_connections/general_en.md#states-and-diagnostic-controls).
+The connection status is displayed in the **State** (`RUN`/`STOP`) and **Status** (`OK`/`ERROR`) fields on the **PLC Drivers** page. State values are described in the [PLC connection reference](../../data_collection/plc_connections/general.md#states-and-diagnostic-controls).
 
 ![Connection status on the PLC Drivers page](images/img_5.png)
 

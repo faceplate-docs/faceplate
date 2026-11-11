@@ -185,7 +185,7 @@ What the screen shows:
 
 In the example (the `pb_demo` screen) the level `tank_1.level` is recorded by an archive, the pump state is not. At 16:24:20 the level shows 63.5 — the archive value, the state shows the current value. The "forward" button with a step of 1 `minute` moves the screen to 16:25:20, and the level changes to 60.4. Closing the window with the cross returns the screen to current values.
 
-So only what an archive records is played back: a field you need to see in the past must have an archive (see [Archives: configuring sources and recording data](../data_storage/archives/archives_en.md)).
+So only what an archive records is played back: a field you need to see in the past must have an archive (see [Archives: configuring sources and recording data](../data_storage/archives/archives.md)).
 
 Printing in this mode gives the screen at the set moment. The "PlayBack menu" window does not get onto the sheet, so the moment is not shown on the printout: if you need it, label the sheet.
 

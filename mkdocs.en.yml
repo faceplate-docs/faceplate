@@ -24,26 +24,26 @@ nav:
   - Data acquisition:
       - PLC connections:
           - Overview: data_collection/plc_connections/index.md
-          - Field preparation and bindings: data_collection/plc_connections/bindings_en.md
-          - Modbus TCP training example: data_collection/plc_connections/general_en.md
-          - Modbus TCP/RTU: data_collection/plc_connections/plc_modbus_connection_en.md
-          - DCON: data_collection/plc_connections/plc_dcon_connection_en.md
-          - OPC UA client: data_collection/plc_connections/old_plc_opcua_client_connection_en.md
-          - OPC UA server: data_collection/plc_connections/old_plc_opcua_server_connection_en.md
-          - OPC DA (Classic): data_collection/plc_connections/plc_opcda_connection_en.md
-          - Siemens S7 (ISO-on-TCP): data_collection/plc_connections/old_plc_s7_connection_en.md
-          - EtherNet/IP: data_collection/plc_connections/plc_ethernet_ip_connection_en.md
-          - IEC 60870-5-101 client: data_collection/plc_connections/plc_iec101_client_connection_en.md
-          - IEC 60870-5-101 server: data_collection/plc_connections/plc_iec101_server_connection_en.md
-          - IEC 60870-5-104 client: data_collection/plc_connections/plc_iec104_client_connection_en.md
-          - IEC 60870-5-104 server: data_collection/plc_connections/plc_iec104_server_connection_en.md
-          - M-Bus (Meter-Bus): data_collection/plc_connections/plc_mbus_connection_en.md
-          - Mercury 230: data_collection/plc_connections/plc_mercury230_connection_en.md
-          - SNMP: data_collection/plc_connections/plc_snmp_connection_en.md
-          - IEC 62056: data_collection/plc_connections/plc_iec62056_connection_en.md
-          - "IEC101/IEC104 types and attributes": data_collection/plc_connections/iec_reference_en.md
-          - Transformation feature: data_collection/plc_connections/transformation_en.md
-          - PLC communication checks: data_collection/plc_connections/diagnostics_en.md
+          - Field preparation and bindings: data_collection/plc_connections/bindings.md
+          - Modbus TCP training example: data_collection/plc_connections/general.md
+          - Modbus TCP/RTU: data_collection/plc_connections/plc_modbus_connection.md
+          - DCON: data_collection/plc_connections/plc_dcon_connection.md
+          - OPC UA client: data_collection/plc_connections/old_plc_opcua_client_connection.md
+          - OPC UA server: data_collection/plc_connections/old_plc_opcua_server_connection.md
+          - OPC DA (Classic): data_collection/plc_connections/plc_opcda_connection.md
+          - Siemens S7 (ISO-on-TCP): data_collection/plc_connections/old_plc_s7_connection.md
+          - EtherNet/IP: data_collection/plc_connections/plc_ethernet_ip_connection.md
+          - IEC 60870-5-101 client: data_collection/plc_connections/plc_iec101_client_connection.md
+          - IEC 60870-5-101 server: data_collection/plc_connections/plc_iec101_server_connection.md
+          - IEC 60870-5-104 client: data_collection/plc_connections/plc_iec104_client_connection.md
+          - IEC 60870-5-104 server: data_collection/plc_connections/plc_iec104_server_connection.md
+          - M-Bus (Meter-Bus): data_collection/plc_connections/plc_mbus_connection.md
+          - Mercury 230: data_collection/plc_connections/plc_mercury230_connection.md
+          - SNMP: data_collection/plc_connections/plc_snmp_connection.md
+          - IEC 62056: data_collection/plc_connections/plc_iec62056_connection.md
+          - "IEC101/IEC104 types and attributes": data_collection/plc_connections/iec_reference.md
+          - Transformation feature: data_collection/plc_connections/transformation.md
+          - PLC communication checks: data_collection/plc_connections/diagnostics.md
       - IoT connections:
           - Overview: data_collection/IoT/IoT.md
           - HTTP: data_collection/IoT/http.md
@@ -53,13 +53,13 @@ nav:
           - Actions: data_collection/IoT/actions.md
   - Data storage:
       - Storage: data_storage/storage/storage.md
-      - Archives: data_storage/archives/archives_en.md
-      - Trends: data_storage/archives/trends_en.md
-      - Aggregates: data_storage/archives/aggregates_en.md
-      - Historian server: data_storage/historian/historian_server_en.md
+      - Archives: data_storage/archives/archives.md
+      - Trends: data_storage/archives/trends.md
+      - Aggregates: data_storage/archives/aggregates.md
+      - Historian server: data_storage/historian/historian_server.md
   - Alarms and events:
-      - Messages and alarms: alarms/alarm/alarm_en.md
-      - Dispatcher advisor: alarms/dsf/dsf_en.md
+      - Messages and alarms: alarms/alarm/alarm.md
+      - Dispatcher advisor: alarms/dsf/dsf.md
   - Project objects:
       - Primitives: project_objects/primitives/primitives.md
       - Prototypes: project_objects/prototypes/prototypes.md
@@ -85,25 +85,25 @@ nav:
       - Library modules: project_logic/library_modules/library_modules.md
       - JS libraries: project_logic/js_library/js_library.md
   - Integrations:
-      - Microsoft Power BI: integrations/powerbi/PowerBi_FP_en.md
+      - Microsoft Power BI: integrations/powerbi/PowerBi_FP.md
       - REST API interface: integrations/rest api/rest api.md
       - OPC UA client (quick start): integrations/opc_ua/opc_ua_client.md
-      - Power BI (quick start): integrations/powerbi/powerbi_en.md
-      - Loading data into InfluxDB: integrations/influxdb/influxdb_en.md
+      - Power BI (quick start): integrations/powerbi/powerbi.md
+      - Loading data into InfluxDB: integrations/influxdb/influxdb.md
       - Powerfactory Service: integrations/powerfactory_service/powerfactory_service.md
   - Prototype templates:
-      - InfluxDB integration template: templates/influxdb/influxdb_en.md
-      - Pump template: templates/pump/pump_en.md
-      - Sensor template: templates/sensor/sensor_en.md
+      - InfluxDB integration template: templates/influxdb/influxdb.md
+      - Pump template: templates/pump/pump.md
+      - Sensor template: templates/sensor/sensor.md
   - Machine learning:
-      - Forecasting models: machine_learning/forecasting_models_en.md
-      - Project export: machine_learning/project_export_en.md
+      - Forecasting models: machine_learning/forecasting_models.md
+      - Project export: machine_learning/project_export.md
   - Administration:
       - Resource redundancy: administration/redundancy/redundancy.md
       - Cluster nodes: administration/nodes/nodes.md
       - Licensing: administration/license/license.md
-      - Replication: administration/replica/replica_en.md
-      - Git module: administration/git/git_en.md
+      - Replication: administration/replica/replica.md
+      - Git module: administration/git/git.md
       - Diagnostics of Runtime objects: administration/diagnostics/diagnostics.md
       - Server logs: administration/logs/logs.md
       - Version and update: administration/update/update.md

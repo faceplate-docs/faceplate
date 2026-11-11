@@ -15,8 +15,9 @@ DEPLOYMENT.md how the site is built and deployed
 
 Each topic lives in its own folder with an `images/` sub-folder next to the
 page, for example `docs/en/data_storage/storage/storage.md` and
-`docs/en/data_storage/storage/images/1.png`. English pages end in `_en.md`, Russian pages
-in `_ru.md`, where the folder name alone is not enough to tell them apart.
+`docs/en/data_storage/storage/images/1.png`. The language is given by the top
+folder (`docs/en`, `docs/ru`, `docs/kz`); a page has the same folder and file
+name in every language, without a language suffix.
 
 Every topic should exist in both languages. When you add or rename a page,
 add or rename its counterpart in the other language too (or create it with a
@@ -30,7 +31,7 @@ the table of contents in `README.md`.
 - Images are referenced with relative paths (`images/name.png`), never with
   absolute paths or links to another branch.
 - Links to other pages are relative to the current file, for example
-  `../plc_connections/general_en.md`. Links that start with `/` do not work on
+  `../plc_connections/general.md`. Links that start with `/` do not work on
   GitHub.
 - Pages that were written by a specific author end with an author line such
   as `> _written by nkn_`.

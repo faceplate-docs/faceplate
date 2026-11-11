@@ -26,8 +26,8 @@ and deployed (MkDocs + Material, Docker or GitHub Pages).
 ## Repository structure
 
 Each topic lives in its own folder with its images next to the page. The
-English and Russian trees are organised the same way, but some file names
-differ between the languages.
+English and Russian trees are organised the same way, with the same folder
+and file names; the language is given by the top folder.
 
 ```
 docs/
@@ -42,7 +42,7 @@ docs/
 │   │   │   └── diagnostics.md
 │   │   ├── git/
 │   │   │   ├── images/  (2 files)
-│   │   │   └── git_en.md
+│   │   │   └── git.md
 │   │   ├── license/
 │   │   │   ├── images/  (7 files)
 │   │   │   └── license.md
@@ -57,17 +57,17 @@ docs/
 │   │   │   └── redundancy.md
 │   │   ├── replica/
 │   │   │   ├── images/  (2 files)
-│   │   │   └── replica_en.md
+│   │   │   └── replica.md
 │   │   └── update/
 │   │       ├── images/  (3 files)
 │   │       └── update.md
 │   ├── alarms/
 │   │   ├── alarm/
 │   │   │   ├── images/  (7 files)
-│   │   │   └── alarm_en.md
+│   │   │   └── alarm.md
 │   │   └── dsf/
 │   │       ├── images/  (3 files)
-│   │       └── dsf_en.md
+│   │       └── dsf.md
 │   ├── data_collection/
 │   │   ├── IoT/
 │   │   │   ├── images/  (26 files)
@@ -81,35 +81,35 @@ docs/
 │   │       ├── images/  (108 files)
 │   │       ├── examples/
 │   │       │   └── modbus_training_server.py
-│   │       ├── bindings_en.md
-│   │       ├── diagnostics_en.md
-│   │       ├── general_en.md
-│   │       ├── iec_reference_en.md
+│   │       ├── bindings.md
+│   │       ├── diagnostics.md
+│   │       ├── general.md
+│   │       ├── iec_reference.md
 │   │       ├── index.md
-│   │       ├── old_plc_opcua_client_connection_en.md
-│   │       ├── old_plc_opcua_server_connection_en.md
-│   │       ├── old_plc_s7_connection_en.md
-│   │       ├── plc_dcon_connection_en.md
-│   │       ├── plc_ethernet_ip_connection_en.md
-│   │       ├── plc_iec101_client_connection_en.md
-│   │       ├── plc_iec101_server_connection_en.md
-│   │       ├── plc_iec104_client_connection_en.md
-│   │       ├── plc_iec104_server_connection_en.md
-│   │       ├── plc_iec62056_connection_en.md
-│   │       ├── plc_mbus_connection_en.md
-│   │       ├── plc_mercury230_connection_en.md
-│   │       ├── plc_modbus_connection_en.md
-│   │       ├── plc_opcda_connection_en.md
-│   │       ├── plc_snmp_connection_en.md
-│   │       └── transformation_en.md
+│   │       ├── old_plc_opcua_client_connection.md
+│   │       ├── old_plc_opcua_server_connection.md
+│   │       ├── old_plc_s7_connection.md
+│   │       ├── plc_dcon_connection.md
+│   │       ├── plc_ethernet_ip_connection.md
+│   │       ├── plc_iec101_client_connection.md
+│   │       ├── plc_iec101_server_connection.md
+│   │       ├── plc_iec104_client_connection.md
+│   │       ├── plc_iec104_server_connection.md
+│   │       ├── plc_iec62056_connection.md
+│   │       ├── plc_mbus_connection.md
+│   │       ├── plc_mercury230_connection.md
+│   │       ├── plc_modbus_connection.md
+│   │       ├── plc_opcda_connection.md
+│   │       ├── plc_snmp_connection.md
+│   │       └── transformation.md
 │   ├── data_storage/
 │   │   ├── archives/
 │   │   │   ├── images/  (10 files)
-│   │   │   ├── aggregates_en.md
-│   │   │   ├── archives_en.md
-│   │   │   └── trends_en.md
+│   │   │   ├── aggregates.md
+│   │   │   ├── archives.md
+│   │   │   └── trends.md
 │   │   ├── historian/
-│   │   │   └── historian_server_en.md
+│   │   │   └── historian_server.md
 │   │   └── storage/
 │   │       ├── images/  (10 files)
 │   │       └── storage.md
@@ -121,21 +121,21 @@ docs/
 │   │       └── FACEPLATE-start.md
 │   ├── integrations/
 │   │   ├── influxdb/
-│   │   │   └── influxdb_en.md
+│   │   │   └── influxdb.md
 │   │   ├── opc_ua/
 │   │   │   └── opc_ua_client.md
 │   │   ├── powerbi/
 │   │   │   ├── images/  (1 file)
-│   │   │   ├── powerbi_en.md
-│   │   │   └── PowerBi_FP_en.md
+│   │   │   ├── powerbi.md
+│   │   │   └── PowerBi_FP.md
 │   │   ├── powerfactory_service/
 │   │   │   ├── images/  (7 files)
 │   │   │   └── powerfactory_service.md
 │   │   └── rest api/
 │   │       └── rest api.md
 │   ├── machine_learning/
-│   │   ├── forecasting_models_en.md
-│   │   └── project_export_en.md
+│   │   ├── forecasting_models.md
+│   │   └── project_export.md
 │   ├── mnemo/
 │   │   ├── images/  (101 files)
 │   │   ├── alarms_trends.md
@@ -179,11 +179,11 @@ docs/
 │   │       └── prototypes.md
 │   ├── templates/
 │   │   ├── influxdb/
-│   │   │   └── influxdb_en.md
+│   │   │   └── influxdb.md
 │   │   ├── pump/
-│   │   │   └── pump_en.md
+│   │   │   └── pump.md
 │   │   └── sensor/
-│   │       └── sensor_en.md
+│   │       └── sensor.md
 │   └── readme.md
 ├── ru/
 │   ├── access/
@@ -196,7 +196,7 @@ docs/
 │   │   │   └── diagnostics.md
 │   │   ├── git/
 │   │   │   ├── images/  (2 files)
-│   │   │   └── git_ru.md
+│   │   │   └── git.md
 │   │   ├── license/
 │   │   │   ├── images/  (7 files)
 │   │   │   └── license.md
@@ -211,17 +211,17 @@ docs/
 │   │   │   └── redundancy.md
 │   │   ├── replica/
 │   │   │   ├── images/  (2 files)
-│   │   │   └── replica_ru.md
+│   │   │   └── replica.md
 │   │   └── update/
 │   │       ├── images/  (3 files)
 │   │       └── update.md
 │   ├── alarms/
 │   │   ├── alarm/
 │   │   │   ├── images/  (7 files)
-│   │   │   └── alarm_ru.md
+│   │   │   └── alarm.md
 │   │   └── dsf/
 │   │       ├── images/  (3 files)
-│   │       └── dsf_ru.md
+│   │       └── dsf.md
 │   ├── data_collection/
 │   │   ├── IoT/
 │   │   │   ├── images/  (26 files)
@@ -235,33 +235,33 @@ docs/
 │   │       ├── images/  (108 files)
 │   │       ├── examples/
 │   │       │   └── modbus_training_server.py
-│   │       ├── bindings_ru.md
-│   │       ├── diagnostics_ru.md
-│   │       ├── general_ru.md
-│   │       ├── iec_reference_ru.md
+│   │       ├── bindings.md
+│   │       ├── diagnostics.md
+│   │       ├── general.md
+│   │       ├── iec_reference.md
 │   │       ├── index.md
-│   │       ├── old_plc_opcua_client_connection_ru.md
-│   │       ├── old_plc_opcua_server_connection_ru.md
-│   │       ├── old_plc_s7_connection_ru.md
-│   │       ├── plc_dcon_connection_ru.md
-│   │       ├── plc_ethernet_ip_connection_ru.md
-│   │       ├── plc_iec101_client_connection_ru.md
-│   │       ├── plc_iec101_server_connection_ru.md
-│   │       ├── plc_iec104_client_connection_ru.md
-│   │       ├── plc_iec104_server_connection_ru.md
-│   │       ├── plc_iec62056_connection_ru.md
-│   │       ├── plc_mbus_connection_ru.md
-│   │       ├── plc_mercury230_connection_ru.md
-│   │       ├── plc_modbus_connection_ru.md
-│   │       ├── plc_opcda_connection_ru.md
-│   │       ├── plc_snmp_connection_ru.md
-│   │       └── transformation_ru.md
+│   │       ├── old_plc_opcua_client_connection.md
+│   │       ├── old_plc_opcua_server_connection.md
+│   │       ├── old_plc_s7_connection.md
+│   │       ├── plc_dcon_connection.md
+│   │       ├── plc_ethernet_ip_connection.md
+│   │       ├── plc_iec101_client_connection.md
+│   │       ├── plc_iec101_server_connection.md
+│   │       ├── plc_iec104_client_connection.md
+│   │       ├── plc_iec104_server_connection.md
+│   │       ├── plc_iec62056_connection.md
+│   │       ├── plc_mbus_connection.md
+│   │       ├── plc_mercury230_connection.md
+│   │       ├── plc_modbus_connection.md
+│   │       ├── plc_opcda_connection.md
+│   │       ├── plc_snmp_connection.md
+│   │       └── transformation.md
 │   ├── data_storage/
 │   │   ├── archives/
 │   │   │   ├── images/  (10 files)
-│   │   │   ├── aggregates_ru.md
-│   │   │   ├── archives_ru.md
-│   │   │   └── trends_ru.md
+│   │   │   ├── aggregates.md
+│   │   │   ├── archives.md
+│   │   │   └── trends.md
 │   │   ├── historian/
 │   │   │   └── historian_server.md
 │   │   └── storage/
@@ -280,16 +280,16 @@ docs/
 │   │   │   └── opc_ua_client.md
 │   │   ├── powerbi/
 │   │   │   ├── images/  (1 file)
-│   │   │   ├── PowerBi_FP_ru.md
-│   │   │   └── powerbi_ru.md
+│   │   │   ├── powerbi.md
+│   │   │   └── PowerBi_FP.md
 │   │   ├── powerfactory_service/
 │   │   │   ├── images/  (7 files)
 │   │   │   └── powerfactory_service.md
 │   │   └── rest api/
 │   │       └── rest api.md
 │   ├── machine_learning/
-│   │   ├── forecasting_models_ru.md
-│   │   └── project_export_ru.md
+│   │   ├── forecasting_models.md
+│   │   └── project_export.md
 │   ├── mnemo/
 │   │   ├── images/  (101 files)
 │   │   ├── alarms_trends.md
@@ -373,26 +373,26 @@ favicon and brand stylesheet), `tools/` (site build and link checker),
 
 ### Data acquisition
 - [PLC connections: overview](docs/en/data_collection/plc_connections/index.md)
-  - [Field preparation and bindings](docs/en/data_collection/plc_connections/bindings_en.md)
-  - [Modbus TCP training example](docs/en/data_collection/plc_connections/general_en.md)
-  - [Modbus TCP/RTU](docs/en/data_collection/plc_connections/plc_modbus_connection_en.md)
-  - [DCON](docs/en/data_collection/plc_connections/plc_dcon_connection_en.md)
-  - [OPC UA client](docs/en/data_collection/plc_connections/old_plc_opcua_client_connection_en.md)
-  - [OPC UA server](docs/en/data_collection/plc_connections/old_plc_opcua_server_connection_en.md)
-  - [OPC DA (Classic)](docs/en/data_collection/plc_connections/plc_opcda_connection_en.md)
-  - [Siemens S7 (ISO-on-TCP)](docs/en/data_collection/plc_connections/old_plc_s7_connection_en.md)
-  - [EtherNet/IP (Rockwell Automation)](docs/en/data_collection/plc_connections/plc_ethernet_ip_connection_en.md)
-  - [IEC 60870-5-101 client](docs/en/data_collection/plc_connections/plc_iec101_client_connection_en.md)
-  - [IEC 60870-5-101 server](docs/en/data_collection/plc_connections/plc_iec101_server_connection_en.md)
-  - [IEC 60870-5-104 client](docs/en/data_collection/plc_connections/plc_iec104_client_connection_en.md)
-  - [IEC 60870-5-104 server](docs/en/data_collection/plc_connections/plc_iec104_server_connection_en.md)
-  - [M-Bus (Meter-Bus)](docs/en/data_collection/plc_connections/plc_mbus_connection_en.md)
-  - [Mercury 230](docs/en/data_collection/plc_connections/plc_mercury230_connection_en.md)
-  - [SNMP](docs/en/data_collection/plc_connections/plc_snmp_connection_en.md)
-  - [IEC 62056](docs/en/data_collection/plc_connections/plc_iec62056_connection_en.md)
-  - [IEC101/IEC104 types and attributes](docs/en/data_collection/plc_connections/iec_reference_en.md)
-  - [Transformation feature](docs/en/data_collection/plc_connections/transformation_en.md)
-  - [PLC communication checks](docs/en/data_collection/plc_connections/diagnostics_en.md)
+  - [Field preparation and bindings](docs/en/data_collection/plc_connections/bindings.md)
+  - [Modbus TCP training example](docs/en/data_collection/plc_connections/general.md)
+  - [Modbus TCP/RTU](docs/en/data_collection/plc_connections/plc_modbus_connection.md)
+  - [DCON](docs/en/data_collection/plc_connections/plc_dcon_connection.md)
+  - [OPC UA client](docs/en/data_collection/plc_connections/old_plc_opcua_client_connection.md)
+  - [OPC UA server](docs/en/data_collection/plc_connections/old_plc_opcua_server_connection.md)
+  - [OPC DA (Classic)](docs/en/data_collection/plc_connections/plc_opcda_connection.md)
+  - [Siemens S7 (ISO-on-TCP)](docs/en/data_collection/plc_connections/old_plc_s7_connection.md)
+  - [EtherNet/IP (Rockwell Automation)](docs/en/data_collection/plc_connections/plc_ethernet_ip_connection.md)
+  - [IEC 60870-5-101 client](docs/en/data_collection/plc_connections/plc_iec101_client_connection.md)
+  - [IEC 60870-5-101 server](docs/en/data_collection/plc_connections/plc_iec101_server_connection.md)
+  - [IEC 60870-5-104 client](docs/en/data_collection/plc_connections/plc_iec104_client_connection.md)
+  - [IEC 60870-5-104 server](docs/en/data_collection/plc_connections/plc_iec104_server_connection.md)
+  - [M-Bus (Meter-Bus)](docs/en/data_collection/plc_connections/plc_mbus_connection.md)
+  - [Mercury 230](docs/en/data_collection/plc_connections/plc_mercury230_connection.md)
+  - [SNMP](docs/en/data_collection/plc_connections/plc_snmp_connection.md)
+  - [IEC 62056](docs/en/data_collection/plc_connections/plc_iec62056_connection.md)
+  - [IEC101/IEC104 types and attributes](docs/en/data_collection/plc_connections/iec_reference.md)
+  - [Transformation feature](docs/en/data_collection/plc_connections/transformation.md)
+  - [PLC communication checks](docs/en/data_collection/plc_connections/diagnostics.md)
 - [IoT connections](docs/en/data_collection/IoT/IoT.md)
   - [HTTP](docs/en/data_collection/IoT/http.md)
   - [MQTT](docs/en/data_collection/IoT/mqtt.md)
@@ -402,12 +402,12 @@ favicon and brand stylesheet), `tools/` (site build and link checker),
 
 ### Data storage
 - [Storages: which servers hold the project data](docs/en/data_storage/storage/storage.md)
-- [Archives](docs/en/data_storage/archives/archives_en.md)
-- [Historian server](docs/en/data_storage/historian/historian_server_en.md)
+- [Archives](docs/en/data_storage/archives/archives.md)
+- [Historian server](docs/en/data_storage/historian/historian_server.md)
 
 ### Alarms and events
-- [Messages and alarms](docs/en/alarms/alarm/alarm_en.md)
-- [Dispatcher advisor](docs/en/alarms/dsf/dsf_en.md)
+- [Messages and alarms](docs/en/alarms/alarm/alarm.md)
+- [Dispatcher advisor](docs/en/alarms/dsf/dsf.md)
 
 ### Project objects
 - [Primitives](docs/en/project_objects/primitives/primitives.md)
@@ -437,28 +437,28 @@ favicon and brand stylesheet), `tools/` (site build and link checker),
 - [JS libraries](docs/en/project_logic/js_library/js_library.md)
 
 ### Integrations
-- [Microsoft Power BI](docs/en/integrations/powerbi/PowerBi_FP_en.md)
+- [Microsoft Power BI](docs/en/integrations/powerbi/PowerBi_FP.md)
 - [REST API interface](<docs/en/integrations/rest api/rest api.md>)
 - [OPC UA client (quick start)](docs/en/integrations/opc_ua/opc_ua_client.md)
-- [Power BI (quick start)](docs/en/integrations/powerbi/powerbi_en.md)
-- [Loading data into InfluxDB over HTTPS](docs/en/integrations/influxdb/influxdb_en.md)
+- [Power BI (quick start)](docs/en/integrations/powerbi/powerbi.md)
+- [Loading data into InfluxDB over HTTPS](docs/en/integrations/influxdb/influxdb.md)
 - [Powerfactory Service](docs/en/integrations/powerfactory_service/powerfactory_service.md)
 
 ### Prototype templates
-- [InfluxDB integration template](docs/en/templates/influxdb/influxdb_en.md)
-- [Pump template](docs/en/templates/pump/pump_en.md)
-- [Sensor template](docs/en/templates/sensor/sensor_en.md)
+- [InfluxDB integration template](docs/en/templates/influxdb/influxdb.md)
+- [Pump template](docs/en/templates/pump/pump.md)
+- [Sensor template](docs/en/templates/sensor/sensor.md)
 
 ### Machine learning
-- [Forecasting models](docs/en/machine_learning/forecasting_models_en.md)
-- [Project export (`faceplate_project-*.xlsx`)](docs/en/machine_learning/project_export_en.md)
+- [Forecasting models](docs/en/machine_learning/forecasting_models.md)
+- [Project export (`faceplate_project-*.xlsx`)](docs/en/machine_learning/project_export.md)
 
 ### Administration
 - [Resource redundancy](docs/en/administration/redundancy/redundancy.md)
 - [Cluster nodes](docs/en/administration/nodes/nodes.md)
 - [Licensing](docs/en/administration/license/license.md)
-- [Replication](docs/en/administration/replica/replica_en.md)
-- [Git module](docs/en/administration/git/git_en.md)
+- [Replication](docs/en/administration/replica/replica.md)
+- [Git module](docs/en/administration/git/git.md)
 - [Diagnostics of Runtime objects](docs/en/administration/diagnostics/diagnostics.md)
 - [Server logs](docs/en/administration/logs/logs.md)
 - [Version and update](docs/en/administration/update/update.md)

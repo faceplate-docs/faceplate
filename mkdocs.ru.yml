@@ -31,26 +31,26 @@ nav:
   - Сбор данных:
       - PLC-соединения:
           - Общие сведения: data_collection/plc_connections/index.md
-          - Подготовка полей и привязки: data_collection/plc_connections/bindings_ru.md
-          - Учебный пример Modbus TCP: data_collection/plc_connections/general_ru.md
-          - Modbus TCP/RTU: data_collection/plc_connections/plc_modbus_connection_ru.md
-          - DCON: data_collection/plc_connections/plc_dcon_connection_ru.md
-          - OPC UA Client: data_collection/plc_connections/old_plc_opcua_client_connection_ru.md
-          - OPC UA Server: data_collection/plc_connections/old_plc_opcua_server_connection_ru.md
-          - OPC DA (Classic): data_collection/plc_connections/plc_opcda_connection_ru.md
-          - Siemens S7 (ISO-on-TCP): data_collection/plc_connections/old_plc_s7_connection_ru.md
-          - Ethernet/IP: data_collection/plc_connections/plc_ethernet_ip_connection_ru.md
-          - IEC 60870-5-101 Client: data_collection/plc_connections/plc_iec101_client_connection_ru.md
-          - IEC 60870-5-101 Server: data_collection/plc_connections/plc_iec101_server_connection_ru.md
-          - IEC 60870-5-104 Client: data_collection/plc_connections/plc_iec104_client_connection_ru.md
-          - IEC 60870-5-104 Server: data_collection/plc_connections/plc_iec104_server_connection_ru.md
-          - M-Bus (Meter-Bus): data_collection/plc_connections/plc_mbus_connection_ru.md
-          - Меркурий 230: data_collection/plc_connections/plc_mercury230_connection_ru.md
-          - SNMP: data_collection/plc_connections/plc_snmp_connection_ru.md
-          - IEC 62056: data_collection/plc_connections/plc_iec62056_connection_ru.md
-          - "IEC101/IEC104: типы и атрибуты": data_collection/plc_connections/iec_reference_ru.md
-          - Функция Transformation: data_collection/plc_connections/transformation_ru.md
-          - Проверка PLC-обмена: data_collection/plc_connections/diagnostics_ru.md
+          - Подготовка полей и привязки: data_collection/plc_connections/bindings.md
+          - Учебный пример Modbus TCP: data_collection/plc_connections/general.md
+          - Modbus TCP/RTU: data_collection/plc_connections/plc_modbus_connection.md
+          - DCON: data_collection/plc_connections/plc_dcon_connection.md
+          - OPC UA Client: data_collection/plc_connections/old_plc_opcua_client_connection.md
+          - OPC UA Server: data_collection/plc_connections/old_plc_opcua_server_connection.md
+          - OPC DA (Classic): data_collection/plc_connections/plc_opcda_connection.md
+          - Siemens S7 (ISO-on-TCP): data_collection/plc_connections/old_plc_s7_connection.md
+          - Ethernet/IP: data_collection/plc_connections/plc_ethernet_ip_connection.md
+          - IEC 60870-5-101 Client: data_collection/plc_connections/plc_iec101_client_connection.md
+          - IEC 60870-5-101 Server: data_collection/plc_connections/plc_iec101_server_connection.md
+          - IEC 60870-5-104 Client: data_collection/plc_connections/plc_iec104_client_connection.md
+          - IEC 60870-5-104 Server: data_collection/plc_connections/plc_iec104_server_connection.md
+          - M-Bus (Meter-Bus): data_collection/plc_connections/plc_mbus_connection.md
+          - Меркурий 230: data_collection/plc_connections/plc_mercury230_connection.md
+          - SNMP: data_collection/plc_connections/plc_snmp_connection.md
+          - IEC 62056: data_collection/plc_connections/plc_iec62056_connection.md
+          - "IEC101/IEC104: типы и атрибуты": data_collection/plc_connections/iec_reference.md
+          - Функция Transformation: data_collection/plc_connections/transformation.md
+          - Проверка PLC-обмена: data_collection/plc_connections/diagnostics.md
       - IoT-соединения:
           - Общие сведения: data_collection/IoT/IoT.md
           - HTTP: data_collection/IoT/http.md
@@ -60,13 +60,13 @@ nav:
           - Действия: data_collection/IoT/actions.md
   - Хранение данных:
       - Хранилища: data_storage/storage/storage.md
-      - Архивы: data_storage/archives/archives_ru.md
-      - Тренды: data_storage/archives/trends_ru.md
-      - Агрегаты: data_storage/archives/aggregates_ru.md
+      - Архивы: data_storage/archives/archives.md
+      - Тренды: data_storage/archives/trends.md
+      - Агрегаты: data_storage/archives/aggregates.md
       - Historian-сервер: data_storage/historian/historian_server.md
   - Тревоги и события:
-      - Сообщения и тревоги: alarms/alarm/alarm_ru.md
-      - Советчик диспетчера: alarms/dsf/dsf_ru.md
+      - Сообщения и тревоги: alarms/alarm/alarm.md
+      - Советчик диспетчера: alarms/dsf/dsf.md
   - Объекты проекта:
       - Примитивы: project_objects/primitives/primitives.md
       - Прототипы: project_objects/prototypes/prototypes.md
@@ -92,10 +92,10 @@ nav:
       - Библиотечные модули: project_logic/library_modules/library_modules.md
       - JS-библиотеки: project_logic/js_library/js_library.md
   - Интеграции:
-      - Microsoft Power BI: integrations/powerbi/PowerBi_FP_ru.md
+      - Microsoft Power BI: integrations/powerbi/PowerBi_FP.md
       - REST API интерфейс: integrations/rest api/rest api.md
       - OPC UA Client (пример): integrations/opc_ua/opc_ua_client.md
-      - Power BI (пример): integrations/powerbi/powerbi_ru.md
+      - Power BI (пример): integrations/powerbi/powerbi.md
       - Загрузка данных в InfluxDB: integrations/influxdb/influxdb.md
       - Powerfactory Service: integrations/powerfactory_service/powerfactory_service.md
   - Шаблоны прототипов:
@@ -103,14 +103,14 @@ nav:
       - Шаблон Pump: templates/pump/pump.md
       - Шаблон Sensor: templates/sensor/sensor.md
   - Машинное обучение:
-      - Модели прогнозирования: machine_learning/forecasting_models_ru.md
-      - Экспорт проекта: machine_learning/project_export_ru.md
+      - Модели прогнозирования: machine_learning/forecasting_models.md
+      - Экспорт проекта: machine_learning/project_export.md
   - Администрирование:
       - Резервирование ресурсов: administration/redundancy/redundancy.md
       - Узлы кластера: administration/nodes/nodes.md
       - Лицензирование: administration/license/license.md
-      - Репликация: administration/replica/replica_ru.md
-      - Модуль Git: administration/git/git_ru.md
+      - Репликация: administration/replica/replica.md
+      - Модуль Git: administration/git/git.md
       - Диагностика объектов Runtime: administration/diagnostics/diagnostics.md
       - Журналы сервера: administration/logs/logs.md
       - Версия и обновление: administration/update/update.md
