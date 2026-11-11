@@ -92,12 +92,12 @@ nav:
       - Библиотечные модули: project_logic/library_modules/library_modules.md
       - JS-библиотеки: project_logic/js_library/js_library.md
   - Интеграции:
-      - Microsoft Power BI: powerbi/PowerBi_FP_ru.md
-      - REST API интерфейс: quick_start/connectivity/rest api/rest api.md
-      - OPC UA Client (пример): quick_start/connectivity/opc_ua/opc_ua_client.md
-      - Power BI (пример): quick_start/connectivity/powerbi/powerbi_ru.md
-      - Загрузка данных в InfluxDB: quick_start/connectivity/influxdb/influxdb.md
-      - Powerfactory Service: powerfactory_service/powerfactory_service.md
+      - Microsoft Power BI: integrations/powerbi/PowerBi_FP_ru.md
+      - REST API интерфейс: integrations/rest api/rest api.md
+      - OPC UA Client (пример): integrations/opc_ua/opc_ua_client.md
+      - Power BI (пример): integrations/powerbi/powerbi_ru.md
+      - Загрузка данных в InfluxDB: integrations/influxdb/influxdb.md
+      - Powerfactory Service: integrations/powerfactory_service/powerfactory_service.md
   - Шаблоны прототипов:
       - Шаблон интеграции с InfluxDB: quick_start/prototypes/influxdb/influxdb.md
       - Шаблон Pump: quick_start/prototypes/pump/pump.md

@@ -85,12 +85,12 @@ nav:
       - Library modules: project_logic/library_modules/library_modules.md
       - JS libraries: project_logic/js_library/js_library.md
   - Integrations:
-      - Microsoft Power BI: powerbi/PowerBi_FP_en.md
-      - REST API interface: quick_start/connectivity/rest api/rest api.md
-      - OPC UA client (quick start): quick_start/connectivity/opc_ua/opc_ua_client.md
-      - Power BI (quick start): quick_start/connectivity/powerbi/powerbi_en.md
-      - Loading data into InfluxDB: quick_start/connectivity/influxdb/influxdb_en.md
-      - Powerfactory Service: powerfactory_service/powerfactory_service.md
+      - Microsoft Power BI: integrations/powerbi/PowerBi_FP_en.md
+      - REST API interface: integrations/rest api/rest api.md
+      - OPC UA client (quick start): integrations/opc_ua/opc_ua_client.md
+      - Power BI (quick start): integrations/powerbi/powerbi_en.md
+      - Loading data into InfluxDB: integrations/influxdb/influxdb_en.md
+      - Powerfactory Service: integrations/powerfactory_service/powerfactory_service.md
   - Prototype templates:
       - InfluxDB integration template: quick_start/prototypes/influxdb/influxdb_en.md
       - Pump template: quick_start/prototypes/pump/pump_en.md

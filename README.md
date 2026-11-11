@@ -119,6 +119,20 @@ docs/
 │   │   └── project_structure/
 │   │       ├── images/  (9 files)
 │   │       └── FACEPLATE-start.md
+│   ├── integrations/
+│   │   ├── influxdb/
+│   │   │   └── influxdb_en.md
+│   │   ├── opc_ua/
+│   │   │   └── opc_ua_client.md
+│   │   ├── powerbi/
+│   │   │   ├── images/  (1 file)
+│   │   │   ├── powerbi_en.md
+│   │   │   └── PowerBi_FP_en.md
+│   │   ├── powerfactory_service/
+│   │   │   ├── images/  (7 files)
+│   │   │   └── powerfactory_service.md
+│   │   └── rest api/
+│   │       └── rest api.md
 │   ├── machine_learning/
 │   │   ├── forecasting_models_en.md
 │   │   └── project_export_en.md
@@ -137,12 +151,6 @@ docs/
 │   │   ├── reports.md
 │   │   ├── screens.md
 │   │   └── tables.md
-│   ├── powerbi/
-│   │   ├── images/  (1 file)
-│   │   └── PowerBi_FP_en.md
-│   ├── powerfactory_service/
-│   │   ├── images/  (7 files)
-│   │   └── powerfactory_service.md
 │   ├── project_logic/
 │   │   ├── calculation/
 │   │   │   ├── images/  (11 files)
@@ -170,15 +178,6 @@ docs/
 │   │       ├── images/  (18 files)
 │   │       └── prototypes.md
 │   ├── quick_start/
-│   │   ├── connectivity/
-│   │   │   ├── influxdb/
-│   │   │   │   └── influxdb_en.md
-│   │   │   ├── opc_ua/
-│   │   │   │   └── opc_ua_client.md
-│   │   │   ├── powerbi/
-│   │   │   │   └── powerbi_en.md
-│   │   │   └── rest api/
-│   │   │       └── rest api.md
 │   │   └── prototypes/
 │   │       ├── influxdb/
 │   │       │   └── influxdb_en.md
@@ -275,6 +274,20 @@ docs/
 │   │   └── project_structure/
 │   │       ├── images/  (9 files)
 │   │       └── FACEPLATE-start.md
+│   ├── integrations/
+│   │   ├── influxdb/
+│   │   │   └── influxdb.md
+│   │   ├── opc_ua/
+│   │   │   └── opc_ua_client.md
+│   │   ├── powerbi/
+│   │   │   ├── images/  (1 file)
+│   │   │   ├── PowerBi_FP_ru.md
+│   │   │   └── powerbi_ru.md
+│   │   ├── powerfactory_service/
+│   │   │   ├── images/  (7 files)
+│   │   │   └── powerfactory_service.md
+│   │   └── rest api/
+│   │       └── rest api.md
 │   ├── machine_learning/
 │   │   ├── forecasting_models_ru.md
 │   │   └── project_export_ru.md
@@ -293,12 +306,6 @@ docs/
 │   │   ├── reports.md
 │   │   ├── screens.md
 │   │   └── tables.md
-│   ├── powerbi/
-│   │   ├── images/  (1 file)
-│   │   └── PowerBi_FP_ru.md
-│   ├── powerfactory_service/
-│   │   ├── images/  (7 files)
-│   │   └── powerfactory_service.md
 │   ├── project_logic/
 │   │   ├── calculation/
 │   │   │   ├── images/  (11 files)
@@ -326,15 +333,6 @@ docs/
 │   │       ├── images/  (18 files)
 │   │       └── prototypes.md
 │   ├── quick_start/
-│   │   ├── connectivity/
-│   │   │   ├── influxdb/
-│   │   │   │   └── influxdb.md
-│   │   │   ├── opc_ua/
-│   │   │   │   └── opc_ua_client.md
-│   │   │   ├── powerbi/
-│   │   │   │   └── powerbi_ru.md
-│   │   │   └── rest api/
-│   │   │       └── rest api.md
 │   │   └── prototypes/
 │   │       ├── influxdb/
 │   │       │   └── influxdb.md
@@ -441,12 +439,12 @@ favicon and brand stylesheet), `tools/` (site build and link checker),
 - [JS libraries](docs/en/project_logic/js_library/js_library.md)
 
 ### Integrations
-- [Microsoft Power BI](docs/en/powerbi/PowerBi_FP_en.md)
-- [REST API interface](<docs/en/quick_start/connectivity/rest api/rest api.md>)
-- [OPC UA client (quick start)](docs/en/quick_start/connectivity/opc_ua/opc_ua_client.md)
-- [Power BI (quick start)](docs/en/quick_start/connectivity/powerbi/powerbi_en.md)
-- [Loading data into InfluxDB over HTTPS](docs/en/quick_start/connectivity/influxdb/influxdb_en.md)
-- [Powerfactory Service](docs/en/powerfactory_service/powerfactory_service.md)
+- [Microsoft Power BI](docs/en/integrations/powerbi/PowerBi_FP_en.md)
+- [REST API interface](<docs/en/integrations/rest api/rest api.md>)
+- [OPC UA client (quick start)](docs/en/integrations/opc_ua/opc_ua_client.md)
+- [Power BI (quick start)](docs/en/integrations/powerbi/powerbi_en.md)
+- [Loading data into InfluxDB over HTTPS](docs/en/integrations/influxdb/influxdb_en.md)
+- [Powerfactory Service](docs/en/integrations/powerfactory_service/powerfactory_service.md)
 
 ### Prototype templates
 - [InfluxDB integration template](docs/en/quick_start/prototypes/influxdb/influxdb_en.md)
