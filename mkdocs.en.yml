@@ -76,6 +76,7 @@ nav:
       - Data sources on a screen: mnemo/datasources.md
       - Scripts and events: mnemo/events.md
       - Screens and navigation: mnemo/screens.md
+      - Runtime desktop: mnemo/runtime_desktop/runtime_desktop.md
       - Reports and screen printing: mnemo/reports.md
       - Alarms and trends on a screen: mnemo/alarms_trends.md
       - Image library: mnemo/images.md
