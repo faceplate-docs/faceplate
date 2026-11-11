@@ -55,7 +55,7 @@ Redundancy and moving work between servers of one cluster. Before configuring st
 * open access between the servers to port 4369 and to the FACEPLATE inter-node port. By default the inter-node port is chosen anew at every start; to open it on a firewall, fix it in `vm.args` with two lines with the same value, for example:
     * `-kernel inet_dist_listen_min 9100`
     * `-kernel inet_dist_listen_max 9100`
-* open access from workstations to ports 9000 (HTTP) and 9443 (HTTPS), and to the ECOMET interface — 8000, see [Launch](../../project_structure/FACEPLATE-start.md#launch);
+* open access from workstations to ports 9000 (HTTP) and 9443 (HTTPS), and to the ECOMET interface — 8000, see [Launch](../../general/project_structure/FACEPLATE-start.md#launch);
 * each server has its own name in `faceplate/releases/<version>/vm.args` (the `-name` parameter, see [Resource Redundancy in Faceplate](../../administration/redundancy/redundancy.md#virtual-machine-settings-vmargs)) and a common `-setcookie`;
 * the servers find each other by name: `/etc/hosts` on each server lists the addresses of all cluster servers.
 

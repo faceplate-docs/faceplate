@@ -23,8 +23,8 @@ exclude_docs: |
 nav:
   - Общие сведения:
       - Общие сведения, запуск и лицензирование: readme.md
-      - Первые шаги в FACEPLATE Studio: project_structure/FACEPLATE-start.md
-      - Установка в Docker-контейнере: quick_start/deploy as docker.md
+      - Первые шаги в FACEPLATE Studio: general/project_structure/FACEPLATE-start.md
+      - Установка в Docker-контейнере: general/docker/deploy as docker.md
   - Доступ:
       - Пользователи: access/users.md
       - Роли и права доступа: access/roles.md

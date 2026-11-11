@@ -113,6 +113,12 @@ docs/
 │   │   └── storage/
 │   │       ├── images/  (10 files)
 │   │       └── storage.md
+│   ├── general/
+│   │   ├── docker/
+│   │   │   └── deploy as docker.md
+│   │   └── project_structure/
+│   │       ├── images/  (9 files)
+│   │       └── FACEPLATE-start.md
 │   ├── machine_learning/
 │   │   ├── forecasting_models_en.md
 │   │   └── project_export_en.md
@@ -163,9 +169,6 @@ docs/
 │   │   └── prototypes/
 │   │       ├── images/  (18 files)
 │   │       └── prototypes.md
-│   ├── project_structure/
-│   │   ├── images/  (9 files)
-│   │   └── FACEPLATE-start.md
 │   ├── quick_start/
 │   │   ├── connectivity/
 │   │   │   ├── influxdb/
@@ -176,14 +179,13 @@ docs/
 │   │   │   │   └── powerbi_en.md
 │   │   │   └── rest api/
 │   │   │       └── rest api.md
-│   │   ├── prototypes/
-│   │   │   ├── influxdb/
-│   │   │   │   └── influxdb_en.md
-│   │   │   ├── pump/
-│   │   │   │   └── pump_en.md
-│   │   │   └── sensor/
-│   │   │       └── sensor_en.md
-│   │   └── deploy as docker.md
+│   │   └── prototypes/
+│   │       ├── influxdb/
+│   │       │   └── influxdb_en.md
+│   │       ├── pump/
+│   │       │   └── pump_en.md
+│   │       └── sensor/
+│   │           └── sensor_en.md
 │   └── readme.md
 ├── ru/
 │   ├── access/
@@ -267,6 +269,12 @@ docs/
 │   │   └── storage/
 │   │       ├── images/  (10 files)
 │   │       └── storage.md
+│   ├── general/
+│   │   ├── docker/
+│   │   │   └── deploy as docker.md
+│   │   └── project_structure/
+│   │       ├── images/  (9 files)
+│   │       └── FACEPLATE-start.md
 │   ├── machine_learning/
 │   │   ├── forecasting_models_ru.md
 │   │   └── project_export_ru.md
@@ -317,9 +325,6 @@ docs/
 │   │   └── prototypes/
 │   │       ├── images/  (18 files)
 │   │       └── prototypes.md
-│   ├── project_structure/
-│   │   ├── images/  (9 files)
-│   │   └── FACEPLATE-start.md
 │   ├── quick_start/
 │   │   ├── connectivity/
 │   │   │   ├── influxdb/
@@ -330,14 +335,13 @@ docs/
 │   │   │   │   └── powerbi_ru.md
 │   │   │   └── rest api/
 │   │   │       └── rest api.md
-│   │   ├── prototypes/
-│   │   │   ├── influxdb/
-│   │   │   │   └── influxdb.md
-│   │   │   ├── pump/
-│   │   │   │   └── pump.md
-│   │   │   └── sensor/
-│   │   │       └── sensor.md
-│   │   └── deploy as docker.md
+│   │   └── prototypes/
+│   │       ├── influxdb/
+│   │       │   └── influxdb.md
+│   │       ├── pump/
+│   │       │   └── pump.md
+│   │       └── sensor/
+│   │           └── sensor.md
 │   ├── Git в Faceplate.md
 │   ├── readme.md
 │   ├── title.md
@@ -364,8 +368,8 @@ favicon and brand stylesheet), `tools/` (site build and link checker),
 
 ### General
 - [General information, launch and licensing](docs/en/readme.md)
-- [First steps in FACEPLATE Studio: project structure](docs/en/project_structure/FACEPLATE-start.md)
-- [Deploying FACEPLATE in a Docker container](<docs/en/quick_start/deploy as docker.md>)
+- [First steps in FACEPLATE Studio: project structure](docs/en/general/project_structure/FACEPLATE-start.md)
+- [Deploying FACEPLATE in a Docker container](<docs/en/general/docker/deploy as docker.md>)
 
 ### Access
 - [Users](docs/en/access/users.md)

@@ -21,7 +21,7 @@ For the integration engineer: how to find out which FACEPLATE version is running
 |---|---|
 | Node | One running FACEPLATE server. A node name looks like `fp@<server name>`. See [«Cluster nodes»](../nodes/nodes.md) |
 | Installation directory | The folder on the server where FACEPLATE is installed. It contains the `bin`, `releases` and `logs` folders |
-| Node database | The folder where the node keeps the project, archive values and the event log. By default this is `DB` in the installation directory. In a Docker install, a server folder is mounted into it, see [«Deploying in a Docker container»](../../quick_start/deploy%20as%20docker.md) |
+| Node database | The folder where the node keeps the project, archive values and the event log. By default this is `DB` in the installation directory. In a Docker install, a server folder is mounted into it, see [«Deploying in a Docker container»](../../general/docker/deploy%20as%20docker.md) |
 | Project export file | The `project.fp` file that Studio saves with the **Export project to file** button. It holds the project objects without the accumulated data |
 
 # Introduction

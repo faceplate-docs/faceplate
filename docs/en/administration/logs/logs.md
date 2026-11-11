@@ -57,7 +57,7 @@ The console window where `./faceplate console` runs does not duplicate the log: 
 
 In a cluster each node writes its own files on its own server. Look for an object's messages on the node where it runs — the value of the **Node** field in the object form (see [Finding the lines of an object](#finding-the-lines-of-an-object)). The list of nodes is on the **Servers** panel, see [Cluster nodes](../nodes/nodes.md).
 
-When installed in a Docker container, the `logs` folder is usually mapped to a folder on the server, see [Deploying in a Docker container](../../quick_start/deploy%20as%20docker.md).
+When installed in a Docker container, the `logs` folder is usually mapped to a folder on the server, see [Deploying in a Docker container](../../general/docker/deploy%20as%20docker.md).
 
 The logs can be moved to another folder, for example to a separate disk, see [Resource redundancy, section Logging configuration (fp.logger.config)](../redundancy/redundancy.md#logging-configuration-fploggerconfig). The new folder is used after the node is restarted.
 
