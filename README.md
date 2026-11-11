@@ -68,9 +68,6 @@ docs/
 │   │   └── dsf/
 │   │       ├── images/  (3 files)
 │   │       └── dsf_en.md
-│   ├── calculation/
-│   │   ├── images/  (11 files)
-│   │   └── calculation.md
 │   ├── data_collection/
 │   │   ├── IoT/
 │   │   │   ├── images/  (26 files)
@@ -116,12 +113,6 @@ docs/
 │   │   └── storage/
 │   │       ├── images/  (10 files)
 │   │       └── storage.md
-│   ├── js_library/
-│   │   ├── images/  (8 files)
-│   │   └── js_library.md
-│   ├── library_modules/
-│   │   ├── images/  (6 files)
-│   │   └── library_modules.md
 │   ├── machine_learning/
 │   │   ├── forecasting_models_en.md
 │   │   └── project_export_en.md
@@ -146,6 +137,19 @@ docs/
 │   ├── powerfactory_service/
 │   │   ├── images/  (7 files)
 │   │   └── powerfactory_service.md
+│   ├── project_logic/
+│   │   ├── calculation/
+│   │   │   ├── images/  (11 files)
+│   │   │   └── calculation.md
+│   │   ├── js_library/
+│   │   │   ├── images/  (8 files)
+│   │   │   └── js_library.md
+│   │   ├── library_modules/
+│   │   │   ├── images/  (6 files)
+│   │   │   └── library_modules.md
+│   │   └── user_script/
+│   │       ├── images/  (9 files)
+│   │       └── user_script.md
 │   ├── project_objects/
 │   │   ├── catalogs/
 │   │   │   ├── images/  (10 files)
@@ -180,9 +184,6 @@ docs/
 │   │   │   └── sensor/
 │   │   │       └── sensor_en.md
 │   │   └── deploy as docker.md
-│   ├── user_script/
-│   │   ├── images/  (9 files)
-│   │   └── user_script.md
 │   └── readme.md
 ├── ru/
 │   ├── access/
@@ -221,9 +222,6 @@ docs/
 │   │   └── dsf/
 │   │       ├── images/  (3 files)
 │   │       └── dsf_ru.md
-│   ├── calculation/
-│   │   ├── images/  (11 files)
-│   │   └── calculation.md
 │   ├── data_collection/
 │   │   ├── IoT/
 │   │   │   ├── images/  (26 files)
@@ -269,12 +267,6 @@ docs/
 │   │   └── storage/
 │   │       ├── images/  (10 files)
 │   │       └── storage.md
-│   ├── js_library/
-│   │   ├── images/  (8 files)
-│   │   └── js_library.md
-│   ├── library_modules/
-│   │   ├── images/  (6 files)
-│   │   └── library_modules.md
 │   ├── machine_learning/
 │   │   ├── forecasting_models_ru.md
 │   │   └── project_export_ru.md
@@ -299,6 +291,19 @@ docs/
 │   ├── powerfactory_service/
 │   │   ├── images/  (7 files)
 │   │   └── powerfactory_service.md
+│   ├── project_logic/
+│   │   ├── calculation/
+│   │   │   ├── images/  (11 files)
+│   │   │   └── calculation.md
+│   │   ├── js_library/
+│   │   │   ├── images/  (8 files)
+│   │   │   └── js_library.md
+│   │   ├── library_modules/
+│   │   │   ├── images/  (6 files)
+│   │   │   └── library_modules.md
+│   │   └── user_script/
+│   │       ├── images/  (9 files)
+│   │       └── user_script.md
 │   ├── project_objects/
 │   │   ├── catalogs/
 │   │   │   ├── images/  (10 files)
@@ -333,9 +338,6 @@ docs/
 │   │   │   └── sensor/
 │   │   │       └── sensor.md
 │   │   └── deploy as docker.md
-│   ├── user_script/
-│   │   ├── images/  (9 files)
-│   │   └── user_script.md
 │   ├── Git в Faceplate.md
 │   ├── readme.md
 │   ├── title.md
@@ -429,10 +431,10 @@ favicon and brand stylesheet), `tools/` (site build and link checker),
 - [Image library](docs/en/mnemo/images.md)
 
 ### Project logic
-- [Calculations](docs/en/calculation/calculation.md)
-- [User scripts](docs/en/user_script/user_script.md)
-- [Library modules](docs/en/library_modules/library_modules.md)
-- [JS libraries](docs/en/js_library/js_library.md)
+- [Calculations](docs/en/project_logic/calculation/calculation.md)
+- [User scripts](docs/en/project_logic/user_script/user_script.md)
+- [Library modules](docs/en/project_logic/library_modules/library_modules.md)
+- [JS libraries](docs/en/project_logic/js_library/js_library.md)
 
 ### Integrations
 - [Microsoft Power BI](docs/en/powerbi/PowerBi_FP_en.md)

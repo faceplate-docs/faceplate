@@ -87,10 +87,10 @@ nav:
       - Тревоги и тренды на экране: mnemo/alarms_trends.md
       - Библиотека изображений: mnemo/images.md
   - Логика проекта:
-      - Расчёты (Calculation): calculation/calculation.md
-      - Пользовательские скрипты: user_script/user_script.md
-      - Библиотечные модули: library_modules/library_modules.md
-      - JS-библиотеки: js_library/js_library.md
+      - Расчёты (Calculation): project_logic/calculation/calculation.md
+      - Пользовательские скрипты: project_logic/user_script/user_script.md
+      - Библиотечные модули: project_logic/library_modules/library_modules.md
+      - JS-библиотеки: project_logic/js_library/js_library.md
   - Интеграции:
       - Microsoft Power BI: powerbi/PowerBi_FP_ru.md
       - REST API интерфейс: quick_start/connectivity/rest api/rest api.md

@@ -37,7 +37,7 @@ A document for integration engineers who build projects in Studio.
 
 # Introduction
 
-A **prototype** is a template for any repeating part of a project: a piece of equipment, a plant section, a metering point, a set of connections or [calculations](../../calculation/calculation.md) — anything that is built from project objects and occurs more than once. The structure is described once in the prototype, and any number of **instances** is then created from it. Each instance receives a copy of the structure. Changes to the prototype are transferred to all instances with the **Sync** command.
+A **prototype** is a template for any repeating part of a project: a piece of equipment, a plant section, a metering point, a set of connections or [calculations](../../project_logic/calculation/calculation.md) — anything that is built from project objects and occurs more than once. The structure is described once in the prototype, and any number of **instances** is then created from it. Each instance receives a copy of the structure. Changes to the prototype are transferred to all instances with the **Sync** command.
 
 The section is in the Studio main menu: **Prototypes**. Every prototype has three parts, each opened with its own button:
 
@@ -98,7 +98,7 @@ Add the folder `motor` to the `Pump` content:
 
    ![Folder form in the content](images/content_folder_form.png)
 
-Objects of other types are added the same way, from their groups in the type selection dialog: `iot` ([IoT](../../data_collection/IoT/IoT.md)), `plc` ([PLC connections](../../data_collection/plc_connections/general_en.md)), `primitives` ([Primitives](../primitives/primitives.md)), `prototypes`, `system` (for example, [calculations](../../calculation/calculation.md) and [User Script](../../user_script/user_script.md)).
+Objects of other types are added the same way, from their groups in the type selection dialog: `iot` ([IoT](../../data_collection/IoT/IoT.md)), `plc` ([PLC connections](../../data_collection/plc_connections/general_en.md)), `primitives` ([Primitives](../primitives/primitives.md)), `prototypes`, `system` (for example, [calculations](../../project_logic/calculation/calculation.md) and [User Script](../../project_logic/user_script/user_script.md)).
 
 The **Folder** line of the form shows the path from the content root: `/` is the root itself. In the instance `P_201`, the folder `/motor` ends up at `P_201/motor`.
 

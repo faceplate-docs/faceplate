@@ -48,7 +48,7 @@ When to use [Calculation](../calculation/calculation.md) and when to use User Sc
 | Simple conditions: range limiting, fallback value, division-by-zero guard | Complex logic and flow control |
 | Extracting a bit from a word, mapping integer state codes | Protocol parsing, formula libraries |
 
-Running example: the script `sum_script` in the folder `script_demo` adds the values of two objects `a_in` and `b_in`, writes the sum to `sum_out` and the number of runs to `runs_out`. All four objects have a numeric field `value` of type `float`. How to create such objects is covered in the [Primitives](../project_objects/primitives/primitives.md) guide.
+Running example: the script `sum_script` in the folder `script_demo` adds the values of two objects `a_in` and `b_in`, writes the sum to `sum_out` and the number of runs to `runs_out`. All four objects have a numeric field `value` of type `float`. How to create such objects is covered in the [Primitives](../../project_objects/primitives/primitives.md) guide.
 
 You need access to Studio (`http://<server>:9000/fp/studio`) with an account allowed to modify the project.
 

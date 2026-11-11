@@ -38,7 +38,7 @@ The running example is the folder `diag_demo` with two Erlang user scripts:
 | `diag_script` | 2000 | Counts cycles, writes `cycle N` to the log on every cycle and the warning `cycle N: every fifth` on every fifth one |
 | `diag_fail` | 5000 | Divides by zero on every run and fails with `badarith` |
 
-How to create a user script is described in [User scripts](../../user_script/user_script.md).
+How to create a user script is described in [User scripts](../../project_logic/user_script/user_script.md).
 
 You need access to Studio (`http://<server>:9000/fp/studio`) with an account that is allowed to change the project.
 
