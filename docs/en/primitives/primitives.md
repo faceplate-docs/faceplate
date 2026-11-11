@@ -21,7 +21,7 @@ A document for integration engineers.
 |---|---|
 | Primitive | A user-defined project object type: a set of fields plus behaviour. Created in the **Primitives** section. |
 | Instance | An object in the General View created from a primitive. Its **Type** column shows the primitive name. |
-| General View | The Studio section with the tree of project objects (see [Project structure](../Project_strucure/FACEPLATE-start.md)). |
+| General View | The Studio section with the tree of project objects (see [Project structure](../project_structure/FACEPLATE-start.md)). |
 | Field | An instance attribute: name, type, storage, indexes, default value. |
 | System field | A field that every project object has. Shown with **Show system fields**; not editable. |
 | Run-time field | A field with the **Run-time** flag. Shown in the instance form. |

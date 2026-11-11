@@ -29,7 +29,7 @@ A document for integration engineers who build projects in Studio.
 | Synchronization (Sync) | Transfer of the current state of a prototype to its instances in the selected modes |
 | Nested prototype | A prototype whose instance lies in the content of another prototype |
 | Prototype group | The folder of a prototype in the type selection dialog (`prototypes / <group>`) |
-| General View | The Studio section with the tree of project objects (see [Project structure](../Project_strucure/FACEPLATE-start.md)) |
+| General View | The Studio section with the tree of project objects (see [Project structure](../project_structure/FACEPLATE-start.md)) |
 | Run-time field | A field with the **Run-time** flag. Shown on the **Runtime** tab of the instance form |
 | Storage `disc` / `ramdisc` / `ram` | Where the field value is stored: on disk; in memory with a copy on disk; in memory only |
 | Index `simple` / `3gram` / `datetime` | A search index of the field: by exact value; by substring; by date and time |
@@ -98,7 +98,7 @@ Add the folder `motor` to the `Pump` content:
 
    ![Folder form in the content](images/content_folder_form.png)
 
-Objects of other types are added the same way, from their groups in the type selection dialog: `iot` ([IoT](../data_collection/IoT/IoT.md)), `plc` ([PLC connections](../data_collection/plc_connections/general_en.md)), `primitives` ([Primitives](../primitives/Primitives.md)), `prototypes`, `system` (for example, [calculations](../calculation/calculation.md) and [User Script](../user_script/user_script.md)).
+Objects of other types are added the same way, from their groups in the type selection dialog: `iot` ([IoT](../data_collection/IoT/IoT.md)), `plc` ([PLC connections](../data_collection/plc_connections/general_en.md)), `primitives` ([Primitives](../primitives/primitives.md)), `prototypes`, `system` (for example, [calculations](../calculation/calculation.md) and [User Script](../user_script/user_script.md)).
 
 The **Folder** line of the form shows the path from the content root: `/` is the root itself. In the instance `P_201`, the folder `/motor` ends up at `P_201/motor`.
 

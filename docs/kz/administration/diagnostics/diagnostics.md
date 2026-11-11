@@ -180,7 +180,7 @@ end.
 - PLC қосылымдары — [«Faceplate-тегі PLC қосылымдары», «Диагностика» бөлімі](../../../en/data_collection/plc_connections/general_en.md#troubleshooting);
 - репликация — [«Faceplate-тегі репликация», «Диагностика» бөлімі](../../../en/administration/replica/replica_en.md#troubleshooting);
 - мұрағаттар — [«Мұрағаттар», «Диагностика және жазу ерекшеліктері» бөлімі](../../../en/data_storage/archives/archives_en.md#diagnostics-and-recording-behavior);
-- диспетчер кеңесшісі (DSF) — [«Диспетчер кеңесшісі», «Ұсыныс пайда болмаса» бөлімі](../../../en/dsf/dsf_en.md#if-no-recommendation-appears).
+- диспетчер кеңесшісі (DSF) — [«Диспетчер кеңесшісі», «Ұсыныс пайда болмаса» бөлімі](../../../en/alarms/dsf/dsf_en.md#if-no-recommendation-appears).
 
 # Қорытынды
 

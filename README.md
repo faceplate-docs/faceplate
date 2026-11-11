@@ -26,8 +26,8 @@ and deployed (MkDocs + Material, Docker or GitHub Pages).
 ## Repository structure
 
 Each topic lives in its own folder with its images next to the page. The
-English and Russian trees are organised the same way, but some file and
-folder names differ between the languages.
+English and Russian trees are organised the same way, but some file names
+differ between the languages.
 
 ```
 docs/
@@ -61,6 +61,13 @@ docs/
 │   │   └── update/
 │   │       ├── images/  (3 files)
 │   │       └── update.md
+│   ├── alarms/
+│   │   ├── alarm/
+│   │   │   ├── images/  (7 files)
+│   │   │   └── alarm_en.md
+│   │   └── dsf/
+│   │       ├── images/  (3 files)
+│   │       └── dsf_en.md
 │   ├── calculation/
 │   │   ├── images/  (11 files)
 │   │   └── calculation.md
@@ -139,7 +146,7 @@ docs/
 │   │   ├── reports.md
 │   │   ├── screens.md
 │   │   └── tables.md
-│   ├── PowerBI_en/
+│   ├── powerbi/
 │   │   ├── images/  (1 file)
 │   │   └── PowerBi_FP_en.md
 │   ├── powerfactory_service/
@@ -147,8 +154,8 @@ docs/
 │   │   └── powerfactory_service.md
 │   ├── primitives/
 │   │   ├── images/  (10 files)
-│   │   └── Primitives.md
-│   ├── Project_strucure/
+│   │   └── primitives.md
+│   ├── project_structure/
 │   │   ├── images/  (9 files)
 │   │   └── FACEPLATE-start.md
 │   ├── prototypes/
@@ -164,7 +171,7 @@ docs/
 │   │   │   │   └── powerbi_en.md
 │   │   │   └── rest api/
 │   │   │       └── rest api.md
-│   │   ├── prptotypes/
+│   │   ├── prototypes/
 │   │   │   ├── influxdb/
 │   │   │   │   └── influxdb_en.md
 │   │   │   ├── pump/
@@ -206,6 +213,13 @@ docs/
 │   │   └── update/
 │   │       ├── images/  (3 files)
 │   │       └── update.md
+│   ├── alarms/
+│   │   ├── alarm/
+│   │   │   ├── images/  (7 files)
+│   │   │   └── alarm_ru.md
+│   │   └── dsf/
+│   │       ├── images/  (3 files)
+│   │       └── dsf_ru.md
 │   ├── calculation/
 │   │   ├── images/  (11 files)
 │   │   └── calculation.md
@@ -284,7 +298,7 @@ docs/
 │   │   ├── reports.md
 │   │   ├── screens.md
 │   │   └── tables.md
-│   ├── PowerBI_ru/
+│   ├── powerbi/
 │   │   ├── images/  (1 file)
 │   │   └── PowerBi_FP_ru.md
 │   ├── powerfactory_service/
@@ -292,24 +306,24 @@ docs/
 │   │   └── powerfactory_service.md
 │   ├── primitives/
 │   │   ├── images/  (10 files)
-│   │   └── Primitives.md
-│   ├── Project_strucure/
+│   │   └── primitives.md
+│   ├── project_structure/
 │   │   ├── images/  (9 files)
 │   │   └── FACEPLATE-start.md
 │   ├── prototypes/
 │   │   ├── images/  (18 files)
 │   │   └── prototypes.md
-│   ├── samples/
+│   ├── quick_start/
 │   │   ├── connectivity/
 │   │   │   ├── influxdb/
 │   │   │   │   └── influxdb.md
-│   │   │   ├── opc_ua_client/
+│   │   │   ├── opc_ua/
 │   │   │   │   └── opc_ua_client.md
 │   │   │   ├── powerbi/
 │   │   │   │   └── powerbi_ru.md
 │   │   │   └── rest api/
 │   │   │       └── rest api.md
-│   │   ├── prptotypes/
+│   │   ├── prototypes/
 │   │   │   ├── influxdb/
 │   │   │   │   └── influxdb.md
 │   │   │   ├── pump/
@@ -346,7 +360,7 @@ favicon and brand stylesheet), `tools/` (site build and link checker),
 
 ### General
 - [General information, launch and licensing](docs/en/readme.md)
-- [First steps in FACEPLATE Studio: project structure](docs/en/Project_strucure/FACEPLATE-start.md)
+- [First steps in FACEPLATE Studio: project structure](docs/en/project_structure/FACEPLATE-start.md)
 - [Deploying FACEPLATE in a Docker container](<docs/en/quick_start/deploy as docker.md>)
 
 ### Access
@@ -387,8 +401,12 @@ favicon and brand stylesheet), `tools/` (site build and link checker),
 - [Archives](docs/en/data_storage/archives/archives_en.md)
 - [Historian server](docs/en/data_storage/historian/historian_server_en.md)
 
+### Alarms and events
+- [Messages and alarms](docs/en/alarms/alarm/alarm_en.md)
+- [Dispatcher advisor](docs/en/alarms/dsf/dsf_en.md)
+
 ### Project objects
-- [Primitives](docs/en/primitives/Primitives.md)
+- [Primitives](docs/en/primitives/primitives.md)
 - [Prototypes](docs/en/prototypes/prototypes.md)
 - [Catalogs](docs/en/catalogs/catalogs.md)
 - [Localization](docs/en/localization/localization.md)
@@ -415,7 +433,7 @@ favicon and brand stylesheet), `tools/` (site build and link checker),
 - [JS libraries](docs/en/js_library/js_library.md)
 
 ### Integrations
-- [Microsoft Power BI](docs/en/PowerBI_en/PowerBi_FP_en.md)
+- [Microsoft Power BI](docs/en/powerbi/PowerBi_FP_en.md)
 - [REST API interface](<docs/en/quick_start/connectivity/rest api/rest api.md>)
 - [OPC UA client (quick start)](docs/en/quick_start/connectivity/opc_ua/opc_ua_client.md)
 - [Power BI (quick start)](docs/en/quick_start/connectivity/powerbi/powerbi_en.md)
@@ -423,9 +441,9 @@ favicon and brand stylesheet), `tools/` (site build and link checker),
 - [Powerfactory Service](docs/en/powerfactory_service/powerfactory_service.md)
 
 ### Prototype templates
-- [InfluxDB integration template](docs/en/quick_start/prptotypes/influxdb/influxdb_en.md)
-- [Pump template](docs/en/quick_start/prptotypes/pump/pump_en.md)
-- [Sensor template](docs/en/quick_start/prptotypes/sensor/sensor_en.md)
+- [InfluxDB integration template](docs/en/quick_start/prototypes/influxdb/influxdb_en.md)
+- [Pump template](docs/en/quick_start/prototypes/pump/pump_en.md)
+- [Sensor template](docs/en/quick_start/prototypes/sensor/sensor_en.md)
 
 ### Machine learning
 - [Forecasting models](docs/en/machine_learning/forecasting_models_en.md)

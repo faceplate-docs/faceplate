@@ -55,7 +55,7 @@ Redundancy and moving work between servers of one cluster. Before configuring st
 * open access between the servers to port 4369 and to the FACEPLATE inter-node port. By default the inter-node port is chosen anew at every start; to open it on a firewall, fix it in `vm.args` with two lines with the same value, for example:
     * `-kernel inet_dist_listen_min 9100`
     * `-kernel inet_dist_listen_max 9100`
-* open access from workstations to ports 9000 (HTTP) and 9443 (HTTPS), and to the ECOMET interface — 8000, see [Launch](../../Project_strucure/FACEPLATE-start.md#launch);
+* open access from workstations to ports 9000 (HTTP) and 9443 (HTTPS), and to the ECOMET interface — 8000, see [Launch](../../project_structure/FACEPLATE-start.md#launch);
 * each server has its own name in `faceplate/releases/<version>/vm.args` (the `-name` parameter, see [Resource Redundancy in Faceplate](../../administration/redundancy/redundancy.md#virtual-machine-settings-vmargs)) and a common `-setcookie`;
 * the servers find each other by name: `/etc/hosts` on each server lists the addresses of all cluster servers.
 
@@ -120,7 +120,7 @@ Each tab lists the servers that hold this part of the database. A server is writ
 | Tab | Where the server list is | What is written for a server |
 |---|---|---|
 | **Runtime** | Top-level keys | Directory (`:atom:dir`) and storage modules (`:atom:disc`, `:atom:ram`, `:atom:ramdisc`) |
-| **Log** | Inside `":atom:database"` | Directory and storage module. The other keys (`read_only_age`, `max_age`, `shard_depth`) are described in [Alarms](../../alarm/alarm_en.md#9-storage-and-automatic-processing) |
+| **Log** | Inside `":atom:database"` | Directory and storage module. The other keys (`read_only_age`, `max_age`, `shard_depth`) are described in [Alarms](../../alarms/alarm/alarm_en.md#9-storage-and-automatic-processing) |
 | **Timeseries** | Inside `":atom:nodes"` | Directory. The other keys define archive storage and do not change when a server is added or removed |
 
 The directory (`":atom:dir"`) is relative to the database directory `faceplate/DB`: `":string:./"` is `faceplate/DB` itself, `":string:./FP_ALARM"` is `faceplate/DB/FP_ALARM`.

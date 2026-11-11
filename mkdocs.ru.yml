@@ -23,8 +23,8 @@ exclude_docs: |
 nav:
   - Общие сведения:
       - Общие сведения, запуск и лицензирование: readme.md
-      - Первые шаги в FACEPLATE Studio: Project_strucure/FACEPLATE-start.md
-      - Установка в Docker-контейнере: samples/deploy as docker.md
+      - Первые шаги в FACEPLATE Studio: project_structure/FACEPLATE-start.md
+      - Установка в Docker-контейнере: quick_start/deploy as docker.md
   - Доступ:
       - Пользователи: access/users.md
       - Роли и права доступа: access/roles.md
@@ -64,11 +64,11 @@ nav:
       - Тренды: data_storage/archives/trends_ru.md
       - Агрегаты: data_storage/archives/aggregates_ru.md
       - Historian-сервер: data_storage/historian/historian_server.md
-  - Работа оператора:
-      - Сообщения и тревоги: alarm/alarm_ru.md
-      - Советчик диспетчера: dsf/dsf_ru.md
+  - Тревоги и события:
+      - Сообщения и тревоги: alarms/alarm/alarm_ru.md
+      - Советчик диспетчера: alarms/dsf/dsf_ru.md
   - Объекты проекта:
-      - Примитивы: primitives/Primitives.md
+      - Примитивы: primitives/primitives.md
       - Прототипы: prototypes/prototypes.md
       - Каталоги: catalogs/catalogs.md
       - Локализация: localization/localization.md
@@ -92,16 +92,16 @@ nav:
       - Библиотечные модули: library_modules/library_modules.md
       - JS-библиотеки: js_library/js_library.md
   - Интеграции:
-      - Microsoft Power BI: PowerBI_ru/PowerBi_FP_ru.md
-      - REST API интерфейс: samples/connectivity/rest api/rest api.md
-      - OPC UA Client (пример): samples/connectivity/opc_ua_client/opc_ua_client.md
-      - Power BI (пример): samples/connectivity/powerbi/powerbi_ru.md
-      - Загрузка данных в InfluxDB: samples/connectivity/influxdb/influxdb.md
+      - Microsoft Power BI: powerbi/PowerBi_FP_ru.md
+      - REST API интерфейс: quick_start/connectivity/rest api/rest api.md
+      - OPC UA Client (пример): quick_start/connectivity/opc_ua/opc_ua_client.md
+      - Power BI (пример): quick_start/connectivity/powerbi/powerbi_ru.md
+      - Загрузка данных в InfluxDB: quick_start/connectivity/influxdb/influxdb.md
       - Powerfactory Service: powerfactory_service/powerfactory_service.md
   - Шаблоны прототипов:
-      - Шаблон интеграции с InfluxDB: samples/prptotypes/influxdb/influxdb.md
-      - Шаблон Pump: samples/prptotypes/pump/pump.md
-      - Шаблон Sensor: samples/prptotypes/sensor/sensor.md
+      - Шаблон интеграции с InfluxDB: quick_start/prototypes/influxdb/influxdb.md
+      - Шаблон Pump: quick_start/prototypes/pump/pump.md
+      - Шаблон Sensor: quick_start/prototypes/sensor/sensor.md
   - Машинное обучение:
       - Модели прогнозирования: machine_learning/forecasting_models_ru.md
       - Экспорт проекта: machine_learning/project_export_ru.md

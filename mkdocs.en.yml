@@ -16,7 +16,7 @@ plugins:
 nav:
   - General:
       - General information, launch and licensing: readme.md
-      - First steps in FACEPLATE Studio: Project_strucure/FACEPLATE-start.md
+      - First steps in FACEPLATE Studio: project_structure/FACEPLATE-start.md
       - Deploying in a Docker container: quick_start/deploy as docker.md
   - Access:
       - Users: access/users.md
@@ -57,11 +57,11 @@ nav:
       - Trends: data_storage/archives/trends_en.md
       - Aggregates: data_storage/archives/aggregates_en.md
       - Historian server: data_storage/historian/historian_server_en.md
-  - Operator tools:
-      - Messages and alarms: alarm/alarm_en.md
-      - Dispatcher advisor: dsf/dsf_en.md
+  - Alarms and events:
+      - Messages and alarms: alarms/alarm/alarm_en.md
+      - Dispatcher advisor: alarms/dsf/dsf_en.md
   - Project objects:
-      - Primitives: primitives/Primitives.md
+      - Primitives: primitives/primitives.md
       - Prototypes: prototypes/prototypes.md
       - Catalogs: catalogs/catalogs.md
       - Localization: localization/localization.md
@@ -85,16 +85,16 @@ nav:
       - Library modules: library_modules/library_modules.md
       - JS libraries: js_library/js_library.md
   - Integrations:
-      - Microsoft Power BI: PowerBI_en/PowerBi_FP_en.md
+      - Microsoft Power BI: powerbi/PowerBi_FP_en.md
       - REST API interface: quick_start/connectivity/rest api/rest api.md
       - OPC UA client (quick start): quick_start/connectivity/opc_ua/opc_ua_client.md
       - Power BI (quick start): quick_start/connectivity/powerbi/powerbi_en.md
       - Loading data into InfluxDB: quick_start/connectivity/influxdb/influxdb_en.md
       - Powerfactory Service: powerfactory_service/powerfactory_service.md
   - Prototype templates:
-      - InfluxDB integration template: quick_start/prptotypes/influxdb/influxdb_en.md
-      - Pump template: quick_start/prptotypes/pump/pump_en.md
-      - Sensor template: quick_start/prptotypes/sensor/sensor_en.md
+      - InfluxDB integration template: quick_start/prototypes/influxdb/influxdb_en.md
+      - Pump template: quick_start/prototypes/pump/pump_en.md
+      - Sensor template: quick_start/prototypes/sensor/sensor_en.md
   - Machine learning:
       - Forecasting models: machine_learning/forecasting_models_en.md
       - Project export: machine_learning/project_export_en.md

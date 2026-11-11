@@ -134,7 +134,7 @@ The project is written to the file by sections. The **ignore** list in the expor
 | `project` | The project tree: folders, objects, screens |
 | `user_rights` | Rights of users and groups |
 
-Accumulated archive values and event log records are kept in the node database and are not part of the file. They reach the new version only when it is [started on the old database](#starting-the-new-version-on-the-old-database). After a transfer via file, the history stays in the old database: it is viewed in the old version running on that database or exported to files: [trends](../../data_storage/archives/trends_en.md#exporting-the-selected-period) and [alarm archive](../../alarm/alarm_en.md#5-archive-and-export).
+Accumulated archive values and event log records are kept in the node database and are not part of the file. They reach the new version only when it is [started on the old database](#starting-the-new-version-on-the-old-database). After a transfer via file, the history stays in the old database: it is viewed in the old version running on that database or exported to files: [trends](../../data_storage/archives/trends_en.md#exporting-the-selected-period) and [alarm archive](../../alarms/alarm/alarm_en.md#5-archive-and-export).
 
 ### Import switches
 

@@ -23,7 +23,7 @@ A document for the integration engineer who needs to show the operator, on a scr
 
 | Term | Meaning |
 |---|---|
-| Message template | A project object of type `alarm_template`: it watches a tag field and creates a message when its condition is met. Creating a template is described in [Messages and alarms in Faceplate, section "Configuring a message"](../alarm/alarm_en.md#2-configuring-a-message) |
+| Message template | A project object of type `alarm_template`: it watches a tag field and creates a message when its condition is met. Creating a template is described in [Messages and alarms in Faceplate, section "Configuring a message"](../alarms/alarm/alarm_en.md#2-configuring-a-message) |
 | Message | A log record created by a template: time on, time off, text, type. An alarm is a message about a violation |
 | Message type | `error`, `alarm`, `warning`, `info`, `dsf` — set in the template. The type defines the row color in the list and the indicator color |
 | Active message | The template condition is still met: time off is empty |
@@ -149,9 +149,9 @@ Above the table there are three buttons:
 
 After acknowledgement a row stays or leaves depending on `acknowledge` and `active`. In the example (`true` / `true`) the acknowledged alarm `level_high` is already cleared, so it leaves the list, while the acknowledged fault `pump_fault` stays while it is active.
 
-A double click on a row opens the message card: text, time on and time off, duration, acknowledgement, point, fact and categories. Below are the **Add** (comment) and **Export** buttons and the **Email** row. Working with the card is described in [Messages and alarms in Faceplate, section "Operator actions"](../alarm/alarm_en.md#3-operator-actions).
+A double click on a row opens the message card: text, time on and time off, duration, acknowledgement, point, fact and categories. Below are the **Add** (comment) and **Export** buttons and the **Email** row. Working with the card is described in [Messages and alarms in Faceplate, section "Operator actions"](../alarms/alarm/alarm_en.md#3-operator-actions).
 
-**Email** forwards the message by mail. The drop-down list contains users with the `operators` role; the mail goes to the address in the **Email** field of their account (Studio → **User rights** → **Users**). Select one or more recipients and click **Send**; after sending, a "Message sent" notification appears. The mail contains the message text, type, point, time on, fact and categories. Sending requires the SMTP parameters to be filled in and the email notifications switch to be on in Studio → **Alarm** → **Settings** → general settings (see [Messages and alarms in Faceplate, section "Email notifications"](../alarm/alarm_en.md#7-email-notifications)). In the example the `level_high` message was sent to the `mail_test` user and received.
+**Email** forwards the message by mail. The drop-down list contains users with the `operators` role; the mail goes to the address in the **Email** field of their account (Studio → **User rights** → **Users**). Select one or more recipients and click **Send**; after sending, a "Message sent" notification appears. The mail contains the message text, type, point, time on, fact and categories. Sending requires the SMTP parameters to be filled in and the email notifications switch to be on in Studio → **Alarm** → **Settings** → general settings (see [Messages and alarms in Faceplate, section "Email notifications"](../alarms/alarm/alarm_en.md#7-email-notifications)). In the example the `level_high` message was sent to the `mail_test` user and received.
 
 ![Message card of level_high](images/alarms_07_card.png)
 

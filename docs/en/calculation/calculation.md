@@ -24,7 +24,7 @@ This document is for integration engineers who set up calculations over tag valu
 | Calculation (object) | A project object of type `calculation`. It reads the current values of tag fields, evaluates an Erlang formula and writes the result to tag fields |
 | Calculation runtime | The **Runtime** tab in the calculation form. The `in` field holds the input variable values, `out` holds all output variable values from the last successful run |
 | Calculation (menu) | Studio main menu section: the list of all calculations in the project |
-| General View | Studio main menu section with the project object tree (see [Project structure](../Project_strucure/FACEPLATE-start.md)). Calculations are created here |
+| General View | Studio main menu section with the project object tree (see [Project structure](../project_structure/FACEPLATE-start.md)). Calculations are created here |
 | Tag | A project object whose field serves as a source or a destination of a value |
 | Input variable | A row in the **Input data** table: a script variable name and the tag field the value is read from |
 | Output variable | A row in the **Output data** table: a script variable name and, optionally, the tag field the result is written to |
@@ -55,7 +55,7 @@ A calculation consists of three parts:
 
 A calculation runs on input changes, on a timer, or both.
 
-Running example: folder `calc_demo` with tags `p_in_1`, `p_in_2`, `p_avg`. They are instances of a primitive with a numeric field `out_value`; how to create such a type is covered in the [Primitives](../primitives/Primitives.md) guide. Calculation `p_avg_calc` writes the average of two pressures to `p_avg` and also computes their difference `DIFF`.
+Running example: folder `calc_demo` with tags `p_in_1`, `p_in_2`, `p_avg`. They are instances of a primitive with a numeric field `out_value`; how to create such a type is covered in the [Primitives](../primitives/primitives.md) guide. Calculation `p_avg_calc` writes the average of two pressures to `p_avg` and also computes their difference `DIFF`.
 
 You need access to Studio (`http://<server>:9000/fp/studio`) with an account allowed to modify the project.
 
