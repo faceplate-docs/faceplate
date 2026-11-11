@@ -2,7 +2,7 @@
 
 A guide for integrators and operators. Configure conditions and notifications, work with messages, and use the archive, storage settings, and integration interfaces.
 
-The training scenarios and screenshots were verified on 16 October 2026 in the Russian interface of Faceplate 4.0.6.subs. The examples use the ALARM_GUIDE training project. Replace equipment and category names with those used in your project. English descriptions of UI controls are followed by their verified Russian captions where needed. Russian example literals are retained to match the screenshots, scripts, and filters.
+Documentation for Faceplate v4.0.7. The training scenarios and screenshots were verified on 16 October 2026 in the Russian interface of Faceplate. The examples use the ALARM_GUIDE training project. Replace equipment and category names with those used in your project. English descriptions of UI controls are followed by their verified Russian captions where needed. Russian example literals are retained to match the screenshots, scripts, and filters.
 
 Basic Studio/Runtime navigation and the concepts of a tag and a field are sufficient to use this guide. Erlang or JavaScript is needed only for the scripting examples. Configuration requires the appropriate permissions; operators need permission to view and acknowledge messages and add comments.
 
@@ -71,7 +71,7 @@ Prepare a training tag named Pump with a numeric fault field: 0 means normal and
 6. Change fault from 0 to 1 in the tag form, finish the input with Tab, and save. In Runtime, open Active messages (“Активные сообщения”) and find “Отказ насоса”.
 7. Acknowledge the message, then return fault to 0. In the archive, check occurrence, clearing, and acknowledgment times and the operator. Scenario 11.1 verifies both orders of these actions.
 
-![Discrete fault source, required acknowledgment, no comparison or delay, and sound explicitly disabled](./images/alarm-discrete-settings-ui-4.0.6.subs.png)
+![Discrete fault source, required acknowledgment, no comparison or delay, and sound explicitly disabled](./images/alarm-discrete-settings-ui-v4.0.7.png)
 
 *Figure 1. Discrete fault source, required acknowledgment, no comparison or delay, and sound explicitly disabled.*
 
@@ -142,7 +142,7 @@ The verified form accepts integer hysteresis values starting at 1. Typing 0.5 pr
 
 The Delay (ms) field (“Задержка (мс)”) uses milliseconds: 3000 means 3 seconds. An empty field means no delay. Enter a nonnegative value and select the timer type explicitly. The script and comparison produce the result first; inversion and the time delay follow.
 
-![Upper limit >80, hysteresis 2, and an occurrence delay of 3000 ms](./images/alarm-threshold-hysteresis-delay-ui-4.0.6.subs.png)
+![Upper limit >80, hysteresis 2, and an occurrence delay of 3000 ms](./images/alarm-threshold-hysteresis-delay-ui-v4.0.7.png)
 
 *Figure 2. Upper limit >80, hysteresis 2, and an occurrence delay of 3000 ms. Boundary checks are covered in scenario 11.2.*
 
@@ -194,7 +194,7 @@ Verified example: 35 cleared, unacknowledged records, page size 30, and no other
 
 Predefined choices are configured in the template. Comments on an individual record are retained in its history; new text appears before earlier text. Editing an old record depends on permissions and its storage mode.
 
-![Message card with acknowledgment by system and the comment “Принято в работу”](./images/alarm-acknowledged-message-card-ui-4.0.6.subs.png)
+![Message card with acknowledgment by system and the comment “Принято в работу”](./images/alarm-acknowledged-message-card-ui-v4.0.7.png)
 
 *Figure 3. Message card with acknowledgment by user system and the comment “Принято в работу”. Adding a comment and acknowledging are separate actions.*
 
@@ -794,15 +794,15 @@ Task: combine two tags, capture temperature in message text, and display equipme
 7. Open S03 through the Runtime tree. Check an active, acknowledged message in the list and indicator window. Then clear the next message before acknowledging it: the list retains it until acknowledgment.
 8. Return to 70/1 and acknowledge the remaining records. Find the messages by text in the archive and check their categories.
 
-![The context variable temperature is bound separately from script source variables](./images/alarm-context-variable-binding-ui-4.0.6.subs.png)
+![The context variable temperature is bound separately from script source variables](./images/alarm-context-variable-binding-ui-v4.0.7.png)
 
 *Figure 5. The context variable temperature is bound separately from script source variables.*
 
-![Verified JavaScript record with captured 85.0 °C and equipment categories](./images/alarm-js-message-frozen-temperature-ui-4.0.6.subs.png)
+![Verified JavaScript record with captured 85.0 °C and equipment categories](./images/alarm-js-message-frozen-temperature-ui-v4.0.7.png)
 
 *Figure 6. Verified JavaScript record with captured 85.0 °C and equipment categories. Its text was retained after the tag changed to 90 °C.*
 
-![A separate current-temperature display on the process screen shows 90 °C](./images/alarm-current-temperature90-ui-4.0.6.subs.png)
+![A separate current-temperature display on the process screen shows 90 °C](./images/alarm-current-temperature90-ui-v4.0.7.png)
 
 *Figure 7. A separate current-temperature display on the process screen shows 90 °C.*
 

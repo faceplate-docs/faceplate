@@ -60,7 +60,7 @@ What happens to the operator's Runtime when a node stops, and how project object
 
 ## Basic configuration
 
-Fine-tuning of parameters is performed in configuration files located in the release directory (for example, `/DATASET/project/scada/faceplate/releases/4.0.6/`).
+Fine-tuning of parameters is performed in configuration files located in the release directory (for example, `/DATASET/project/scada/faceplate/releases/4.0.7/`).
 
 ### Virtual machine settings (vm.args)
 

@@ -49,4 +49,4 @@ IEC 62056 implements an IEC 62056-21-style exchange with numeric responses; DLMS
 
 Saving and independently reopening verifies configuration. Exchange requires a new result at the receiving side. Equipment examples and control numbers in added explanations are configuration recipes unless an executed test is explicitly stated.
 
-Earlier forms and screenshots for most guides were checked in the available Studio 4.0.6.subs while the documentation targets v4.0.7. This does not establish binary/source identity. Dates and individual test boundaries remain in the verification records; a text revision does not imply another hardware test.
+The documentation targets Faceplate v4.0.7. Forms and screenshots for most guides were checked in the available Studio; this does not establish binary/source identity. Dates and individual test boundaries remain in the verification records; a text revision does not imply another hardware test.

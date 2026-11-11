@@ -33,7 +33,7 @@ Task: compare pump station pressure and flow for October 15, 2026, from 08:00 to
 6. Under «Период» (Period) → «Задание интервала» (Set interval), select hour and a multiplier of 8. Check the «Час X8» (Hour X8) label and the actual dates, 08:00–16:00.
 7. Hover over a known time: at 08:20, the training pressure is 6 bar and flow is 2 L/s. Check the captions and both axes.
 
-![Pressure and flow over a shift](./images/trends-pressure-flow-shift-ui-4.0.6.subs.png)
+![Pressure and flow over a shift](./images/trends-pressure-flow-shift-ui-v4.0.7.png)
 
 *Figure 1. Pressure and flow over a shift: the pressure scale is on the left and the flow scale is on the right.*
 
@@ -112,7 +112,7 @@ Some commands move into ⋮ when the window is narrow. Button availability also 
 6. Select «Насосная станция» and click «ОК».
 7. Check both captions, sources, y/y2 axes, appearance, and the «Час X8» (Hour X8) duration.
 
-![Saving a trend group](./images/trends-save-group-ui-4.0.6.subs.png)
+![Saving a trend group](./images/trends-save-group-ui-v4.0.7.png)
 
 *Figure 2. The new group name is entered in the save dialog.*
 
@@ -144,7 +144,7 @@ Use direct archive series for export. Configure the chart's series, pause it, an
 4. Repeat the command for the same history, select .xlsx, and click save.
 5. Open the downloaded files. Check the headers, first and last dates, and known values.
 
-![Selecting the trend export format](./images/trends-export-format-ui-4.0.6.subs.png)
+![Selecting the trend export format](./images/trends-export-format-ui-v4.0.7.png)
 
 *Figure 3. File format selects the output format; the period and series come from the chart.*
 

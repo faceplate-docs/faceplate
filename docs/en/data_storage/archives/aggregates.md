@@ -51,7 +51,7 @@ Task: calculate the average, maximum, and minimum pressure for October 15, 08:00
 4. Enable avg, max, and «мин». Leave the multiplier at 1 and precision at 2 for each function.
 5. Click «ОК». In Analytics, check the «Давление, бар» row: avg 3.44, max 6.00, мин 2.00.
 
-![Analytics settings for a shift](./images/aggregates-shift-settings-ui-4.0.6.subs.png)
+![Analytics settings for a shift](./images/aggregates-shift-settings-ui-v4.0.7.png)
 
 *Figure 1. Shift period with avg, max, and «мин» enabled; each function has multiplier and precision fields on its right.*
 
@@ -71,7 +71,7 @@ The weighted sum is 1650 bar·min and the duration is 480 minutes. The average i
 
 For a shorter check in the same scenario, select 08:00–08:30. Values of 2, 4, and 6 each remain in effect for ten minutes, so avg = 4, min = 2, and max = 6. Enabling standard_deviation additionally gives 1.63.
 
-![Pressure indicator calculation results](./images/aggregates-pressure-results-ui-4.0.6.subs.png)
+![Pressure indicator calculation results](./images/aggregates-pressure-results-ui-v4.0.7.png)
 
 *Figure 2. Reference results for 08:00–08:30: average 4, maximum 6, minimum 2, and standard deviation 1.63.*
 
@@ -86,7 +86,7 @@ Task: determine the water volume over ten minutes using FlowArchive. The source 
 3. Enable integral. To the right of the toggle, check that the multiplier is 0.001 and precision is 2.
 4. Click «ОК». The integral column should show 1200.00.
 
-![Water flow integral result](./images/aggregates-flow-integral-ui-4.0.6.subs.png)
+![Water flow integral result](./images/aggregates-flow-integral-ui-v4.0.7.png)
 
 *Figure 3. Integral for 08:00–08:10: a constant flow of 2 L/s gives a volume of 1200 L.*
 
@@ -108,7 +108,7 @@ Task: export the average flow for each hour of the selected day. The example cov
 6. For «Расход, л/с», select avg, a multiplier of 1, and precision of 2. Click «ОК» and save the downloaded file.
 7. Repeat the export using .csv with the same settings. Open the files and check the 24 results and the first and last timestamps.
 
-![Hourly summary settings](./images/aggregates-hourly-export-ui-4.0.6.subs.png)
+![Hourly summary settings](./images/aggregates-hourly-export-ui-v4.0.7.png)
 
 *Figure 4. Hourly summary settings: one day, Час (Hour) ×1, avg, multiplier 1, precision 2.*
 

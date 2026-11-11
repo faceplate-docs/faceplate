@@ -1,6 +1,6 @@
 # Replication in Faceplate: Configure Data Exchange and Verify Delivery
 
-A guide for integrators configuring data transfer between a site and a control center. The settings and behavior described here are based on the examined Faceplate 4.0.7 implementation.
+A guide for integrators configuring data transfer between a site and a control center. The settings and behavior described here are based on the examined Faceplate v4.0.7 implementation.
 
 Russian UI labels are retained with English explanations so you can match them to the interface shown in the screenshots.
 
@@ -98,9 +98,9 @@ On the first run, unset history and message processing boundaries are set to the
 
 Open the object from the replication list or through its folder in the project tree. Search by name or path; the filter string must be empty or contain at least three characters. The enabled/disabled filters help locate enabled and disabled objects.
 
-![Replication list and filters](./images/replica-list-compact-ui-4.0.6.subs.png)
+![Replication list and filters](./images/replica-list-compact-ui-v4.0.7.png)
 
-*Figure 1 — Replication list and filters. Available test instance: Faceplate Studio 4.0.6.subs.*
+*Figure 1 — Replication list and filters. Target documentation version: Faceplate v4.0.7.*
 
 Saving changed settings may restart the running object. After a change, check data transfer as well as the state. Canceling an edit closes it without saving the changes.
 
@@ -140,9 +140,9 @@ Configure the center object first, then the site object. This prepares the recei
 | Таймаут (мс) (timeout, ms) | 30000 | 30000 |
 | Disabled | Cleared | Cleared |
 
-![Empty REPLICA form before entering values](./images/replica-empty-form-ui-4.0.6.subs.png)
+![Empty REPLICA form before entering values](./images/replica-empty-form-ui-v4.0.7.png)
 
-*Figure 2 — Step 2 — Empty REPLICA form before entering values. The screenshot shows the root folder; select PumpStation for this scenario. Available test instance: Faceplate Studio 4.0.6.subs.*
+*Figure 2 — Step 2 — Empty REPLICA form before entering values. The screenshot shows the root folder; select PumpStation for this scenario. Target documentation version: Faceplate v4.0.7.*
 
 The identical addresses and nodes in the table define the pair's common directions. Each object's role depends on its local nodes, rather than a different address value in the form.
 

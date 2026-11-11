@@ -41,7 +41,7 @@ Task: record changes in pump outlet pressure. The source is Pressure, using its 
 7. Open Runtime → «Меню» (Menu) → «Тренды» (Trends) → «Архивы» (Archives). In the series editor, select PressureArchive and confirm with save, then «ОК».
 8. Check the pressure steps and the tooltip showing the time and value. Use «Старт-Стоп» (Start–Stop) to pause the chart while checking it.
 
-![Pressure history from a tag](./images/archive-tag-pressure-history-ui-4.0.6.subs.png)
+![Pressure history from a tag](./images/archive-tag-pressure-history-ui-v4.0.7.png)
 
 *Figure 1. Training pressure history: the tooltip confirms a value of 3.2. The pause applies to the chart.*
 
@@ -143,7 +143,7 @@ The table shows the expected sequence of function calls. During a manual check, 
 | 9 | 5 | 17 | 0.2 | 1 / 5 |
 | 10 | 5 | 22 | 0 | Zero energy with a positive volume increment |
 
-![Energy consumption calculation after a counter reset](./images/archive-js-energy-recovery-ui-4.0.6.subs.png)
+![Energy consumption calculation after a counter reset](./images/archive-js-energy-recovery-ui-v4.0.7.png)
 
 *Figure 2. Checking recovery after a counter reset: the history shows 0.2 kWh/m³.*
 
@@ -214,7 +214,7 @@ For manual testing, you can temporarily set a period of 30000 ms to allow time t
 | 12 | 5 | true | true | No value | [5, 4] |
 | 13 | 6 | true | true | 5 | [6, 5, 4] |
 
-![Vibration moving average](./images/archive-erlang-vibration-history-ui-4.0.6.subs.png)
+![Vibration moving average](./images/archive-erlang-vibration-history-ui-v4.0.7.png)
 
 *Figure 3. Manual check with a period of 30000 ms: averages of 4 → 5 → 6 → 8, a gap, and recovery. The operating period was restored to 1000 ms after the check.*
 

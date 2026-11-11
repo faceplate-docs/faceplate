@@ -1,8 +1,8 @@
 # Dispatcher Support in Faceplate: configuring the service and reviewing alarms
 
-Working draft for Faceplate 4.0.7 integrators. This guide describes the advisor's purpose, service configuration, and verification using a training pump station.
+Working draft for Faceplate v4.0.7 integrators. This guide describes the advisor's purpose, service configuration, and verification using a training pump station.
 
-![Opening Dispatcher Support from the RUN-TIME menu](./images/dsf-runtime-menu-ui-4.0.6.subs.png)
+![Opening Dispatcher Support from the RUN-TIME menu](./images/dsf-runtime-menu-ui-v4.0.7.png)
 
 ## What the advisor does
 
@@ -74,7 +74,7 @@ Only Н-101 and its alarm are required before the first example. The second exam
 
 The service settings are grouped under **Service Settings**, **Model Settings**, **Alarm Filter**, **Scripts Pipeline**, and **RAG Settings**. These labels and the type name **DSF Service** come from the form definition; their localization and placement in the running UI still require verification.
 
-![Unsaved service form: Service Settings and Model Settings. The fields show the initial template values](./images/dsf-service-settings-ui-4.0.6.subs.png)
+![Unsaved service form: Service Settings and Model Settings. The fields show the initial template values](./images/dsf-service-settings-ui-v4.0.7.png)
 
 ### Model connection and processing cycle
 
@@ -327,7 +327,7 @@ To finish the second example, follow “Disable and delete the training service�
 
 The following procedures are used in the scenarios above. The names and locations of general commands still require confirmation in the running UI.
 
-![Dispatcher Support window: filters, refresh, and date selection. The message list is empty for the selected date](./images/dsf-advisor-empty-ui-4.0.6.subs.png)
+![Dispatcher Support window: filters, refresh, and date selection. The message list is empty for the selected date](./images/dsf-advisor-empty-ui-v4.0.7.png)
 
 ### Search, time selection, and list refresh
 

@@ -2,7 +2,7 @@
 
 Faceplate version v4.0.7.
 
-This article describes SNMP client configuration and the purpose of MIBs. The reference material is based on v4.0.7 source; saving and reopening forms were verified in Faceplate Studio 4.0.6.subs. Its single practical example saves a connection and binding without an available server. The connection remains disabled; receiving data, writing and exchange recovery are not tested in the example. Screenshots show the Russian interface, including mixed Russian/English labels. Russian labels below identify the actual controls; English explanations are not verified English-localization labels.
+This article describes SNMP client configuration and the purpose of MIBs. The reference material is based on v4.0.7 source; saving and reopening forms were verified in the available Faceplate Studio. Its single practical example saves a connection and binding without an available server. The connection remains disabled; receiving data, writing and exchange recovery are not tested in the example. Screenshots show the Russian interface, including mixed Russian/English labels. Russian labels below identify the actual controls; English explanations are not verified English-localization labels.
 
 **Contents**
 
