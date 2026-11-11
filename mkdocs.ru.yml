@@ -99,9 +99,9 @@ nav:
       - Загрузка данных в InfluxDB: integrations/influxdb/influxdb.md
       - Powerfactory Service: integrations/powerfactory_service/powerfactory_service.md
   - Шаблоны прототипов:
-      - Шаблон интеграции с InfluxDB: quick_start/prototypes/influxdb/influxdb.md
-      - Шаблон Pump: quick_start/prototypes/pump/pump.md
-      - Шаблон Sensor: quick_start/prototypes/sensor/sensor.md
+      - Шаблон интеграции с InfluxDB: templates/influxdb/influxdb.md
+      - Шаблон Pump: templates/pump/pump.md
+      - Шаблон Sensor: templates/sensor/sensor.md
   - Машинное обучение:
       - Модели прогнозирования: machine_learning/forecasting_models_ru.md
       - Экспорт проекта: machine_learning/project_export_ru.md

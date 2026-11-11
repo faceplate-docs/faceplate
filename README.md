@@ -177,14 +177,13 @@ docs/
 │   │   └── prototypes/
 │   │       ├── images/  (18 files)
 │   │       └── prototypes.md
-│   ├── quick_start/
-│   │   └── prototypes/
-│   │       ├── influxdb/
-│   │       │   └── influxdb_en.md
-│   │       ├── pump/
-│   │       │   └── pump_en.md
-│   │       └── sensor/
-│   │           └── sensor_en.md
+│   ├── templates/
+│   │   ├── influxdb/
+│   │   │   └── influxdb_en.md
+│   │   ├── pump/
+│   │   │   └── pump_en.md
+│   │   └── sensor/
+│   │       └── sensor_en.md
 │   └── readme.md
 ├── ru/
 │   ├── access/
@@ -332,14 +331,13 @@ docs/
 │   │   └── prototypes/
 │   │       ├── images/  (18 files)
 │   │       └── prototypes.md
-│   ├── quick_start/
-│   │   └── prototypes/
-│   │       ├── influxdb/
-│   │       │   └── influxdb.md
-│   │       ├── pump/
-│   │       │   └── pump.md
-│   │       └── sensor/
-│   │           └── sensor.md
+│   ├── templates/
+│   │   ├── influxdb/
+│   │   │   └── influxdb.md
+│   │   ├── pump/
+│   │   │   └── pump.md
+│   │   └── sensor/
+│   │       └── sensor.md
 │   ├── Git в Faceplate.md
 │   ├── readme.md
 │   ├── title.md
@@ -447,9 +445,9 @@ favicon and brand stylesheet), `tools/` (site build and link checker),
 - [Powerfactory Service](docs/en/integrations/powerfactory_service/powerfactory_service.md)
 
 ### Prototype templates
-- [InfluxDB integration template](docs/en/quick_start/prototypes/influxdb/influxdb_en.md)
-- [Pump template](docs/en/quick_start/prototypes/pump/pump_en.md)
-- [Sensor template](docs/en/quick_start/prototypes/sensor/sensor_en.md)
+- [InfluxDB integration template](docs/en/templates/influxdb/influxdb_en.md)
+- [Pump template](docs/en/templates/pump/pump_en.md)
+- [Sensor template](docs/en/templates/sensor/sensor_en.md)
 
 ### Machine learning
 - [Forecasting models](docs/en/machine_learning/forecasting_models_en.md)
