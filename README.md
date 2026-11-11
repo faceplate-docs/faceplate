@@ -177,7 +177,7 @@ docs/
 │   │   └── prototypes/
 │   │       ├── images/  (18 files)
 │   │       └── prototypes.md
-│   ├── templates/
+│   ├── prototype_templates/
 │   │   ├── influxdb/
 │   │   │   └── influxdb.md
 │   │   ├── pump/
@@ -331,7 +331,7 @@ docs/
 │   │   └── prototypes/
 │   │       ├── images/  (18 files)
 │   │       └── prototypes.md
-│   ├── templates/
+│   ├── prototype_templates/
 │   │   ├── influxdb/
 │   │   │   └── influxdb.md
 │   │   ├── pump/
@@ -445,9 +445,9 @@ favicon and brand stylesheet), `tools/` (site build and link checker),
 - [Powerfactory Service](docs/en/integrations/powerfactory_service/powerfactory_service.md)
 
 ### Prototype templates
-- [InfluxDB integration template](docs/en/templates/influxdb/influxdb.md)
-- [Pump template](docs/en/templates/pump/pump.md)
-- [Sensor template](docs/en/templates/sensor/sensor.md)
+- [InfluxDB integration template](docs/en/prototype_templates/influxdb/influxdb.md)
+- [Pump template](docs/en/prototype_templates/pump/pump.md)
+- [Sensor template](docs/en/prototype_templates/sensor/sensor.md)
 
 ### Machine learning
 - [Forecasting models](docs/en/machine_learning/forecasting_models.md)

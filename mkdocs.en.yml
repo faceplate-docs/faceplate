@@ -92,9 +92,9 @@ nav:
       - Loading data into InfluxDB: integrations/influxdb/influxdb.md
       - Powerfactory Service: integrations/powerfactory_service/powerfactory_service.md
   - Prototype templates:
-      - InfluxDB integration template: templates/influxdb/influxdb.md
-      - Pump template: templates/pump/pump.md
-      - Sensor template: templates/sensor/sensor.md
+      - InfluxDB integration template: prototype_templates/influxdb/influxdb.md
+      - Pump template: prototype_templates/pump/pump.md
+      - Sensor template: prototype_templates/sensor/sensor.md
   - Machine learning:
       - Forecasting models: machine_learning/forecasting_models.md
       - Project export: machine_learning/project_export.md
