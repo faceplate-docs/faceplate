@@ -87,25 +87,11 @@ For the nodes to join into a cluster, the servers must see each other over the n
 
 ### Starting the lead node
 
-On the first cluster server, initiate startup in console mode:
-
-```bash
-./faceplate console
-```
+The first cluster server is started as usual, see [«Starting and stopping a node», section «Starting in a window»](../start_stop/start_stop.md#starting-in-a-window).
 
 ### Joining additional nodes
 
-To connect subsequent servers (Runtime 2, Runtime 3, or Historian), use the `ATTACH_TO` environment variable pointing to the address of an already active node.
-
-Command for the first connection:
-
-```bash
-env ATTACH_TO=fp@rt-server1.fp ./faceplate console
-```
-
-Here `fp@rt-server1.fp` is the name of the lead node.
-
-After a node has been successfully added to the cluster, all subsequent restarts are performed with the usual command `./faceplate console`. Connected nodes are shown in Studio on the **Servers** panel, see [Cluster nodes](../nodes/nodes.md).
+Subsequent servers (Runtime 2, Runtime 3, or Historian) are started for the first time with the `ATTACH_TO` variable set to the name of an already running node, for example the lead one, see [«Starting and stopping a node», section «Attaching a node to a cluster»](../start_stop/start_stop.md#attaching-a-node-to-a-cluster). After that the node is restarted as usual. Connected nodes are shown in Studio on the **Servers** panel, see [Cluster nodes](../nodes/nodes.md).
 
 ## PLC connection redundancy
 

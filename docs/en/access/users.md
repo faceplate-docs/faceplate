@@ -38,7 +38,7 @@ You will need access to Studio (`http://<server>:9000/fp/studio`) with an accoun
 
 ## User list
 
-On the left is the list of project users, with the delete (bin) and create (**+**) buttons and a search box above it. Search finds users whose login starts with the entered text. It searches for three or more characters; a shorter text shows the whole list. The built-in accounts `system` and `admin` are not shown in the list.
+On the left is the list of project users, with the delete (bin) and create (**+**) buttons and a search box above it. Search finds users whose login starts with the entered text. It searches for three or more characters; a shorter text shows the whole list. Built-in accounts are not shown in the list.
 
 Click a user to open their card on the right.
 

@@ -66,17 +66,7 @@ In the example, `vm.args` of the first server has `-name fp@server1.fp`, the sec
 192.168.1.22   server2.fp
 ```
 
-The cluster is assembled like this: the first server is started with the usual command, the second with the `ATTACH_TO` variable pointing to the first. The commands are in [Resource Redundancy in Faceplate](../../administration/redundancy/redundancy.md#starting-and-assembling-the-cluster). In the example:
-
-```bash
-# server1
-ulimit -n 200000
-./faceplate/bin/faceplate console
-
-# server2, after server1 has started
-ulimit -n 200000
-env ATTACH_TO=fp@server1.fp ./faceplate/bin/faceplate console
-```
+The cluster is assembled like this: the first server is started as usual, see [«Starting and stopping a node», section «Starting in a window»](../../administration/start_stop/start_stop.md#starting-in-a-window). The second one, after the first has started, with the `ATTACH_TO` variable, in the example `fp@server1.fp`, see [«Starting and stopping a node», section «Attaching a node to a cluster»](../../administration/start_stop/start_stop.md#attaching-a-node-to-a-cluster).
 
 A server is ready when the console shows `---FACEPLATE STARTED---` and Studio opens. Both servers are shown on the **Servers** panel.
 

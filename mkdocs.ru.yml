@@ -72,6 +72,7 @@ nav:
       - Прототипы: project_objects/prototypes/prototypes.md
       - Каталоги: project_objects/catalogs/catalogs.md
       - Локализация: project_objects/localization/localization.md
+      - Импорт и экспорт проекта: project_objects/import_export/import_export.md
   - Мнемосхемы:
       - Редактор мнемосхем: mnemo/editor.md
       - Графические элементы: mnemo/graphics.md
@@ -107,6 +108,7 @@ nav:
       - Модели прогнозирования: machine_learning/forecasting_models.md
       - Экспорт проекта: machine_learning/project_export.md
   - Администрирование:
+      - Запуск и остановка узла: administration/start_stop/start_stop.md
       - Резервирование ресурсов: administration/redundancy/redundancy.md
       - Узлы кластера: administration/nodes/nodes.md
       - Лицензирование: administration/license/license.md
@@ -114,4 +116,8 @@ nav:
       - Модуль Git: administration/git/git.md
       - Диагностика объектов Runtime: administration/diagnostics/diagnostics.md
       - Журналы сервера: administration/logs/logs.md
-      - Версия и обновление: administration/update/update.md
+      - Версия и обновление:
+          - Общие сведения: administration/update/update.md
+          - Мажорное обновление: administration/update/major.md
+          - Минорное обновление и патч: administration/update/minor.md
+          - Хотфикс: administration/update/hotfix.md

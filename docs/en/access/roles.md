@@ -49,7 +49,7 @@ You will need access to Studio (`http://<server>:9000/fp/studio`) with an accoun
 | `operators` | Every user has it; it cannot be removed. Rights on screens given to this role go to all users, so create your own roles to control access |
 | `monitor` | **Read** on all project screens, including new ones: the right is selected as soon as a folder screen is saved. A user with this role sees all screens in Runtime. The role gives no **Write** |
 
-The **Users count** column of the role list shows how many users from the **Users** section have the role. The built-in accounts `system` and `admin` are not counted.
+The **Users count** column of the role list shows how many users from the **Users** section have the role. Built-in accounts are not counted.
 
 ## Creating a role
 

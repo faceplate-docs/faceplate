@@ -58,8 +58,13 @@ docs/
 │   │   ├── replica/
 │   │   │   ├── images/  (2 files)
 │   │   │   └── replica.md
+│   │   ├── start_stop/
+│   │   │   └── start_stop.md
 │   │   └── update/
-│   │       ├── images/  (3 files)
+│   │       ├── images/  (5 files)
+│   │       ├── hotfix.md
+│   │       ├── major.md
+│   │       ├── minor.md
 │   │       └── update.md
 │   ├── alarms/
 │   │   ├── alarm/
@@ -168,6 +173,9 @@ docs/
 │   │   ├── catalogs/
 │   │   │   ├── images/  (10 files)
 │   │   │   └── catalogs.md
+│   │   ├── import_export/
+│   │   │   ├── images/  (3 files)
+│   │   │   └── import_export.md
 │   │   ├── localization/
 │   │   │   ├── images/  (9 files)
 │   │   │   └── localization.md
@@ -212,8 +220,13 @@ docs/
 │   │   ├── replica/
 │   │   │   ├── images/  (2 files)
 │   │   │   └── replica.md
+│   │   ├── start_stop/
+│   │   │   └── start_stop.md
 │   │   └── update/
-│   │       ├── images/  (3 files)
+│   │       ├── images/  (5 files)
+│   │       ├── hotfix.md
+│   │       ├── major.md
+│   │       ├── minor.md
 │   │       └── update.md
 │   ├── alarms/
 │   │   ├── alarm/
@@ -322,6 +335,9 @@ docs/
 │   │   ├── catalogs/
 │   │   │   ├── images/  (10 files)
 │   │   │   └── catalogs.md
+│   │   ├── import_export/
+│   │   │   ├── images/  (3 files)
+│   │   │   └── import_export.md
 │   │   ├── localization/
 │   │   │   ├── images/  (9 files)
 │   │   │   └── localization.md
@@ -338,10 +354,8 @@ docs/
 │   │   │   └── pump.md
 │   │   └── sensor/
 │   │       └── sensor.md
-│   ├── Git в Faceplate.md
 │   ├── readme.md
-│   ├── title.md
-│   └── Архивы и Тренды.md
+│   └── title.md
 └── source/
     ├── git_ru.docx
     ├── iot_ru.docx
@@ -403,6 +417,8 @@ favicon and brand stylesheet), `tools/` (site build and link checker),
 ### Data storage
 - [Storages: which servers hold the project data](docs/en/data_storage/storage/storage.md)
 - [Archives](docs/en/data_storage/archives/archives.md)
+- [Trends: viewing and exporting history](docs/en/data_storage/archives/trends.md)
+- [Aggregates: calculating and exporting indicators](docs/en/data_storage/archives/aggregates.md)
 - [Historian server](docs/en/data_storage/historian/historian_server.md)
 
 ### Alarms and events
@@ -414,6 +430,7 @@ favicon and brand stylesheet), `tools/` (site build and link checker),
 - [Prototypes](docs/en/project_objects/prototypes/prototypes.md)
 - [Catalogs](docs/en/project_objects/catalogs/catalogs.md)
 - [Localization](docs/en/project_objects/localization/localization.md)
+- [Project import and export](docs/en/project_objects/import_export/import_export.md)
 
 ### Screens
 - [Screen editor](docs/en/mnemo/editor.md)
@@ -454,6 +471,7 @@ favicon and brand stylesheet), `tools/` (site build and link checker),
 - [Project export (`faceplate_project-*.xlsx`)](docs/en/machine_learning/project_export.md)
 
 ### Administration
+- [Starting and stopping a node](docs/en/administration/start_stop/start_stop.md)
 - [Resource redundancy](docs/en/administration/redundancy/redundancy.md)
 - [Cluster nodes](docs/en/administration/nodes/nodes.md)
 - [Licensing](docs/en/administration/license/license.md)
@@ -462,3 +480,6 @@ favicon and brand stylesheet), `tools/` (site build and link checker),
 - [Diagnostics of Runtime objects](docs/en/administration/diagnostics/diagnostics.md)
 - [Server logs](docs/en/administration/logs/logs.md)
 - [Version and update](docs/en/administration/update/update.md)
+  - [Major update](docs/en/administration/update/major.md)
+  - [Minor update and patch](docs/en/administration/update/minor.md)
+  - [Hotfix](docs/en/administration/update/hotfix.md)

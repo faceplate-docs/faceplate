@@ -20,7 +20,7 @@
 
 | Термин | Значение |
 |---|---|
-| Каталог установки | Папка, в которую установлен FACEPLATE на сервере. В ней лежат папки `bin`, `releases`, `logs`; команда `./faceplate console` запускается из `bin` этой папки |
+| Каталог установки | Папка на сервере, в которую установлен FACEPLATE. В ней лежат папки `bin`, `erts-<версия>`, `etc`, `lib` и `releases`. После первого запуска в ней появляются папка `logs` и база `DB`, после запуска в фоне — папка `log`, а после подключения модуля Git к репозиторию — папка `cvs` |
 | Узел | Один запущенный сервер FACEPLATE. Имя узла имеет вид `fp@<имя сервера>`, например `fp@master.fp`; оно же показано в поле **Узел** формы объекта Runtime и на панели **Сервера** |
 | Журнал сервера | Текстовые файлы `console.log` и `error.log`, в которые узел пишет сообщения о своей работе и работе объектов проекта |
 | Ротация | Переименование заполненного файла журнала в архивный (`console.log.0`, `console.log.1`, …) и начало нового файла |
@@ -53,7 +53,7 @@ Studio показывает состояние объекта сейчас: по
 
 Сообщения уровня `debug` в файлы не пишутся. Их видно только в окне **Диагностика** на уровне `debug`, см. [«Диагностика объектов Runtime», раздел «Уровень журнала»](../diagnostics/diagnostics.md#уровень-журнала).
 
-Окно консоли, в котором запущен `./faceplate console`, журнал не дублирует: читайте файлы.
+В окне терминала, в котором запущен узел, видны сообщения запуска (например, строка `FACEPLATE STARTED`) и консоль узла. Поэтому сообщения объектов и системы читайте в файлах. Как запускают узел, см. [«Запуск и остановка узла», раздел «Запуск в окне и в фоне»](../start_stop/start_stop.md#запуск-в-окне-и-в-фоне).
 
 В кластере каждый узел пишет свои файлы на своём сервере. Сообщения объекта ищите на узле, где он выполняется, — это значение поля **Узел** в форме объекта (см. [Как найти строки объекта](#как-найти-строки-объекта)). Список узлов — на панели **Сервера**, см. [«Узлы кластера»](../nodes/nodes.md).
 
@@ -165,15 +165,15 @@ grep 'diag_demo/diag_fail' logs/console.log | grep -v 'error on user script'
 ```
 
 ```
-2026-11-09 12:11:21.456723+00:00 [info] <0.517054.0>@fp_item:log_user_action/1:1240 USER ACTION: edit object <<"/diag_demo/diag_fail">>, user <<"system">>, ip: {172,17,0,1}, changes: #{<<"disabled">> => #{value => true,previous_value => false}}
+2026-11-09 12:11:21.456723+00:00 [info] <0.517054.0>@fp_item:log_user_action/1:1240 USER ACTION: edit object <<"/diag_demo/diag_fail">>, user <<"engineer">>, ip: {172,17,0,1}, changes: #{<<"disabled">> => #{value => true,previous_value => false}}
 2026-11-09 12:11:21.457658+00:00 [info] <0.499862.0>@fp_script:terminate/3:530 "diag_demo/diag_fail" stop script, reason shutdown
 2026-11-09 12:11:21.458121+00:00 [info] <0.499862.0>@fp_script:log_state/3:676 "diag_demo/diag_fail" changed state to stop
-2026-11-09 12:12:22.675101+00:00 [info] <0.518133.0>@fp_item:log_user_action/1:1240 USER ACTION: edit object <<"/diag_demo/diag_fail">>, user <<"system">>, ip: {172,17,0,1}, changes: #{<<"disabled">> => #{value => false,previous_value => true}}
+2026-11-09 12:12:22.675101+00:00 [info] <0.518133.0>@fp_item:log_user_action/1:1240 USER ACTION: edit object <<"/diag_demo/diag_fail">>, user <<"engineer">>, ip: {172,17,0,1}, changes: #{<<"disabled">> => #{value => false,previous_value => true}}
 ```
 
 По строкам видно:
 
-- в 12:11:21 пользователь `system` с адреса `172.17.0.1` включил **Отключено** (`disabled`: `false` → `true`);
+- в 12:11:21 пользователь `engineer` с адреса `172.17.0.1` включил **Отключено** (`disabled`: `false` → `true`);
 - в ту же миллисекунду процесс `<0.499862.0>` остановился;
 - в 12:12:22 тот же пользователь выключил **Отключено**.
 
@@ -182,7 +182,7 @@ grep 'diag_demo/diag_fail' logs/console.log | grep -v 'error on user script'
 Все изменения проекта одного пользователя:
 
 ```bash
-grep 'USER ACTION' logs/console.log* | grep 'user <<"admin">>'
+grep 'USER ACTION' logs/console.log* | grep 'user <<"<пользователь>">>'
 ```
 
 ## Журналы, Диагностика и поле «Ошибка»

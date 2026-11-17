@@ -20,7 +20,7 @@ A document for the integration engineer who looks for the cause of a failure, or
 
 | Term | Meaning |
 |---|---|
-| Installation directory | The folder FACEPLATE is installed to on the server. It contains the `bin`, `releases` and `logs` folders; `./faceplate console` is run from its `bin` |
+| Installation directory | The folder on the server where FACEPLATE is installed. It contains the `bin`, `erts-<version>`, `etc`, `lib` and `releases` folders. After the first start the `logs` folder and the `DB` database appear in it, after a start in the background the `log` folder, and after the Git module is connected to a repository the `cvs` folder |
 | Node | One running FACEPLATE server. A node name looks like `fp@<server name>`, for example `fp@master.fp`; the same name is shown in the **Node** field of a Runtime object form and on the **Servers** panel |
 | Server log | The text files `console.log` and `error.log` the node writes messages about its own work and the work of project objects to |
 | Rotation | Renaming a full log file to an archive file (`console.log.0`, `console.log.1`, …) and starting a new file |
@@ -53,7 +53,7 @@ By default the node writes two files to the `logs` folder of the installation di
 
 `debug` messages are not written to the files. They are visible only in the **Diagnostics** window at level `debug`, see [Diagnostics of Runtime objects, section Log level](../diagnostics/diagnostics.md#log-level).
 
-The console window where `./faceplate console` runs does not duplicate the log: read the files.
+The terminal window where the node is started shows start messages (for example, the `FACEPLATE STARTED` line) and the node console. So read object and system messages in the files. For how a node is started, see [«Starting and stopping a node», section «Starting in a window and in the background»](../start_stop/start_stop.md#starting-in-a-window-and-in-the-background).
 
 In a cluster each node writes its own files on its own server. Look for an object's messages on the node where it runs — the value of the **Node** field in the object form (see [Finding the lines of an object](#finding-the-lines-of-an-object)). The list of nodes is on the **Servers** panel, see [Cluster nodes](../nodes/nodes.md).
 
@@ -165,15 +165,15 @@ grep 'diag_demo/diag_fail' logs/console.log | grep -v 'error on user script'
 ```
 
 ```
-2026-11-09 12:11:21.456723+00:00 [info] <0.517054.0>@fp_item:log_user_action/1:1240 USER ACTION: edit object <<"/diag_demo/diag_fail">>, user <<"system">>, ip: {172,17,0,1}, changes: #{<<"disabled">> => #{value => true,previous_value => false}}
+2026-11-09 12:11:21.456723+00:00 [info] <0.517054.0>@fp_item:log_user_action/1:1240 USER ACTION: edit object <<"/diag_demo/diag_fail">>, user <<"engineer">>, ip: {172,17,0,1}, changes: #{<<"disabled">> => #{value => true,previous_value => false}}
 2026-11-09 12:11:21.457658+00:00 [info] <0.499862.0>@fp_script:terminate/3:530 "diag_demo/diag_fail" stop script, reason shutdown
 2026-11-09 12:11:21.458121+00:00 [info] <0.499862.0>@fp_script:log_state/3:676 "diag_demo/diag_fail" changed state to stop
-2026-11-09 12:12:22.675101+00:00 [info] <0.518133.0>@fp_item:log_user_action/1:1240 USER ACTION: edit object <<"/diag_demo/diag_fail">>, user <<"system">>, ip: {172,17,0,1}, changes: #{<<"disabled">> => #{value => false,previous_value => true}}
+2026-11-09 12:12:22.675101+00:00 [info] <0.518133.0>@fp_item:log_user_action/1:1240 USER ACTION: edit object <<"/diag_demo/diag_fail">>, user <<"engineer">>, ip: {172,17,0,1}, changes: #{<<"disabled">> => #{value => false,previous_value => true}}
 ```
 
 The lines show:
 
-- at 12:11:21 user `system` from address `172.17.0.1` turned **Disabled** on (`disabled`: `false` → `true`);
+- at 12:11:21 user `engineer` from address `172.17.0.1` turned **Disabled** on (`disabled`: `false` → `true`);
 - in the same millisecond process `<0.499862.0>` stopped;
 - at 12:12:22 the same user turned **Disabled** off.
 
@@ -182,7 +182,7 @@ There is no `badarith` error in `error.log` between 12:11:21 and 12:12:22; the n
 All project changes made by one user:
 
 ```bash
-grep 'USER ACTION' logs/console.log* | grep 'user <<"admin">>'
+grep 'USER ACTION' logs/console.log* | grep 'user <<"<user>">>'
 ```
 
 ## Logs, Diagnostics and the Error field

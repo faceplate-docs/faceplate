@@ -20,7 +20,7 @@ A document for an integration engineer who needs to give the operator a table of
 | Term | Meaning |
 |---|---|
 | Report screen | A screen on which the operator sets the period and a table shows the archive values for that period. There is no separate object type: it is an ordinary screen built from elements of the **Reports** palette |
-| Alarm strip | The row under the Runtime top bar, above the screen. Active alarms appear in it |
+| Alarm strip | The row under the Runtime top bar, above the screen. It shows the latest unacknowledged message |
 | Work area | The part of the Runtime window under the alarm strip where the screen is shown. It can be zoomed and scrolled |
 | Archive playback | A Runtime mode in which the screen shows archive values for a chosen past moment. Turned on with the calendar-with-clock icon on the top bar, controlled in the "PlayBack menu" window |
 | Screen printing | The printer button on the Runtime top bar and the Ctrl + P shortcut. Hands the browser a picture of the alarm strip and of the visible part of the work area |
@@ -127,7 +127,7 @@ The script puts the last 24 hours into the fields and passes the same period to 
 
 The operator opens the screen from the **Screens** menu (see [Screens and navigation](screens.md#how-the-operator-finds-screens)). In the example, on opening the fields show the last 24 hours and the table shows all level values for that time.
 
-To change the period, the operator clicks the calendar icon in the field and picks a day, the clock icon and picks a time from the list (the list step is the `interval` property), or types the date into the field. After the choice the table rereads the archive for the new period. The first row of the table is the archive value at the start of the period, then every change of the quantity.
+To change the period, the operator clicks the calendar icon in the field and picks a day, the clock icon and picks a time from the list (the list step is the `interval` property), or types the date into the field. After the choice the table rereads the archive for the new period. The first row of the table is the archive value at the start of the period, then every change of the quantity. If the archive started recording after the start of the period, the first row has no value.
 
 ![Report in Runtime for the period set by the operator; 1 — zoom, 2 — print](images/reports_04_runtime.png)
 
@@ -159,7 +159,7 @@ In the example the picture has no top bar and no fixed screen with navigation bu
 
 Hence two rules for a report screen:
 
-1. **The whole screen in the window.** If the screen is larger than the window, the operator reduces the zoom before printing: the magnifier icon on the top bar (**1** in the figure above) opens a panel with the current zoom in percent and the **−**, **+** and **Reset** buttons. The **−** button halves the zoom. Ctrl + mouse wheel also changes the zoom; the wheel without Ctrl scrolls the screen. **Reset** returns 100 %.
+1. **The whole screen in the window.** If the screen is larger than the window, the operator reduces the zoom before printing: the magnifier icon on the top bar (**1** in the figure above) opens a panel with the current zoom in percent and the **−**, **+** and **Reset** buttons. The **−** and **+** buttons halve and double the zoom. Ctrl + mouse wheel also changes the zoom; the wheel without Ctrl scrolls the screen. **Reset** returns 100 %.
 2. **All table rows visible.** The height of the **Grid** is chosen by the number of rows the report gives for a typical period. If there are clearly more rows, shorten the default period in `init` or give the table the full height of the screen.
 
 ## Past state of the screen: archive playback
@@ -170,7 +170,8 @@ The calendar-with-clock icon on the top bar, to the left of the magnifier (**1**
 
 | No. | Window element | Purpose |
 |---|---|---|
-| 2 | **Counting time** | The moment for which the screen shows values. Type the date and time into the field and press Enter |
+| 1 | Calendar-with-clock icon on the top bar | Opens the "PlayBack menu" window (see above) |
+| 2 | **Counting time** | The moment for which the screen shows values. When the window opens, the field holds the current time. Type the date and time and press Enter, or pick a time from the list with the clock icon — then the moment applies at once |
 | 3 | "Back" and "forward" buttons | Move the moment one step earlier or later |
 | 4 | Step | A number (1, 5, 10, 15, 30, 60) and a unit: `second`, `minute`, `hour` |
 
@@ -178,7 +179,7 @@ The calendar-with-clock icon on the top bar, to the left of the magnifier (**1**
 
 What the screen shows:
 
-- while no moment is set — current values, as usual;
+- until the operator sets a moment — current values, as usual;
 - an element bound to a field that has an archive — the archive value at the set moment;
 - an element bound to a field without an archive — the current value;
 - values from the screen are not written to the project in this mode.
