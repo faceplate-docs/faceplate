@@ -85,6 +85,7 @@ nav:
       - Скрипты и события: mnemo/events.md
       - Экраны и переходы: mnemo/screens.md
       - Рабочий стол Runtime: mnemo/runtime_desktop/runtime_desktop.md
+      - Проигрывание: mnemo/playback/playback.md
       - Отчёты и печать экрана: mnemo/reports.md
       - Тревоги и тренды на экране: mnemo/alarms_trends.md
       - Библиотека изображений: mnemo/images.md
