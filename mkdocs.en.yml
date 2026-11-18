@@ -60,6 +60,9 @@ nav:
   - Alarms and events:
       - Messages and alarms: alarms/alarm/alarm.md
       - Dispatcher advisor: alarms/dsf/dsf.md
+  - Operator work:
+      - Desktop and navigator: operator/desktop.md
+      - Status bar and connection: operator/status.md
   - Project objects:
       - Primitives: project_objects/primitives/primitives.md
       - Prototypes: project_objects/prototypes/prototypes.md
@@ -77,7 +80,6 @@ nav:
       - Data sources on a screen: mnemo/datasources.md
       - Scripts and events: mnemo/events.md
       - Screens and navigation: mnemo/screens.md
-      - Runtime desktop: mnemo/runtime_desktop/runtime_desktop.md
       - Reports and screen printing: mnemo/reports.md
       - Alarms and trends on a screen: mnemo/alarms_trends.md
       - Image library: mnemo/images.md

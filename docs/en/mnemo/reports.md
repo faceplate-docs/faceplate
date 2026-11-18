@@ -20,7 +20,7 @@ A document for an integration engineer who needs to give the operator a table of
 | Term | Meaning |
 |---|---|
 | Report screen | A screen on which the operator sets the period and a table shows the archive values for that period. There is no separate object type: it is an ordinary screen built from elements of the **Reports** palette |
-| Alarm strip | The row under the Runtime top bar, above the screen. It shows the latest unacknowledged message |
+| Alarm strip | The row under the Runtime top bar, above the screen. It shows the latest unacknowledged message (see [Desktop and navigator](../operator/desktop.md#the-runtime-window)) |
 | Work area | The part of the Runtime window under the alarm strip where the screen is shown. It can be zoomed and scrolled |
 | Archive playback | A Runtime mode in which the screen shows archive values for a chosen past moment. Turned on with the calendar-with-clock icon on the top bar, controlled in the "PlayBack menu" window |
 | Screen printing | The printer button on the Runtime top bar and the Ctrl + P shortcut. Hands the browser a picture of the alarm strip and of the visible part of the work area |
@@ -159,7 +159,7 @@ In the example the picture has no top bar and no fixed screen with navigation bu
 
 Hence two rules for a report screen:
 
-1. **The whole screen in the window.** If the screen is larger than the window, the operator reduces the zoom before printing: the magnifier icon on the top bar (**1** in the figure above) opens a panel with the current zoom in percent and the **−**, **+** and **Reset** buttons. The **−** and **+** buttons halve and double the zoom. Ctrl + mouse wheel also changes the zoom; the wheel without Ctrl scrolls the screen. **Reset** returns 100 %.
+1. **The whole screen in the window.** If the screen is larger than the window, the operator reduces the zoom before printing: the magnifier icon on the top bar (**1** in the figure above) opens a panel with the current zoom in percent and the **−**, **+** and **Reset** buttons. The **−** and **+** buttons halve and double the zoom. Ctrl + mouse wheel also changes the zoom; the wheel without Ctrl scrolls the screen, and the middle mouse button drags it. The zoom ranges from 1 to 25,600 %. **Reset** returns 100 % and the original position of the screen.
 2. **All table rows visible.** The height of the **Grid** is chosen by the number of rows the report gives for a typical period. If there are clearly more rows, shorten the default period in `init` or give the table the full height of the screen.
 
 ## Past state of the screen: archive playback

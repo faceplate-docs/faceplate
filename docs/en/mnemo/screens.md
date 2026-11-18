@@ -106,7 +106,7 @@ How a screen looks in these windows is set by three fields of the folder form (f
 |---|---|
 | **Favorite** | **yes** puts the screen into the Favorites window |
 | **Alias** | The screen name in the Favorites and History windows instead of the folder name. Empty means the folder name is shown |
-| **Icon** | A picture next to the name in these windows and in the Studio project tree. **Select files...** uploads a file |
+| **Icon** | A picture next to the name in these windows and in the Studio project tree. **Select files...** uploads an SVG, PNG or JPG file |
 
 After a change click **save**.
 

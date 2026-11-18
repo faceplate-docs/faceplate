@@ -156,6 +156,10 @@ docs/
 │   │   ├── reports.md
 │   │   ├── screens.md
 │   │   └── tables.md
+│   ├── operator/
+│   │   ├── images/  (12 files)
+│   │   ├── desktop.md
+│   │   └── status.md
 │   ├── project_logic/
 │   │   ├── calculation/
 │   │   │   ├── images/  (11 files)
@@ -318,6 +322,10 @@ docs/
 │   │   ├── reports.md
 │   │   ├── screens.md
 │   │   └── tables.md
+│   ├── operator/
+│   │   ├── images/  (12 files)
+│   │   ├── desktop.md
+│   │   └── status.md
 │   ├── project_logic/
 │   │   ├── calculation/
 │   │   │   ├── images/  (11 files)
@@ -424,6 +432,10 @@ favicon and brand stylesheet), `tools/` (site build and link checker),
 ### Alarms and events
 - [Messages and alarms](docs/en/alarms/alarm/alarm.md)
 - [Dispatcher advisor](docs/en/alarms/dsf/dsf.md)
+
+### Operator work
+- [Desktop and navigator](docs/en/operator/desktop.md)
+- [Status bar and connection](docs/en/operator/status.md)
 
 ### Project objects
 - [Primitives](docs/en/project_objects/primitives/primitives.md)
