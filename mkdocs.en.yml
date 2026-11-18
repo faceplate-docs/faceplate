@@ -80,6 +80,7 @@ nav:
       - Data sources on a screen: mnemo/datasources.md
       - Scripts and events: mnemo/events.md
       - Screens and navigation: mnemo/screens.md
+      - Playback: mnemo/playback/playback.md
       - Reports and screen printing: mnemo/reports.md
       - Alarms and trends on a screen: mnemo/alarms_trends.md
       - Image library: mnemo/images.md
