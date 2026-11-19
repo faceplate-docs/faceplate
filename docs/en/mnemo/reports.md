@@ -166,7 +166,7 @@ Hence two rules for a report screen:
 
 A report table shows one quantity for a period. Investigating an event often needs something else: the whole screen at one past moment — what the levels and states were when a protection tripped. For this Runtime has the archive playback mode. It needs no separate screen: it works on any open screen.
 
-The calendar-with-clock icon on the top bar, to the left of the magnifier (**1** in the figure), opens the "PlayBack menu" window over the current screen:
+The calendar-with-clock icon on the top bar, further left than the magnifier (**1** in the figure), opens the "PlayBack menu" window over the current screen:
 
 | No. | Window element | Purpose |
 |---|---|---|

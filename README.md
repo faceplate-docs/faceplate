@@ -134,7 +134,7 @@ docs/
 │   │   │   ├── powerbi.md
 │   │   │   └── PowerBi_FP.md
 │   │   ├── powerfactory_service/
-│   │   │   ├── images/  (7 files)
+│   │   │   ├── images/  (10 files)
 │   │   │   └── powerfactory_service.md
 │   │   └── rest api/
 │   │       └── rest api.md
@@ -300,7 +300,7 @@ docs/
 │   │   │   ├── powerbi.md
 │   │   │   └── PowerBi_FP.md
 │   │   ├── powerfactory_service/
-│   │   │   ├── images/  (7 files)
+│   │   │   ├── images/  (10 files)
 │   │   │   └── powerfactory_service.md
 │   │   └── rest api/
 │   │       └── rest api.md

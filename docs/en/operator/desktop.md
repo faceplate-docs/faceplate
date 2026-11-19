@@ -47,7 +47,7 @@ The document covers:
 
 How to set a screen's size, alias and icon, mark it as a favorite, draw the fixed screen and navigation buttons is described in [Screens and navigation](../mnemo/screens.md).
 
-The running example is the folder `station` with the screen «Станция: обзор» (station overview). Inside it are the folder `tank_1` with the tank screen, the object `tank` and the alarm template `level_high` (level above 80 %), and the folder `pumps` without a screen, which holds the folder `pump_1` with the pump screen.
+The running example is the folder `station` with the screen «Station: overview». Inside it are the folder `tank_1` with the tank screen, the object `tank` and the alarm template `level_high` (level above 80 %), and the folder `pumps` without a screen, which holds the folder `pump_1` with the pump screen.
 
 You need access to Studio (`http://<server>:9000/fp/studio`) with an account allowed to change the project. Check the result in Runtime (`http://<server>:9000/fp/runtime`).
 
@@ -79,6 +79,7 @@ From left to right:
 | **Go back**, **Go forward** | A step through the navigation history | [Back, forward and History](#back-forward-and-history) |
 | Path | Path of the current screen; each part is a link to its screen | [Path of the current screen](#path-of-the-current-screen) |
 | Calendar-with-clock icon | Archive playback on the current screen | [Past state of the screen](../mnemo/reports.md#past-state-of-the-screen-archive-playback) |
+| Flask icon with the letters PF | Research mode: a PowerFactory network calculation based on the current state of the project. The button is present only when PowerFactory modeling is configured | [«Powerfactory Service», section «Research mode in Runtime»](../integrations/powerfactory_service/powerfactory_service.md#research-mode-in-runtime) |
 | Magnifier | Work area zoom | [Screen printing](../mnemo/reports.md#screen-printing) |
 | Printer | Printing the work area and the alarm strip | [Screen printing](../mnemo/reports.md#screen-printing) |
 | **Favorites** (rightmost) | A window of screens marked in Studio with the folder field **Favorite**. If there are none, the notification "Favorite screens are not defined" | [The folder in Runtime](../mnemo/screens.md#the-folder-in-runtime-alias-icon-favorites) |
@@ -124,7 +125,7 @@ In the example, Studio has three folders with a screen and one without:
 
 ```text
 PROJECT
-└── station          screen "Станция: обзор"
+└── station          screen "Station: overview"
     ├── tank_1       tank screen
     └── pumps        no screen
         └── pump_1   pump screen

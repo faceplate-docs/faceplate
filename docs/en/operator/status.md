@@ -52,7 +52,7 @@ You will need access to Studio (`http://<server>:9000/fp/studio`) with an accoun
 | `RUN` / `STOP` | Project state: green `RUN` — project objects are running, red `STOP` — stopped. See [Project state](#project-state-run-and-stop) |
 | Account name | Who is logged in. A click opens the password change window (tooltip **Change password**), see [Account and password change](#account-and-password-change) |
 
-The clock takes its time from the server, not from the operator's computer. That is why it shows both a wrong server clock and a lost connection: when the connection drops, the clock stops at the last received value.
+The clock takes its time from the server, not from the operator's computer. That is why it shows both a wrong server clock and a lost connection: when the connection drops, the clock stops at the last received value. The server's time zone does not affect the clock: only the time on the server's clock matters.
 
 ## Project state: RUN and STOP
 
@@ -82,7 +82,7 @@ A click on the account name opens the **Change password - <account>** window. An
 
 Enter the new password in both fields and press **OK** (until then the button is disabled). The eye icon to the right of a field shows the typed characters; the keyboard button opens the on-screen keyboard for touch panels.
 
-The password must meet the same requirements as in the Studio user card (see [Password](../access/users.md#password)). If the two fields differ or the password does not meet the requirements, Runtime shows a message, the window stays open and the password is not changed. After a successful change Runtime reports it. The current session continues; the new password is needed at the next login.
+The password must meet the same requirements as in the Studio user card (see [Password](../access/users.md#password)). If the two fields differ or the password does not meet the requirements, Runtime shows a message, the window stays open and the password is not changed. After a successful change Runtime reports it. The current session continues; the new password is needed at the next login and after a connection loss (see [Connection loss](#connection-loss)).
 
 ## Node in the Runtime menu
 
@@ -99,7 +99,9 @@ Runtime keeps a permanent connection to a node. If the node is stopped, restarti
 
 While the window is shown, the status bar is not updated: the clock stands still and the indicator shows the last received state. Values on the screen under the window are the last ones received before the connection was lost.
 
-When the server responds again, the window closes, Runtime logs in with the same account, rebuilds the desktop and opens the screen that was open before the connection was lost. No password is needed. The clock runs again.
+When the server responds again, the window closes, Runtime logs in by itself with the same name and password the operator used at the start of the session, rebuilds the desktop and opens the screen that was open before the connection was lost. No password is needed, however long the connection was lost. The clock runs again.
+
+The exception is when the account password was changed during the session (by the operator in the change password window or by an administrator in Studio) or the account was deleted. Then Runtime cannot log in by itself, and the operator has to log in again with the new password.
 
 ## Switching to another node
 

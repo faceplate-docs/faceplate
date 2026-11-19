@@ -8,10 +8,12 @@ A document for integration engineers who set up data exchange between a Faceplat
 - [Introduction](#introduction)
 - [Main part](#main-part)
     - [Mappings section](#mappings-section)
+    - [Standard mappings](#standard-mappings)
     - [Creating a mapping](#creating-a-mapping)
     - [Editing and deleting](#editing-and-deleting)
     - [Mapping structure](#mapping-structure)
     - [Service settings](#service-settings)
+    - [Research mode in Runtime](#research-mode-in-runtime)
     - [Interface notes](#interface-notes)
 - [Conclusion](#conclusion)
 
@@ -24,6 +26,7 @@ A document for integration engineers who set up data exchange between a Faceplat
 | PowerFactory host | The address of the external PowerFactory service as `host[:port]`. Without a port, 80 is used |
 | Modeling node | A Faceplate cluster node on which modeling sessions are allowed |
 | Slice | A JSON snapshot of the network state. Slice files are stored in a folder on the Faceplate server |
+| Research mode | A PowerFactory network calculation from Runtime based on the current state of the project. Only the operator who started the mode sees the results |
 | DTS | Dispatcher Training Simulator mode. Uses a separate PowerFactory host |
 | Path conversion | Rules that turn a Faceplate object path into a PowerFactory object path and back |
 
@@ -35,6 +38,8 @@ Powerfactory Service links Faceplate project objects to the network model in Pow
 |---|---|---|
 | Mappings | The section table | Which fields of which objects take part in the exchange and which PowerFactory attributes they map to |
 | Settings | The **Settings** button | Where to connect, where modeling is allowed, which mapping each operation uses, how paths are converted |
+
+How the operator uses the configured integration in Runtime is described in [«Research mode in Runtime»](#research-mode-in-runtime).
 
 Running example: the `load_exchange` mapping for loads. A load in the project is an instance of the `load` [prototype](../../project_objects/prototypes/prototypes.md) with fields `p_set`, `q_set`, `pf_outserv`, a link `pole` to its node, and child objects `P` and `Q`. In PowerFactory it corresponds to the `ElmLod` class.
 
@@ -49,6 +54,28 @@ Open **Powerfactory Service** in the Studio main menu. The table shows each mapp
 ![Powerfactory Service section](images/1_mappings_list.png)
 
 Toolbar buttons from left to right: refresh, create, edit, delete, **Settings**. Edit and delete become available once a row is selected. Double-clicking a row also opens the mapping.
+
+## Standard mappings
+
+A new project already has mappings for the default operations in this section, including `init` and `update_execute_get` for research mode. They expect prototypes with specific names and PowerFactory classes:
+
+| PowerFactory class | Faceplate prototypes |
+|---|---|
+| `ElmSite` | `substation` |
+| `ElmSubstat` | `voltage class` |
+| `ElmTerm` | `terminal`, `bus terminal`, `line terminal` |
+| `ElmCoup` | `circuit_breaker`, `isolator` |
+| `ElmBranch` | `line_branch` |
+| `ElmLne` | `line` |
+| `ElmLnesec` | `linesec` |
+| `ElmTr2` | `transformer-2w2t`, `auto-transformer-2w2t` |
+| `ElmTr3` | `transformer-3w3t`, `auto-transformer-3w3t` |
+| `ElmLod` | `load` |
+| `ElmSym` | `generator` |
+| `ElmShnt` | `reactor` |
+| `ElmXnet` | `external_grid` |
+
+Besides the prototype names, the standard mappings expect specific prototype fields and a PowerFactory calculation command object (class `ComLdf`) in the project. Before using them, open a mapping, for example `update_execute_get`, and check it against the project prototypes. If they do not match, write your own mappings (see [«Creating a mapping»](#creating-a-mapping)) and set them in **Settings**.
 
 ## Creating a mapping
 
@@ -163,12 +190,14 @@ Click **Settings**. The window opens full screen.
 
 ### Connection and modeling
 
+How the operator works with modeling is described in [«Research mode in Runtime»](#research-mode-in-runtime).
+
 | Field | Default | Purpose |
 |---|---|---|
 | **pf_modeling_hosts** | empty | PowerFactory hosts for modeling sessions, `host[:port]`. Sessions are distributed across hosts |
 | **pf_dts_host** | empty | PowerFactory host for DTS mode, `host[:port]` |
 | **modeling_nodes** | empty | Modeling nodes as `node[:N]`, for example `fp@srv1:4`. `N` is the maximum number of concurrent sessions on the node; without `N` there is no limit. A modeling session will not open on a node that is not in the list |
-| **modeling_project_params** | `{"Grid": "Grid"}` | PowerFactory project parameters sent in modeling session requests |
+| **modeling_project_params** | `{"Grid": "Grid"}` | JSON with PowerFactory project parameters. It is passed to PowerFactory during a modeling session. It sets, for example, the project, the study case and the operation scenario |
 
 ### Operation mappings
 
@@ -178,9 +207,9 @@ Each field takes the **Name** of a mapping from the section table. The service l
 |---|---|---|
 | **modeling_init_mapping** | `init` | Starting a modeling session: which project data to load into the session |
 | **modeling_apply_mapping** | `update_execute_get` | Calculation in a session: what to send to PowerFactory and where to write the result |
-| **modeling_apply_mapping_dynamic** | `update_execute_get_dynamic` | Dynamic calculation |
+| **modeling_apply_mapping_dynamic** | `update_execute_get_dynamic` | Dynamic calculation. There is no mapping with this name in the standard set: create it or set another one |
 | **current_slice_mapping** | `produce_slice` | Loading a slice from a file in **slices_folder** into project objects |
-| **archive_slice_mapping** | `produce_slice_archive` | Not used by the server |
+| **archive_slice_mapping** | `produce_slice_archive` | Name of the mapping for a slice of archive data. There is no mapping with this name in the standard set: create it or set another one |
 
 To make an operation use the example mapping, enter `load_exchange` in the corresponding field and save.
 
@@ -202,7 +231,7 @@ To make an operation use the example mapping, enter `load_exchange` in the corre
 
 ### Path conversion
 
-Each rule in **fp2pf_path_mapping** and **pf2fp_path_mapping** is a "regular expression — replacement" pair. Named groups `(?<NAME>…)` are substituted into the replacement as `<NAME>`. Rules are applied to a path one after another.
+Each rule in **fp2pf_path_mapping** and **pf2fp_path_mapping** is a "regular expression — replacement" pair. Named groups `(?<NAME>…)` are substituted into the replacement as `<NAME>`. Write the rules so that an object path matches only one rule.
 
 The rule:
 
@@ -210,9 +239,44 @@ The rule:
 "^/root/FP/PROJECT/(?<COUNTRY>[\\w-_]*)/(?<REGION>[\\w-_]*)/@lines/": "Grid\\\\<COUNTRY>\\\\<REGION>\\\\@lines\\\\"
 ```
 
-converts `/root/FP/PROJECT/KAZ/SEVER/@lines/L1` to `Grid\KAZ\SEVER\@lines\L1`.
+converts `/root/FP/PROJECT/C1/NORTH/@lines/L1` to `Grid\C1\NORTH\@lines\L1`.
 
 The rules must reflect the project folder structure. If an object's converted path does not match its path in the PowerFactory model, its data does not take part in the exchange.
+
+## Research mode in Runtime
+
+Research mode is a PowerFactory steady-state calculation of the network based on the current state of the project. The operator changes the state of network elements on the screens and sends the changes for calculation. The project data does not change.
+
+The mode needs the settings from [«Connection and modeling»](#connection-and-modeling): a Faceplate node in **modeling_nodes**, a host in **pf_modeling_hosts**, and mappings in **modeling_init_mapping** and **modeling_apply_mapping** (by default `init` and `update_execute_get`). The network model in PowerFactory must match the project structure, see [«Path conversion»](#path-conversion).
+
+The mode is started with the button with a flask and the letters PF on the Runtime top bar (`http://<server>:9000/fp/runtime`), between the calendar-with-clock icon and the magnifier. The button is present on nodes from **modeling_nodes**. Runtime checks the settings when the page opens: after changing them, reload the Runtime page.
+
+![The research mode button on the Runtime top bar](images/10_research_button.png)
+
+How the operator works:
+
+1. The operator presses the button. While the calculation session is being prepared, Runtime shows the **Please wait** window with the text «Preparing powerfactory research mode...». Then the «Меню режима исследования» window opens with the **calculate** and **close** buttons.
+2. While the window is open, the changes the operator makes on the screens with the project controls — switching device positions, generation, load — are seen only by this operator. They are not written to the project; other users' screens show the project data.
+3. **calculate** sends the changes for calculation with the mapping from **modeling_apply_mapping**. The calculation result appears on the screens.
+4. **close** or the cross closes the window and ends the mode. The screens show the project data again; the operator's changes are not kept.
+
+![The research mode menu](images/8_research_menu.png)
+
+If a calculation with dynamics is configured in the project, the window has a **dynamic** / **static** switch and a **tstop** field, the calculation time. Such a calculation uses the mapping from **modeling_apply_mapping_dynamic**.
+
+Errors:
+
+| Error | What the operator sees | What next |
+|---|---|---|
+| Warning | A window with the PowerFactory message over the menu | Close the window with the cross; work in the mode continues |
+| Critical error during calculation | An **ERROR!** window: «Произошла ошибка, режим моделирования будет закрыт: <error text>» | After the window is closed, the mode ends; start it again |
+| No host in **pf_modeling_hosts** | An **ERROR!** window with the text `no_modeling_instance_running` | Set a host in **Settings** |
+| The node already has as many sessions as **modeling_nodes** allows | An **ERROR!** window: «PF Research: the server did not return a session ID» | Start the mode when another operator closes theirs |
+| Critical error at start | An **ERROR!** window with the error text | The mode does not open |
+
+![A critical error during calculation](images/9_research_error.png)
+
+If the error was caused by the operator's changes, return them to the initial state or start the mode again. A restart discards the changes.
 
 ## Interface notes
 
@@ -236,3 +300,4 @@ Integration setup order:
 5. Write the mappings: for each prototype, specify the PowerFactory class and the "attribute — field" pairs in `out` and `in`. Move shared parts into a separate mapping and include it through `links`.
 6. Enter the mapping names in the operation fields.
 7. Before every JSON save, click **Compile** and wait for `OK`.
+8. Check research mode: on a node from **modeling_nodes** reload the Runtime page; the research mode button must appear on the top bar.
