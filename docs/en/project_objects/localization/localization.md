@@ -64,9 +64,9 @@ Runtime translates the text that is set as the value of an element property. Exa
 
 ![The text property of a rectangle](images/05_text_property.png)
 
-Save the screen and open it in Runtime. With language `ru` the rectangle shows `Насос работает`.
+Save the screen and open it in Runtime. With language `en` the rectangle shows `Pump running`.
 
-![Screen in Runtime, language ru](images/06_runtime_ru.png)
+![Screen in Runtime, language en](images/06_runtime_en.png)
 
 How the text behaves in different places:
 

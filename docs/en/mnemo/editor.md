@@ -191,6 +191,8 @@ When you click an empty spot of the canvas, the panel shows the properties of th
 
 A value is changed right in the cell: a number by typing or with the arrows, an option from the list. The change is visible on the canvas at once. The button in the **Binding** column links the property to project data, and the **events** group sets the reaction to events; an example of both is in [Buttons and value input](controls.md), sections [Linking an element to a tag](controls.md#linking-an-element-to-a-tag) and [Button](controls.md#button). All binding modes are described in [Bindings and animation](bindings.md), events and scripts in [Scripts and events](events.md).
 
+Element captions, for example the **text** property in the **text** group, are shown in Runtime in the operator's session language when the text matches a key of the localization dictionary: see [Localization](../project_objects/localization/localization.md), section [Text on a screen](../project_objects/localization/localization.md#text-on-a-screen).
+
 ## Copy, paste, delete
 
 | Action | Keys | Button |

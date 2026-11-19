@@ -34,9 +34,9 @@
 | Бөлім | Ішінде не бар |
 |---|---|
 | `global_libraries` | [Кітапхана модульдері](../../../en/project_logic/library_modules/library_modules.md) және [JS кітапханалары](../../../en/project_logic/js_library/js_library.md) |
-| `environment` | [Суреттер кітапханасы](../../mnemo/images.md), [локализация сөздігі](../../../en/project_objects/localization/localization.md) және жобаның жүйелік баптаулары: [дабылдар](../../../en/alarms/alarm/alarm.md), авторизация, [графикалық редактор](../../mnemo/editor.md) және басқалар |
-| `primitives` | [Примитивтер](../../../en/project_objects/primitives/primitives.md) |
-| `catalogs` | [Каталогтар](../../../en/project_objects/catalogs/catalogs.md) |
+| `environment` | [Суреттер кітапханасы](../../mnemo/images.md), [локализация сөздігі](../localization/localization.md) және жобаның жүйелік баптаулары: [дабылдар](../../../en/alarms/alarm/alarm.md), авторизация, [графикалық редактор](../../mnemo/editor.md) және басқалар |
+| `primitives` | [Примитивтер](../primitives/primitives.md) |
+| `catalogs` | [Каталогтар](../catalogs/catalogs.md) |
 | `prototypes` | [Прототиптер](../prototypes/prototypes.md) |
 | `usergroups` | [Рөлдер](../../access/roles.md) |
 | `users` | [Пайдаланушылар](../../access/users.md): парольсіз есептік жазбалар. Импорттан кейін парольдер қайта беріледі, [«Пайдаланушылар», «Пароль» бөлімін](../../access/users.md#пароль) қараңыз |

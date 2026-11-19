@@ -51,8 +51,8 @@ The example used throughout this document is a pump station:
 
 | Object | Role |
 |---|---|
-| Prototype `Pump` (group "Pumps") | A pump: folder `motor` in the content, fields `rated_power`, `location`, `running` |
-| Instance `P_201` | Pump P-201 in the project root |
+| Prototype `Pump` (group `Pumps`) | A pump: folder `motor` in the content, fields `rated_power`, `location`, `running` |
+| Instance `P_201` | A pump with the title `Pump P-201` in the project root |
 | Prototype `Station` | A station whose content holds the pump instance `P1` |
 | Instance `ST_1` | A station in the project root |
 
@@ -94,7 +94,7 @@ Add the folder `motor` to the `Pump` content:
 
    ![FOLDER type in the system group](images/content_folder_type.png)
 
-3. Enter **Name** `motor` and **Title** "Electric motor". Save.
+3. Enter **Name** `motor` and save.
 
    ![Folder form in the content](images/content_folder_form.png)
 
@@ -161,11 +161,11 @@ Check the code with **Compile** and save.
 ## Creating an instance
 
 1. In the General View, open the folder for the instance and click **Create**.
-2. Expand **prototypes**, then the prototype group ("Pumps"). Select `Pump` and click **Ok**.
+2. Expand **prototypes**, then the prototype group (`Pumps`). Select `Pump` and click **Ok**.
 
    ![Selecting a prototype](images/instance_type.png)
 
-3. Enter **Name** `P_201` and **Title** "Pump P-201". Save.
+3. Enter **Name** `P_201` and **Title** `Pump P-201`. Save.
 
    ![Instance form](images/instance_form.png)
 
@@ -193,21 +193,21 @@ Modes can be combined. For `update`, `delete` and `recursive` the system asks fo
 ![Confirmation of critical modes](images/sync_confirm.png)
 
 > [!WARNING]
-> `update` also overwrites the fields of the instance root. In the example, after `update` the instance `P_201` lost its title "Pump P-201" because the title of the `Pump` content root is empty. After `update`, check the titles and own fields of the instances.
+> `update` also overwrites the fields of the instance root. In the example, after `update` the instance `P_201` lost its title `Pump P-201` because the title of the `Pump` content root is empty. After `update`, check the titles and own fields of the instances.
 
 Example from the project:
 
 | Change in the `Pump` prototype | Mode | Result in `P_201` |
 |---|---|---|
 | Folder `valve` added | `create` | `valve` appeared |
-| Title of `motor` → "Electric motor" | `update` | Title of `motor` = "Electric motor", title of `P_201` cleared |
+| Title of `motor` → `Electric motor` | `update` | Title of `motor` = `Electric motor`, title of `P_201` cleared |
 | Folder `valve` deleted | `delete` | `valve` removed, manually added `local_notes` stayed |
 | `running` is on in the prototype, **Prototype** flag cleared | `update` | `running` unchanged |
 | **Prototype** flag set on `running` | `update` | `running` is on |
 
 ## Nested prototypes
 
-An instance of one prototype can be placed in the content of another. In the example, the instance `P1` of `Pump` is created in the `Station` content (**Content** → **Create** → **prototypes** → "Pumps" → `Pump`).
+An instance of one prototype can be placed in the content of another. In the example, the instance `P1` of `Pump` is created in the `Station` content (**Content** → **Create** → **prototypes** → `Pumps` → `Pump`).
 
 ![Pump instance in the Station content](images/station_content.png)
 

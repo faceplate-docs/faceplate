@@ -98,7 +98,7 @@ Above the records table choose a column, enter a value and click **Search**. The
 ![Search by part of a value](images/06_search.png)
 
 > [!WARNING]
-> An index applies only to records saved after it was added. In the example, after `3gram` was added to the `vendor` field, the query `Эле` found a record only after it was saved again, and `Emer` did not find `PT_3051`, which was not changed after that. Set the index before filling the catalog, or save the records again after adding it.
+> An index applies only to records saved after it was added. In the example, after `3gram` was added to the `vendor` field, the query `Ele` found a record only after it was saved again, and `Emer` did not find `PT_3051`, which was not changed after that. Set the index before filling the catalog, or save the records again after adding it.
 
 ## Behaviour
 
@@ -188,7 +188,7 @@ Each catalog is a separate sheet `catalog@<catalog name>`. The first column is t
 | catalog@sensor_models | certified | range_max | range_min | unit | vendor |
 |---|---|---|---|---|---|
 | PT_3051 | :atom:true | 1600 | 0 | kPa | Emerson |
-| LT_80 | :atom:false | 30 | 0 | m | ВЕГА |
+| LT_80 | :atom:false | 35 | 0 | m | VEGA |
 
 **Import.** Click **Import .xlsx**, choose the file and click **ok**. In the `select_import_items` window select the sheets and click **OK**. A success message appears. Rows with new names create records, rows with existing names update them.
 
