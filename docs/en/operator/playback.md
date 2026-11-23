@@ -69,7 +69,7 @@ Before viewing, the following must be available:
 - matching archives with real records for the period of interest;
 - read access to archives and to source objects for current reads.
 
-Write access is not required to view history. Creating an archive today does not reconstruct values for earlier periods. For collection and source configuration, see [Archives: Configuring Sources and Recording Data](../../data_storage/archives/archives.md).
+Write access is not required to view history. Creating an archive today does not reconstruct values for earlier periods. For collection and source configuration, see [Archives: Configuring Sources and Recording Data](../data_storage/archives/archives.md).
 
 ### Field bindings and archive matching
 
@@ -211,7 +211,7 @@ A lost request is not automatically repeated, and its wait for a response may re
 
 The desktop can be recreated during connection recovery while the open playback window remains associated with the previous screen. Restored connectivity therefore does not guarantee that all window controls and the return action work correctly. A full page reload or a move to another server creates a new viewing session: the previous time and cache are not retained.
 
-After a failure, verify the selected time, readings against known points, and the actual return to current data. There is no universal automatic recovery of the entire mode. General connection indicators are described in [Status Bar, Connection, and Reconnection](https://docs.google.com/document/d/1zOl3KIOrSgpf7ExQJqf0P3EMGFik996Cs7BMlDrVwpE/edit).
+After a failure, verify the selected time, readings against known points, and the actual return to current data. There is no universal automatic recovery of the entire mode. General connection indicators are described in [Status Bar, Connection, and Reconnection](status.md).
 
 ## Troubleshooting
 
