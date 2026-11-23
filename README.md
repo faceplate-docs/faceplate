@@ -142,7 +142,7 @@ docs/
 │   │   ├── forecasting_models.md
 │   │   └── project_export.md
 │   ├── mnemo/
-│   │   ├── images/  (101 files)
+│   │   ├── images/  (100 files)
 │   │   ├── alarms_trends.md
 │   │   ├── bindings.md
 │   │   ├── controls.md
@@ -157,8 +157,9 @@ docs/
 │   │   ├── screens.md
 │   │   └── tables.md
 │   ├── operator/
-│   │   ├── images/  (12 files)
+│   │   ├── images/  (15 files)
 │   │   ├── desktop.md
+│   │   ├── playback.md
 │   │   └── status.md
 │   ├── project_logic/
 │   │   ├── calculation/
@@ -178,7 +179,7 @@ docs/
 │   │   │   ├── images/  (10 files)
 │   │   │   └── catalogs.md
 │   │   ├── import_export/
-│   │   │   ├── images/  (3 files)
+│   │   │   ├── images/  (9 files)
 │   │   │   └── import_export.md
 │   │   ├── localization/
 │   │   │   ├── images/  (9 files)
@@ -308,7 +309,7 @@ docs/
 │   │   ├── forecasting_models.md
 │   │   └── project_export.md
 │   ├── mnemo/
-│   │   ├── images/  (101 files)
+│   │   ├── images/  (100 files)
 │   │   ├── alarms_trends.md
 │   │   ├── bindings.md
 │   │   ├── controls.md
@@ -323,8 +324,9 @@ docs/
 │   │   ├── screens.md
 │   │   └── tables.md
 │   ├── operator/
-│   │   ├── images/  (12 files)
+│   │   ├── images/  (15 files)
 │   │   ├── desktop.md
+│   │   ├── playback.md
 │   │   └── status.md
 │   ├── project_logic/
 │   │   ├── calculation/
@@ -344,7 +346,7 @@ docs/
 │   │   │   ├── images/  (10 files)
 │   │   │   └── catalogs.md
 │   │   ├── import_export/
-│   │   │   ├── images/  (3 files)
+│   │   │   ├── images/  (9 files)
 │   │   │   └── import_export.md
 │   │   ├── localization/
 │   │   │   ├── images/  (9 files)
@@ -436,6 +438,7 @@ favicon and brand stylesheet), `tools/` (site build and link checker),
 ### Operator work
 - [Desktop and navigator](docs/en/operator/desktop.md)
 - [Status bar and connection](docs/en/operator/status.md)
+- [Archive playback](docs/en/operator/playback.md)
 
 ### Project objects
 - [Primitives](docs/en/project_objects/primitives/primitives.md)

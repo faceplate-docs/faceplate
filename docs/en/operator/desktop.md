@@ -78,7 +78,7 @@ From left to right:
 | **Active alarms** | A window of unacknowledged messages of types `error`, `alarm` and `warning`, both active and already cleared, with acknowledgment. An acknowledged message leaves the window even if the alarm is still active. The button is disabled while the alarm strip is empty | [Operator actions](../alarms/alarm/alarm.md#3-operator-actions) |
 | **Go back**, **Go forward** | A step through the navigation history | [Back, forward and History](#back-forward-and-history) |
 | Path | Path of the current screen; each part is a link to its screen | [Path of the current screen](#path-of-the-current-screen) |
-| Calendar-with-clock icon | Archive playback on the current screen | [Past state of the screen](playback.md) |
+| Calendar-with-clock icon | Archive playback on the current screen | [Archive playback](playback.md) |
 | Flask icon with the letters PF | Research mode: a PowerFactory network calculation based on the current state of the project. The button is present only when PowerFactory modeling is configured | [«Powerfactory Service», section «Research mode in Runtime»](../integrations/powerfactory_service/powerfactory_service.md#research-mode-in-runtime) |
 | Magnifier | Work area zoom | [Screen printing](../mnemo/reports.md#screen-printing) |
 | Printer | Printing the work area and the alarm strip | [Screen printing](../mnemo/reports.md#screen-printing) |

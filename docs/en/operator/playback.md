@@ -1,240 +1,136 @@
-# Playback: Viewing Archived Data on a Process Screen
+# Archive playback
 
-Faceplate v4.0.7
+This document explains how to view a screen in Runtime with the values of a past moment: open the playback mode, pick a moment, step through time, and tell past values on the screen from current ones.
 
-## Purpose and capabilities
+# Contents
 
-Playback lets you view values on a process screen for a selected time in the past. Operators can examine plant conditions around an event and compare several moments using the familiar arrangement of indicators.
+- [Glossary](#glossary)
+- [Introduction](#introduction)
+- [Main part](#main-part)
+    - [Opening and closing the mode](#opening-and-closing-the-mode)
+    - [The "PlayBack menu" window](#the-playback-menu-window)
+    - [What the screen shows](#what-the-screen-shows)
+    - [Another screen in playback mode](#another-screen-in-playback-mode)
+    - [Control and printing in the mode](#control-and-printing-in-the-mode)
+    - [Example: tank level at 11:55](#example-tank-level-at-1155)
+- [Conclusion](#conclusion)
 
-Viewing is manual: select a time or click an arrow to move one step backward or forward. There is no automatic time progression, play, pause, speed setting, or range repetition.
+# Glossary
 
-Key terms:
-
-- **Selected time** — the moment for which history is requested. It may differ from the timestamp of the record found.
-- **Archive point** — a stored value with a timestamp.
-- **Time step** — the amount and unit of a single change to the selected time.
-- **Current-value cache** — values read once when fields are accessed and retained for the duration of the mode. They do not update continuously.
-- **Normal Runtime mode** — operation of the process screen with current data, restored when you close the playback window.
-
-Entering playback reloads the process screen with a different data source. Fields with a matching archive receive historical values. Other readings may come from the current-value cache or the screen's own logic. The entire desktop cannot be treated as one historical snapshot.
-
-Playback uses the current layout, bindings, and client scripts. It does not restore earlier versions of the process screen or project configuration. Viewing history does not itself stop server-side project execution or data collection.
-
-## Which values the process screen displays
-
-### First opening, archives, and the current-value cache
-
-Immediately after opening, the window shows its opening time, while the process screen displays current reads, including fields that have archives. **You must actually change the selected time to switch to history.** A date displayed in the window does not by itself confirm an archive read.
-
-| Condition | Value source | When it updates | How to interpret the reading |
-|---|---|---|---|
-| Window just opened; time not changed yet | A current read of the field | On first access, then retained | History has not been selected yet |
-| Time changed; matching archive found | An archive point for the selected time | After a successful read when time changes | Historical value using the preceding-point rule |
-| No archive; field already read | Current-value cache | Changing time does not refresh it | A retained current value, rather than history or a live update |
-| No archive; field first needed later | A current read at that later moment | Once, then cached | It may have been read later than adjacent fields |
-| Archive found; no matching point | The result indicating a missing archive point | When the selected time is read | There is no automatic fallback to the current value |
-| Read failed | No new archive values received | After a successful subsequent read | A retained number does not confirm a successful request |
-
-The current-value cache is not a simultaneous snapshot of every field: fields may first be read at different times. Changing time and navigating within the same mode do not refresh this cache.
-
-If no matching archives are found at all, the window's time can change without updating the readings or showing a separate message about missing archives.
-
-### How an archive point is selected
-
-For each archive, playback takes the **last point at or before the selected time**. It does not find the nearest point in either direction, interpolate, or average values.
-
-| Selected time | Point used | Result and qualification |
-|---|---|---|
-| Before the first record | No matching point | The archive exists but has no data yet for this moment |
-| Exactly on a record | That record | An exact match is included |
-| Between records | The preceding record | The value remains until the next point; no intermediate number is calculated |
-| After the last record | The last record | The value remains even across a large time gap |
-| Empty archive | No matching point | An archive object does not prove that history exists |
-
-There is no limit on the age of the point found. The window shows the request time, which does not confirm a new record at that moment. Playback does not supply the timestamp or historical quality of the point alongside its value. A separate indicator of the source field's current quality does not automatically become historical.
-
-### When a value is missing
-
-A missing archive and a missing point in an existing archive produce different results: the former can use a retained current read; the latter does not substitute the current value for history. How a missing point appears depends on the screen element. Do not assume a universal dash, blank field, or zero; check the actual history records.
-
-## Preparing the process screen and history
-
-### Prerequisites
-
-Before viewing, the following must be available:
-
-- a prepared process screen in Desktop Runtime with bindings to the required objects and fields;
-- normal Runtime mode when entering playback;
-- a working connection, an authenticated session, and accessible history storage;
-- matching archives with real records for the period of interest;
-- read access to archives and to source objects for current reads.
-
-Write access is not required to view history. Creating an archive today does not reconstruct values for earlier periods. For collection and source configuration, see [Archives: Configuring Sources and Recording Data](../data_storage/archives/archives.md).
-
-### Field bindings and archive matching
-
-Each screen element must refer to the correct source object and field. Automatic history lookup for that field requires a standard archive object with a direct source matching **both the object and the field**. Matching indicator and archive names is insufficient. Similar settings alone do not establish support for an arbitrary derived archive type.
-
-The window's time step and the archive's collection period are independent. The standard archive period defaults to 1000 ms; the viewing step does not change data collection or create missing points. The system maintains internal links and storage information; they are not entered manually for playback.
-
-| Case | How the history source is determined | What to check |
-|---|---|---|
-| Element bound to a source object's field | A direct archive of that exact object and field is sought | Element binding, direct archive source, and recorded points |
-| Element bound to the archive's own value field | History is read from that archive | That the intended archive value is displayed and has been recorded |
-| Archive stores a script result | The result is available through the archive's own value field | Binding to the archive; its input variables do not automatically acquire this history |
-| Several archives match | Archives that are not disabled come first, then disabled ones; within each group, full paths are compared lexicographically | All accessible candidates, their disabled state, and full paths |
-| Archive inaccessible during lookup | It may be absent from the matches | The current user's access, rather than only an administrator's |
-| An already selected archive becomes inaccessible or is deleted | The group archive read fails | Every selected archive; there is no automatic fallback to another one |
-
-For example, an archive of a flow calculation result does not become the history of every variable used by that calculation. Bind the indicator to the archive's value to display the stored result. Restoring the input variables requires their own matching archives.
-
-### Multiple archives and access rights
-
-The playback window has no manual archive selector. Automatic selection does not compare history depth, freshness, completeness, or recording frequency. A disabled archive can still provide previously collected data. Changes to access, paths, or disabled state can change the selection on a new lookup.
-
-Check configuration under the same role that the operator will use. An archive visible to an administrator may be absent from an ordinary user's lookup. Access is checked again when selected archives are read. One archive's failure can prevent the entire group read from returning partial results; another candidate is not selected automatically.
-
-## Using the playback window
-
-### Opening and ending a viewing session
-
-With a process screen active, click the calendar icon on Runtime's top toolbar, to the left of the zoom button. The **«Меню проигрывания»** window (Playback menu) opens. The entry button has no text label.
-
-To end viewing, click **×** in this window's title bar. The original process screen reloads in normal Runtime mode. Check its current readings after leaving: closing the window changes the data source; it does not write the selected historical state to the project.
-
-Entering and leaving playback recreate the process screen. Local state may reset, and initialization events may run again.
-
-### Window parameters and actions
-
-The labels below retain the wording observed in the Russian interface.
-
-| Element | Values and default | Purpose and result | Conditions and limits |
-|---|---|---|---|
-| «Время отсчета» (Reference time) | Date and time; initially the window's opening time | Sets the selected time after a change is accepted | Time must change for the first historical read |
-| Calendar and time list on the right of the field | Date and time selection; time list at 1-minute intervals | Help fill the field; seconds can be edited with the keyboard | This is not a list of archive points |
-| Step amount | 1, 5, 10, 15, 30, 60; initially 1 | Numeric part of the time step | Changing the list alone does not move time |
-| Step unit | second, minute, hour; initially second | Seconds, minutes, hours | Step equals amount × unit; it is neither speed nor recording period |
-| Left arrow | One selected step | Moves time backward | Does not specifically jump to the preceding record |
-| Right arrow | One selected step | Moves time forward | Cannot move beyond the window's opening time |
-| × in the title bar | Close | Restores normal mode and the original process screen | Current data must be checked again |
-
-![Playback window: selected time, arrows, and a 5 second step](images/playback-selected-time.png)
-
-Window in the prepared example: selected time 14:58:13, level 40%, step 5 seconds. Drag the window by its title bar if it covers indicators.
-
-### Entering time and understanding the time zone
-
-The field displays **year-month-day hours:minutes:seconds**, for example `2026-11-10 14:58:13`. You can choose a day in the calendar, select the field's contents, and type the date and time sequentially with the keyboard. Press Tab to finish. Check the time actually accepted and the resulting readings; incomplete or invalid input does not guarantee a clear error message.
-
-The date is interpreted in the **browser's time zone**. The playback window has no separate time-zone setting. In another time zone, the same calendar numbers represent a different instant. Before comparing against logs and archives, establish which time zone their timestamps use.
-
-The initial time and viewing limit depend on the browser's clock. The server clock in the status bar does not set the selected time. Differences between client and server clocks affect the comparison of moments.
-
-### Steps and time limits
-
-The initial step is **1 second**. To move by 5 seconds, select amount **5** and unit **second**, then click the required arrow. Other combinations, such as 15 minute or 60 hour, are also available.
-
-The upper limit is fixed when the window opens and does not advance with the clock. If a forward step crosses it, time remains unchanged. This limit is unrelated to the end of the archive. The calendar also has no knowledge of the beginning or end of collected history: an available date does not confirm that data exists.
-
-## Practical example of viewing history
-
-### Starting data
-
-The task is to view a tank's level history on a prepared process screen and compare two moments. Objects and history are prepared beforehand. The example uses the training branch `/root/FP/PROJECT/DOC_PLAYBACK`.
-
-| Object or data | Prepared state |
+| Term | Meaning |
 |---|---|
-| Overview process screen, «Резервуар 1» (Tank 1) | Two indicators: «Уровень, %» (Level, %) and «Режим» (Mode) |
-| Tank1, field level | Numeric level; current value 80% |
-| Tank1, field mode | Current «Авто» (Auto); this field has no archive |
-| Tank1LevelArchive | Direct archive of Tank1.level; no other matching archive |
-| Reference point, 10 November 2026, 14:58:08 | 40% |
-| Reference point, 10 November 2026, 14:58:18 | 55% |
-| Browser time zone | Asia/Almaty, UTC+05:00 |
+| Archive playback | A Runtime mode in which the screen shows archive values for a chosen past moment. Turned on with the calendar-with-clock icon on the top bar |
+| Moment | The date and time in the **Counting time** field of the "PlayBack menu" window: the screen shows values for this moment |
+| Step | How far the window's "back" and "forward" buttons move the moment: a number and a unit (`second`, `minute`, `hour`) |
+| Archived field | An object field whose values a project archive records: the archive's source is this field. Only such fields have past values |
 
-There are no other records between these two points in the reference interval. The later current value of 80% does not change results for the selected past moments. In your own project, use known points from your archive; the example's dates do not create data automatically.
+The terms "Screen", "Work area", "Navigator" are in [Desktop and navigator](desktop.md#glossary); "Fixed screen" is in [Screens and navigation](../mnemo/screens.md#glossary).
 
-The readings have mixed origins: level comes from the archive, while «Авто» comes from the current-value cache. This example does not reconstruct the tank's historical operating mode. The process screen keeps its current layout.
+# Introduction
 
-### Selecting a time and comparing readings
+To investigate an event — a protection tripped, an alarm came, an operator takes over a shift — you need to know what the screen showed earlier: what the level was, when the deviation began. Playback mode shows the same screen with archive values for a chosen moment. No separate screen is needed: the mode works on any screen.
 
-1. In normal Runtime, open **«Меню» → «Мнемосхемы»** (Menu → Process screens) and select **/DOC_PLAYBACK/Overview**. Confirm «Резервуар 1», level **80**, and mode **«Авто»**.
-2. Click the playback button with the calendar icon. On first opening, the level remains **80**: historical time has not been selected yet.
-3. In **«Время отсчета»**, use the calendar to select **10 November 2026**. Select the field's contents, type `2026-11-10 14:58:13` sequentially with the keyboard, and press **Tab**. Confirm that the field accepted this exact time and the level became **40**. This is the value recorded at 14:58:08; the next point has not been reached yet.
-4. Select step amount **5** and unit **second**. Changing the lists alone should not move time.
-5. Click the **right** arrow once. Confirm time **14:58:18** and level **55**.
-6. Click the **left** arrow once. Confirm the return to **14:58:13** and level **40**. The adjacent «Авто» remains a retained current value.
+The document covers:
 
-![After one forward step: time 14:58:18 and level 55%](images/playback-step-forward.png)
+- how to open and close the mode;
+- how to pick a moment and step through time;
+- which values on the screen are past values and which are not;
+- what happens when you go to another screen;
+- what does not work in the mode and what printing gives.
 
-The 5-second step landed exactly on the next archive point. The level change confirms that a different moment of history was read.
+The running example is the tank screen `station/tank_1`: the level is recorded by an archive, the temperature is not. The level archive has records 11:40 — 62 %, 11:50 — 70 %, 12:00 — 78 %. The level is now 90 %, the temperature 21.4 °C.
 
-### Returning to current data and verifying the result
+You need access to Runtime (`http://<server>:9000/fp/runtime`). Only fields recorded by an archive have past values (see [Archives: configuring sources and recording data](../data_storage/archives/archives.md)).
 
-Click **×** in the title bar of «Меню проигрывания». Confirm that the window closed, the original process screen is open, the level is **80** again, and the mode is **«Авто»**. The source object's values did not change during this example; on an operating plant, leaving playback displays its actual current readings.
+# Main part
 
-![After closing the window: current level 80% and mode «Авто»](images/playback-current-values.png)
+## Opening and closing the mode
 
-Check the sequence:
+Open a screen and click the calendar-with-clock icon on the top bar, to the left of the magnifier. The "PlayBack menu" window opens over the screen.
 
-| Action | Selected time or source | Level | Mode |
-|---|---|---|---|
-| Open window | Current reads; history not yet selected | 80% | «Авто» |
-| Select time | 10 Nov 2026 14:58:13, UTC+05:00 | 40% | Cached «Авто» |
-| One step forward | 10 Nov 2026 14:58:18, UTC+05:00 | 55% | Same cache |
-| One step backward | 10 Nov 2026 14:58:13, UTC+05:00 | 40% | Same cache |
-| Close window | Normal Runtime, current data | 80% | Current «Авто» |
+![The playback icon on the top bar and the "PlayBack menu" window: the screen still shows current values](images/playback_01_open.png)
 
-If results differ, first check the accepted date, time zone, and actual archive points. An unchanged field without an archive does not by itself indicate a fault.
+Until a moment is picked, the screen shows current values, and the **Counting time** field holds the time the window was opened. The window can be dragged by its title so that it does not cover the values you need.
 
-## Characteristics and limitations
+To leave the mode, click × in the window title. Runtime returns the screen from which the mode was opened, with current values. Reloading the page (F5) also turns the mode off; after it Runtime asks for the user name and password. Runtime switching to another cluster node (see [Cluster nodes](../administration/nodes/nodes.md#node-address-for-runtime)) also turns the mode off: Runtime opens the same screen with current values.
 
-### Writes, calculations, and scripts
+When the window opens and when the mode ends, the screen is loaded again.
 
-Standard write operations through process-screen bindings are ignored in playback. A control may still look available; write success or error notifications may never arrive. An unchanged number on the screen does not confirm a command's outcome.
+## The "PlayBack menu" window
 
-This limit does not cover all custom logic. Client scripts, events, and timers continue running. Direct access to the server, external sources, and custom command paths can bypass the process screen's normal data source. Playback is not a general interlock for equipment control.
+![The "PlayBack menu" window: 1 — moment, 2 — calendar, 3 — time list, 4 — step back and forward, 5 — step size](images/playback_02_moment.png)
 
-A client calculation can use archived values when its inputs are read through the process screen's context — the links between its elements and data. However, current clocks, timers, direct requests, and external data do not automatically move into the past. Assess a calculation with mixed inputs according to the origin of each input.
+| No. | Element | Purpose |
+|---|---|---|
+| 1 | **Counting time** field | The moment as `yyyy-MM-dd HH:mm:ss`. Click a part (year, month, day, hours, minutes, seconds) and type it. A typed moment applies on Enter, Tab or a click outside the field |
+| 2 | Calendar icon | Picks a day. The picked day applies at once, the time in the field stays. The calendar does not offer days after today |
+| 3 | Clock icon | A list of times with a one-minute step. The picked time applies at once |
+| 4 | "Back" and "forward" buttons | Move the moment one step earlier or later |
+| 5 | Step | A number (1, 5, 10, 15, 30, 60) and a unit: `second`, `minute`, `hour`. When the window opens — 1 `second`. Changing the step does not move the moment |
 
-### Recreation, navigation, and scope
+The moment changes only manually — with the field, the calendar, the time list or the "back" and "forward" buttons; it does not move by itself. The calendar and the time list do not show when the archive made records: you can also pick a moment for which there are no records.
 
-Entering and leaving playback recreate the process screen and its context. Project logic must account for repeated initialization events, loss of locally entered values, and reset of unsaved state.
+The time in the field, like the time on the top bar and the alarm strip, is shown in the time zone of the computer on which Runtime is open.
 
-Navigation is not blocked while the window is open. New process screens may use the selected time and existing cache, but closing the window returns to the path from which playback was opened. Fixed desktop areas and previously created contexts may keep their own data sources. Do not extend conclusions about the active screen's historical state to every desktop panel. Navigation and return consistency in a complex project require separate verification.
+Playback shows values the archive has already recorded, so the moment is never later than the current time.
 
-### Connection loss and reconnection
+## What the screen shows
 
-When a connection is restored on the same page, the selected time, archive matches, and caches may remain. Reconnection alone does not guarantee a fresh read of history or current fields. An old reading after connection recovery may still be cached.
+The screen is shown as it is now: if it was changed, past values are put into its current elements. Once a moment is picked, the screen holds both past and current values. The rule depends neither on the kind of element nor on the object type, but on where the element takes its data from:
 
-A lost request is not automatically repeated, and its wait for a response may remain unfinished. Successful authentication is needed even after transport is restored. A new time change after authentication can request known archives again, but it does not complete the old lost request.
+| Element on the screen | What it shows |
+|---|---|
+| Bound to an archived field (a rectangle, a gauge, an input field and any other element bound to an object field) | The last value recorded by the archive no later than the chosen moment. Between records the value holds until the next record; after the last record — the last value |
+| Bound to an archived field, the moment is earlier than the archive's first record | No value |
+| Bound to an archived field, the archive was stopped (for example, while the server was stopped) | No value — from the last record before the stop to the first record after the start. The archive records a value when it changes, so the last record can be long before the stop |
+| Bound to a field without an archive | The value the field had when it first appeared on the screen in the mode. It does not change until the window is closed: neither when the moment changes nor when the field changes in the project |
+| Trend, table of values for a period | Its own period, as outside the mode: they do not move to the chosen moment |
+| Alarm list, alarm indicator | Current messages, including those that occurred after the chosen moment |
+| Table of current object values | Current values |
+| Fixed screen above the work area | Current values |
 
-The desktop can be recreated during connection recovery while the open playback window remains associated with the previous screen. Restored connectivity therefore does not guarantee that all window controls and the return action work correctly. A full page reload or a move to another server creates a new viewing session: the previous time and cache are not retained.
+The alarm strip below the top bar also shows current messages.
 
-After a failure, verify the selected time, readings against known points, and the actual return to current data. There is no universal automatic recovery of the entire mode. General connection indicators are described in [Status Bar, Connection, and Reconnection](status.md).
+A field that an archive reads in a script is not an archived field: such an archive records the script result, not the field value. The script result for the chosen moment is shown by an element bound to the archive itself.
 
-## Troubleshooting
+An archive records field values as numbers. So numeric and logical fields look in the mode the same as outside it, and a string field holding a number shows that number. A string field holding text has no value: the archive does not record text. If a string field held text instead of a number for a while, there is no value for the moments of that period either.
 
-**Normal behavior:** current readings immediately after opening; an unchanged field without an archive; the same value between adjacent points and after the last point; a fixed upper limit; ignored standard writes. These signs do not by themselves establish a fault.
+An archived field shows past values only if the account can read that archive. Otherwise the field behaves like a field without an archive.
 
-| Symptom | Possible cause | What to check | Verification signal |
-|---|---|---|---|
-| Window does not open | No active process screen, or a special data mode is already in use | Open a prepared screen in normal Runtime; end the previous mode | «Меню проигрывания» opens |
-| Current numbers remain when the window opens | Historical time has not been selected | Actually change «Время отсчета» to a known past moment | The value matches the preceding archive point |
-| Time changes, but an archived reading stays the same | The same preceding point is selected, or no archive was found | Compare actual points; check the direct source, object, field, and access rights | Crossing a point with a different value changes the reading |
-| A field without an archive stays unchanged | Normal current-value cache | Determine whether the field needs its own archive; end viewing to see current data | The current value appears after leaving |
-| An administrator sees history, but the operator does not use it | Access excludes the archive, or a different candidate is selected | Check reads under the operator's role, all matching archives, and their paths | The required field's history is accessible under the working role |
-| Date selected, but no archive point | Empty archive or a time before the first record | Check history start and actual records; do not rely solely on the calendar | A time with a known preceding point yields the expected value |
-| Number does not change after history ends | Normal use of the last point without an age limit | Compare the end of history with the selected time | The last record used is understood; a new number requires a different point |
-| Date not accepted, or time looks unexpected | Incomplete input, invalid date, different time zone, or client clock | Choose the day in the calendar, type date and time with the keyboard, finish with Tab; check the zone and accepted text | The intended time is accepted and the result matches known history |
-| Forward step does not move time | It crosses the limit fixed at opening | Compare the resulting step time with the window's opening time; check the unit | A step within the limit moves time by the selected amount |
-| Read error, waiting, or an old number | Archive/storage inaccessible, archive deleted, or connection interrupted | Check connection, authentication, and every selected archive; verify a new time change after recovery | Values for a known time are successfully received and waiting ends |
-| New time after an error, but old numbers | Time and old cache do not roll back automatically | Compare readings against known points after a successful request | Date and values agree again; a new date alone is insufficient |
-| Standard write has no effect, but a script keeps running | Binding-based writes are ignored; scripts and direct access continue | Check how project logic reads data and sends commands | The source and possible effect of each action are established separately |
-| Window or return behaves unexpectedly after reconnection | Cache retained, request lost, or desktop recreated | Verify completed authentication, selected time, a known value, and the outcome of leaving playback | Successful reading and normal current data after leaving are confirmed |
+Only the values of archived fields belong to the chosen moment; the other values on the screen do not.
 
-A missing archive, a missing record, and a read error require different checks. The appearance of an empty result and any messages depend on the situation and screen element; do not identify the cause from one number or the appearance of a field alone.
+## Another screen in playback mode
 
-## Conclusion
+The "PlayBack menu" window stays open when you go to another screen — from the navigator, by a part of the path, or with the top bar "back" and "forward" buttons (see [Desktop and navigator](desktop.md#screen-navigator)). The new screen shows values for the same moment, and the window buttons move the moment on it too. This way you can view several parts of the plant at one moment.
 
-Playback in Faceplate lets you manually view archived values on a familiar process screen and compare plant conditions at different moments. Reliable results require correct bindings, recorded history, read access, and a consistent browser time zone: the selected time uses the last archive point at or before that moment, while fields without archives retain current values read once. The tank level example demonstrates selecting a time, moving in steps, and returning to current data. Account for screen recreation, write limitations, continuing script execution, and connection recovery behavior; investigate unexpected readings by checking their data sources and actual archive points. End viewing by closing the window and checking current readings in normal Runtime.
+The window's cross returns the screen from which the mode was opened, with current values.
+
+## Control and printing in the mode
+
+The mode is view-only: buttons and input fields on the screen look as usual but do not write values to the project. Equipment control works after the window is closed.
+
+The mode changes only what this Runtime shows: the project keeps running, archives record current values, alarms occur as usual.
+
+Printing in the mode (the printer icon on the top bar) gives the screen at the chosen moment. The "PlayBack menu" window does not get onto the sheet. Printing in detail — in [Reports and screen printing, Screen printing](../mnemo/reports.md#screen-printing).
+
+## Example: tank level at 11:55
+
+1. Open the `tank_1` screen (**Menu** → **Screens** → `/station` → `tank_1`). The level is 90 %, the temperature 21.4 °C.
+2. Click the calendar-with-clock icon. The "PlayBack menu" window opens; the screen still shows the same 90 and 21.4 (the figure in [Opening and closing the mode](#opening-and-closing-the-mode)).
+3. In the **Counting time** field type `2026-11-19 11:55:00` and press Enter. The level is 70: this is the 11:50 archive record, the next one is at 12:00. The temperature stays 21.4: it has no archive, this is its value when the window was opened (the figure in [The "PlayBack menu" window](#the-playback-menu-window)).
+4. Choose the step **5** and `minute`, click "forward". The moment is 12:00:00, the level 78, the 12:00 record.
+
+![A 5-minute step forward: moment 12:00:00, level 78](images/playback_03_step.png)
+
+5. Click × in the window title. The screen shows current values again: 90 and 21.4.
+
+# Conclusion
+
+| Task | How to do it |
+|---|---|
+| See the screen at a past moment | Calendar-with-clock icon → moment in the **Counting time** field → Enter |
+| Follow how a value changed | Choose a step and click "back" or "forward" |
+| Tell which values are past values | Past values — only on archived fields; a field without an archive shows, until the window is closed, its value at the time it first appeared on the screen |
+| View another screen at the same moment | Go to it without closing the window |
+| Return to current values | × in the window title |
+| Print the screen at a past moment | The printer icon in playback mode |

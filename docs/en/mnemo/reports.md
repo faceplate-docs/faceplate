@@ -12,7 +12,7 @@ A document for an integration engineer who needs to give the operator a table of
     - [Default period: the init event](#default-period-the-init-event)
     - [The report in Runtime](#the-report-in-runtime)
     - [Screen printing](#screen-printing)
-    - [Past state of the screen: archive playback](#past-state-of-the-screen-archive-playback)
+    - [Printing the screen at a past moment](#printing-the-screen-at-a-past-moment)
 - [Conclusion](#conclusion)
 
 # Glossary
@@ -160,40 +160,16 @@ In the example the picture has no top bar and no fixed screen with navigation bu
 Hence two rules for a report screen:
 
 1. **The whole screen in the window.** If the screen is larger than the window, the operator reduces the zoom before printing: the magnifier icon on the top bar (**1** in the figure above) opens a panel with the current zoom in percent and the **−**, **+** and **Reset** buttons. The **−** and **+** buttons halve and double the zoom. Ctrl + mouse wheel also changes the zoom; the wheel without Ctrl scrolls the screen, and the middle mouse button drags it. The zoom ranges from 1 to 25,600 %. **Reset** returns 100 % and the original position of the screen.
-2. **All table rows visible.** The height of the **Grid** is chosen by the number of rows the report gives for a typical period. If there are clearly more rows, shorten the default period in `init` or give the table the full height of the screen.
+2. **All table rows visible.** The height of the **Grid** is chosen by the number of rows the report gives for a typical period.
 
-## Past state of the screen: archive playback
+## Printing the screen at a past moment
 
-A report table shows one quantity for a period. Investigating an event often needs something else: the whole screen at one past moment — what the levels and states were when a protection tripped. For this Runtime has the archive playback mode. It needs no separate screen: it works on any open screen.
+To print the screen as it was at a past moment — for example, when a protection tripped — the operator turns on the archive playback mode and prints the screen in it: the calendar-with-clock icon on the Runtime top bar → a moment in the "PlayBack menu" window → the printer icon. No separate screen is needed: past values are shown by elements bound to archived fields (see [Archives: configuring sources and recording data](../data_storage/archives/archives.md)). How to work in the mode — in [Archive playback](../operator/playback.md).
 
-The calendar-with-clock icon on the top bar, further left than the magnifier (**1** in the figure), opens the "PlayBack menu" window over the current screen:
-
-| No. | Window element | Purpose |
-|---|---|---|
-| 1 | Calendar-with-clock icon on the top bar | Opens the "PlayBack menu" window (see above) |
-| 2 | **Counting time** | The moment for which the screen shows values. When the window opens, the field holds the current time. Type the date and time and press Enter, or pick a time from the list with the clock icon — then the moment applies at once |
-| 3 | "Back" and "forward" buttons | Move the moment one step earlier or later |
-| 4 | Step | A number (1, 5, 10, 15, 30, 60) and a unit: `second`, `minute`, `hour` |
-
-![Archive playback: 1 — mode icon, 2 — moment, 3 — step back and forward, 4 — step size](images/reports_06_playback.png)
-
-What the screen shows:
-
-- until the operator sets a moment — current values, as usual;
-- an element bound to a field that has an archive — the archive value at the set moment;
-- an element bound to a field without an archive — the current value;
-- values from the screen are not written to the project in this mode.
-
-In the example (the `pb_demo` screen) the level `tank_1.level` is recorded by an archive, the pump state is not. At 16:24:20 the level shows 63.5 — the archive value, the state shows the current value. The "forward" button with a step of 1 `minute` moves the screen to 16:25:20, and the level changes to 60.4. Closing the window with the cross returns the screen to current values.
-
-So only what an archive records is played back: a field you need to see in the past must have an archive (see [Archives: configuring sources and recording data](../data_storage/archives/archives.md)).
-
-Printing in this mode gives the screen at the set moment. The "PlayBack menu" window does not get onto the sheet, so the moment is not shown on the printout: if you need it, label the sheet.
-
-| | Report table | Archive playback |
+| | Report table | Printing the screen at a past moment |
 |---|---|---|
 | What is on the sheet | One quantity, all changes for the period | The whole screen at one moment |
-| What the integrator prepares | A separate screen: period fields, source, table | Nothing but archives of the needed fields |
+| What the integrator prepares | A separate screen: period fields, source, table | Archives of the needed fields |
 | How the operator picks the time | Period start and end in screen fields | Moment and step in the "PlayBack menu" window |
 
 # Conclusion
@@ -203,7 +179,7 @@ Printing in this mode gives the screen at the set moment. The "PlayBack menu" wi
 | Archive values for a period the operator picks | Two **Date - Time** fields, a script on the `input` of each field → `from`/`to` of a **Time-series datasource**, **Grid** |
 | A report right on opening | A script on the screen's `init` event sets the fields and the source period |
 | A summary of project objects or a reference table on the same sheet | **Table Datasource** or **Local Datasource** and one more **Grid** (see [Data sources on a screen](datasources.md)) |
-| The whole screen at a past moment | The calendar-with-clock icon → "PlayBack menu"; the needed fields have archives |
+| The whole screen at a past moment | The calendar-with-clock icon → a moment in "PlayBack menu" → the printer; the needed fields have archives |
 | A paper copy or PDF | The printer icon on the Runtime top bar or Ctrl + P → the browser print dialog |
 
 Steps:
