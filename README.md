@@ -33,7 +33,8 @@ and file names; the language is given by the top folder.
 docs/
 ├── en/
 │   ├── access/
-│   │   ├── images/  (4 files)
+│   │   ├── images/  (15 files)
+│   │   ├── login.md
 │   │   ├── roles.md
 │   │   └── users.md
 │   ├── administration/
@@ -200,7 +201,8 @@ docs/
 │   └── readme.md
 ├── ru/
 │   ├── access/
-│   │   ├── images/  (4 files)
+│   │   ├── images/  (15 files)
+│   │   ├── login.md
 │   │   ├── roles.md
 │   │   └── users.md
 │   ├── administration/
@@ -392,6 +394,7 @@ favicon and brand stylesheet), `tools/` (site build and link checker),
 - [Deploying FACEPLATE in a Docker container](<docs/en/general/docker/deploy as docker.md>)
 
 ### Access
+- [Sign-in and sessions](docs/en/access/login.md)
 - [Users](docs/en/access/users.md)
 - [Roles and access rights](docs/en/access/roles.md)
 

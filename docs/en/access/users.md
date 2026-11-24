@@ -89,7 +89,7 @@ In the example `ivanov` has the roles `operators` and `shift_operators`, and per
 
 ## Logging in to Studio and Runtime
 
-Studio (`http://<server>:9000/fp/studio`) and Runtime (`http://<server>:9000/fp/runtime`) use the same login and password from the card.
+Studio (`http://<server>:9000/fp/studio`) and Runtime (`http://<server>:9000/fp/runtime`) use the same login and password from the card. The sign-in form, language, errors and logout are described in [Sign-in and sessions](login.md).
 
 Studio opens only for users with the `.administrators` role. Other users see an access denied message after logging in.
 

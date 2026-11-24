@@ -29,12 +29,12 @@ Access in FACEPLATE is controlled per screen. Each folder screen gets **Read** a
 
 The section is in the Studio main menu: **User rights** → **Roles**. Personal user rights are set in **User rights** → **Users**, see [Users](users.md).
 
-The running example is the role `shift_operators` (shift operators) and the user `ivanov` with this role. Project folders:
+The running example is the role `shift_operators` (shift operators) and the user `ivanov` with this role. Example folders:
 
 | Folder | What is on the screen |
 |---|---|
 | `/mnemo_demo` | Overview screen |
-| `/controls_demo` | Control of pump `ctrl_1`: **Пуск**/**Стоп** (start/stop) buttons, setpoint |
+| `/controls_demo` | Control of pump `ctrl_1`: **Start**/**Stop** buttons, setpoint |
 | `/rights_demo` | Setpoint field of pump `ctrl_1` and the embedded screen `/controls_demo` (**Folder Screen** element) |
 
 You will need access to Studio (`http://<server>:9000/fp/studio`) with an account that is allowed to change the project.

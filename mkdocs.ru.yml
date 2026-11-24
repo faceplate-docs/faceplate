@@ -26,6 +26,7 @@ nav:
       - Первые шаги в FACEPLATE Studio: general/project_structure/FACEPLATE-start.md
       - Установка в Docker-контейнере: general/docker/deploy as docker.md
   - Доступ:
+      - Вход и сеансы: access/login.md
       - Пользователи: access/users.md
       - Роли и права доступа: access/roles.md
   - Сбор данных:
