@@ -68,8 +68,6 @@
 2. **Request**: **Type** `JSON`, **Data** `ts`, `v`, шаблон `{"points": [$$ {"ts": $ts, "value": $v}]}`. **Response**: **Type** `Const`, **Текст** `OK`. Сохраните.
 3. Внутри `http_ts_in` создайте `iot_ts_action` `ts_store`. В **Карте привязок** `ts` подставляется автоматически, для `value` выберите `v`. Сохраните.
 
-   ![ts_store из примера](images/19_ts_action.png)
-
 ```
 curl -X POST -d '{"points": [{"ts": 1792387513000, "value": 10.5}, {"ts": 1792387543000, "value": 11.25}]}' http://<сервер>:7080/ts_in
 ```
@@ -87,14 +85,12 @@ curl -X POST -d '{"points": [{"ts": 1792387513000, "value": 10.5}, {"ts": 179238
 | Без `@value` (например, только `text`) | Каждое входящее сообщение создаёт новую запись. Привязанные поля берутся из переменных, остальные — из настроек действия |
 | `@value` и `@ts` | Событие с состоянием. `@value` = `true` открывает событие с временем `@ts`, `false` закрывает его (время закрытия — `@ts`). Повторное `true` при открытом событии новую запись не создаёт |
 
-Значение `@value` передавайте как `true`/`false` (или строки `"true"`/`"false"`). Число в `@value` не принимается: сервер отвечает ошибкой 500, событие не меняется. Если переменная в сообщении — массив, создаётся по записи на каждый элемент.
+Значение `@value` передавайте как `true`/`false` (или строки `"true"`/`"false"`). Если переменная в сообщении — массив, создаётся по записи на каждый элемент.
 
 Пример 1 — сервер `http_ev_in` записывает в журнал текст из запроса:
 
 1. В `iot_demo` создайте `iot_http_server_connection` `http_ev_in`: **Точка** `/ev_in`, **Method** `POST`. **Request**: **Type** `JSON`, **Data** `text`, шаблон `{"text": $text}`. **Response**: **Type** `Const`, **Текст** `OK`. Сохраните.
 2. Внутри `http_ev_in` создайте `iot_eventlog_action` `ev_store`: **Карта привязок** `text` = `text`. Тип сообщения и звук задайте как для обычного шаблона события. Сохраните.
-
-   ![ev_store из примера](images/20_eventlog_action.png)
 
 ```
 curl -X POST -d '{"text": "Door open"}' http://<сервер>:7080/ev_in
@@ -106,8 +102,6 @@ curl -X POST -d '{"text": "Door open"}' http://<сервер>:7080/ev_in
 
 1. В `iot_demo` создайте `iot_http_server_connection` `http_level`: **Точка** `/level`, **Method** `POST`. **Request**: **Type** `JSON`, **Data** `v`, `ts`, шаблон `{"alarm": $v, "ts": $ts}`. **Response**: **Type** `Const`, **Текст** `OK`. Сохраните.
 2. Внутри `http_level` создайте `iot_eventlog_action` `level_alarm`: **Карта привязок** `@value` = `v`, `@ts` = `ts`; **Текст** `High level`. Сохраните.
-
-   ![level_alarm из примера](images/25_level_alarm.png)
 
 ```
 curl -X POST -d '{"alarm": true, "ts": 1792406684878}' http://<сервер>:7080/level

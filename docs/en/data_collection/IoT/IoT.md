@@ -164,8 +164,6 @@ On the **Request & Response** tab, each message has a **Type**:
 - An array in an incoming JSON is parsed with `$$`: the template `{"items": [$$ {"v": $v}]}` applied to `{"items": [{"v": 1}, {"v": 2.5}]}` gives `v` = `[1, 2.5]`.
 - A variable holding a list in an outgoing template (`{"got": $v}`) becomes a JSON array (`{"got": [1, 2.5]}`).
 
-> **Important.** `$$` in an outgoing template (for example, `[$$ {"x": $v}]`) causes a processing error. Build an array of objects in an outgoing message with a script — see the example in the next section.
-
 ### Message script
 
 Write the script on the **erlang** or **javascript** tab; the editor opens with a function template. After editing, click **Compile**, wait for successful compilation, then save.
@@ -212,7 +210,7 @@ The `from`–`to` interval starts at the last successful request and ends at the
 
 ## IoT connections tab
 
-The **IoT connections** item of the Studio main menu lists all project connections: **Name**, **Pattern** (type), **Mode** (`Active` / `Inactive`), **Путь** (path; this header is not translated in the English UI), **Errors**, **Status** (`RUN` / `STOP`).
+The **IoT connections** item of the Studio main menu lists all project connections: **Name**, **Pattern** (type), **Mode** (`Active` / `Inactive`), **Путь**, **Errors**, **Status** (`RUN` / `STOP`).
 
 ![Connection list](images/21_iot_list.png)
 
@@ -226,13 +224,12 @@ Objects cannot be created on this tab — only in **General View**.
 
 ## Diagnostics
 
-The **Error** field shows exchange errors; connection errors may not appear in it. Open the connection form, click **Diagnostics**, then **Start**: the window shows the connection process log. **Log level** sets the detail, **Stop** stops the output. The window is described in detail in [Diagnostics of Runtime objects](../../administration/diagnostics/diagnostics.md).
+The **Error** field shows exchange errors. Open the connection form, click **Diagnostics**, then **Start**: the window shows the connection process log. **Log level** sets the detail, **Stop** stops the output. The window is described in detail in [Diagnostics of Runtime objects](../../administration/diagnostics/diagnostics.md).
 
 ![Diagnostics window: broker unreachable](images/24_diagnostics.png)
 
 | Symptom | Cause | What to do |
 |---|---|---|
-| `RUN`, `no errors`, but no exchange | Connection error: broker or server unreachable, wrong address, WebSocket handshake failed | Open **Diagnostics** |
 | `STOP`, an error in **Error** | A source or action could not be prepared | Fix the bindings and scripts inside the connection |
 | HTTP server replies `405` | **Method** is not in upper case or does not match the request method | Write the method in upper case |
 | `{invalid_parse_request_result,false}` | The incoming JSON does not match the template | Compare the template with the real message |

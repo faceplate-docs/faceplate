@@ -81,7 +81,7 @@ The **Sync** and **Show fields** buttons work only for a saved prototype; they a
 
 Save. Empty Content and Fields are created together with the prototype, and Behaviour receives a ready-made template.
 
-Double-clicking a prototype opens its Content. The breadcrumbs above the table (**Prototypes / Pump / Content**) lead back to the list.
+Double-clicking a prototype opens its Content. The navigation line above the table (**Prototypes / Pump / Content**) leads back to the list.
 
 ## Content
 

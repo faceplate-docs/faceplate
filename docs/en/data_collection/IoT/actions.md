@@ -68,8 +68,6 @@ Example — server `http_ts_in` accepts a batch of points and writes it to archi
 2. **Request**: **Type** `JSON`, **Data** `ts`, `v`, template `{"points": [$$ {"ts": $ts, "value": $v}]}`. **Response**: **Type** `Const`, **Text** `OK`. Save.
 3. Inside `http_ts_in`, create `iot_ts_action` `ts_store`. In **Snap map** `ts` is filled in automatically; select `v` for `value`. Save.
 
-   ![ts_store from the example](images/19_ts_action.png)
-
 ```
 curl -X POST -d '{"points": [{"ts": 1792387513000, "value": 10.5}, {"ts": 1792387543000, "value": 11.25}]}' http://<server>:7080/ts_in
 ```
@@ -87,14 +85,12 @@ The mode depends on the bindings:
 | Without `@value` (for example, only `text`) | Every incoming message creates a new record. Bound fields come from variables, the others from the action settings |
 | `@value` and `@ts` | An event with a state. `@value` = `true` opens the event at time `@ts`, `false` closes it (closing time is `@ts`). Another `true` while the event is open does not create a new record |
 
-Pass `@value` as `true`/`false` (or the strings `"true"`/`"false"`). A number in `@value` is not accepted: the server replies with error 500 and the event does not change. If a variable in the message is an array, a record is created for each element.
+Pass `@value` as `true`/`false` (or the strings `"true"`/`"false"`). If a variable in the message is an array, a record is created for each element.
 
 Example 1 — server `http_ev_in` writes the text from the request to the event log:
 
 1. In `iot_demo`, create `iot_http_server_connection` `http_ev_in`: **Point** `/ev_in`, **Method** `POST`. **Request**: **Type** `JSON`, **Data** `text`, template `{"text": $text}`. **Response**: **Type** `Const`, **Text** `OK`. Save.
 2. Inside `http_ev_in`, create `iot_eventlog_action` `ev_store`: **Snap map** `text` = `text`. Set the message type and sound as for a regular event template. Save.
-
-   ![ev_store from the example](images/20_eventlog_action.png)
 
 ```
 curl -X POST -d '{"text": "Door open"}' http://<server>:7080/ev_in
@@ -106,8 +102,6 @@ Example 2 — server `http_level` opens and closes the event "High level" by a f
 
 1. In `iot_demo`, create `iot_http_server_connection` `http_level`: **Point** `/level`, **Method** `POST`. **Request**: **Type** `JSON`, **Data** `v`, `ts`, template `{"alarm": $v, "ts": $ts}`. **Response**: **Type** `Const`, **Text** `OK`. Save.
 2. Inside `http_level`, create `iot_eventlog_action` `level_alarm`: **Snap map** `@value` = `v`, `@ts` = `ts`; **Text** `High level`. Save.
-
-   ![level_alarm from the example](images/25_level_alarm.png)
 
 ```
 curl -X POST -d '{"alarm": true, "ts": 1792406684878}' http://<server>:7080/level

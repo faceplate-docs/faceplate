@@ -61,10 +61,8 @@ Example — subscriber `mqtt_sub` writes the temperature from the topic to `t_mq
 
 Together with `mqtt_pub` this forms the chain `t_src` → broker → `t_mqtt`: `t_mqtt` shows `21.5`.
 
-> **Important.** If the broker is unreachable, the subscriber and the publisher stay in `RUN` with `no errors` and retry to connect every second. The connection error (`econnrefused`) is visible only in the **Diagnostics** window.
-
 # Conclusion
 
 - A broker is not part of FACEPLATE; set its address in **Host** and **Port**.
 - For the publisher, set a sending condition on the **Triggers** tab.
-- If there is no exchange and no visible error, open **Diagnostics**: broker connection errors are visible only there.
+- If there is no exchange, open **Diagnostics**: it shows the broker connection log.

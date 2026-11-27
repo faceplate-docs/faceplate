@@ -20,6 +20,7 @@ nav:
       - Deploying in a Docker container: general/docker/deploy as docker.md
   - Access:
       - Sign-in and sessions: access/login.md
+      - External authorization: access/external_auth.md
       - Users: access/users.md
       - Roles and access rights: access/roles.md
   - Data acquisition:

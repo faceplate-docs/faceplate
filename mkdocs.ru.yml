@@ -27,6 +27,7 @@ nav:
       - Установка в Docker-контейнере: general/docker/deploy as docker.md
   - Доступ:
       - Вход и сеансы: access/login.md
+      - Внешняя авторизация: access/external_auth.md
       - Пользователи: access/users.md
       - Роли и права доступа: access/roles.md
   - Сбор данных:
@@ -93,7 +94,7 @@ nav:
       - Тревоги и тренды на экране: mnemo/alarms_trends.md
       - Библиотека изображений: mnemo/images.md
   - Логика проекта:
-      - Расчёты (Calculation): project_logic/calculation/calculation.md
+      - Расчёты: project_logic/calculation/calculation.md
       - Пользовательские скрипты: project_logic/user_script/user_script.md
       - Библиотечные модули: project_logic/library_modules/library_modules.md
       - JS-библиотеки: project_logic/js_library/js_library.md

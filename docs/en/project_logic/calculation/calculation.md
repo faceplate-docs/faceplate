@@ -1,4 +1,4 @@
-# Calculations (Calculation)
+# Calculations
 
 This document is for integration engineers who set up calculations over tag values in a Faceplate project.
 
@@ -14,7 +14,6 @@ This document is for integration engineers who set up calculations over tag valu
     - [Run conditions](#run-conditions)
     - [Errors](#errors)
     - [Editing and deleting](#editing-and-deleting)
-    - [Interface notes](#interface-notes)
 - [Conclusion](#conclusion)
 
 # Glossary
@@ -63,9 +62,13 @@ You need access to Studio (`http://<server>:9000/fp/studio`) with an account all
 
 ## Calculation list
 
-Open **Calculation** in the Studio main menu. The table lists all calculations in the project, regardless of folder.
+Open **Calculation** in the Studio main menu.
 
-![Calculation section](images/1_calc_list.png)
+![Calculation item in the main menu](images/01_menu.png)
+
+The table lists all calculations in the project, regardless of folder. Select a row: the edit (pencil) and delete (trash) buttons in the top right corner become available; they are framed in red in the screenshot. Double-clicking a row also opens the calculation. Editing and deleting are described in [Editing and deleting](#editing-and-deleting). You cannot create a calculation from this section.
+
+![Calculation section](images/02_list.png)
 
 | Column | Content |
 |---|---|
@@ -79,21 +82,20 @@ Open **Calculation** in the Studio main menu. The table lists all calculations i
 
 Filters above the table: part of the path, **Mode**, **Status**, **Auto-run**. Apply them with **Search**.
 
-On the right are the edit (pencil) and delete (trash) buttons. Double-clicking a row also opens the calculation. You cannot create a calculation from this section.
-
 ## Creating a calculation
 
 1. In **General View**, double-click to enter the calculation's folder (`calc_demo` in the example) and click **Create**.
+
+   ![Create button in General View](images/03_create.png)
+
 2. Expand **system**, select **calculation**, click **Ok**.
 
-   ![Selecting the calculation type](images/2_type_select.png)
+   ![Selecting the calculation type](images/04_type_select.png)
 
 3. Fill in **Name**: `p_avg_calc`.
 4. Set the run conditions (see [Run conditions](#run-conditions)). For the example, leave **Period (ms)** empty and **Execute on changing variables values** on, which is the default.
 5. Fill in **Input data**, the script and **Output data** (see below).
 6. Click **Compile**, wait for `OK` and save.
-
-The calculation runs right after saving. The result is visible in the **Calculation** section and in the `out_value` field of the `p_avg` tag.
 
 ## Variables
 
@@ -106,7 +108,7 @@ Rows in **Input data** and **Output data** are filled in the same way:
 | **tag** | The tag. Click the magnifier, double-click through folders, select the tag and click **OK** |
 | **field** | A field of the selected tag. The list contains all tag fields, including system ones; for the value you usually need `out_value` |
 
-![Selecting a tag](images/3_tag_picker.png)
+![Selecting a tag](images/05_tag_picker.png)
 
 Once a row is filled, an empty row appears below it. The arrows reorder rows; the trash button deletes a row.
 
@@ -117,7 +119,7 @@ An input variable requires a tag and a field. An output variable does not:
 | With tag and field | To the specified tag field and to the calculation runtime |
 | Without tag | Only to the calculation runtime (the `out` field). Also visible in the form's **value** column and in the list's **Output data** |
 
-Outputs without a tag are handy for intermediate values and debugging. Bind an output to a tag only when other project objects need the value: a screen, an [archive](../../data_storage/archives/archives.md), another calculation.
+Outputs without a tag are handy for intermediate values and debugging. Bind an output to a tag only when other project objects need the value: a [screen](../../mnemo/bindings.md#binding-to-a-tag), an [archive](../../data_storage/archives/archives.md), another calculation.
 
 Do not write an output to a field that the same calculation reads as an input. This creates a feedback loop: the calculation keeps changing its own input.
 
@@ -130,13 +132,13 @@ Example:
 | Output data | `AVG` | `/calc_demo/p_avg` | `out_value` |
 | Output data | `DIFF` | — | — |
 
-![Input variables and script](images/4_form_inputs.png)
+![Calculation form from the example](images/06_form_inputs.png)
 
-![Output variables](images/5_form_outputs.png)
+The calculation runs right after saving. The result is visible in the **Calculation** section and in the `out_value` field of the `p_avg` tag.
 
 On the **Runtime** tab, `out` shows both output variables: `AVG` is also written to the `p_avg` tag, `DIFF` exists only here.
 
-![Runtime tab](images/11_runtime_tab.png)
+![Runtime tab](images/07_runtime_tab.png)
 
 ## Script
 
@@ -149,9 +151,10 @@ DIFF = A - B
 
 Rules:
 
-- Do not put a period at the end. Error: `{invalid_expression,{4,erl_parse,["syntax error before: ","'.'"]}}`.
+- Do not put a period at the end. Error: `{invalid_expression,{<number>,erl_parse,["syntax error before: ","'.'"]}}`.
 - Variable names start with a capital letter, as in the **variable** column. If an output variable is not assigned or is written in lowercase, **Compile** returns `{unbound_var,'NAME'}`.
 - Operations: `+`, `-`, `*`, `/` (floating-point result), `div` (integer division), `rem` (remainder), `band`, `bsr` (bitwise), parentheses, `min`, `max`, functions of the `math` module, for example `math:sqrt(A * B)`.
+- `div`, `rem`, `band` and `bsr` work with integers only. Convert a fractional value to an integer first: `trunc(X)` drops the fractional part, `round(X)` rounds it.
 
 Typical formulas (`X`, `Y`, `Word` are inputs, `R` is an output):
 
@@ -164,9 +167,7 @@ Typical formulas (`X`, `Y`, `Word` are inputs, `R` is an output):
 
 Take thresholds, coefficients and status codes from the project: in the formula they are written as numbers.
 
-**Compile** checks the script on the server together with the variable lists. `OK` or an error text appears next to the button. Until the check passes, **save** is unavailable. After any change to the script or the variables, click **Compile** again.
-
-![Compile error](images/6_compile_error.png)
+**Compile** checks the script on the server together with the variable lists. `OK` or an error text appears next to the button. Save only after `OK`: after any change to the script or the variables, click **Compile** again.
 
 ## Run conditions
 
@@ -189,7 +190,7 @@ While **Disabled** is on, the calculation does not run (State is `STOP`) and the
 
 The server validates the calculation on save. On error, an **ERROR!** window appears, the calculation window closes and the changes are not saved. Open the calculation again and repeat the edits.
 
-![Error on save](images/7_save_error.png)
+![Error on save](images/08_save_error.png)
 
 | Text | Cause |
 |---|---|
@@ -205,9 +206,9 @@ If the script fails at run time (for example, division by zero):
 - in **General View** the cause is shown in the **Errors** column;
 - the output tags do not change; **Входные данные**, **Output data** and **Time** keep the values from the last successful run.
 
-![Run-time error in the list](images/8_list_error.png)
+![Run-time error in the list](images/09_list_error.png)
 
-![Run-time error in the form](images/9_form_error.png)
+![Run-time error in the form](images/10_form_error.png)
 
 The error clears on the next successful run.
 
@@ -215,28 +216,15 @@ The error clears on the next successful run.
 
 Double-click the calculation in **Calculation** or in **General View**, make your changes, click **Compile** and save. The calculation restarts with the new settings.
 
-To delete, select one or more rows in **Calculation** and click the trash button. The confirmation window shows only the number of rows (`delete items: 1`). Confirm with **yes**. In **General View**, a calculation is deleted like any other object, with **Delete**.
-
-![Delete confirmation](images/10_delete_confirm.png)
-
-## Interface notes
-
-| On screen | Where |
-|---|---|
-| Column headers **Путь** and **Входные данные** are not translated | **Calculation** list |
-| Buttons **save**, **cancel** and the **settings** tab are in lowercase | Calculation form |
-| The confirm button is **OK** in the tag picker and **Ok** in the type selection window | Selection windows |
-| Server errors look like `{invalid_cycle,5}` | **ERROR!** window |
-| The **ERROR!** window does not close with Esc, only with the cross | Error window |
+To delete, select a row in **Calculation** (Ctrl+click for several rows) and click the trash button. The confirmation window shows only the number of rows (`delete items: 1`). Confirm with **yes**. In **General View**, a calculation is deleted like any other object, with **Delete**.
 
 # Conclusion
 
 Calculation setup sequence:
 
-1. Identify the source tags, destination tags and their fields.
-2. In **General View**, enter the target folder and create a **system → calculation** object.
-3. Set the run conditions: a period greater than 10 ms, auto-run on input changes, or both.
-4. Define input variables with a tag and a field. Define outputs with a tag if the result must be written to a tag, or without one if the calculation runtime is enough. Do not direct an output to a field that is an input of the same calculation.
-5. Write the script: formulas separated by commas, no period at the end, every output variable assigned. Move historical calculations, accumulation and complex logic to [User Script](../user_script/user_script.md).
-6. Click **Compile**, wait for `OK`, save.
-7. Check the result in the **Calculation** section: status `OK`, input and output values, run time.
+1. In **General View**, create **system → calculation** in the calculation's folder.
+2. Set a period, auto-run or both.
+3. Add input variables with a tag and a field, output variables with or without a tag.
+4. Write the formulas in **script**.
+5. Click **Compile**, wait for `OK`, save.
+6. Check the result in the **Calculation** section.

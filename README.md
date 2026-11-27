@@ -33,7 +33,8 @@ and file names; the language is given by the top folder.
 docs/
 ├── en/
 │   ├── access/
-│   │   ├── images/  (15 files)
+│   │   ├── images/  (17 files)
+│   │   ├── external_auth.md
 │   │   ├── login.md
 │   │   ├── roles.md
 │   │   └── users.md
@@ -76,7 +77,7 @@ docs/
 │   │       └── dsf.md
 │   ├── data_collection/
 │   │   ├── IoT/
-│   │   │   ├── images/  (26 files)
+│   │   │   ├── images/  (21 files)
 │   │   │   ├── actions.md
 │   │   │   ├── http.md
 │   │   │   ├── IoT.md
@@ -164,20 +165,20 @@ docs/
 │   │   └── status.md
 │   ├── project_logic/
 │   │   ├── calculation/
-│   │   │   ├── images/  (11 files)
+│   │   │   ├── images/  (10 files)
 │   │   │   └── calculation.md
 │   │   ├── js_library/
-│   │   │   ├── images/  (8 files)
+│   │   │   ├── images/  (11 files)
 │   │   │   └── js_library.md
 │   │   ├── library_modules/
-│   │   │   ├── images/  (6 files)
+│   │   │   ├── images/  (8 files)
 │   │   │   └── library_modules.md
 │   │   └── user_script/
-│   │       ├── images/  (9 files)
+│   │       ├── images/  (12 files)
 │   │       └── user_script.md
 │   ├── project_objects/
 │   │   ├── catalogs/
-│   │   │   ├── images/  (10 files)
+│   │   │   ├── images/  (12 files)
 │   │   │   └── catalogs.md
 │   │   ├── import_export/
 │   │   │   ├── images/  (9 files)
@@ -201,7 +202,8 @@ docs/
 │   └── readme.md
 ├── ru/
 │   ├── access/
-│   │   ├── images/  (15 files)
+│   │   ├── images/  (17 files)
+│   │   ├── external_auth.md
 │   │   ├── login.md
 │   │   ├── roles.md
 │   │   └── users.md
@@ -244,7 +246,7 @@ docs/
 │   │       └── dsf.md
 │   ├── data_collection/
 │   │   ├── IoT/
-│   │   │   ├── images/  (26 files)
+│   │   │   ├── images/  (21 files)
 │   │   │   ├── actions.md
 │   │   │   ├── http.md
 │   │   │   ├── IoT.md
@@ -332,20 +334,20 @@ docs/
 │   │   └── status.md
 │   ├── project_logic/
 │   │   ├── calculation/
-│   │   │   ├── images/  (11 files)
+│   │   │   ├── images/  (10 files)
 │   │   │   └── calculation.md
 │   │   ├── js_library/
-│   │   │   ├── images/  (8 files)
+│   │   │   ├── images/  (11 files)
 │   │   │   └── js_library.md
 │   │   ├── library_modules/
-│   │   │   ├── images/  (6 files)
+│   │   │   ├── images/  (8 files)
 │   │   │   └── library_modules.md
 │   │   └── user_script/
-│   │       ├── images/  (9 files)
+│   │       ├── images/  (12 files)
 │   │       └── user_script.md
 │   ├── project_objects/
 │   │   ├── catalogs/
-│   │   │   ├── images/  (10 files)
+│   │   │   ├── images/  (12 files)
 │   │   │   └── catalogs.md
 │   │   ├── import_export/
 │   │   │   ├── images/  (9 files)
@@ -395,6 +397,7 @@ favicon and brand stylesheet), `tools/` (site build and link checker),
 
 ### Access
 - [Sign-in and sessions](docs/en/access/login.md)
+- [External authorization](docs/en/access/external_auth.md)
 - [Users](docs/en/access/users.md)
 - [Roles and access rights](docs/en/access/roles.md)
 

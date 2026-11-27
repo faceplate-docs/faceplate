@@ -48,7 +48,7 @@ Excel кестесі басқа міндетті шешеді: бір түрде
 
 | Бөлім | Ішінде не бар |
 |---|---|
-| `global_libraries` | [Кітапхана модульдері](../../../en/project_logic/library_modules/library_modules.md) және [JS кітапханалары](../../../en/project_logic/js_library/js_library.md) |
+| `global_libraries` | [Кітапхана модульдері](../../project_logic/library_modules/library_modules.md) және [JS кітапханалары](../../project_logic/js_library/js_library.md) |
 | `environment` | [Суреттер кітапханасы](../../mnemo/images.md), [локализация сөздігі](../localization/localization.md) және жобаның жүйелік баптаулары: [дабылдар](../../../en/alarms/alarm/alarm.md), авторизация, [графикалық редактор](../../mnemo/editor.md) және басқалар |
 | `primitives` | [Примитивтер](../primitives/primitives.md) |
 | `catalogs` | [Каталогтар](../catalogs/catalogs.md) |

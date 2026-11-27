@@ -25,37 +25,43 @@ This document is for integration engineers who move shared Erlang code into a se
 
 # Introduction
 
-A library module is shared Erlang code for the whole project: any functions needed in more than one place. The code is written once, and user scripts call it by module name.
+A library module is shared Erlang code for the whole project: functions needed in several scripts. The code is written once, and user scripts call it by module name.
 
-You compile the module yourself: click **Compile**, wait for `OK`, then **Save**. A module cannot be saved without a successful **Compile**. After saving, the server loads the module on its own, and a change takes effect without restarting scripts.
+Modules are not stored in project folders but in a separate Studio section, **Library modules**. After saving, the server loads the module on its own, and its functions are immediately available to all scripts of the project.
 
-Running example: module `demo_units` with functions `c_to_f/1` (Celsius to Fahrenheit) and `clamp/3` (clamp a value to a range). User script `lib_demo` reads a temperature from object `temp_c` and writes the result of `demo_units:c_to_f/1` to object `temp_f`. Creating a user script is covered in [User Scripts](../user_script/user_script.md).
+The document shows how to create a module and call it from a script with one example that runs through the whole document. In the example, several scripts need to convert temperature from degrees Celsius to degrees Fahrenheit, so the conversion function is moved into the module `demo_units`. The script `lib_demo` calls the module function and writes the result to a tag. Then the module is changed and copied, and the copy is deleted.
 
-You need access to Studio (`http://<server>:9000/fp/studio`) with an account allowed to modify the project.
+| Object | Location | Purpose |
+|---|---|---|
+| `temp_c`, `temp_f` | folder `script_demo`, primitive with a `value` field of type `float` | Example input and output. Created in advance |
+| `demo_units` | **Library modules** section | Functions `c_to_f/1` (degrees Celsius to degrees Fahrenheit) and `clamp/3` (limiting a value to a range) |
+| `lib_demo` | folder `script_demo`, `user_script` | Reads `temp_c`, writes the result of `demo_units:c_to_f/1` to `temp_f` |
+
+How to create a primitive is described in [Primitives](../../project_objects/primitives/primitives.md), a user script — in [User Scripts](../user_script/user_script.md).
+
+You will need access to Studio (`http://<server>:9000/fp/studio`) with an account that has the right to change the project.
 
 # Main part
 
 ## The Library modules section
 
-Open **Library modules** in the Studio main menu.
+1. Open **Library modules** in the Studio main menu.
 
-![Module list](images/4_list.png)
+   ![Library modules item in the main menu](images/01_menu.png)
 
-| Column | Meaning |
-|---|---|
-| **Name** | Module name from the `-module(...)` line. Set on save, not editable by hand |
-| **Comment** | Free-form module description |
-| **Errors** | Error text if the server failed to load the module. Empty means the module is loaded |
+2. The list of project modules opens. In the example it is still empty. Click **Create**.
 
-Buttons above the table: **Create**, **Edit** (or double-click a row), **Delete**, **Copy**, **Paste**.
+   ![Create button in the Library modules section](images/02_create.png)
+
+The other buttons above the list — **Edit**, **Delete**, **Copy**, **Paste** — work with the selected row. A module can also be opened by double-clicking its row.
 
 ## Creating a module
 
-Click **Create**. The editor opens with a module template: a name like `fp_userlib_<number>`, `fp.hrl` included, functions `on_init/0` and `my_fun/1`.
+After **Create**, the editor of a new module opens with a template: a name like `fp_userlib_<number>`, `fp.hrl` included, functions `on_init/0` and `my_fun/1`.
 
-![New module template](images/1_template.png)
+![New module template](images/03_template.png)
 
-Replace the template with your code, fill in **Comment**, click **Compile**, wait for `OK`, and save. Example:
+Replace the template with the `demo_units` code and fill in **Comment**, for example `Unit conversion and range clamping`:
 
 ```erlang
 -module(demo_units).
@@ -69,44 +75,49 @@ on_init() ->
     ?LOGINFO("demo_units loaded", []),
     ok.
 
-%% Celsius -> Fahrenheit
 c_to_f(C) ->
     C * 9 / 5 + 32.
 
-%% Clamp a value to [Min, Max]
 clamp(V, Min, _Max) when V < Min -> Min;
 clamp(V, _Min, Max) when V > Max -> Max;
 clamp(V, _Min, _Max) -> V.
 ```
 
-![Successful Compile](images/3_compile_ok.png)
-
 | Element | Rule |
 |---|---|
-| `-module(name).` | Required. Sets the **Name** in the list and the name used in calls. Allowed: lowercase Latin letters, digits, `_` |
-| `-export([...])` | Only exported functions can be called from other objects |
-| `on_init/0` | Optional. Called after every load of the module: after saving and on server start. An error inside `on_init/0` does not prevent the module from loading |
-| `-include("fp.hrl").` | The FACEPLATE header file with the logging macros `?LOGINFO`, `?LOGWARNING`, `?LOGERROR`. Needed only if the code uses them |
+| `-module(name).` | Required. Sets the module name in the list and the name used in calls. Lowercase Latin letters, digits and `_` are allowed |
+| `-export([...])` | Only exported functions are available to scripts |
+| `on_init/0` | The module initialization function: it performs the preparation the module needs to work. Called after the module is compiled and loaded: at server start and within a second after saving changed code. If the code did not change on saving, for example only **Comment** was edited, `on_init/0` is not called. In the example, `on_init/0` writes the line `demo_units loaded` to the server log. An error inside `on_init/0` is written to the server log and does not prevent the module from loading. |
+| `-include("fp.hrl").` | The main FACEPLATE header file with the platform's common macros, including the log macros `?LOGINFO`, `?LOGWARNING`, `?LOGERROR`. Included in the new module template |
 
-> **Important.** A module name is shared by the whole server. Two objects with the same `-module(...)` load the same module, and the code loaded last stays in effect. Give modules unique names with a project prefix and do not reuse Erlang or FACEPLATE module names.
-
-After saving, the form stays open and **Save** becomes unavailable again. Close the form with **Cancel**.
+The module name is unique: two modules with the same name cannot be saved in a project. The name must not match the names of Erlang and FACEPLATE modules.
 
 ## Compile and save
 
-**Compile** checks the code on the server. Next to the button it shows `OK` or the raw compiler error, for example for a missing period at the end of a function:
+The code is entered, now it needs to be checked. Click **Compile**: `OK` appears next to the button, and the **Save** button becomes available.
 
-`{":atom:errors":["{\"/opt/ext/_build/default/lib/fp/priv/temp/demo_units.erl\",\n [{{17,1},erl_parse,[\"syntax error before: \",\"clamp\"]}]}", ...`
+![Module demo_units after Compile](images/04_compile_ok.png)
 
-Look for the `{line,column}` pair and the description: `{17,1}` and `syntax error before: clamp` mean an error before line 17. `undefined_function` messages for exported functions in the same output follow from the syntax error and are not a separate problem.
+If the code has an error, the compiler error text is shown instead of `OK`, and **Save** stays unavailable. Look for a `{line,column}` pair and a description in the text. For example, if the period after `C * 9 / 5 + 32` is missing, the text contains `{15,1}` and `syntax error before: clamp` — the error is before line 15. Fix the code and click **Compile** again.
 
-![Compile error](images/2_compile_error.png)
+After `OK`, click **Save**. The order is always the same: **Compile** → `OK` → **Save**.
 
-> **Important.** The order is always the same: **Compile** → `OK` → **Save**. When the form opens and after every save, **Save** stays unavailable until **Compile** returns `OK`.
+After saving, the form stays open, and **Save** is unavailable again until the next **Compile**. The module is already saved and appears in the list. Close the form with **Cancel** or the cross in its title bar: this does not undo the save.
+
+![Module demo_units in the list](images/05_list.png)
+
+| Column | Meaning |
+|---|---|
+| **Name** | Module name from the `-module(...)` line. Set on saving, not editable manually |
+| **Comment** | Text from the **Comment** field |
+
+The module `demo_units` is loaded on the server, but nothing calls its functions yet.
 
 ## Calling from a user script
 
-Call a module function by its full name `module:function(arguments)`. Script `lib_demo` with variables `t` (`/script_demo/temp_c`, field `value`) and `f` (`/script_demo/temp_f`, field `value`):
+Let's call `demo_units` from the script `lib_demo`. The script takes the temperature from `temp_c`, converts it with `c_to_f/1` and writes it to `temp_f`.
+
+Create a user script `lib_demo` in the folder `script_demo`. On the **erlang** tab, set the variables `t` (tag `/script_demo/temp_c`, field `value`) and `f` (tag `/script_demo/temp_f`, field `value`). Turn on **Execute on changing variables values** and enter the code:
 
 ```erlang
 fun(VARS, State) ->
@@ -115,35 +126,49 @@ fun(VARS, State) ->
 end.
 ```
 
-![Script calling the module](images/5_script.png)
+A module function is called by its full name `module:function(arguments)`; the module does not need to be connected in the script.
 
-With `temp_c` = `25`, the script writes `77` to `temp_f`.
+Click **Compile**, wait for `OK` and save.
+
+![Script calling the module](images/06_script.png)
+
+Now with `temp_c` = `25` the script writes `77` to `temp_f`.
 
 ## Changing a module
 
-Open the module, edit the code, click **Compile**, and save. The server loads the new version within a few seconds, and subsequent calls from scripts use it. Scripts do not need to be restarted or re-saved.
+A module can be changed while scripts call it. Open the module, fix the code, click **Compile** and save. The server loads the new version within a few seconds, and the next calls from scripts go to it. Scripts do not need to be restarted.
 
-If you change the `-module(...)` line, the **Name** in the list changes after saving. Fix scripts that call the module by its old name.
+Example: in `demo_units`, `+ 1000` is added to the result of `c_to_f`. The script `lib_demo` is not restarted, and with `temp_c` = `26` it immediately writes `1078.8` to `temp_f`.
+
+If you change the name in the `-module(...)` line, the **Name** in the list changes after saving. Scripts call a module by its name, so the calls in them must be changed to the new name.
 
 ## Copying
 
-Select a module, click **Copy**, then **Paste**, and confirm the paste with **OK**. The copy appears in the list with a name like `demo_units_1`, but its code is unchanged, with the same `-module(demo_units)` line.
+A copy is a quick way to start a new module from existing code. Let's copy `demo_units`.
 
-> **Important.** Open the copy right away, change the name in `-module(...)`, click **Compile**, and save. Until the name is changed, the original and the copy declare the same module.
+1. Select `demo_units`, click **Copy**, then **Paste**.
+2. In the **Paste items?** window, keep **Operation** = `copy`, set **Copies count** and click **OK**.
+
+   ![Paste items window](images/07_paste.png)
+
+The copy appears in the list as `demo_units_1`, but its code is the same, with the same `-module(demo_units)` line. Open the copy, replace the name in `-module(...)`, for example with `demo_units_copy`, click **Compile** and save. After saving, the **Name** in the list becomes `demo_units_copy`.
+
+While the copy has the old name, it cannot be saved: an **ERROR!** window appears with the text `{not_unique,<<"demo_units">>}`.
+
+![Error when saving a copy with the old name](images/08_not_unique.png)
 
 ## Deleting
 
-Select one or more modules (Ctrl+click), click **Delete**, and confirm with **yes**. The confirmation shows only the number of modules (`delete items: 1`).
+The copy `demo_units_copy` is no longer needed. Select it, click **Delete** and confirm with **yes**. The confirmation window shows the number of modules to delete: `delete items: 1`.
 
-![Delete confirmation](images/6_delete.png)
+To delete several modules at once, select them with Ctrl+click.
 
 # Conclusion
 
 Workflow:
 
 1. In **Library modules**, click **Create**.
-2. Set a unique name in `-module(...)`, export the functions you need, add `on_init/0` if required.
-3. Click **Compile**, wait for `OK`, save, and close the form.
-4. Check that the **Errors** column is empty.
-5. Call the functions from user scripts as `module:function(...)`.
-6. After copying, rename the module in the copy. Before deleting, remove calls to the module from scripts.
+2. Set a unique name in `-module(...)` and export the functions you need.
+3. **Compile** → `OK` → **Save**.
+4. Call the functions from scripts as `module:function(...)`.
+5. In a copy of a module, replace the name in `-module(...)`.

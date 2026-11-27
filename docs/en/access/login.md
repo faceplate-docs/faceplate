@@ -76,6 +76,8 @@ In the Studio main menu open **Security settings**, enter the text in the **Disc
 
 ![Security settings](images/login_11.png)
 
+The **AUTH 2.0** field in the same window adds sign-in through a corporate identity provider to the form, see [External authorization](external_auth.md).
+
 ## Sign-in errors
 
 | Situation | Message |
@@ -119,7 +121,6 @@ In Runtime — the **Authorization history** item of the menu (☰).
 | **Logout** → **yes** | The session ends, the sign-in form opens |
 | Page reload (F5) | The browser may ask whether to leave the page. After the reload — the sign-in form |
 | Closing the tab or browser | The session ends. Next time — the sign-in form |
-| Idle without actions | The session does not end. Studio and Runtime stay open under the same account (checked with more than an hour idle) |
 | Connection loss | Runtime signs in again by itself when the connection is back, Studio shows the sign-in form, see [Status bar and connection, section Connection loss](../operator/status.md#connection-loss) |
 
 One account can work in several tabs and browsers at the same time: the sessions do not close each other.
@@ -130,5 +131,5 @@ One account can work in several tabs and browsers at the same time: the sessions
 2. The text under the **OK** button of the sign-in form is set in **Security settings** → **Disclaimer text** → **Save**.
 3. On touch panels use the on-screen keyboard of the form.
 4. The language is chosen on the form. The answer **yes** to "Save localization settings?" makes it the account language.
-5. A session ends with **Logout**, a page reload or closing the page. It does not end because of idle time.
+5. A session ends with **Logout**, a page reload or closing the page.
 6. The last successful and the last unsuccessful sign-in are visible in the **Authorization history** window: the clock icon in Studio, a menu item in Runtime.

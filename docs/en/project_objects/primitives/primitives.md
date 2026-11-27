@@ -50,7 +50,7 @@ You need access to Studio (`http://<server>:9000/fp/studio`) with an account tha
 
 The table shows each primitive's **Icon**, **Name**, **Groups**, and **Comment**. Toolbar: **Create**, **Edit**, **Delete**, **Copy**, **Paste**, **Fields**, **Behaviour**. **Fields** and **Behaviour** are available when exactly one primitive is selected. Double-clicking a row opens the **Fields** tab.
 
-Inside a primitive, the navigation bar at the top reads `Primitives / pump / Fields`. Its drop-down lists switch to another primitive or to the **Behaviour** tab without returning to the list.
+Inside a primitive, the navigation line at the top reads `Primitives / pump / Fields`. Its drop-down lists switch to another primitive or to the **Behaviour** tab without returning to the list.
 
 ## Creating a Primitive
 

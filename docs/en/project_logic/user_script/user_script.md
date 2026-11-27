@@ -1,6 +1,6 @@
-# User Scripts (User Script)
+# User scripts
 
-A guide for the integration engineer who writes server-side project logic in Erlang or JavaScript: computed values, counters, moving data between objects.
+A document for the integration engineer who writes server-side project logic in Erlang or JavaScript: computing values, counters, moving data between objects.
 
 # Contents
 
@@ -8,13 +8,16 @@ A guide for the integration engineer who writes server-side project logic in Erl
 - [Introduction](#introduction)
 - [Main part](#main-part)
     - [Creating a script](#creating-a-script)
-    - [Script form](#script-form)
+    - [Variables](#variables)
+    - [Run conditions](#run-conditions)
     - [Erlang code](#erlang-code)
-    - [JavaScript code](#javascript-code)
-    - [Compile and saving](#compile-and-saving)
-    - [Runtime errors](#runtime-errors)
+    - [Compile and save](#compile-and-save)
+    - [A running script](#a-running-script)
     - [Manual run](#manual-run)
-    - [The "Script" section](#the-script-section)
+    - [The Script section](#the-script-section)
+    - [Runtime errors](#runtime-errors)
+    - [JavaScript code](#javascript-code)
+    - [Deleting a script](#deleting-a-script)
 - [Conclusion](#conclusion)
 
 # Glossary
@@ -30,94 +33,83 @@ A guide for the integration engineer who writes server-side project logic in Erl
 
 # Introduction
 
-A user script reads fields of project objects, computes new values and writes them to object fields. The script is created as an object in the **General View** and runs:
+A user script reads fields of project objects, computes new values and writes them to object fields. A script is a project object: it is created in the **General View**, in a folder next to the objects it works with, and runs on the server while it is enabled.
 
-| Condition | Where it is set |
+Simple formulas are easier to set up in [Calculation](../calculation/calculation.md): there you write only an expression, not a function. A script is needed when the computation requires more:
+
+| Suits Calculation | Implement in User Script |
 |---|---|
-| On a timer | **Period (ms)** |
-| When any variable value changes | **Execute on changing variables values** |
-| Manually, once | **Runtime** tab, **trigger_execute** switch |
-
-When to use [Calculation](../calculation/calculation.md) and when to use User Script:
-
-| Fits Calculation | Implement in User Script |
-|---|---|
-| Unit conversion, scaling | Calculations over history and time windows, rate of change |
+| Unit conversion, scaling | Computations over history and time windows, rate of change |
 | Formulas over several inputs: sum, difference, ratio, percentage, power, efficiency | Accumulation and totalizers, state between runs |
-| Threshold flags and statuses | Alarms, SQL, user interface work |
-| Simple conditions: range limiting, fallback value, division-by-zero guard | Complex logic and flow control |
-| Extracting a bit from a word, mapping integer state codes | Protocol parsing, formula libraries |
+| Threshold flags and statuses | Alarms, SQL, working with the interface |
+| Simple conditions: range limiting, fallback value, division-by-zero protection | Complex logic and flow control |
+| Extracting a bit from a word, mapping integer status codes | Protocol parsing, formula libraries |
 
-Running example: the script `sum_script` in the folder `script_demo` adds the values of two objects `a_in` and `b_in`, writes the sum to `sum_out` and the number of runs to `runs_out`. All four objects have a numeric field `value` of type `float`. How to create such objects is covered in the [Primitives](../../project_objects/primitives/primitives.md) guide.
+How to write, run and check a script is shown in this document on one running example. In the example, the script `sum_script` in the `us_demo` folder adds the values of the objects `a_in` and `b_in`, writes the sum to `sum_out` and the number of its runs to `runs_out`. All four objects have a numeric field `value` of type `float`; how to create such objects is described in the [Primitives](../../project_objects/primitives/primitives.md) document.
 
-You need access to Studio (`http://<server>:9000/fp/studio`) with an account allowed to modify the project.
+First the script is written in Erlang: it is created, gets its variables and run conditions, passes the check and is saved. Then it is run manually, found in the **Script** section, and used to show what a runtime error looks like. At the end the same computation is written in JavaScript, and the extra script is deleted.
+
+You need access to Studio (`http://<server>:9000/fp/studio`) with an account that may change the project.
 
 # Main part
 
 ## Creating a script
 
-1. In the **General View**, open the folder where the script will live.
-2. Click **Create**, expand the `system` group, select `user_script` and click **Ok**.
+1. In the **General View**, open the `us_demo` folder and click **Create**.
 
-![Selecting the user_script type](images/1_type.png)
+    ![The Create button in the us_demo folder](images/01_create.png)
 
-3. Fill in **Name**, run conditions, variables and code (see the sections below).
-4. Click **Compile**, wait for `OK`, save.
+2. Expand the `system` group, select `user_script` and click **Ok**.
 
-The script starts right after saving: in the **General View** its **Runtime** is `ON` and **Run Nodes** shows the node it runs on.
+    ![Selecting the user_script type](images/02_type.png)
 
-![Script form](images/2_form.png)
+3. In the form that opens, enter **Name** `sum_script`.
 
-## Script form
+The script form has three parts. At the top is the status panel: whether the script is running and where. Below it are the run conditions: **Period (ms)** and **Execute on changing variables values**. At the bottom are the **script** variable table and the code editor with the **erlang** and **javascript** tabs. A new script is not running yet: **State** is `STOP`, and the editor holds a template with a comment on how the function is built. Filling in starts with the variables.
 
-### Status panel
+## Variables
 
-| Field | Meaning |
-|---|---|
-| **State** | `RUN` — the script process is running, `STOP` — not started |
-| **Node**, **PID** | Cluster node and process executing the script |
-| **Diagnostics** | Process diagnostics window. Available for a saved script |
-| **Disabled** | Stops the script without deleting it. In the **General View** a disabled script has **Runtime** `OFF` and **State** `Stop` |
-| **Error** | Text of the last compile or runtime error. `no errors` — no errors |
-| **Memory limit (bytes)** | Memory limit of the script process. `1024` is filled in after saving |
+The script function does not access project objects directly: it receives and writes values through variables. A variable links a name in the code to an object field. The table under the **script** heading has the columns **variable** — the variable name in the code, **tag** — the project object, and **field** — its field.
 
-### Run conditions
+The example script needs four variables: two inputs and two outputs.
 
-| Field | Behaviour |
-|---|---|
-| **Period (ms)** | The script runs right after start and then with this period. Empty — no timer |
-| **Execute on changing variables values** | The script runs once after start and then on every change of any variable value |
+1. Enter the name `a` in **variable**.
+2. Click the magnifier in **tag**, open the `us_demo` folder, select `a_in` and click **OK**. Only an object from the project tree can be selected.
 
-Both modes can be on at once. If both are off, the script stays in `RUN` but does not execute until it is started manually.
+    ![Selecting the object for variable a](images/03_picker.png)
 
-Writes the script makes to its own variables do not trigger it again: auto-run does not loop.
-
-### Variables
-
-The table under **script**: **variable** — the variable name in code, **tag** — a project object, **field** — its field.
-
-1. Type the name in **variable**.
-2. Click the magnifier in **tag**, open the object's folder, select the object, click **OK**. Only objects from the project tree can be selected.
-3. Select the field in **field**. The list contains all object fields, system ones included.
-
-![Selecting a variable object](images/3_picker.png)
-
-Once a row is filled, an empty `var_1` row appears below it; an unfilled row can be left as is. Arrows change the order, the bin deletes a row.
-
-For the example:
+3. In **field**, select `value`. The list contains all fields of the object, including system ones.
+4. Add the other rows the same way:
 
 | variable | tag | field |
 |---|---|---|
-| `a` | `/script_demo/a_in` | `value` |
-| `b` | `/script_demo/b_in` | `value` |
-| `sum` | `/script_demo/sum_out` | `value` |
-| `runs` | `/script_demo/runs_out` | `value` |
+| `a` | `/us_demo/a_in` | `value` |
+| `b` | `/us_demo/b_in` | `value` |
+| `sum` | `/us_demo/sum_out` | `value` |
+| `runs` | `/us_demo/runs_out` | `value` |
 
-The same variable is used both for reading and writing. Only a field declared as a variable can be written.
+Once a row is filled in, an empty row `var_1` appears below it; an unfilled row does not prevent saving. The arrows on the right change the row order, the bin deletes a row.
+
+The same variable serves both for reading and for writing: the script reads `a` and `b` and writes to `sum` and `runs`.
+
+## Run conditions
+
+The variables are set; now decide when the script will execute.
+
+| Field | Behaviour |
+|---|---|
+| **Period (ms)** | The script executes right after it starts and then with this period. Empty — no timer |
+| **Execute on changing variables values** | The script executes once after it starts and then every time the value of any of its variables changes |
+
+The modes can be enabled together. If both are off, the script is running (**State** `RUN`) but does not execute until it is run manually (see [Manual run](#manual-run)).
+
+Values the script writes to its own variables do not trigger it again: with auto-run the script does not loop.
+
+The sum must be recomputed as soon as `a_in` or `b_in` changes, so in the example **Period (ms)** stays empty and **Execute on changing variables values** is switched on.
 
 ## Erlang code
 
-**erlang** tab. A function of arity 2: takes `VARS` and `State`, returns the tuple `{ ValuesToWrite, NewState }`.
+What remains is the function that computes new values from the variable values. The **erlang** tab is open by default. Replace the template in the editor with the example code:
 
 ```erlang
 fun(VARS, State) ->
@@ -131,99 +123,148 @@ fun(VARS, State) ->
 end.
 ```
 
+The function takes two arguments — `VARS` and `State` — and returns the tuple `{ ValuesToWrite, NewState }`:
+
 | Element | Rule |
 |---|---|
-| `VARS` | A map keyed by variable names as strings: `"a"`, not `a` |
-| Values to write | A map "variable name — value". Keys missing from the variable table are ignored. An empty map `#{}` writes nothing |
-| `State` | The second element of the previous result. The example treats an integer as the counter and any other value as the first run |
+| `VARS` | A map whose keys are variable names as strings: `"a"`, not `a` |
+| Values to write | A map "variable name — value". Only a field declared as a variable can be written: keys not in the variable table are ignored. An empty map `#{}` writes nothing |
+| `State` | The second element of the previous call's result. The example keeps the run count in it: an integer is increased by 1, any other value means the first run |
 | Final dot | The code ends with `end.` |
 
-The value type follows the field type: a `float` field gives a number, a `string` field gives a string. Adding string fields gives `badarith`.
+The type of a value in `VARS` follows the field type: a `float` field gives a number, a `string` field gives a string. Adding string fields gives the `badarith` error.
 
-![Example variables and code](images/4_code.png)
+## Compile and save
 
-## JavaScript code
-
-**javascript** tab. An async function with the same arguments. Values are written with `fp.api.set_value(path, field, value)`, the new state is returned in `{ state }`:
-
-```javascript
-async function(VARS, State) {
-    const runs = Number.isInteger(State) ? State + 1 : 1;
-    await fp.api.set_value('/root/FP/PROJECT/script_demo/sum_out', 'value', VARS.a + VARS.b);
-    await fp.api.set_value('/root/FP/PROJECT/script_demo/runs_out', 'value', runs);
-    return { state: runs };
-}
-```
-
-- Variables are accessed by name: `VARS.a`.
-- The path in `fp.api.set_value` is the full one, with the `/root/FP/PROJECT` prefix.
-- The counter works as in Erlang: an integer in `State` is incremented, any other value gives `1`.
-
-Switching between the **erlang** and **javascript** tabs does not change the editor text. Replace the code entirely and click **Compile**.
-
-## Compile and saving
-
-**Compile** checks the code and passes it to the form. Next to the button you see `OK` or the error text, for example:
+The code is entered. Before saving, it is checked by the **Compile** button under the editor: `OK` or the error text appears next to the button. For example, if the comma after the line `B = maps:get("b", VARS)` is missing, **Compile** reports:
 
 `{invalid_expression,{4,erl_parse,["syntax error before: ","Runs"]}}`
 
-![Compile error](images/5_compile_error.png)
+The number in the text is the line where the error was found (here line 4, `Runs = case State of`), and the last word is what the error stands before.
 
-The order is always the same: **Compile** → `OK` → **save**.
+![Compile error: missing comma](images/04_compile_error.png)
 
-Every save restarts the script: the code is reloaded and `State` is reset.
+Fix the code and click **Compile** again. When `OK` appears next to the button, click **save**.
 
-## Runtime errors
+![Compile returned OK, the save button](images/05_compile_ok.png)
 
-An error raised while the function runs is shown in three places:
+Save only after `OK`.
 
-- the **Error** field of the script form;
-- the **Errors** column in the **General View**;
-- a red row with status **ERROR** in the **Script** section. The error text is in the tooltip over **ERROR**.
+## A running script
 
-| Text | Cause |
+A saved script starts right away. In the **General View**, `sum_script` has **Runtime** `ON`, and **Run Nodes** shows the node it runs on. A script with auto-run has executed once after starting: `sum_out` holds `5` (with `a_in` = 2 and `b_in` = 3), `runs_out` holds `1`.
+
+Open `sum_script` again: the status panel is filled in.
+
+![Status panel of a running script](images/06_running.png)
+
+| Field | Meaning |
 |---|---|
-| `badarith` | Arithmetic on a non-numeric value, for example on a string field |
-| `{badkey,"c"}` | The code reads variable `c`, which is not in the variable table |
+| **State** | `RUN` — the script is running, `STOP` — not started |
+| **Node**, **PID** | The cluster node and the process the script runs in |
+| **Diagnostics** | The diagnostics window of the script process. The button exists only for a saved script |
+| **Disabled** | Stops the script without deleting it. A disabled script has **State** `STOP`, and in the **General View** **Runtime** `OFF` and **State** `Stop` |
+| **Error** | The text of the last runtime error. `no errors` — no errors |
+| **Memory limit (bytes)** | Memory limit of the script process. `1024` is filled in on save |
 
-The error is cleared after the first successful run. Variable values are not written when an error occurs.
+Every save of the **Settings** tab — even if only **Title** was changed — restarts the script: the code is reloaded, `State` is reset, and the `runs_out` counter starts from `1` again. The script also restarts when **Disabled** is switched off.
 
 ## Manual run
 
-Open the **Runtime** tab, turn on **trigger_execute**, save. The script runs once; the switch resets by itself.
+The example script executes by itself when the inputs change. To execute it once more without changing the inputs, run it manually:
 
-![Runtime tab](images/6_runtime.png)
+1. Open the **Runtime** tab in the script form.
+2. Switch on **trigger_execute** and click **save**.
 
-## The "Script" section
+![Runtime tab, the trigger_execute switch](images/07_runtime.png)
 
-The **Script** main menu item lists all user scripts of the project.
+The script executes once, and the switch turns itself off. In the example `runs_out` becomes `2`. Saving on the **Runtime** tab does not restart the script: `State` is kept. The other rows of the tab repeat the status panel information.
 
-![Script section](images/7_section.png)
+A script with both run conditions off never runs on its own, not even when its inputs change. It is run only this way, manually.
+
+## The Script section
+
+In the **General View** a script is visible only in its own folder. All user scripts of the project are gathered in the **Script** section of the main menu.
+
+![The Script item in the main menu](images/08_menu.png)
+
+![The Script section: sum_script in the list](images/09_section.png)
 
 | Column | Meaning |
 |---|---|
-| **Name**, **Путь** (path) | Name and full path of the script object |
+| **Name**, **Путь** | Name and full path of the script object |
 | **Mode** | `On` or `Off` (the **Disabled** switch) |
 | **Status** | `OK` or **ERROR** |
 | **Auto-run** | `Yes` if **Execute on changing variables values** is on |
 | **Period (ms)** | The period value or empty |
 
-Filters above the table: part of the name, **Mode**, **Status** (`Error` / `OK`), **Auto-run**. Choose conditions and click **Find**; the cross next to it resets the filters.
+Above the table are the filters: part of the name, **Mode**, **Status** (`Error` / `OK`) and **Auto-run**. Choose the conditions and click **Find**; the cross to the right of **Find** clears the filters.
 
-![Scripts with errors only](images/8_filter.png)
+Scripts cannot be created in this section, only in the **General View**. Open a script by double-clicking its row or with the pencil button at the top right of the table; delete it with the bin button next to it. The buttons become available when a row is selected.
 
-Scripts cannot be created in this section, only in the **General View**. Open a script by double-click or with the pencil button on the right; delete it with the bin button. The confirmation shows only the number of scripts (`delete items: 1`); confirm with **yes**.
+## Runtime errors
 
-![Delete confirmation](images/9_delete.png)
+`sum_script` runs without errors: its **Status** is `OK`. Let us see what an error looks like when it occurs at execution, not at **Compile**. In the code, replace `maps:get("b", VARS)` with `maps:get("c", VARS)`: there is no variable `c` in the table. **Compile** returns `OK` — the syntax is correct — but the script fails as soon as it executes.
+
+The error is shown in three places. In the script form, in the **Error** field:
+
+![Runtime error in the script form](images/10_error_form.png)
+
+In the **General View**, in the **Errors** column of the script row. In the **Script** section, as a row with a red background and the status **ERROR**; the error text appears in a tooltip when you point at **ERROR**. To see only such scripts in a large project, choose `Error` in the **Status** filter and click **Find**:
+
+![Status filter: only scripts with an error](images/11_error_list.png)
+
+| Text | Cause |
+|---|---|
+| `badarith` | Arithmetic on a non-numeric value, for example on a string field |
+| `{badkey,"c"}` | The code reads variable `c`, which is not in the variable table |
+| `badarg` | For example, the path in `fp.api.set_value` (JavaScript) is given without the `/root/FP/PROJECT` prefix |
+
+When the script executes with an error, variable values are not written: `sum_out` and `runs_out` keep their previous values. Put `maps:get("b", VARS)` back in the code, click **Compile** and **save**: after the first successful execution the error disappears from the form, the **General View** and the **Script** section.
+
+## JavaScript code
+
+The same computation can be written in JavaScript. To compare, create a second script `sum_js` in `us_demo` as in [Creating a script](#creating-a-script), open the **javascript** tab and paste the code:
+
+```javascript
+async function(VARS, State) {
+    const runs = Number.isInteger(State) ? State + 1 : 1;
+    await fp.api.set_value('/root/FP/PROJECT/us_demo/sum_out', 'value', VARS.a + VARS.b);
+    await fp.api.set_value('/root/FP/PROJECT/us_demo/runs_out', 'value', runs);
+    return { state: runs };
+}
+```
+
+The script needs only the input variables `a` and `b`: it writes values not through variables but by calling `fp.api.set_value`. Switch on **Execute on changing variables values**, click **Compile**, and after `OK` click **save**.
+
+![JavaScript code, Compile returned OK](images/12_js.png)
+
+Differences from Erlang:
+
+| | Erlang | JavaScript |
+|---|---|---|
+| Function | `fun(VARS, State) -> … end.` | `async function(VARS, State) { … }` |
+| Reading a variable | `maps:get("a", VARS)` | `VARS.a` |
+| Writing a value | A map in the function result; only to fields declared as variables | `await fp.api.set_value(path, field, value)`; to any field, the path is full — with the `/root/FP/PROJECT` prefix |
+| New `State` | The second element of the tuple | `return { state: … }` |
+
+The code is checked and executed in the language of the tab that is open at **Compile**: Erlang code on the **javascript** tab does not pass the check.
+
+## Deleting a script
+
+A script runs as long as it exists in the project. If its computation is no longer needed or has moved to another script, delete the old script; otherwise it keeps writing to the same fields. To stop a script for a while and keep its settings, do not delete it — switch on **Disabled** instead (see [A running script](#a-running-script)).
+
+In the example, `sum_js` was written for comparison, and now two scripts write to `sum_out` and `runs_out` at once. Keep `sum_script` and delete `sum_js`: in the **Script** section select its row, click the bin button and confirm with **yes**.
+
+The confirmation window shows the number of selected scripts, not their names. To delete several scripts at once, select them by clicking with Ctrl held down. A deleted script disappears from the **Script** section and from its folder in the **General View**.
 
 # Conclusion
 
 Workflow:
 
-1. Prepare objects with fields of suitable types: numbers in `integer` or `float` fields.
-2. In the **General View**, create a `user_script` (group `system`).
-3. Declare variables for every field the script reads or writes.
-4. Choose how it runs: **Period (ms)**, **Execute on changing variables values**, or both.
-5. Write the function. In Erlang, `VARS` keys are strings. In JavaScript, write values with `fp.api.set_value`.
-6. Click **Compile**, wait for `OK`, save.
-7. Check **Status** in the **Script** section. On **ERROR**, read the text in the tooltip or in the form's **Error** field.
+1. In the **General View**, create a `user_script` (`system` group).
+2. Declare variables for the fields the script reads and writes.
+3. Choose how it runs: **Period (ms)**, **Execute on changing variables values**, or both.
+4. Write the function on the **erlang** or **javascript** tab.
+5. Click **Compile**, wait for `OK`, save.
+6. Check **Status** in the **Script** section; on **ERROR** read the text in the form's **Error** field.

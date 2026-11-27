@@ -38,7 +38,7 @@
 | `diag_script` | 2000 | Циклдарды санайды, әр циклде журналға `cycle N` жазады, әр бесіншісінде — `cycle N: every fifth` ескертуін |
 | `diag_fail` | 5000 | Әр іске қосылғанда нөлге бөледі және `badarith` қатесімен аяқталады |
 
-Пайдаланушы скриптін қалай жасау керектігі [«Пайдаланушы скрипттері»](../../../en/project_logic/user_script/user_script.md) құжатында сипатталған.
+Пайдаланушы скриптін қалай жасау керектігі [«Пайдаланушы скрипттері»](../../project_logic/user_script/user_script.md) құжатында сипатталған.
 
 Жобаны өзгерту құқығы бар тіркелгімен Studio ортасына (`http://<сервер>:9000/fp/studio`) кіру мүмкіндігі қажет.
 
@@ -176,7 +176,7 @@ end.
 
 Нақты модульдердің хабарламалары және олардың мағынасы модульдердің құжаттарында сипатталған:
 
-- IoT қосылымдары — [«IoT қосылымдары», «Диагностика» бөлімі](../../../en/data_collection/IoT/IoT.md#diagnostics);
+- IoT қосылымдары — [«IoT қосылымдары», «Диагностика» бөлімі](../../data_collection/IoT/IoT.md#диагностика);
 - PLC қосылымдары — [«Faceplate-тегі PLC қосылымдары», «Диагностика» бөлімі](../../../en/data_collection/plc_connections/general.md#troubleshooting);
 - репликация — [«Faceplate-тегі репликация», «Диагностика» бөлімі](../../../en/administration/replica/replica.md#troubleshooting);
 - мұрағаттар — [«Мұрағаттар», «Диагностика және жазу ерекшеліктері» бөлімі](../../../en/data_storage/archives/archives.md#diagnostics-and-recording-behavior);
